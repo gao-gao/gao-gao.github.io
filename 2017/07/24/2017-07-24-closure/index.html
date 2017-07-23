@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -94,14 +94,18 @@
 
 
 
+<meta name="description" content="函数相关知识，变量作用域，作用域链，闭包">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gaogao">
+<meta property="og:title" content="作用域和闭包">
 <meta property="og:url" content="http://www.gaogao.site/2017/07/24/2017-07-24-closure/index.html">
 <meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="函数相关知识，变量作用域，作用域链，闭包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T17:08:03.000Z">
+<meta property="og:updated_time" content="2017-07-23T17:13:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gaogao">
+<meta name="twitter:title" content="作用域和闭包">
+<meta name="twitter:description" content="函数相关知识，变量作用域，作用域链，闭包">
 
 
 
@@ -135,7 +139,7 @@
 
 
 
-  <title> | gaogao</title>
+  <title>作用域和闭包 | gaogao</title>
   
 
 
@@ -271,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">作用域和闭包</h1>
         
 
         <div class="post-meta">
@@ -283,7 +287,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T01:08:03+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T00:00:00+08:00">
                 2017-07-24
               </time>
             
@@ -294,6 +298,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -306,6 +332,10 @@
 
           
 
+          
+              <div class="post-description">
+                  函数相关知识，变量作用域，作用域链，闭包
+              </div>
           
 
         </div>
@@ -318,7 +348,61 @@
       
 
       
-        
+        <h3 id="1-函数"><a href="#1-函数" class="headerlink" title="1. 函数"></a>1. 函数</h3><ul>
+<li>函数定义：<br>a. 关键字function加函数名定义<br>b. 将匿名函数赋值给变量</li>
+<li>调用传参：<br>a. 实参数目大于形参时，其值保存在rest中（ES6标准引入）<br>b. 实参数目小于形参时，rest会接收一个空数组，对应形参为undefined<br>c. arguments关键字，只在函数内部起作用，永远指向当前函数的调用者所传入的参数<br>d. rest参数，只能写在最后，用前面用…标识，传入的参数先对应所给的形参，多余的参数以数组形式保存在rest中（ES6标准中引入，不是所有的浏览器都可使用）</li>
+<li>return语句：<br>函数体内部的语句一旦执行到return语句，函数就执行完毕并将结果返回；<br>如果没有return语句，函数执行完毕后也会返回结果（结果为undefined）；<br>js引擎有一个自动向行末添加分号的机制，所以不建议将一条语句分行写</li>
+<li>this:<br>要在执行的时候才能确认值，定义的时候无法确定<br>使用的四种场景：<br>a. 作为普通函数执行<br>b. 作为对象属性执行<br>c. 作为构造函数执行<br>d. call apply bind</li>
+</ul>
+<h3 id="2-变量作用域"><a href="#2-变量作用域" class="headerlink" title="2. 变量作用域"></a>2. 变量作用域</h3><ul>
+<li>变量提升<br>解释器在解释代码时总会将声明的函数和变量提升到方法体的最前面（变量会被提升，其值不会提升），所以我们通常在每个作用域开始时声明变量，遵循正常的JavaScript解析步骤。</li>
+<li>全局作用域<br>声明在函数外部或者是不用var关键字在函数内部隐式声明的变量是全局变量，具有全局作用域</li>
+<li>局部作用域<br>用关键字var在函数体内部进行显示声明的变量是局部变量，具有局部作用域<blockquote>
+<p>显式声明：使用var关键字声明变量<br>隐式声明：直接给变量赋值，不使用关键字<br>当访问一个没有声明的变量时，浏览器会报错，但是给这个变量赋值时，js会认为是要隐式声明一个变量，不会报错。</p>
+</blockquote>
+</li>
+<li>块级作用域<br>任何一对花括号中的语句都属于一个块，在这个块中定义的所有变量在代码块外都是不可见的，所属的是块级作用域。但是在js中没有块级作用域，对于if,for,while等循环语句。<br>ES6引入了一个关键字let，用let代替var可以声明一个块级作用域的变量<br>ES6还引入了一个关键字const，来定义一个具有块级作用域的常量（不能修改其值）</li>
+<li>变量之间关系<br>函数内部声明的变量，对外部不可见<br>不同函数体中的同名变量相互独立、互不影响<br>函数嵌套时，内部函数可以访问外部函数的变量<br>查找变量时，从变量自身由内而外查找</li>
+<li>作用域链<br>每一段代码都有一段与之关联的作用域链<br>这个作用域链是一个对象列表，这组对象定义了这段代码作用域中的变量<br>当js需要查找一个变量时，会从链上的第一个对象开始查找，找不到则去下一个查找，直至找到，若作用域上找不到这个变量，则会抛出异常<blockquote>
+<p>示例：<br>在js的顶层代码中，作用域链由一个全局对象组成<br>不包含嵌套函数的函数里，作用域链由两个对象组成，一个是定义函数参数和局部变量的对象，一个是全局对象<br>包含嵌套函数的函数体里，作用域至少由三个对象组成</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-建立块级作用域"><a href="#3-建立块级作用域" class="headerlink" title="3. 建立块级作用域"></a>3. 建立块级作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function start()&#123;</div><div class="line">for(var i=0;i&lt;3;i++)&#123;console.log(i)&#125;</div><div class="line">console.log(i); </div><div class="line">&#125;</div><div class="line">//调用函数</div><div class="line">start()</div></pre></td></tr></table></figure>
+<p>打印出来的结果是“0、1、2、3”，如果{}中存在块级作用域，那么最后一个i不应该被打印出“3”，而是“undefined”报错，将var改为let可以实现块级作用域。<br>还可以使用function(){}将for循环包裹起来，并且在函数体中调用”(function(){})()”，为 i 建立一个独立的域。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function start()&#123;</div><div class="line">(function()&#123;</div><div class="line">for(var i=0;i&lt;3;i++)&#123;console.log(i)&#125;</div><div class="line">&#125;)();</div><div class="line">console.log(i); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4. 闭包"></a>4. 闭包</h3><p>定义：<em>定义在一个函数内部，并且能够读取其他函数内部变量的函数</em><br>目的：<em>创建私有变量，收敛权限</em></p>
+<ul>
+<li><p>函数外部访问局部变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">var i=10;</div><div class="line">return function()&#123;</div><div class="line">alert(i);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">var f=test();</div><div class="line">f();//alert出10</div></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">var i=10;</div><div class="line">return &#123;</div><div class="line"> function(x)&#123; i=i+x; return i; &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">var f=test()；</div><div class="line">f(1);//值为11，</div><div class="line">f(2);//值为13</div><div class="line">f(3);//值为16</div></pre></td></tr></table></figure>
+<p>f=test()，执行函数test并得到作为返回值返回的匿名函数<br>f(1)调用f中保存的匿名函数，变量 i 去test的作用域中访问，函数执行完毕之后 i 变为11<br>f(2)f中保存的匿名函数，i+x 为11+2，返回 i 值13<br>f(3)f中保存的匿名函数，i+x为13+3，返回 i 值16</p>
+</li>
+<li>返回一个函数并且延迟执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">var arr=[];</div><div class="line">for(var i=0;i&lt;3;i++)&#123;</div><div class="line">arr.push(function()&#123;return i*i &#125;);</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div><div class="line">var results=test();</div><div class="line">var f1=results[0];</div><div class="line">var f2=results[1];</div><div class="line">var f3=result[2];</div><div class="line">f1();//9</div><div class="line">f2();//9</div><div class="line">f3();//9</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>执行之后发现和预想的结果不一样，预期的结果应该是0，1，4。<br>分析一下执行过程<br><code>var results=test()；</code><br>执行test函数，将三个函数保存在数组arr中并返回赋给results<br><code>var f1=results[0];</code><br>将数组中的第一个函数赋给f1<br><code>f1();</code><br>调用前面保存的函数并执行，此时for循环已经结束，i 变成了3，i*i变成9。<br>也就是说执行for循环的时候，并没有执行循环中返回的那个匿名函数，而只是将匿名函数保存在了数组arr中。到了f1（）的时候才调用。<br>为实现预期的效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">var arr=[];</div><div class="line">for(var i =0; i&lt;3;i++)&#123;</div><div class="line">arr.push((function(n)&#123;</div><div class="line">return function()&#123;return n*n;&#125;</div><div class="line">&#125;)(i))</div><div class="line">&#125;</div><div class="line">return arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>将原本push到数组的函数用”function(){}”包起来，并用”（function(){}）()”调用并执行，传入的 i 实参，即对应形参 n ,如此便可将for循环中的每一个 i 值保存起来</p>
+<blockquote>
+<p>通过此例，可以总结出，在返回闭包的时候，返回的函数中不要引用任何循环变量或者后续会发生变化的变量；如果一定要使用循环变量，可以再创建一个函数，将循环的变量的当前值作为参数传入。</p>
+<ul>
+<li>闭包和this一起使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var name=&quot;A&quot;;</div><div class="line">var obj=&#123;</div><div class="line">name:&quot;B&quot;,</div><div class="line">getName:function()&#123;</div><div class="line">             return function()&#123;</div><div class="line">                      return this.name;</div><div class="line">                     &#125;</div><div class="line">           &#125;&#125;;</div><div class="line">console.log(obj.getName()());//返回A</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>console.log(obj.getName),获取到function（）{this.name}此时函数作用域已经是在window中了，所以this指向的是window。<br>如果要将this指向obj，则要在函数中使用that保存this对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name=&quot;A&quot;;</div><div class="line">var obj=&#123;</div><div class="line">name:&quot;B&quot;,</div><div class="line">getName:function()&#123;</div><div class="line">var that=this;</div><div class="line">             return function()&#123;</div><div class="line">                      return that.name;</div><div class="line">                     &#125;</div><div class="line">           &#125;&#125;;</div><div class="line">console.log(obj.getName()());//返回B</div></pre></td></tr></table></figure></p>
+<p>将this指向的obj对象保存在that变量中，调用的name就始终是obj的name。</p>
+<h3 id="5-相关题目"><a href="#5-相关题目" class="headerlink" title="5. 相关题目"></a>5. 相关题目</h3><ul>
+<li>谈一下对变量提升的理解？<br>解释器在解释代码时总会将声明的函数和变量提升到方法体的最前面（变量会被提升，其值不会提升），所以我们通常在每个作用域开始时声明变量，遵循正常的JavaScript解析步骤。</li>
+<li>说明一下this的几种不同的使用场景？<br>作为普通函数执行<br>作为对象属性执行<br>作为构造函数执行<br>call,aooly,bind中指向参数中的对象<br>【要在执行的时候才能确认值，定义的时候无法确定】</li>
+<li><p>创建10个a标签，点击的时候弹出对应的序号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;a&lt;/title&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">	window.onload=function()&#123;</div><div class="line">		var i,a;</div><div class="line">		for(i=1;i&lt;=10;i++)&#123;	</div><div class="line">			(function(n)&#123;</div><div class="line">				a=document.createElement(&quot;a&quot;);</div><div class="line">				a.innerHTML=n;</div><div class="line">				a.onclick=function()&#123;alert(n)&#125;;</div><div class="line">			&#125;)(i)</div><div class="line">			document.body.appendChild(a);</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如何理解作用域<br>作用域在定义的时候产生<br>函数作用域和全局作用域<br>作用域链（自由变量的查找–当前作用于没有定义的变量）</p>
+</li>
+<li>实际开发中闭包的应用？<br>主要是封装变量，收敛权限</li>
+</ul>
+
       
     </div>
 
@@ -345,6 +429,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
 
       
       
@@ -354,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/2017-07-23-variable/" rel="next" title="变量类型和计算">
-                <i class="fa fa-chevron-left"></i> 变量类型和计算
+              <a href="/2017/07/24/2017-07-24- asynchronous/" rel="next" title="异步和单线程">
+                <i class="fa fa-chevron-left"></i> 异步和单线程
               </a>
             
           </div>
@@ -410,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -426,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -484,6 +583,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-函数"><span class="nav-number">1.</span> <span class="nav-text">1. 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量作用域"><span class="nav-number">2.</span> <span class="nav-text">2. 变量作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-建立块级作用域"><span class="nav-number">3.</span> <span class="nav-text">3. 建立块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-闭包"><span class="nav-number">4.</span> <span class="nav-text">4. 闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-相关题目"><span class="nav-number">5.</span> <span class="nav-text">5. 相关题目</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

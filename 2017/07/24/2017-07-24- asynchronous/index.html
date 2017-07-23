@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="值类型和引用类型，typeof，强制类型转换，js内置函数，json">
+<meta name="description" content="单线程，异步，同步及其实例">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="变量类型和计算">
-<meta property="og:url" content="http://www.gaogao.site/2017/07/23/2017-07-23-variable/index.html">
+<meta property="og:title" content="异步和单线程">
+<meta property="og:url" content="http://www.gaogao.site/2017/07/24/2017-07-24- asynchronous/index.html">
 <meta property="og:site_name" content="gaogao">
-<meta property="og:description" content="值类型和引用类型，typeof，强制类型转换，js内置函数，json">
+<meta property="og:description" content="单线程，异步，同步及其实例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T12:01:20.000Z">
+<meta property="og:updated_time" content="2017-07-23T17:14:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="变量类型和计算">
-<meta name="twitter:description" content="值类型和引用类型，typeof，强制类型转换，js内置函数，json">
+<meta name="twitter:title" content="异步和单线程">
+<meta name="twitter:description" content="单线程，异步，同步及其实例">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://www.gaogao.site/2017/07/23/2017-07-23-variable/"/>
+  <link rel="canonical" href="http://www.gaogao.site/2017/07/24/2017-07-24- asynchronous/"/>
 
 
 
 
 
-  <title>变量类型和计算 | gaogao</title>
+  <title>异步和单线程 | gaogao</title>
   
 
 
@@ -258,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/23/2017-07-23-variable/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/24/2017-07-24- asynchronous/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -275,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">变量类型和计算</h1>
+          <h1 class="post-title" itemprop="name headline">异步和单线程</h1>
         
 
         <div class="post-meta">
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T00:00:00+08:00">
-                2017-07-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T00:00:00+08:00">
+                2017-07-24
               </time>
             
 
@@ -334,7 +334,7 @@
 
           
               <div class="post-description">
-                  值类型和引用类型，typeof，强制类型转换，js内置函数，json
+                  单线程，异步，同步及其实例
               </div>
           
 
@@ -348,55 +348,46 @@
       
 
       
-        <h3 id="1-js变量按照存储方式区分为哪些类型，并描述其特点？"><a href="#1-js变量按照存储方式区分为哪些类型，并描述其特点？" class="headerlink" title="1.  js变量按照存储方式区分为哪些类型，并描述其特点？"></a>1.  js变量按照存储方式区分为哪些类型，并描述其特点？</h3><p>考查知识点：值类型和引用类型的区别</p>
+        <h3 id="1-单线程"><a href="#1-单线程" class="headerlink" title="1. 单线程"></a>1. 单线程</h3><p>一次只能完成一个任务，后面的任务都得等待</p>
 <ul>
-<li>值类型： 直接存储数据本身,不会因为赋值而相互干预<blockquote>
-<p>number、string、Boolean、undefined</p>
-</blockquote>
-</li>
-<li>引用类型：存储的是数据的地址，以节省内存空间<blockquote>
-<p>数组、对象、函数</p>
-</blockquote>
+<li>好处：执行环境单纯，依次执行</li>
+<li>坏处：只要有一个任务耗时长，后面的任务都得等待，拖延代码的执行，常见的浏览器无响应（比如死循环），就是一段代码长时间运行的后果<br>为解决此问题，js提出了同步和异步两种执行模式（所以js还是单线程的）</li>
+</ul>
+<h3 id="2-同步和异步的区别"><a href="#2-同步和异步的区别" class="headerlink" title="2. 同步和异步的区别"></a>2. 同步和异步的区别</h3><ul>
+<li>同步<br>后一个任务等待前一个任务完成之后才会执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">alert(3)</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>值类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a, b;</div><div class="line">a=1;</div><div class="line">b=a;</div><div class="line">a=2;</div><div class="line">b=?;//b=1</div></pre></td></tr></table></figure>
-<p>引用类型</p>
+<p>依次执行，先打印2，然后弹出3，点击弹框确定后弹框消失，打印4。在这个过程中有一个等待时间，即<code>console.log(4)</code>要等待弹框结束之后才会执行</p>
 <ul>
-<li><p>数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a, b;</div><div class="line">a=[1,2,3];</div><div class="line">b=a;</div><div class="line">a[0]=5;</div><div class="line">b[0]=?;//b[0]=5</div></pre></td></tr></table></figure>
-</li>
-<li><p>函数<br>传参实际上传的是一个地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a, b;</div><div class="line">a=function(i) &#123;alert(i);&#125;;</div><div class="line">b=function(fun)&#123;fun(2);&#125;;</div><div class="line">a(1);//alert 1</div><div class="line">b(a);//alert 2</div></pre></td></tr></table></figure>
+<li>异步<br>每一个任务有一个或者多个回调函数，前一个任务结束后，不是执行后一个任务而是执行后一个任务的回调函数，后一个任务不用等待前一个任务完成就可以执行（程序的执行顺序和任务的排列顺序是不一致的）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">setTimeout(function()&#123;alert(3)&#125;);</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="2-js使用typeof-能得到哪些类型？"><a href="#2-js使用typeof-能得到哪些类型？" class="headerlink" title="2. js使用typeof()能得到哪些类型？"></a>2. js使用typeof()能得到哪些类型？</h3><blockquote>
-<p>string, number, boolean, undefined, object(数组、对象、null), function</p>
-</blockquote>
-<p>值类型都可以用typeof判断其细分类型，而引用类型中只有function是个特例，可以直接判断其类型。</p>
-<h3 id="3-何时使用-，何时使用-？"><a href="#3-何时使用-，何时使用-？" class="headerlink" title="3. 何时使用===，何时使用==？"></a>3. 何时使用===，何时使用==？</h3><p>考查知识点：变量计算，强制类型转换</p>
+<p>先打印2，执行定时器setTimeout后（传入的函数会被暂存起来，不会立即执行），然后打印4后。待所有程序执行完，出于空闲状态时，看有没有暂存起来的要执行，发现暂存在setTimeout中的函数无需等待时间就立即执行alert（3）。在这个过程中alert不会阻塞程序运行。</p>
 <ul>
-<li><p>字符串拼接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a=1+&quot;2&quot;;//a=&quot;12&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>==运算符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">100==&quot;100&quot;//true</div><div class="line">0==&quot; &quot;//true</div><div class="line">null==undefined//true</div></pre></td></tr></table></figure>
-</li>
-<li><p>if语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if(a==null)//相当于a===null或者a===undefined</div></pre></td></tr></table></figure>
-</li>
-<li><p>逻辑运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a=10&amp;&amp;0//a=0</div><div class="line">a=&quot; &quot;||&quot;abc&quot;//a=&quot;abc&quot;</div><div class="line">a=!window.abc//a=true</div></pre></td></tr></table></figure>
+<li>何时需要异步：<br>在可能发生等待的情况下，保证程序不会因为某一个环节(比如alert)而阻塞</li>
+<li>前端使用异步的场景<br>定时器：setTimeout, setInterval<br>网络请求：ajax请求，动态img加载<br>事件绑定</li>
+</ul>
+<h3 id="3-异步实例"><a href="#3-异步实例" class="headerlink" title="3. 异步实例"></a>3. 异步实例</h3><ul>
+<li>setInterval<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(100);</div><div class="line">setInterval(function()&#123;console.log(3)&#125;,1000)</div><div class="line">console.log(200);</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>===：值相等并且类型也相等，用于严格比较，不会进行强制类型转换<br>==：值相等类型不一定相等，用于比较可先做类型转换</p>
-<h3 id="4-js有哪些内置函数？"><a href="#4-js有哪些内置函数？" class="headerlink" title="4. js有哪些内置函数？"></a>4. js有哪些内置函数？</h3><blockquote>
-<p>object, Array, Boolean, Number, String, Function, Date, RegExp, Error</p>
-</blockquote>
-<h3 id="5-如何理解JSON"><a href="#5-如何理解JSON" class="headerlink" title="5. 如何理解JSON?"></a>5. 如何理解JSON?</h3><blockquote>
-<p>一个JS对象，有两个API; 同时也是一个数据格式</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">JSON.stringify(&#123;a:10,b:20&#125;)//将js对象转换为字符串</div><div class="line">JSON.parse(&quot;&#123;&apos;a&apos;:10,&apos;b&apos;:20&#125;&quot;)//将字符串转换为js对象</div></pre></td></tr></table></figure>
+<p>打印结果：100，200，3（每格1秒打印一个3）</p>
+<ul>
+<li>ajax请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;);</div><div class="line">$get(&quot;./data1.json&quot;,function(data1)&#123;console.log(data1)&#125;)</div><div class="line">console. log(&quot;end&quot;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>打印结果：start, end, 通过请求获取的data1</p>
+<ul>
+<li>img加载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;)</div><div class="line">var img=document.createElement(&quot;img&quot;)</div><div class="line">img.onload=function()&#123;console.log(&quot;loaded&quot;)&#125;</div><div class="line">img.src=&quot;xxx.jpg&quot;</div><div class="line">console.log(&quot;end&quot;)</div><div class="line">``` </div><div class="line">- 事件绑定</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>console.log(“start”)<br>document.getElementById(“div”).addEventListener(“click”,function(){alert(“clicked”)})<br>console.log(“end”)<br>```<br>打印结果：start, end, clicked(点击了绑定事件的div之后打印)</p>
+<h3 id="4-相关题目"><a href="#4-相关题目" class="headerlink" title="4. 相关题目"></a>4. 相关题目</h3><ul>
+<li>同步和异步的区别是什么？并举例说明</li>
+<li>前端使用异步的场景有哪些？</li>
+<li>判断程序执行的顺序？</li>
+</ul>
+
       
     </div>
 
@@ -438,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/2017-07-23-prototype/" rel="next" title="原型和原型链">
-                <i class="fa fa-chevron-left"></i> 原型和原型链
+              <a href="/2017/07/23/2017-07-23-variable/" rel="next" title="变量类型和计算">
+                <i class="fa fa-chevron-left"></i> 变量类型和计算
               </a>
             
           </div>
@@ -448,8 +439,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/24/2017-07-24- asynchronous/" rel="prev" title="异步和单线程">
-                异步和单线程 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/24/2017-07-24-closure/" rel="prev" title="作用域和闭包">
+                作用域和闭包 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -591,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-js变量按照存储方式区分为哪些类型，并描述其特点？"><span class="nav-number">1.</span> <span class="nav-text">1.  js变量按照存储方式区分为哪些类型，并描述其特点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-js使用typeof-能得到哪些类型？"><span class="nav-number">2.</span> <span class="nav-text">2. js使用typeof()能得到哪些类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-何时使用-，何时使用-？"><span class="nav-number">3.</span> <span class="nav-text">3. 何时使用===，何时使用==？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-js有哪些内置函数？"><span class="nav-number">4.</span> <span class="nav-text">4. js有哪些内置函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-如何理解JSON"><span class="nav-number">5.</span> <span class="nav-text">5. 如何理解JSON?</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-单线程"><span class="nav-number">1.</span> <span class="nav-text">1. 单线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-同步和异步的区别"><span class="nav-number">2.</span> <span class="nav-text">2. 同步和异步的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-异步实例"><span class="nav-number">3.</span> <span class="nav-text">3. 异步实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-相关题目"><span class="nav-number">4.</span> <span class="nav-text">4. 相关题目</span></a></li></ol></div>
             
 
           </div>
