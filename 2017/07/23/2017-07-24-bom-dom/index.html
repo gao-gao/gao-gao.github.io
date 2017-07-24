@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="单线程，异步，同步及其实例">
+<meta name="description" content="ECMA-262标准和W3C标准,浏览器,BOM,DOM">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异步和单线程">
-<meta property="og:url" content="http://www.gaogao.site/2017/07/24/2017-07-24- asynchronous/index.html">
+<meta property="og:title" content="BOM&amp;DOM">
+<meta property="og:url" content="http://www.gaogao.site/2017/07/23/2017-07-24-bom-dom/index.html">
 <meta property="og:site_name" content="gaogao">
-<meta property="og:description" content="单线程，异步，同步及其实例">
+<meta property="og:description" content="ECMA-262标准和W3C标准,浏览器,BOM,DOM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-23T17:14:48.000Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5150805-11016fbd73e9ebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-07-24T13:42:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异步和单线程">
-<meta name="twitter:description" content="单线程，异步，同步及其实例">
+<meta name="twitter:title" content="BOM&amp;DOM">
+<meta name="twitter:description" content="ECMA-262标准和W3C标准,浏览器,BOM,DOM">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5150805-11016fbd73e9ebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://www.gaogao.site/2017/07/24/2017-07-24- asynchronous/"/>
+  <link rel="canonical" href="http://www.gaogao.site/2017/07/23/2017-07-24-bom-dom/"/>
 
 
 
 
 
-  <title>异步和单线程 | gaogao</title>
+  <title>BOM&DOM | gaogao</title>
   
 
 
@@ -258,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/24/2017-07-24- asynchronous/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/23/2017-07-24-bom-dom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -275,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">异步和单线程</h1>
+          <h1 class="post-title" itemprop="name headline">BOM&DOM</h1>
         
 
         <div class="post-meta">
@@ -287,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T00:00:00+08:00">
-                2017-07-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-23T00:00:00+08:00">
+                2017-07-23
               </time>
             
 
@@ -334,7 +336,7 @@
 
           
               <div class="post-description">
-                  单线程，异步，同步及其实例
+                  ECMA-262标准和W3C标准,浏览器,BOM,DOM
               </div>
           
 
@@ -348,44 +350,72 @@
       
 
       
-        <h3 id="1-单线程"><a href="#1-单线程" class="headerlink" title="1. 单线程"></a>1. 单线程</h3><p>一次只能完成一个任务，后面的任务都得等待</p>
-<ul>
-<li>好处：执行环境单纯，依次执行</li>
-<li>坏处：只要有一个任务耗时长，后面的任务都得等待，拖延代码的执行，常见的浏览器无响应（比如死循环），就是一段代码长时间运行的后果<br>为解决此问题，js提出了同步和异步两种执行模式（所以js还是单线程的）</li>
-</ul>
-<h3 id="2-同步和异步的区别"><a href="#2-同步和异步的区别" class="headerlink" title="2. 同步和异步的区别"></a>2. 同步和异步的区别</h3><ul>
-<li>同步<br>后一个任务等待前一个任务完成之后才会执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">alert(3)</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
+        <h3 id="1-ECMA-262标准和W3C标准"><a href="#1-ECMA-262标准和W3C标准" class="headerlink" title="1. ECMA-262标准和W3C标准"></a>1. ECMA-262标准和W3C标准</h3><ul>
+<li><p>ECMA-262标准<br>ECMAScript脚本语言的规范及标准，所有遵循ECMA-262标准实现的脚本都可以称之ECMAScript，如JavaScript。<br><em>ECMA-262是从ECMAScript脚本引擎实现的角度去描述的。</em>  </p>
+</li>
+<li><p>JavaScript引擎<br>即解释器，对JavaScript（动态语言）源代码解析并运行得出结果  </p>
+</li>
+<li><p>编译器<br>对于C#、Java、C++、C等静态语言，将源代码编译为另一种代码或中间语言（IL等），然后运行结果  </p>
+</li>
+<li><p>W3C标准<br>万维网联盟发布的一系列标准，针对网页分为三个部分：结构（Structure）、表现（Presentation）和行为（Behavior）  </p>
 </li>
 </ul>
-<p>依次执行，先打印2，然后弹出3，点击弹框确定后弹框消失，打印4。在这个过程中有一个等待时间，即<code>console.log(4)</code>要等待弹框结束之后才会执行</p>
+<blockquote>
+<p>结构标准语言：XML，XHTML<br>表现标准语言：css<br>行为标准：DOM，ECMAScript</p>
+</blockquote>
 <ul>
-<li>异步<br>每一个任务有一个或者多个回调函数，前一个任务结束后，不是执行后一个任务而是执行后一个任务的回调函数，后一个任务不用等待前一个任务完成就可以执行（程序的执行顺序和任务的排列顺序是不一致的）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">setTimeout(function()&#123;alert(3)&#125;);</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
+<li>常说的js包含两方面的知识：<br>js基础知识（ECMA-262标准，变量类型，原型，作用域和异步等）<br>Web-API(W3C标准，定义用于浏览器中js操作页面的API和全局变量)</li>
+<li>W3C标准中关于js的规定有：<br>DOM操作<br>BOM操作<br>事件绑定<br>ajax请求（包括http协议）</li>
+</ul>
+<h3 id="2-浏览器"><a href="#2-浏览器" class="headerlink" title="2. 浏览器"></a>2. 浏览器</h3><blockquote>
+<p>浏览器内核（Rendering Engine）：渲染引擎，有时还包括js引擎。渲染引擎主要是负责HTML、CSS以及其他一些东西的渲染，而JS引擎则主要负责对javascript的渲染</p>
+</blockquote>
+<ul>
+<li>IE 6~11：Trident内核（又称IE内核）,对W3C标准支持差，从IE10开始支持ES6标准</li>
+<li>Chrome：基于Webkit内核浏览器，一经安装就时刻保持自升级，所以不用管它的版本，最新版早就支持ES6</li>
+<li>Safari：基于Webkit内核的浏览器，从OS X 10.7 Lion自带的6.1版本开始支持ES6</li>
+<li>Firefox：Gecko内核</li>
+<li>Opera：Presto内核（ 7.0及以上）</li>
+</ul>
+<blockquote>
+<p>不同的浏览器对JavaScript支持的差异主要是，有些API的接口不一样，比如AJAX，File接口。对于ES6标准，不同的浏览器对各个特性支持也不一样。</p>
+</blockquote>
+<h3 id="3-BOM（browser-object-model）"><a href="#3-BOM（browser-object-model）" class="headerlink" title="3. BOM（browser object model）"></a>3. BOM（browser object model）</h3><blockquote>
+<p>BOM提供了独立于内容而与浏览器窗口进行交互的对象,主要用于管理窗口与窗口之间的通讯，因此其核心对象是window;由下列一系列相关的对象构成，并且每个对象都提供了很多方法与属性</p>
+</blockquote>
+<ul>
+<li><p>navigator对象:浏览器的信息<br>appName：浏览器名称<br>appVersion：浏览器版本<br>language：浏览器设置的语言<br>platform：操作系统类型<br>userAgent：浏览器设定的用户代理头字符串</p>
+</li>
+<li><p>history对象：保存了浏览器的历史记录<br>back()方法：加载 history 列表中的前一个 URL<br>forward()方法：加载 history 列表中的下一个 URL。<br>go()方法：相对当前所处的页面，加载 history 列表中的某个具体的页面。</p>
+</li>
+<li><p>location对象：前页面的URL信息<br><img src="http://upload-images.jianshu.io/upload_images/5150805-11016fbd73e9ebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="location.png"></p>
+<p>href：当前文档的完整URL<br>protocol ：协议<br>host：域名<br>hostname ：主域名<br>port：端口<br>pathname：路径，URL中域名后的部分<br>search：URL中的查询字符串<br>hash：#符号后面的内容</p>
+</li>
+<li>document对象：表示当前页面，整个DOM树的根节点</li>
+<li>screen对象：屏幕的信息<br>height,width: 屏幕高和宽</li>
+</ul>
+<h3 id="3-DOM-document-object-model"><a href="#3-DOM-document-object-model" class="headerlink" title="3.DOM(document object model)"></a>3.DOM(document object model)</h3><blockquote>
+<p>W3C 文档对象模型 （DOM） 是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。</p>
+</blockquote>
+<ul>
+<li>数据结构：树</li>
+<li>节点: nodeName,nodeType,nodeValue<br>标签（元素）节点:元素名称，1，null<br>属性节点:属性名称，2，属性值<br>文本节点: #text,3,文本内容<br>注释节点：#comment,8,注释内容<br>文档：#document，9，文档内容</li>
+<li>节点关系：<br>. childNodes：返回一个数组，由当前节点的所有的子节点构成<br>. firstChild：返回第一个子节点<br>. lastChild：返回最后一个子节点<br>. parentNode：返回当前节点的父节点<br>. previousSibling：返回给定节点的上一个同级节点<br>. nextSibling：返回给定节点后一个同级节点<br>. ownerDocument：给定节点的根节点<br>. attributes：当前节点的所有属性节点</li>
+<li><p>获取元素节点<br>getElementById（）：根据ID值获取元素节点<br>getElementsByClassName（）：根据class值获取元素节点（数组）<br>getElementsByTagName（）：根据标签名获取节点<br>getElementsByName（）：name属性值获取元素节点</p>
+</li>
+<li><p>获取属性<br>获取行间样式表中的样式属性:element.style.attr<br>获取外部样式表中的样式属性:element.currentStyle.attr(IE)或者window.getComputedStyle(element,null).attr(非IE，只读)</p>
+</li>
+<li><p>设置属性<br>访问属性：.getAttribute（）还可以获取自定义属性的值<br>直接修改：element.style.attr=”newAttr”<br>方法修改：. setAttribute(attr,value)<br>删除属性:.removeAttribute(attr)</p>
+</li>
+<li><p>操作节点<br>createElement():创建新的元素节点<br>createTextNode():创建包含给定文本的新文本节点<br>parentNode.appendChild(childNode):给指定节点的最后一个子节点列表之后添加一个子节点<br>parentNode. insertBefore(newNode , currentNode)：在已有的子节点前插入一个新的子节点。<br>parentNode.removeChild(node）：从子节点列表中删除某个节点<br>parentNode.replaceChild（newnode,oldnode）:实现子节点（对象）的替换</p>
+</li>
+<li><p>DOM节点的Attribute和property的区别<br>property是一个js对象的属性的修改<br>Attribute是对html标签属性的修改</p>
 </li>
 </ul>
-<p>先打印2，执行定时器setTimeout后（传入的函数会被暂存起来，不会立即执行），然后打印4后。待所有程序执行完，出于空闲状态时，看有没有暂存起来的要执行，发现暂存在setTimeout中的函数无需等待时间就立即执行alert（3）。在这个过程中alert不会阻塞程序运行。</p>
-<ul>
-<li>何时需要异步：<br>在可能发生等待的情况下，保证程序不会因为某一个环节(比如alert)而阻塞</li>
-<li>前端使用异步的场景<br>定时器：setTimeout, setInterval<br>网络请求：ajax请求，动态img加载<br>事件绑定</li>
-</ul>
-<h3 id="3-异步实例"><a href="#3-异步实例" class="headerlink" title="3. 异步实例"></a>3. 异步实例</h3><ul>
-<li>setInterval<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(100);</div><div class="line">setInterval(function()&#123;console.log(3)&#125;,1000)</div><div class="line">console.log(200);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>打印结果：100，200，3（每格1秒打印一个3）</p>
-<ul>
-<li>ajax请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;);</div><div class="line">$get(&quot;./data1.json&quot;,function(data1)&#123;console.log(data1)&#125;)</div><div class="line">console. log(&quot;end&quot;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>打印结果：start, end, 通过请求获取的data1</p>
-<ul>
-<li>img加载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;)</div><div class="line">var img=document.createElement(&quot;img&quot;)</div><div class="line">img.onload=function()&#123;console.log(&quot;loaded&quot;)&#125;</div><div class="line">img.src=&quot;xxx.jpg&quot;</div><div class="line">console.log(&quot;end&quot;)</div><div class="line">``` </div><div class="line">- 事件绑定</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>console.log(“start”)<br>document.getElementById(“div”).addEventListener(“click”,function(){alert(“clicked”)})<br>console.log(“end”)<br>```<br>打印结果：start, end, clicked(点击了绑定事件的div之后打印)</p>
 <h3 id="4-相关题目"><a href="#4-相关题目" class="headerlink" title="4. 相关题目"></a>4. 相关题目</h3><ul>
-<li>同步和异步的区别是什么？并举例说明</li>
-<li>前端使用异步的场景有哪些？</li>
-<li>判断程序执行的顺序？</li>
+<li>DOM是哪种数据结构？树结构</li>
+<li>DOM操作的常用API有哪些？<br>获取dom节点，以及节点的property和attribute<br>获取父节点，子节点<br>增删节点，替换节点，</li>
+<li>DOM节点的attr和property有什么区别？<br>前者是对html标签属性的修改，后者只是一个js对象的属性的修改</li>
 </ul>
 
       
@@ -429,18 +459,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/24/2017-07-24-common-api/" rel="next" title="基础API">
-                <i class="fa fa-chevron-left"></i> 基础API
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/24/2017-07-24-closure/" rel="prev" title="作用域和闭包">
-                作用域和闭包 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/23/2017-07-23-prototype/" rel="prev" title="原型和原型链">
+                原型和原型链 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-单线程"><span class="nav-number">1.</span> <span class="nav-text">1. 单线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-同步和异步的区别"><span class="nav-number">2.</span> <span class="nav-text">2. 同步和异步的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-异步实例"><span class="nav-number">3.</span> <span class="nav-text">3. 异步实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-相关题目"><span class="nav-number">4.</span> <span class="nav-text">4. 相关题目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ECMA-262标准和W3C标准"><span class="nav-number">1.</span> <span class="nav-text">1. ECMA-262标准和W3C标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-浏览器"><span class="nav-number">2.</span> <span class="nav-text">2. 浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-BOM（browser-object-model）"><span class="nav-number">3.</span> <span class="nav-text">3. BOM（browser object model）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DOM-document-object-model"><span class="nav-number">4.</span> <span class="nav-text">3.DOM(document object model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-相关题目"><span class="nav-number">5.</span> <span class="nav-text">4. 相关题目</span></a></li></ol></div>
             
 
           </div>
