@@ -102,12 +102,10 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="事件流，事件，事件处理程序，事件代理，事件类型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.gaogao.site/2017/07/25/dom-event/images/dom.png">
-<meta property="og:updated_time" content="2017-07-25T05:32:58.000Z">
+<meta property="og:updated_time" content="2017-07-25T05:46:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM事件">
 <meta name="twitter:description" content="事件流，事件，事件处理程序，事件代理，事件类型">
-<meta name="twitter:image" content="http://www.gaogao.site/2017/07/25/dom-event/images/dom.png">
 
 
 
@@ -351,22 +349,34 @@
 
       
         <h3 id="1-事件流"><a href="#1-事件流" class="headerlink" title="1. 事件流"></a>1. 事件流</h3><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><ul>
-<li>DOM文档是一个树形结构，当一个HTML元素产生一个事件时，该事件会在元素节点与根节点之间的路径传播，路径所经过的节点都会收到该事件，这个传播过程可称为DOM事件流。其独特之处在于：文本节点也会触发事件（IE中不会）。<h4 id="描述的是："><a href="#描述的是：" class="headerlink" title="描述的是："></a>描述的是：</h4></li>
-<li>从页面中接收事件的顺序<h4 id="两种事件流模型："><a href="#两种事件流模型：" class="headerlink" title="两种事件流模型："></a>两种事件流模型：</h4></li>
+<li>DOM文档是一个树形结构，当一个HTML元素产生一个事件时，该事件会在元素节点与根节点之间的路径传播，路径所经过的节点都会收到该事件，这个传播过程可称为DOM事件流。其独特之处在于：文本节点也会触发事件（IE中不会）。</li>
+</ul>
+<h4 id="描述的是："><a href="#描述的是：" class="headerlink" title="描述的是："></a>描述的是：</h4><ul>
+<li>从页面中接收事件的顺序</li>
+</ul>
+<h4 id="两种事件流模型："><a href="#两种事件流模型：" class="headerlink" title="两种事件流模型："></a>两种事件流模型：</h4><ul>
 <li>冒泡型：最特定的事件目标到最不特定的事件目标，即从DOM树的子到根</li>
-<li>捕获型：最不特定的事件目标到最特定的事件目标，即从DOM树的根到子<h4 id="浏览器支持："><a href="#浏览器支持：" class="headerlink" title="浏览器支持："></a>浏览器支持：</h4></li>
+<li>捕获型：最不特定的事件目标到最特定的事件目标，即从DOM树的根到子</li>
+</ul>
+<h4 id="浏览器支持："><a href="#浏览器支持：" class="headerlink" title="浏览器支持："></a>浏览器支持：</h4><ul>
 <li><p>所有现代浏览器都支持事件冒泡，但在具体实现中略有差别<br>IE5.5及更早版本中事件冒泡会跳过<html>元素(从body直接跳到document)<br>IE9、Firefox、Chrome、和Safari则将事件一直冒泡到window对象。</html></p>
 </li>
 <li><p>IE9、Firefox、Chrome、Opera、和Safari都支持事件捕获。DOM标准要求事件应该从document对象开始传播，但这些浏览器都是从window对象开始捕获事件的。</p>
 </li>
-<li>由于老版本浏览器不支持，很少有人使用事件捕获。建议使用事件冒泡。<h4 id="DOM事件流："><a href="#DOM事件流：" class="headerlink" title="DOM事件流："></a>DOM事件流：</h4></li>
+<li>由于老版本浏览器不支持，很少有人使用事件捕获。建议使用事件冒泡。</li>
+</ul>
+<h4 id="DOM事件流："><a href="#DOM事件流：" class="headerlink" title="DOM事件流："></a>DOM事件流：</h4><ul>
 <li><p>DOM事件流采用捕获和冒泡，两种事件都会触发DOM的所有对象从document对象开始，也在document对象结束</p>
 </li>
-<li><p>DOM标准规定的三个阶段<br><img src="images/dom.png" alt="dom事件流"><br>事件捕获阶段：实际目标在捕获阶段不会接收事件(1-3)<br>处于目标阶段：事件在实际目标上发生并处理（事件处理会被当成冒泡阶段的一部分）<br>冒泡阶段：事件传播回文档<br><strong>PS: 并非所有的事件都会经过冒泡阶段，有的会跳过冒泡阶段。</strong></p>
+<li><p>DOM标准规定的三个阶段 </p>
 </li>
 </ul>
+<p>![DOM][images/dom.png]</p>
+<p>事件捕获阶段：实际目标在捕获阶段不会接收事件(1-3)<br>处于目标阶段：事件在实际目标上发生并处理（事件处理会被当成冒泡阶段的一部分）<br>冒泡阶段：事件传播回文档<br><strong>PS: 并非所有的事件都会经过冒泡阶段，有的会跳过冒泡阶段。</strong></p>
 <h3 id="2-事件"><a href="#2-事件" class="headerlink" title="2.事件"></a>2.事件</h3><h4 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h4><ul>
-<li>文档或者浏览器窗口中发生的，特定的交互瞬间，可以是用户或浏览器执行的某种操作，如click,load等<h4 id="事件对象event"><a href="#事件对象event" class="headerlink" title="事件对象event:"></a>事件对象event:</h4></li>
+<li>文档或者浏览器窗口中发生的，特定的交互瞬间，可以是用户或浏览器执行的某种操作，如click,load等</li>
+</ul>
+<h4 id="事件对象event"><a href="#事件对象event" class="headerlink" title="事件对象event:"></a>事件对象event:</h4><ul>
 <li><p>解释：在触发dom上的事件时都会产生一个对象</p>
 </li>
 <li><p>DOM中的事件对象：<br>type:事件类型<br>target：事件目标<br>stopPropagation():阻止事件冒泡<br>preventDefault()：阻止默认行为</p>
@@ -396,15 +406,17 @@
 <li><p>将多个事件处理器减少到一个，减少浏览器内存占用，提高了性能  </p>
 </li>
 <li><p>DOM更新无需重新绑定事件处理器，因为事件代理对不同子元素可采用不同处理方法。如果新增其他子元素（a,span,div等），直接修改事件代理的事件处理函数即可，不需要重新绑定处理器，不需要再次循环遍历。</p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4></li>
+</li>
+</ul>
+<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><ul>
 <li><p>当事件绑定同时绑定了子元素和父元素时，会有两次冒泡</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">$(document).on(&apos;click&apos;, &apos;li&apos;, function(e)&#123;</div><div class="line">        alert(&apos;li li&apos;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">$(document).on(&apos;click&apos;, &apos;a&apos;, function(e)&#123;</div><div class="line">        alert(&apos;li a&apos;);</div><div class="line">    &#125;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">&lt;script&gt;</div><div class="line">$(document).on(&apos;click&apos;, &apos;li&apos;, function(e)&#123;</div><div class="line">        alert(&apos;li li&apos;);</div><div class="line">    &#125;);</div><div class="line">$(document).on(&apos;click&apos;, &apos;a&apos;, function(e)&#123;</div><div class="line">        alert(&apos;li a&apos;);</div><div class="line">    &#125;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>解决方法</p>
 </li>
 </ul>
 <ol>
-<li><p>在a的事件处理程序中阻止冒泡</p>
+<li><p>在a的事件处理程序中阻止冒泡</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(document).on(&apos;click&apos;, &apos;a&apos;, function(e)&#123;</div><div class="line">        alert(&apos;li a&apos;);</div><div class="line">        e.stopPropagation();</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
 </li>
 <li><p>在li的target属性中检测a</p>
