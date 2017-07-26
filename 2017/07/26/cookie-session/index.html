@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="DOM," />
 
 
 
@@ -94,20 +94,18 @@
 
 
 
-<meta name="description" content="ECMA-262标准和W3C标准,浏览器,BOM,DOM">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="cookie和session机制，sessionStorage、localStorage和cookie">
+<meta name="keywords" content="DOM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BOM&amp;DOM">
-<meta property="og:url" content="http://www.gaogao.site/2017/07/24/2017-07-24-bom-dom/index.html">
+<meta property="og:title" content="存储">
+<meta property="og:url" content="http://www.gaogao.site/2017/07/26/cookie-session/index.html">
 <meta property="og:site_name" content="gaogao">
-<meta property="og:description" content="ECMA-262标准和W3C标准,浏览器,BOM,DOM">
+<meta property="og:description" content="cookie和session机制，sessionStorage、localStorage和cookie">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5150805-11016fbd73e9ebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-24T13:51:55.000Z">
+<meta property="og:updated_time" content="2017-07-26T15:14:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BOM&amp;DOM">
-<meta name="twitter:description" content="ECMA-262标准和W3C标准,浏览器,BOM,DOM">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5150805-11016fbd73e9ebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="存储">
+<meta name="twitter:description" content="cookie和session机制，sessionStorage、localStorage和cookie">
 
 
 
@@ -135,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://www.gaogao.site/2017/07/24/2017-07-24-bom-dom/"/>
+  <link rel="canonical" href="http://www.gaogao.site/2017/07/26/cookie-session/"/>
 
 
 
 
 
-  <title>BOM&DOM | gaogao</title>
+  <title>存储 | gaogao</title>
   
 
 
@@ -260,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/24/2017-07-24-bom-dom/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/26/cookie-session/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -277,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BOM&DOM</h1>
+          <h1 class="post-title" itemprop="name headline">存储</h1>
         
 
         <div class="post-meta">
@@ -289,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T00:00:00+08:00">
-                2017-07-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T00:00:00+08:00">
+                2017-07-26
               </time>
             
 
@@ -312,8 +310,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -336,7 +334,7 @@
 
           
               <div class="post-description">
-                  ECMA-262标准和W3C标准,浏览器,BOM,DOM
+                  cookie和session机制，sessionStorage、localStorage和cookie
               </div>
           
 
@@ -350,73 +348,68 @@
       
 
       
-        <h3 id="1-ECMA-262标准和W3C标准"><a href="#1-ECMA-262标准和W3C标准" class="headerlink" title="1. ECMA-262标准和W3C标准"></a>1. ECMA-262标准和W3C标准</h3><ul>
-<li><p>ECMA-262标准<br>ECMAScript脚本语言的规范及标准，所有遵循ECMA-262标准实现的脚本都可以称之ECMAScript，如JavaScript。<br><em>ECMA-262是从ECMAScript脚本引擎实现的角度去描述的。</em>  </p>
-</li>
-<li><p>JavaScript引擎<br>即解释器，对JavaScript（动态语言）源代码解析并运行得出结果  </p>
-</li>
-<li><p>编译器<br>对于C#、Java、C++、C等静态语言，将源代码编译为另一种代码或中间语言（IL等），然后运行结果  </p>
-</li>
-<li><p>W3C标准<br>万维网联盟发布的一系列标准，针对网页分为三个部分：结构（Structure）、表现（Presentation）和行为（Behavior）  </p>
-</li>
-</ul>
-<blockquote>
-<p>结构标准语言：XML，XHTML<br>表现标准语言：css<br>行为标准：DOM，ECMAScript</p>
-</blockquote>
+        <h3 id="1-cookie和session"><a href="#1-cookie和session" class="headerlink" title="1. cookie和session"></a>1. cookie和session</h3><h4 id="cookie机制"><a href="#cookie机制" class="headerlink" title="cookie机制:"></a>cookie机制:</h4><p>在客户端保持状态的方案</p>
 <ul>
-<li>常说的js包含两方面的知识：<br>js基础知识（ECMA-262标准，变量类型，原型，作用域和异步等）<br>Web-API(W3C标准，定义用于浏览器中js操作页面的API和全局变量)</li>
-<li>W3C标准中关于js的规定有：<br>DOM操作<br>BOM操作<br>事件绑定<br>ajax请求（包括http协议）</li>
+<li><p>主要内容：名字，值，过期时间，路径和域。<br>若不设置过期时间，则cookie的生命期在关闭浏览器时结束称之为会话cookie，保存在内存里；若设置过期时间，关闭浏览器之后再打开cookie仍然存在，直到超过过期时间，保存在硬盘里。</p>
+</li>
+<li><p>生成：扩展HTTP协议或客户端脚本</p>
+</li>
 </ul>
-<h3 id="2-浏览器"><a href="#2-浏览器" class="headerlink" title="2. 浏览器"></a>2. 浏览器</h3><blockquote>
-<p>浏览器内核（Rendering Engine）：渲染引擎，有时还包括js引擎。渲染引擎主要是负责HTML、CSS以及其他一些东西的渲染，而JS引擎则主要负责对javascript的渲染</p>
-</blockquote>
+<ol>
+<li>服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie  </li>
+<li>JavaScript或者VBScript生成cookie</li>
+</ol>
 <ul>
-<li>IE 6~11：Trident内核（又称IE内核）,对W3C标准支持差，从IE10开始支持ES6标准</li>
-<li>Chrome：基于Webkit内核浏览器，一经安装就时刻保持自升级，所以不用管它的版本，最新版早就支持ES6</li>
-<li>Safari：基于Webkit内核的浏览器，从OS X 10.7 Lion自带的6.1版本开始支持ES6</li>
-<li>Firefox：Gecko内核</li>
-<li>Opera：Presto内核（ 7.0及以上）</li>
+<li><p>使用：<br>浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，则把该cookie附在请求资源的HTTP请求头上发送给服务器。</p>
+<h4 id="session机制："><a href="#session机制：" class="headerlink" title="session机制："></a>session机制：</h4><p>在服务器端保持的方案</p>
+</li>
+<li><p>理解：</p>
+</li>
 </ul>
-<blockquote>
-<p>不同的浏览器对JavaScript支持的差异主要是，有些API的接口不一样，比如AJAX，File接口。对于ES6标准，不同的浏览器对各个特性支持也不一样。</p>
-</blockquote>
-<h3 id="3-BOM（browser-object-model）"><a href="#3-BOM（browser-object-model）" class="headerlink" title="3. BOM（browser object model）"></a>3. BOM（browser object model）</h3><blockquote>
-<p>BOM提供了独立于内容而与浏览器窗口进行交互的对象,主要用于管理窗口与窗口之间的通讯，因此其核心对象是window;由下列一系列相关的对象构成，并且每个对象都提供了很多方法与属性</p>
-</blockquote>
+<ol>
+<li><p>当程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），如果已包含一个session id则说明以前已经为此客户端创建过session，服务器就按照session id把这个session检索出来使用（如果检索不到，可能会新建一个），如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，这个session id将被在本次响应中返回给客户端保存。   </p>
+</li>
+<li><p>session id的值是一个既不会重复，又不容易被找到规律以仿造的字符串。 </p>
+</li>
+<li><p>保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发回给服务器。</p>
+</li>
+<li><p>由于cookie可以被人为的禁止，被禁止时为了仍然能够把session id传递回服务器，常使用URL重写技术：把session id直接附加在URL路径的后面（作为附加信息或者作为查询字符串）</p>
+</li>
+</ol>
 <ul>
-<li><p>navigator对象:浏览器的信息<br>appName：浏览器名称<br>appVersion：浏览器版本<br>language：浏览器设置的语言<br>platform：操作系统类型<br>userAgent：浏览器设定的用户代理头字符串</p>
+<li><p>何时被创建<br>直到某server端程序调用HttpServletRequest.getSession(true)这样的语句时，而不是在有客户端访问时</p>
 </li>
-<li><p>history对象：保存了浏览器的历史记录<br>back()方法：加载 history 列表中的前一个 URL<br>forward()方法：加载 history 列表中的下一个 URL。<br>go()方法：相对当前所处的页面，加载 history 列表中的某个具体的页面。</p>
-</li>
-<li><p>location对象：前页面的URL信息<br><img src="http://upload-images.jianshu.io/upload_images/5150805-11016fbd73e9ebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="location.png"></p>
-<p>href：当前文档的完整URL<br>protocol ：协议<br>host：域名<br>hostname ：主域名<br>port：端口<br>pathname：路径，URL中域名后的部分<br>search：URL中的查询字符串<br>hash：#符号后面的内容</p>
-</li>
-<li>document对象：表示当前页面，整个DOM树的根节点</li>
-<li>screen对象：屏幕的信息<br>height,width: 屏幕高和宽</li>
-</ul>
-<h3 id="3-DOM-document-object-model"><a href="#3-DOM-document-object-model" class="headerlink" title="3.DOM(document object model)"></a>3.DOM(document object model)</h3><blockquote>
-<p>W3C 文档对象模型 （DOM） 是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。</p>
-</blockquote>
-<ul>
-<li>数据结构：树</li>
-<li>节点: nodeName,nodeType,nodeValue<br>标签（元素）节点:元素名称，1，null<br>属性节点:属性名称，2，属性值<br>文本节点: #text,3,文本内容<br>注释节点：#comment,8,注释内容<br>文档：#document，9，文档内容</li>
-<li>节点关系：<br>. childNodes：返回一个数组，由当前节点的所有的子节点构成<br>. firstChild：返回第一个子节点<br>. lastChild：返回最后一个子节点<br>. parentNode：返回当前节点的父节点<br>. previousSibling：返回给定节点的上一个同级节点<br>. nextSibling：返回给定节点后一个同级节点<br>. ownerDocument：给定节点的根节点<br>. attributes：当前节点的所有属性节点</li>
-<li><p>获取元素节点<br>getElementById（）：根据ID值获取元素节点<br>getElementsByClassName（）：根据class值获取元素节点（数组）<br>getElementsByTagName（）：根据标签名获取节点<br>getElementsByName（）：name属性值获取元素节点</p>
-</li>
-<li><p>获取属性<br>获取行间样式表中的样式属性:element.style.attr<br>获取外部样式表中的样式属性:element.currentStyle.attr(IE)或者window.getComputedStyle(element,null).attr(非IE，只读)</p>
-</li>
-<li><p>设置属性<br>访问属性：.getAttribute（）还可以获取自定义属性的值<br>直接修改：element.style.attr=”newAttr”<br>方法修改：. setAttribute(attr,value)<br>删除属性:.removeAttribute(attr)</p>
-</li>
-<li><p>操作节点<br>createElement():创建新的元素节点<br>createTextNode():创建包含给定文本的新文本节点<br>parentNode.appendChild(childNode):给指定节点的最后一个子节点列表之后添加一个子节点<br>parentNode. insertBefore(newNode , currentNode)：在已有的子节点前插入一个新的子节点。<br>parentNode.removeChild(node）：从子节点列表中删除某个节点<br>parentNode.replaceChild（newnode,oldnode）:实现子节点（对象）的替换</p>
-</li>
-<li><p>DOM节点的Attribute和property的区别<br>property是一个js对象的属性的修改<br>Attribute是对html标签属性的修改</p>
+<li><p>何时被删除  </p>
 </li>
 </ul>
-<h3 id="4-相关题目"><a href="#4-相关题目" class="headerlink" title="4. 相关题目"></a>4. 相关题目</h3><ul>
-<li>DOM是哪种数据结构？树结构</li>
-<li>DOM操作的常用API有哪些？<br>获取dom节点，以及节点的property和attribute<br>获取父节点，子节点<br>增删节点，替换节点，</li>
-<li>DOM节点的attr和property有什么区别？<br>前者是对html标签属性的修改，后者只是一个js对象的属性的修改</li>
+<ol>
+<li>程序调用HttpSession.invalidate()</li>
+<li>距离上一次收到客户端发送的session id时间间隔超过了session的超时设置</li>
+<li>c.服务器进程被停止（非持久session）<br>而不是在关闭浏览器时</li>
+</ol>
+<h3 id="2-sessionStorage和localStorage"><a href="#2-sessionStorage和localStorage" class="headerlink" title="2. sessionStorage和localStorage"></a>2. sessionStorage和localStorage</h3><ul>
+<li><p>由HTML5 Web Storage API 提供，方便在web请求之间保存数据在本地，避免数据在浏览器和服务器间不必要地来回传递。</p>
+</li>
+<li><p>sessionStorage：引入了“浏览器”概念，是在同源的同窗口（或tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁。同时“独立”打开的不同窗口，即使是同一页面，sessionStorage对象也是不同的。</p>
+</li>
 </ul>
+<h3 id="3-cookie、sessionStorage、localStorage异同点"><a href="#3-cookie、sessionStorage、localStorage异同点" class="headerlink" title="3. cookie、sessionStorage、localStorage异同点"></a>3. cookie、sessionStorage、localStorage异同点</h3><h4 id="共同点："><a href="#共同点：" class="headerlink" title="共同点："></a>共同点：</h4><p>都是在浏览器端存储的数据且同源</p>
+<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><ul>
+<li><p>cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器</p>
+</li>
+<li><p>cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。</p>
+</li>
+<li><p>存储大小：cookie数据不能超过4k，sessionStorage和localStorage可以达到5M</p>
+</li>
+<li><p>数据有效期：cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭；sessionStorage：仅在当前浏览器窗口关闭前有效；localStorage：始终有效，窗口或浏览器关闭也一直保存</p>
+</li>
+<li><p>作用域：cookie在所有同源窗口中都是共享的；sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage在所有同源窗口中都是共享的</p>
+</li>
+<li><p>API：cookie，简单但需要封装才能用(document.cookie)；sessionStorage、localStorage简单易用</p>
+</li>
+</ul>
+<h3 id="4-js中设置cookie"><a href="#4-js中设置cookie" class="headerlink" title="4.js中设置cookie"></a>4.js中设置cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">function setCookie(cname,cvalue,exdays)&#123;</div><div class="line">	var d = new Date();</div><div class="line">	d.setTime(d.getTime()+(exdays*24*60*60*1000));</div><div class="line">	var expires = &quot;expires=&quot;+d.toGMTString();</div><div class="line">	document.cookie = cname+&quot;=&quot;+cvalue+&quot;; &quot;+expires;</div><div class="line">&#125;</div><div class="line">function getCookie(cname)&#123;</div><div class="line">	var name = cname + &quot;=&quot;;</div><div class="line">	var ca = document.cookie.split(&apos;;&apos;);</div><div class="line">	for(var i=0; i&lt;ca.length; i++) &#123;</div><div class="line">		var c = ca[i].trim();</div><div class="line">		if (c.indexOf(name)==0) return c.substring(name.length,c.length);</div><div class="line">	&#125;</div><div class="line">	return &quot;&quot;;</div><div class="line">&#125;</div><div class="line">function checkCookie()&#123;</div><div class="line">	var user=getCookie(&quot;username&quot;);</div><div class="line">	if (user!=&quot;&quot;)&#123;</div><div class="line">		alert(&quot;Welcome again &quot; + user);</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		user = prompt(&quot;Please enter your name:&quot;,&quot;&quot;);</div><div class="line">  		if (user!=&quot;&quot; &amp;&amp; user!=null)&#123;</div><div class="line">    		setCookie(&quot;username&quot;,user,30);</div><div class="line">    	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过document.cookie获取当前cookie，然后封装相关函数，并调用</p>
 
       
     </div>
@@ -446,7 +439,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
           
         </div>
       
@@ -459,8 +452,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/23/2017-07-23-common-api/" rel="next" title="基础API">
-                <i class="fa fa-chevron-left"></i> 基础API
+              <a href="/2017/07/25/dom-event/" rel="next" title="DOM事件">
+                <i class="fa fa-chevron-left"></i> DOM事件
               </a>
             
           </div>
@@ -468,10 +461,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/25/dom-event/" rel="prev" title="DOM事件">
-                DOM事件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ECMA-262标准和W3C标准"><span class="nav-number">1.</span> <span class="nav-text">1. ECMA-262标准和W3C标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-浏览器"><span class="nav-number">2.</span> <span class="nav-text">2. 浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-BOM（browser-object-model）"><span class="nav-number">3.</span> <span class="nav-text">3. BOM（browser object model）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-DOM-document-object-model"><span class="nav-number">4.</span> <span class="nav-text">3.DOM(document object model)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-相关题目"><span class="nav-number">5.</span> <span class="nav-text">4. 相关题目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cookie和session"><span class="nav-number">1.</span> <span class="nav-text">1. cookie和session</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie机制"><span class="nav-number">1.1.</span> <span class="nav-text">cookie机制:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session机制："><span class="nav-number">1.2.</span> <span class="nav-text">session机制：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-sessionStorage和localStorage"><span class="nav-number">2.</span> <span class="nav-text">2. sessionStorage和localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cookie、sessionStorage、localStorage异同点"><span class="nav-number">3.</span> <span class="nav-text">3. cookie、sessionStorage、localStorage异同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共同点："><span class="nav-number">3.1.</span> <span class="nav-text">共同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点"><span class="nav-number">3.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-js中设置cookie"><span class="nav-number">4.</span> <span class="nav-text">4.js中设置cookie</span></a></li></ol></div>
             
 
           </div>
