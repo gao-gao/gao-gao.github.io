@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="jQuery," />
 
 
 
@@ -94,14 +94,18 @@
 
 
 
+<meta name="description" content="各种常用选择器分类整理">
+<meta name="keywords" content="jQuery">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gaogao">
+<meta property="og:title" content="jquery选择器">
 <meta property="og:url" content="http://www.gaogao.site/2017/05/02/jquery-selector/index.html">
 <meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="各种常用选择器分类整理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-29T16:13:39.000Z">
+<meta property="og:updated_time" content="2017-07-29T16:42:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gaogao">
+<meta name="twitter:title" content="jquery选择器">
+<meta name="twitter:description" content="各种常用选择器分类整理">
 
 
 
@@ -135,7 +139,7 @@
 
 
 
-  <title> | gaogao</title>
+  <title>jquery选择器 | gaogao</title>
   
 
 
@@ -281,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">jquery选择器</h1>
         
 
         <div class="post-meta">
@@ -304,6 +308,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -317,6 +343,10 @@
           
 
           
+              <div class="post-description">
+                  各种常用选择器分类整理
+              </div>
+          
 
         </div>
       </header>
@@ -328,7 +358,130 @@
       
 
       
-        
+        <h3 id="1-基本选择器"><a href="#1-基本选择器" class="headerlink" title="1. 基本选择器"></a>1. 基本选择器</h3><ul>
+<li><p>id选择器：$(“#id”)</p>
+</li>
+<li><p>类选择器：$(“.class”)</p>
+</li>
+<li><p>元素选择器：$(“element”)</p>
+</li>
+<li><p>全选择器：$(“*”)</p>
+<h3 id="2-层次选择器"><a href="#2-层次选择器" class="headerlink" title="2. 层次选择器"></a>2. 层次选择器</h3></li>
+<li><p>子元素：$(“parent&gt;child”)</p>
+</li>
+<li><p>后代元素：$(“ancestor descendant”)</p>
+</li>
+<li><p>相邻兄弟：$(“prev+next”)</p>
+</li>
+<li><p>一般兄弟：$(“prev~siblings”)</p>
+<h3 id="3-基本筛选选择器"><a href="#3-基本筛选选择器" class="headerlink" title="3. 基本筛选选择器"></a>3. 基本筛选选择器</h3></li>
+<li><p>$(“:first”) 第一个</p>
+</li>
+<li><p>$(“:last”) 最后一个元素</p>
+</li>
+<li><p>$(“:not(selector)”) 去除不匹配的  </p>
+</li>
+<li><p>$(“:eq(index)”) 选中索引值所在元素</p>
+</li>
+<li><p>$(“:gt(index)”) 大于索引值</p>
+</li>
+<li><p>$(“:lt(index)”) 小于索引值</p>
+</li>
+<li><p>$(“:even”) 偶数索引值</p>
+</li>
+<li><p>$(“:odd”) 奇数索引值</p>
+</li>
+<li><p>$(“:header”) 标题元素</p>
+</li>
+<li><p>$(“:lang(language)”) 指定语言</p>
+</li>
+<li><p>$(“:root”) 文档根元素</p>
+</li>
+<li><p>$(“:animated”) 正在执行动画效果的元素 </p>
+</li>
+</ul>
+<h3 id="4-内容选择器"><a href="#4-内容选择器" class="headerlink" title="4. 内容选择器"></a>4. 内容选择器</h3><ul>
+<li><p>$(“:contains(text)”) 包含指定文本<br>$(“div:contains(‘hello world’)”)</p>
+</li>
+<li><p>$(“:has(selector)”) 包含指定元素<br>$(“div:has(a)”)</p>
+</li>
+<li><p>$(“:parent”) 含有子元素或者文本的<br>$(“div:parent”)</p>
+</li>
+<li><p>$(“:empty”) 所有没有子元素的,连文本都没有，但可以添加文本<br>$(“div:empty”)</p>
+</li>
+</ul>
+<h3 id="5-可见性筛选选择器"><a href="#5-可见性筛选选择器" class="headerlink" title="5. 可见性筛选选择器"></a>5. 可见性筛选选择器</h3><ul>
+<li><p>$(“:visible”) 选择所有显示的元素</p>
+</li>
+<li><p>$(“:hidden”) 选择所有隐藏的元素</p>
+<h3 id="6-属性选择器"><a href="#6-属性选择器" class="headerlink" title="6. 属性选择器"></a>6. 属性选择器</h3></li>
+<li><p>(“[att]”) 选择具有指定属性的元素，其值可以为任意值<br>$(“div[id]”)</p>
+</li>
+<li><p>(“[att=’value’]”) 属性值为指定字符串<br>$(“div[id=’target’]”)</p>
+</li>
+<li><p>(“[att!=’value’]”) 属性值不含指定字符串或不含指定属性<br>$(“div[checked!]”)</p>
+</li>
+<li><p>(“[att|=’value’]”) 属性值以指定字符串为前缀–该字符串后跟一个”-“<br>$(“div[name|’-‘]”)</p>
+</li>
+<li><p>(“[att^=’value’]”) 属性值以指定字符串开头<br>$(“div[href^=’www’]”)</p>
+</li>
+<li><p>(“[att$=’value’]”) 属性值以指定字符串结尾，区分大小写<br>$(“div[href$=’163.com’]”)</p>
+</li>
+<li><p>(“[att<em>=’value’]”) 属性值包含指定字符串<br>$(“div[href</em>=’baidu’]”)</p>
+</li>
+<li><p>(“[att~=’value’]”) 属性值用空格分隔的某个值包含指定字符串<br>$(.head[class~=’h1’])</p>
+</li>
+<li><p>(“[att1][att2]”) 选择匹配所有的指定属性筛选器<br>$(“a[class~=’main’][href^=’www’]”)</p>
+<h3 id="7-子元素选择器"><a href="#7-子元素选择器" class="headerlink" title="7. 子元素选择器"></a>7. 子元素选择器</h3></li>
+<li><p>(“:first-child”)<br>$(“.first-div a:first-child”)</p>
+</li>
+<li><p>(“:last-child”)<br>$(“.first-div a:last-child”)</p>
+</li>
+<li><p>(“:only-child”) 父元素的唯一子元素<br>$(“.first-div a:only-child”)</p>
+</li>
+<li><p>(“:nth-child()”) 索引值从1开始<br>$(“.first-div a:nth-child(2)”)</p>
+</li>
+<li><p>(“:nth-last-child()”) 倒数 索引值从1开始<br>$(“.first-div a:nth-last-child(2)”)</p>
+<h3 id="8-表单选择器"><a href="#8-表单选择器" class="headerlink" title="8. 表单选择器"></a>8. 表单选择器</h3></li>
+<li><p>$(“:input”) </p>
+</li>
+<li><p>$(“:text”) 文本框</p>
+</li>
+<li><p>$(“:password”) 密码框</p>
+</li>
+<li><p>$(“:radio”) 单选按钮</p>
+</li>
+<li><p>$(“:checkbox”) 复选框</p>
+</li>
+<li><p>$(“:submit”) 提交按钮</p>
+</li>
+<li><p>$(“:image”) 图像域 </p>
+</li>
+<li><p>$(“:reset”) 重置按钮</p>
+</li>
+<li><p>$(“:button”) 所有按钮</p>
+</li>
+<li><p>$(“:file”) 文件域</p>
+</li>
+</ul>
+<blockquote>
+<p>大部分表单选择器可以使用属性筛选器替换：$(“[type=password]”)</p>
+<h3 id="9-表单对象属性筛选选择器"><a href="#9-表单对象属性筛选选择器" class="headerlink" title="9. 表单对象属性筛选选择器"></a>9. 表单对象属性筛选选择器</h3><ul>
+<li>$(“:enabled”) 可用的表单元素</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>$(“:disabled”) 不可用的表单元素</p>
+</li>
+<li><p>$(“:checked”) 选中的input元素<br>$(“input:checked”) 不加input限定可能会误选option元素</p>
+</li>
+<li><p>$(“:selected”) 选中的option元素 下拉框</p>
+</li>
+</ul>
+<h3 id="10-特殊选择器"><a href="#10-特殊选择器" class="headerlink" title="10. 特殊选择器"></a>10. 特殊选择器</h3><ul>
+<li>$(this) 将this加工成jQuery对象，可以调用jQuery的方法和属性值</li>
+</ul>
+
       
     </div>
 
@@ -354,6 +507,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
       
 
       
@@ -424,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -498,6 +666,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本选择器"><span class="nav-number">1.</span> <span class="nav-text">1. 基本选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-层次选择器"><span class="nav-number">2.</span> <span class="nav-text">2. 层次选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-基本筛选选择器"><span class="nav-number">3.</span> <span class="nav-text">3. 基本筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-内容选择器"><span class="nav-number">4.</span> <span class="nav-text">4. 内容选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-可见性筛选选择器"><span class="nav-number">5.</span> <span class="nav-text">5. 可见性筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-属性选择器"><span class="nav-number">6.</span> <span class="nav-text">6. 属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-子元素选择器"><span class="nav-number">7.</span> <span class="nav-text">7. 子元素选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-表单选择器"><span class="nav-number">8.</span> <span class="nav-text">8. 表单选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-表单对象属性筛选选择器"><span class="nav-number">9.</span> <span class="nav-text">9. 表单对象属性筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-特殊选择器"><span class="nav-number">10.</span> <span class="nav-text">10. 特殊选择器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
