@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Runtime Environment," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="单线程，异步，同步及其实例">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="加载资源,浏览器渲染页面,性能优化,安全性">
+<meta name="keywords" content="Runtime Environment">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异步和单线程">
-<meta property="og:url" content="http://www.gaogao.site/2017/07/21/asynchronous/index.html">
+<meta property="og:title" content="运行环境">
+<meta property="og:url" content="http://www.gaogao.site/2017/07/29/runtime-enviroment/index.html">
 <meta property="og:site_name" content="gaogao">
-<meta property="og:description" content="单线程，异步，同步及其实例">
+<meta property="og:description" content="加载资源,浏览器渲染页面,性能优化,安全性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-24T13:52:01.000Z">
+<meta property="og:updated_time" content="2017-07-29T14:53:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异步和单线程">
-<meta name="twitter:description" content="单线程，异步，同步及其实例">
+<meta name="twitter:title" content="运行环境">
+<meta name="twitter:description" content="加载资源,浏览器渲染页面,性能优化,安全性">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://www.gaogao.site/2017/07/21/asynchronous/"/>
+  <link rel="canonical" href="http://www.gaogao.site/2017/07/29/runtime-enviroment/"/>
 
 
 
 
 
-  <title>异步和单线程 | gaogao</title>
+  <title>运行环境 | gaogao</title>
   
 
 
@@ -258,7 +258,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/21/asynchronous/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/29/runtime-enviroment/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -275,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">异步和单线程</h1>
+          <h1 class="post-title" itemprop="name headline">运行环境</h1>
         
 
         <div class="post-meta">
@@ -287,8 +287,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T00:00:00+08:00">
-                2017-07-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T00:00:00+08:00">
+                2017-07-29
               </time>
             
 
@@ -310,8 +310,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Runtime-Environment/" itemprop="url" rel="index">
+                    <span itemprop="name">Runtime Environment</span>
                   </a>
                 </span>
 
@@ -334,7 +334,7 @@
 
           
               <div class="post-description">
-                  单线程，异步，同步及其实例
+                  加载资源,浏览器渲染页面,性能优化,安全性
               </div>
           
 
@@ -348,44 +348,53 @@
       
 
       
-        <h3 id="1-单线程"><a href="#1-单线程" class="headerlink" title="1. 单线程"></a>1. 单线程</h3><p>一次只能完成一个任务，后面的任务都得等待</p>
-<ul>
-<li>好处：执行环境单纯，依次执行</li>
-<li>坏处：只要有一个任务耗时长，后面的任务都得等待，拖延代码的执行，常见的浏览器无响应（比如死循环），就是一段代码长时间运行的后果<br>为解决此问题，js提出了同步和异步两种执行模式（所以js还是单线程的）</li>
-</ul>
-<h3 id="2-同步和异步的区别"><a href="#2-同步和异步的区别" class="headerlink" title="2. 同步和异步的区别"></a>2. 同步和异步的区别</h3><ul>
-<li>同步<br>后一个任务等待前一个任务完成之后才会执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">alert(3)</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
+        <h3 id="1-加载资源的形式"><a href="#1-加载资源的形式" class="headerlink" title="1. 加载资源的形式"></a>1. 加载资源的形式</h3><ul>
+<li><p>输入URL或者跳转页面加载html</p>
+</li>
+<li><p>加载html中的静态资源</p>
 </li>
 </ul>
-<p>依次执行，先打印2，然后弹出3，点击弹框确定后弹框消失，打印4。在这个过程中有一个等待时间，即<code>console.log(4)</code>要等待弹框结束之后才会执行</p>
-<ul>
-<li>异步<br>每一个任务有一个或者多个回调函数，前一个任务结束后，不是执行后一个任务而是执行后一个任务的回调函数，后一个任务不用等待前一个任务完成就可以执行（程序的执行顺序和任务的排列顺序是不一致的）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">setTimeout(function()&#123;alert(3)&#125;);</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
+<h3 id="2-加载资源的过程"><a href="#2-加载资源的过程" class="headerlink" title="2. 加载资源的过程"></a>2. 加载资源的过程</h3><ol>
+<li><p>浏览器根据DNS服务器得到域名的IP地址</p>
 </li>
-</ul>
-<p>先打印2，执行定时器setTimeout后（传入的函数会被暂存起来，不会立即执行），然后打印4后。待所有程序执行完，出于空闲状态时，看有没有暂存起来的要执行，发现暂存在setTimeout中的函数无需等待时间就立即执行alert（3）。在这个过程中alert不会阻塞程序运行。</p>
-<ul>
-<li>何时需要异步：<br>在可能发生等待的情况下，保证程序不会因为某一个环节(比如alert)而阻塞</li>
-<li>前端使用异步的场景<br>定时器：setTimeout, setInterval<br>网络请求：ajax请求，动态img加载<br>事件绑定</li>
-</ul>
-<h3 id="3-异步实例"><a href="#3-异步实例" class="headerlink" title="3. 异步实例"></a>3. 异步实例</h3><ul>
-<li>setInterval<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(100);</div><div class="line">setInterval(function()&#123;console.log(3)&#125;,1000)</div><div class="line">console.log(200);</div></pre></td></tr></table></figure>
+<li><p>向这个IP的及其发送http请求</p>
 </li>
-</ul>
-<p>打印结果：100，200，3（每格1秒打印一个3）</p>
-<ul>
-<li>ajax请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;);</div><div class="line">$get(&quot;./data1.json&quot;,function(data1)&#123;console.log(data1)&#125;)</div><div class="line">console. log(&quot;end&quot;)</div></pre></td></tr></table></figure>
+<li><p>浏览器收到、处理并返回http请求</p>
 </li>
-</ul>
-<p>打印结果：start, end, 通过请求获取的data1</p>
-<ul>
-<li>img加载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;)</div><div class="line">var img=document.createElement(&quot;img&quot;)</div><div class="line">img.onload=function()&#123;console.log(&quot;loaded&quot;)&#125;</div><div class="line">img.src=&quot;xxx.jpg&quot;</div><div class="line">console.log(&quot;end&quot;)</div><div class="line">``` </div><div class="line">- 事件绑定</div></pre></td></tr></table></figure>
+<li><p>浏览器得到返回内容</p>
 </li>
+</ol>
+<h3 id="3-浏览器渲染页面的过程"><a href="#3-浏览器渲染页面的过程" class="headerlink" title="3. 浏览器渲染页面的过程"></a>3. 浏览器渲染页面的过程</h3><ol>
+<li><p>根据html结构生成DOM树</p>
+</li>
+<li><p>根据CSS生成CSSOM（object model）</p>
+</li>
+<li><p>将DOM和CSS整合形成render tree（渲染树）</p>
+</li>
+<li><p>根据render tree 开始渲染和展示</p>
+</li>
+<li><p>遇到<code>&lt;script&gt;</code>时，会执行并阻塞渲染（因为js可以改变DOM结构）</p>
+</li>
+</ol>
+<h3 id="4-window-onload和DOMContentLoaded"><a href="#4-window-onload和DOMContentLoaded" class="headerlink" title="4. window.onload和DOMContentLoaded"></a>4. window.onload和DOMContentLoaded</h3><h4 id="window-onload："><a href="#window-onload：" class="headerlink" title="window.onload："></a>window.onload：</h4><p>页面的全部资源加载完才会执行，包括图片、视屏等</p>
+<h4 id="DOMContentLoaded"><a href="#DOMContentLoaded" class="headerlink" title="DOMContentLoaded"></a>DOMContentLoaded</h4><p>DOM渲染完即可执行，此时图片、视屏还没加载完</p>
+<h3 id="5-性能优化"><a href="#5-性能优化" class="headerlink" title="5. 性能优化"></a>5. 性能优化</h3><h4 id="加载资源优化"><a href="#加载资源优化" class="headerlink" title="加载资源优化"></a>加载资源优化</h4><ul>
+<li>静态资源的压缩合并</li>
+<li>静态资源缓存</li>
+<li>使用CDN让资源加载更快</li>
+<li>使用SSR后端渲染，数据直接输出到html中</li>
 </ul>
-<p>console.log(“start”)<br>document.getElementById(“div”).addEventListener(“click”,function(){alert(“clicked”)})<br>console.log(“end”)<br>```<br>打印结果：start, end, clicked(点击了绑定事件的div之后打印)</p>
-<h3 id="4-相关题目"><a href="#4-相关题目" class="headerlink" title="4. 相关题目"></a>4. 相关题目</h3><ul>
-<li>同步和异步的区别是什么？并举例说明</li>
-<li>前端使用异步的场景有哪些？</li>
-<li>判断程序执行的顺序？</li>
+<h4 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h4><ul>
+<li>CSS放前面，js放后面</li>
+<li>懒加载（图片懒加载小图、下拉加载更多）</li>
+<li>减少DOM查询，对DOM查询做缓存</li>
+<li>减少DOM操作，多个才做尽量合并在一起执行</li>
+<li>事件节流</li>
+<li>尽早执行操作（如DOMContentLoaded）</li>
+</ul>
+<h3 id="6-安全性"><a href="#6-安全性" class="headerlink" title="6. 安全性"></a>6. 安全性</h3><h4 id="XSS跨站请求攻击"><a href="#XSS跨站请求攻击" class="headerlink" title="XSS跨站请求攻击"></a>XSS跨站请求攻击</h4><ul>
+<li>在提交内容中写入脚本，提交之后，执行脚本，获取信息<br>例如：在博客中写入脚本获取阅读者的cookie，就可能获取到阅读者的一些私密信息<h4 id="XSRF跨站请求伪造"><a href="#XSRF跨站请求伪造" class="headerlink" title="XSRF跨站请求伪造"></a>XSRF跨站请求伪造</h4></li>
+<li>在一个网站模拟另外一个网站的请求<br>例如：在购物网站浏览商品时，收到邮件（邮件中隐藏购买商品请求），如果没有任何验证，打开邮件即会购买付款</li>
 </ul>
 
       
@@ -416,7 +425,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/Runtime-Environment/" rel="tag"># Runtime Environment</a>
           
         </div>
       
@@ -429,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/20/2017-07-20-prototype/" rel="next" title="原型和原型链">
-                <i class="fa fa-chevron-left"></i> 原型和原型链
+              <a href="/2017/07/28/development-enviroment-/" rel="next" title="开发环境">
+                <i class="fa fa-chevron-left"></i> 开发环境
               </a>
             
           </div>
@@ -438,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/22/2017-07-22-closure/" rel="prev" title="作用域和闭包">
-                作用域和闭包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -582,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-单线程"><span class="nav-number">1.</span> <span class="nav-text">1. 单线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-同步和异步的区别"><span class="nav-number">2.</span> <span class="nav-text">2. 同步和异步的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-异步实例"><span class="nav-number">3.</span> <span class="nav-text">3. 异步实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-相关题目"><span class="nav-number">4.</span> <span class="nav-text">4. 相关题目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-加载资源的形式"><span class="nav-number">1.</span> <span class="nav-text">1. 加载资源的形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-加载资源的过程"><span class="nav-number">2.</span> <span class="nav-text">2. 加载资源的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浏览器渲染页面的过程"><span class="nav-number">3.</span> <span class="nav-text">3. 浏览器渲染页面的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-window-onload和DOMContentLoaded"><span class="nav-number">4.</span> <span class="nav-text">4. window.onload和DOMContentLoaded</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#window-onload："><span class="nav-number">4.1.</span> <span class="nav-text">window.onload：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOMContentLoaded"><span class="nav-number">4.2.</span> <span class="nav-text">DOMContentLoaded</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-性能优化"><span class="nav-number">5.</span> <span class="nav-text">5. 性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加载资源优化"><span class="nav-number">5.1.</span> <span class="nav-text">加载资源优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染优化"><span class="nav-number">5.2.</span> <span class="nav-text">渲染优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-安全性"><span class="nav-number">6.</span> <span class="nav-text">6. 安全性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS跨站请求攻击"><span class="nav-number">6.1.</span> <span class="nav-text">XSS跨站请求攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSRF跨站请求伪造"><span class="nav-number">6.2.</span> <span class="nav-text">XSRF跨站请求伪造</span></a></li></ol></li></ol></div>
             
 
           </div>
