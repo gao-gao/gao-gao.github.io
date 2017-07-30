@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="获取设置属性；获取设置文档、文本、表单value；通过类增删样式；通过css()进行样式操作；尺寸设置和获取">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery-css,html">
+<meta property="og:url" content="http://www.gaogao.site/2017/05/02/jquery-html-css/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="获取设置属性；获取设置文档、文本、表单value；通过类增删样式；通过css()进行样式操作；尺寸设置和获取">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-30T10:01:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery-css,html">
+<meta name="twitter:description" content="获取设置属性；获取设置文档、文本、表单value；通过类增删样式；通过css()进行样式操作；尺寸设置和获取">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/05/02/jquery-html-css/"/>
+
+
+
+
+
+  <title>jquery-css,html | gaogao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9450182e0d6e25437c27837a560c8d08";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/05/02/jquery-html-css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery-css,html</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T00:00:00+08:00">
+                2017-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  获取设置属性；获取设置文档、文本、表单value；通过类增删样式；通过css()进行样式操作；尺寸设置和获取
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-获取设置属性"><a href="#1-获取设置属性" class="headerlink" title="1. 获取设置属性"></a>1. 获取设置属性</h3><p>attr()，提供回调函数。回调函数有两个参数：被选元素列表中当前元素的下标，以及原始（旧的）值。</p>
+<ul>
+<li><p>.attr(属性名)：获取属性值<br><code>$(&quot;input:first&quot;).attr(&quot;value&quot;)</code></p>
+</li>
+<li><p>.attr(属性名，属性值)：设置属性值<br><code>$(&quot;input:eq(1)&quot;).attr(&quot;value&quot;,&quot;hello world!&quot;)</code></p>
+</li>
+<li><p>.attr(属性名，函数值)：设置属性函数值<br><code>$(&quot;input:eq(2)&quot;).attr(&quot;value&quot;,function(i,val){
+  return &#39;通过function设置&#39;+val
+  })</code></p>
+</li>
+<li><p>.attr(attributes)：设置多个属性值<br>用键值对方式表示，“,” 隔开</p>
+</li>
+<li><p>.removeAttr(属性名)：移除属性<br>  <code>$(&quot;input:eq(3)&quot;).removeAttr(&#39;value&#39;)</code></p>
+</li>
+</ul>
+<blockquote>
+<p>attribute：DOM节点自带的属性，例如id,class,title等<br>property：DOM中的对象，其附加的内容，例如tagName,nodeName等，获取用prop()方法</p>
+</blockquote>
+<ul>
+<li><p>prop()：设置或返回被选元素的属性和值</p>
+</li>
+<li><p>removeProp()：移除由 prop() 方法设置的属性</p>
+</li>
+</ul>
+<h3 id="2-获取设置文档、文本、表单value"><a href="#2-获取设置文档、文本、表单value" class="headerlink" title="2. 获取设置文档、文本、表单value"></a>2. 获取设置文档、文本、表单value</h3><h4 id="html"><a href="#html" class="headerlink" title=".html()"></a>.html()</h4><p>设置或返回所选元素的内容（包括 HTML 标记）</p>
+<ul>
+<li><p>.html()</p>
+</li>
+<li><p>.html(htmlString)</p>
+</li>
+<li><p>.html(function(index,oldhtml()))</p>
+</li>
+</ul>
+<p>html()只能在HTML文档中使用，text()在XML和HTML中都可以使用</p>
+<h4 id="text"><a href="#text" class="headerlink" title="text()"></a>text()</h4><p>设置或返回所选元素的文本内容</p>
+<ul>
+<li><p>.text()</p>
+</li>
+<li><p>.text(textString)</p>
+</li>
+<li><p>.text(function(index,text))</p>
+</li>
+</ul>
+<p>firefox 不支持innerText属性，用了类似的textContent属性，text()综合了两个属性，兼容所有浏览器</p>
+<h4 id="val"><a href="#val" class="headerlink" title="val()"></a>val()</h4><p>设置或返回表单字段的值</p>
+<ul>
+<li><p>.val()：无参数，获取集合中第一个元素的value值</p>
+</li>
+<li><p>.val(value)：设置匹配集合中每个元素的值</p>
+</li>
+<li><p>.val(function)：一个用来返回设置值的函数</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>三者都拥有回调函数，回调函数有两个参数，一个是所选元素的索引，一个是原始值  </li>
+<li>text()和html()不能用在表单元素上，val()只能用在表单元素上  </li>
+<li>html()和val()用在多个元素时，只读取第一个元素，text()会读取所有选中元素的文本内容  </li>
+<li>三种方法同时运用在多个元素上替换选中元素的内容时，会替换掉所有选中元素的内容</li>
+<li>三种方法都可以使用回调函数的返回值动态地改变多个元素的内容</li>
+</ol>
+</blockquote>
+<h3 id="3-通过类增删样式"><a href="#3-通过类增删样式" class="headerlink" title="3. 通过类增删样式"></a>3. 通过类增删样式</h3><h4 id="增加样式"><a href="#增加样式" class="headerlink" title="增加样式"></a>增加样式</h4><ul>
+<li><p>.addClass(className)：为每个元素匹配所要增加的一个或者多个样式类名</p>
+</li>
+<li><p>.addClass(function(index,currentClass))：函数返回一个或者多个用空格隔开的要增加的样式名</p>
+</li>
+</ul>
+<h4 id="删除样式"><a href="#删除样式" class="headerlink" title="删除样式"></a>删除样式</h4><ul>
+<li><p>.removeClass(className)</p>
+</li>
+<li><p>.removeClass(function(index,class))</p>
+</li>
+</ul>
+<h4 id="动态增删样式"><a href="#动态增删样式" class="headerlink" title="动态增删样式"></a>动态增删样式</h4><ul>
+<li><p>.toggleClass(className)：动态增删class 存在就删去 不存在就增加 会保留原有的class名，空格隔开</p>
+</li>
+<li><p>.toggleClass(className,switch)：添加了一个布尔值，用于判断样式是否增删</p>
+</li>
+<li><p>.toggleClass([switch])：一个用来判断样式类添加还是移除的布尔值</p>
+</li>
+<li><p>.toggleClass(function(index,class,switch)[,switch])：返回在匹配的元素集合中的每个元素上用来切换的样式类名的一个函数，接收元素的索引位置和元素旧的样式类作为参数。</p>
+</li>
+</ul>
+<h4 id="检查类：hasClass"><a href="#检查类：hasClass" class="headerlink" title="检查类：hasClass()"></a>检查类：hasClass()</h4><p>检查被选元素是否包含指定的类名称，包含则返回true</p>
+<h3 id="4-通过css-进行样式操作"><a href="#4-通过css-进行样式操作" class="headerlink" title="4. 通过css()进行样式操作"></a>4. 通过css()进行样式操作</h3><p>css() 方法设置或返回被选元素的一个或多个样式属性。</p>
+<h4 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h4><ul>
+<li><p>.css(propertyName)：获取选取元素的样式值<br>$(‘p:eq(1)’).text( $(‘.first’).css(“font-size”) )</p>
+</li>
+<li><p>.css(propertyNames)：传递一组数组，返回一个对象结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">var value = $(&apos;.first&apos;).css([&quot;width&quot;,&quot;height&quot;]);</div><div class="line">		//因为获取的是一个对象，取到对应的值</div><div class="line">		$(&apos;p:eq(2)&apos;).text( &apos;width:&apos; + value.width +  &apos; height:&apos; +value.height )</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><ul>
+<li><p>.css(propertyName,value)：设置CSS<br><code>$(&#39;.fourth&#39;).css(&quot;background-color&quot;,&quot;red&quot;)</code></p>
+</li>
+<li><p>.css(propertyName,function)：传入一个回调函数，返回取到对应的值进行处理  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&apos;.sixth&apos;).css(&quot;width&quot;,function(index,value)&#123;</div><div class="line">		    value = value.split(&quot;px&quot;);</div><div class="line">		    分割字符串取前者数字</div><div class="line">		    return (Number(value[0])+50)+value[1]</div><div class="line">		&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>.css(properties)：传入一个对象，同时设置多个样式，多个属性用,分开</p>
+<pre><code>`
+$(&apos;.seventh&apos;).css({
+&quot;font-size&quot;:&quot;15px&quot;,
+&quot;background-color&quot;:&quot;red&quot;,
+&quot;border&quot;:&quot;1px solid red&quot;
+})
+`
+</code></pre><blockquote>
+<ol>
+<li>支持驼峰写法和大小写混搭的写法，因为内部做了容错处理  </li>
+<li>当一个数只作为值value时，jQuery会将其转化为字符串并加上单位</li>
+<li>颜色RGB，尺寸px，采用了统一的处理</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h4 id="和通过类增删样式的区别"><a href="#和通过类增删样式的区别" class="headerlink" title="和通过类增删样式的区别"></a>和通过类增删样式的区别</h4><ul>
+<li><p>class是外部样式，可维护性较强；.css是内部样式，灵活性较强</p>
+</li>
+<li><p>一般静态结构都确定了布局规则，用前者；动态结构经常变化，多用后者</p>
+</li>
+</ul>
+<h3 id="5-尺寸设置和获取"><a href="#5-尺寸设置和获取" class="headerlink" title="5. 尺寸设置和获取"></a>5. 尺寸设置和获取</h3><h4 id="width-和-height"><a href="#width-和-height" class="headerlink" title="width() 和 height()"></a>width() 和 height()</h4><p>设置或返回元素的宽高（不包括内边距、边框或外边距）</p>
+<h4 id="innerWidth-和-innerHeight"><a href="#innerWidth-和-innerHeight" class="headerlink" title="innerWidth() 和 innerHeight()"></a>innerWidth() 和 innerHeight()</h4><p>返回元素的宽高（包括内边距）</p>
+<h4 id="outerWidth-和-outerHeight"><a href="#outerWidth-和-outerHeight" class="headerlink" title="outerWidth() 和 outerHeight()"></a>outerWidth() 和 outerHeight()</h4><p>返回元素的宽高（包括内边距和边框）</p>
+<h4 id="scrollLeft-和scrollTop"><a href="#scrollLeft-和scrollTop" class="headerlink" title="scrollLeft()和scrollTop()"></a>scrollLeft()和scrollTop()</h4><p>设置或返回被选元素的水平/垂直滚动条位置</p>
+<h4 id="offset"><a href="#offset" class="headerlink" title="offset()"></a>offset()</h4><p>设置或返回被选元素相对于文档的偏移坐标</p>
+<ul>
+<li>参数：<code>{top:value,left:value}</code></li>
+</ul>
+<h4 id="position"><a href="#position" class="headerlink" title="position()"></a>position()</h4><ul>
+<li>返回第一个匹配元素的位置（相对于它的父元素）,该方法返回一个带有两个属性（以像素为单位的 top 和 left 位置）的对象。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/01/jquery/" rel="next" title="认识jQuery">
+                <i class="fa fa-chevron-left"></i> 认识jQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/02/jquery-selector/" rel="prev" title="jquery选择器">
+                jquery选择器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-获取设置属性"><span class="nav-number">1.</span> <span class="nav-text">1. 获取设置属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获取设置文档、文本、表单value"><span class="nav-number">2.</span> <span class="nav-text">2. 获取设置文档、文本、表单value</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html"><span class="nav-number">2.1.</span> <span class="nav-text">.html()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#text"><span class="nav-number">2.2.</span> <span class="nav-text">text()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#val"><span class="nav-number">2.3.</span> <span class="nav-text">val()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-通过类增删样式"><span class="nav-number">3.</span> <span class="nav-text">3. 通过类增删样式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增加样式"><span class="nav-number">3.1.</span> <span class="nav-text">增加样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除样式"><span class="nav-number">3.2.</span> <span class="nav-text">删除样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态增删样式"><span class="nav-number">3.3.</span> <span class="nav-text">动态增删样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查类：hasClass"><span class="nav-number">3.4.</span> <span class="nav-text">检查类：hasClass()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-通过css-进行样式操作"><span class="nav-number">4.</span> <span class="nav-text">4. 通过css()进行样式操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取"><span class="nav-number">4.1.</span> <span class="nav-text">获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置"><span class="nav-number">4.2.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和通过类增删样式的区别"><span class="nav-number">4.3.</span> <span class="nav-text">和通过类增删样式的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-尺寸设置和获取"><span class="nav-number">5.</span> <span class="nav-text">5. 尺寸设置和获取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#width-和-height"><span class="nav-number">5.1.</span> <span class="nav-text">width() 和 height()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#innerWidth-和-innerHeight"><span class="nav-number">5.2.</span> <span class="nav-text">innerWidth() 和 innerHeight()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#outerWidth-和-outerHeight"><span class="nav-number">5.3.</span> <span class="nav-text">outerWidth() 和 outerHeight()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrollLeft-和scrollTop"><span class="nav-number">5.4.</span> <span class="nav-text">scrollLeft()和scrollTop()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offset"><span class="nav-number">5.5.</span> <span class="nav-text">offset()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#position"><span class="nav-number">5.6.</span> <span class="nav-text">position()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
