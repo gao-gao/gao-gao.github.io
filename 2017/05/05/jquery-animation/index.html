@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="隐藏和显示；淡入淡出；滑动；自定义动画；停止动画stop() ；动画链；队列方法">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery-dom">
+<meta property="og:url" content="http://www.gaogao.site/2017/05/05/jquery-animation/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="隐藏和显示；淡入淡出；滑动；自定义动画；停止动画stop() ；动画链；队列方法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-31T16:49:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jquery-dom">
+<meta name="twitter:description" content="隐藏和显示；淡入淡出；滑动；自定义动画；停止动画stop() ；动画链；队列方法">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/05/05/jquery-animation/"/>
+
+
+
+
+
+  <title>jquery-dom | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/05/05/jquery-animation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jquery-dom</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-05T00:00:00+08:00">
+                2017-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jQuery/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  隐藏和显示；淡入淡出；滑动；自定义动画；停止动画stop() ；动画链；队列方法
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-隐藏和显示（display属性）"><a href="#1-隐藏和显示（display属性）" class="headerlink" title="1. 隐藏和显示（display属性）"></a>1. 隐藏和显示（display属性）</h3><h4 id="hide-：-selector-hide-speed"><a href="#hide-：-selector-hide-speed" class="headerlink" title="hide()：$(selector).hide(speed,)"></a>hide()：<code>$(selector).hide(speed,)</code></h4><p>隐藏已显示的元素</p>
+<ul>
+<li>speed：规定速度，毫秒或“slow”,“fast”</li>
+<li>callback：规定隐藏完成之后执行的函数</li>
+</ul>
+<h4 id="show-：-selector-show-speed-callback"><a href="#show-：-selector-show-speed-callback" class="headerlink" title="show()：$(selector).show(speed,callback)"></a>show()：<code>$(selector).show(speed,callback)</code></h4><p>显示被隐藏的元素</p>
+<h4 id="toggle-：-selector-toggle-speed-callback"><a href="#toggle-：-selector-toggle-speed-callback" class="headerlink" title="toggle()：$(selector).toggle(speed,callback)"></a>toggle()：<code>$(selector).toggle(speed,callback)</code></h4><p>显示被隐藏的元素，并隐藏已显示的元素</p>
+<h3 id="2-淡入淡出（透明度）"><a href="#2-淡入淡出（透明度）" class="headerlink" title="2. 淡入淡出（透明度）"></a>2. 淡入淡出（透明度）</h3><h4 id="fadeIn-：-selector-fadeIn-speed-callback"><a href="#fadeIn-：-selector-fadeIn-speed-callback" class="headerlink" title="fadeIn()：$(selector).fadeIn(speed,callback)"></a>fadeIn()：<code>$(selector).fadeIn(speed,callback)</code></h4><p>淡入已隐藏的元素</p>
+<h4 id="fadeOut-：-selector-fadeOut-speed-callback"><a href="#fadeOut-：-selector-fadeOut-speed-callback" class="headerlink" title="fadeOut()：$(selector).fadeOut(speed,callback)"></a>fadeOut()：<code>$(selector).fadeOut(speed,callback)</code></h4><p>淡出可见元素</p>
+<h4 id="fadeToggle-：-selector-fadeToggle-speed-callback"><a href="#fadeToggle-：-selector-fadeToggle-speed-callback" class="headerlink" title="fadeToggle()：$(selector).fadeToggle(speed,callback)"></a>fadeToggle()：<code>$(selector).fadeToggle(speed,callback)</code></h4><p>元素已淡入时会淡出，已淡出时会淡入</p>
+<h4 id="fadeTo-：-selector-fadeTo-speed-opacity-callback"><a href="#fadeTo-：-selector-fadeTo-speed-opacity-callback" class="headerlink" title="fadeTo()：$(selector).fadeTo(speed,opacity,callback)"></a>fadeTo()：<code>$(selector).fadeTo(speed,opacity,callback)</code></h4><p>opacity参数设置透明度（0-1之间）</p>
+<h3 id="3-滑动（高度）"><a href="#3-滑动（高度）" class="headerlink" title="3. 滑动（高度）"></a>3. 滑动（高度）</h3><h4 id="slideDown-：-selector-slideDown-speed-callback"><a href="#slideDown-：-selector-slideDown-speed-callback" class="headerlink" title="slideDown()：$(selector).slideDown(speed,callback)"></a>slideDown()：<code>$(selector).slideDown(speed,callback)</code></h4><p>向下滑动元素</p>
+<h4 id="slideUp-：-selector-slideUp-speed-callback"><a href="#slideUp-：-selector-slideUp-speed-callback" class="headerlink" title="slideUp()：$(selector).slideUp(speed,callback)"></a>slideUp()：<code>$(selector).slideUp(speed,callback)</code></h4><p>向上滑动元素</p>
+<h4 id="slideToggle-：-selector-slideToggle-speed-callback"><a href="#slideToggle-：-selector-slideToggle-speed-callback" class="headerlink" title="slideToggle()：$(selector).slideToggle(speed,callback)"></a>slideToggle()：<code>$(selector).slideToggle(speed,callback)</code></h4><p>在前面两种之间自动切换</p>
+<h3 id="4-自定义动画-animate"><a href="#4-自定义动画-animate" class="headerlink" title="4. 自定义动画 animate()"></a>4. 自定义动画 animate()</h3><h4 id="语法：-selector-animate-params-speed-callback"><a href="#语法：-selector-animate-params-speed-callback" class="headerlink" title="语法：$(selector).animate({params},speed,callback)"></a>语法：<code>$(selector).animate({params},speed,callback)</code></h4><ul>
+<li><p>params参数：定义形成动画的CSS属性<br>键值对用{}包起来，键值对之间用,分离<br>属性和属性值间用：链接，属性名采用驼峰命名法<br>属性值用””包围</p>
+</li>
+<li><p>使用相对值：在值的前面加 += 或 -=</p>
+</li>
+<li><p>使用预定义的值：show,hide,toggle</p>
+</li>
+<li><p>使用队列功能，创建多个动画形成队列依次执行</p>
+</li>
+</ul>
+<h3 id="5-停止动画stop"><a href="#5-停止动画stop" class="headerlink" title="5. 停止动画stop()"></a>5. 停止动画stop()</h3><p>适用于所有jQuery效果函数</p>
+<ul>
+<li><p><code>$(selector).stop(stopAll,goToEnd);</code>默认值都是false</p>
+</li>
+<li><p>stop()：停止当前动画，后续动画继续</p>
+</li>
+<li><p>stop(true)：停止所有队列的动画</p>
+</li>
+<li><p>stop(true,true)：当前动画停止，直接跳到当前动画的最终状态</p>
+</li>
+</ul>
+<h3 id="6-链-Chaining"><a href="#6-链-Chaining" class="headerlink" title="6. 链(Chaining)"></a>6. 链(Chaining)</h3><p>在相同的元素上运行多条 jQuery 命令，一条接着另一条，这样浏览器就不用多次查找目标元素了</p>
+<h3 id="7-队列"><a href="#7-队列" class="headerlink" title="7. 队列"></a>7. 队列</h3><h4 id="queue"><a href="#queue" class="headerlink" title="queue()"></a>queue()</h4><ul>
+<li>显示被选元素的排队函数</li>
+<li>queue(func)：把函数加入队列</li>
+</ul>
+<h4 id="dequeue"><a href="#dequeue" class="headerlink" title="dequeue()"></a>dequeue()</h4><p>移除下一个排队函数，然后执行函数</p>
+<h4 id="clearQueue"><a href="#clearQueue" class="headerlink" title="clearQueue()"></a>clearQueue()</h4><p>从尚未运行的队列中移除所有项目</p>
+<h4 id="delay"><a href="#delay" class="headerlink" title="delay()"></a>delay()</h4><p>对被选元素的所有排队函数（仍未运行）设置延迟</p>
+<h4 id="finish"><a href="#finish" class="headerlink" title="finish()"></a>finish()</h4><p>对被选元素停止、移除并完成所有排队动画</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/jquery-dom/" rel="next" title="jquery-dom">
+                <i class="fa fa-chevron-left"></i> jquery-dom
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/2017-07-19-variable/" rel="prev" title="变量类型和计算">
+                变量类型和计算 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-隐藏和显示（display属性）"><span class="nav-number">1.</span> <span class="nav-text">1. 隐藏和显示（display属性）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hide-：-selector-hide-speed"><span class="nav-number">1.1.</span> <span class="nav-text">hide()：$(selector).hide(speed,)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#show-：-selector-show-speed-callback"><span class="nav-number">1.2.</span> <span class="nav-text">show()：$(selector).show(speed,callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toggle-：-selector-toggle-speed-callback"><span class="nav-number">1.3.</span> <span class="nav-text">toggle()：$(selector).toggle(speed,callback)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-淡入淡出（透明度）"><span class="nav-number">2.</span> <span class="nav-text">2. 淡入淡出（透明度）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fadeIn-：-selector-fadeIn-speed-callback"><span class="nav-number">2.1.</span> <span class="nav-text">fadeIn()：$(selector).fadeIn(speed,callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fadeOut-：-selector-fadeOut-speed-callback"><span class="nav-number">2.2.</span> <span class="nav-text">fadeOut()：$(selector).fadeOut(speed,callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fadeToggle-：-selector-fadeToggle-speed-callback"><span class="nav-number">2.3.</span> <span class="nav-text">fadeToggle()：$(selector).fadeToggle(speed,callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fadeTo-：-selector-fadeTo-speed-opacity-callback"><span class="nav-number">2.4.</span> <span class="nav-text">fadeTo()：$(selector).fadeTo(speed,opacity,callback)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-滑动（高度）"><span class="nav-number">3.</span> <span class="nav-text">3. 滑动（高度）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slideDown-：-selector-slideDown-speed-callback"><span class="nav-number">3.1.</span> <span class="nav-text">slideDown()：$(selector).slideDown(speed,callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slideUp-：-selector-slideUp-speed-callback"><span class="nav-number">3.2.</span> <span class="nav-text">slideUp()：$(selector).slideUp(speed,callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#slideToggle-：-selector-slideToggle-speed-callback"><span class="nav-number">3.3.</span> <span class="nav-text">slideToggle()：$(selector).slideToggle(speed,callback)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-自定义动画-animate"><span class="nav-number">4.</span> <span class="nav-text">4. 自定义动画 animate()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法：-selector-animate-params-speed-callback"><span class="nav-number">4.1.</span> <span class="nav-text">语法：$(selector).animate({params},speed,callback)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-停止动画stop"><span class="nav-number">5.</span> <span class="nav-text">5. 停止动画stop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-链-Chaining"><span class="nav-number">6.</span> <span class="nav-text">6. 链(Chaining)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-队列"><span class="nav-number">7.</span> <span class="nav-text">7. 队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#queue"><span class="nav-number">7.1.</span> <span class="nav-text">queue()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dequeue"><span class="nav-number">7.2.</span> <span class="nav-text">dequeue()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clearQueue"><span class="nav-number">7.3.</span> <span class="nav-text">clearQueue()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delay"><span class="nav-number">7.4.</span> <span class="nav-text">delay()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#finish"><span class="nav-number">7.5.</span> <span class="nav-text">finish()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
