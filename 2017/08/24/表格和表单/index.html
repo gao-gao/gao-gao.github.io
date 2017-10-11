@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="表格基本实例 &amp;lt;table&amp;gt;或者.table 少量的内内补和水平方向的分隔线  条纹状表格 .table-striped 为tbody的每一行增加斑马条纹样式,依赖 :nth-child CSS 选择器实现  带边框的表格 .table-bordered 为表格和其中的每个单元格增加边框  鼠标悬停 .table-hover 让&amp;lt;tbody&amp;gt;中的每一行对鼠标悬停状态作出响应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gaogao">
+<meta property="og:url" content="http://www.gaogao.site/2017/08/24/表格和表单/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="表格基本实例 &amp;lt;table&amp;gt;或者.table 少量的内内补和水平方向的分隔线  条纹状表格 .table-striped 为tbody的每一行增加斑马条纹样式,依赖 :nth-child CSS 选择器实现  带边框的表格 .table-bordered 为表格和其中的每个单元格增加边框  鼠标悬停 .table-hover 让&amp;lt;tbody&amp;gt;中的每一行对鼠标悬停状态作出响应">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-04T11:44:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gaogao">
+<meta name="twitter:description" content="表格基本实例 &amp;lt;table&amp;gt;或者.table 少量的内内补和水平方向的分隔线  条纹状表格 .table-striped 为tbody的每一行增加斑马条纹样式,依赖 :nth-child CSS 选择器实现  带边框的表格 .table-bordered 为表格和其中的每个单元格增加边框  鼠标悬停 .table-hover 让&amp;lt;tbody&amp;gt;中的每一行对鼠标悬停状态作出响应">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/08/24/表格和表单/"/>
+
+
+
+
+
+  <title> | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/24/表格和表单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T15:23:34+08:00">
+                2017-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><h4 id="基本实例-lt-table-gt-或者-table"><a href="#基本实例-lt-table-gt-或者-table" class="headerlink" title="基本实例 &lt;table&gt;或者.table"></a>基本实例 <code>&lt;table&gt;或者.table</code></h4><ul>
+<li>少量的内内补和水平方向的分隔线</li>
+</ul>
+<h4 id="条纹状表格-table-striped"><a href="#条纹状表格-table-striped" class="headerlink" title="条纹状表格 .table-striped"></a>条纹状表格 <code>.table-striped</code></h4><ul>
+<li>为tbody的每一行增加斑马条纹样式,依赖 :nth-child CSS 选择器实现</li>
+</ul>
+<h4 id="带边框的表格-table-bordered"><a href="#带边框的表格-table-bordered" class="headerlink" title="带边框的表格 .table-bordered"></a>带边框的表格 <code>.table-bordered</code></h4><ul>
+<li>为表格和其中的每个单元格增加边框</li>
+</ul>
+<h4 id="鼠标悬停-table-hover"><a href="#鼠标悬停-table-hover" class="headerlink" title="鼠标悬停 .table-hover"></a>鼠标悬停 <code>.table-hover</code></h4><ul>
+<li>让<code>&lt;tbody&gt;</code>中的每一行对鼠标悬停状态作出响应</li>
+</ul>
+<h4 id="紧缩表格-table-condensed"><a href="#紧缩表格-table-condensed" class="headerlink" title="紧缩表格 .table-condensed"></a>紧缩表格 <code>.table-condensed</code></h4><ul>
+<li>让表格更加紧凑，单元格中的内补均会减半</li>
+</ul>
+<h4 id="状态类"><a href="#状态类" class="headerlink" title="状态类"></a>状态类</h4><ul>
+<li><code>.active</code>:    鼠标悬停在行或单元格上时所设置的颜色</li>
+<li><code>.success</code>:    标识成功或积极的动作</li>
+<li><code>.info</code>:    标识普通的提示信息或动作</li>
+<li><code>.warning</code>:    标识警告或需要用户注意</li>
+<li><code>.danger</code>:    标识危险或潜在的带来负面影响的动作</li>
+</ul>
+<h4 id="响应式表格"><a href="#响应式表格" class="headerlink" title="响应式表格"></a>响应式表格</h4><p>将任何 <code>.table</code> 元素包裹在 <code>.table-responsive</code>元素内,其会在小屏幕设备上（小于768px）水平滚动。当屏幕大于 768px 宽度时，水平滚动条消失。</p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h4 id="基本实例-form-control添加在表单控件上"><a href="#基本实例-form-control添加在表单控件上" class="headerlink" title="基本实例 .form-control添加在表单控件上"></a>基本实例 <code>.form-control</code>添加在表单控件上</h4><ul>
+<li>宽度变成了100%</li>
+<li>设置了一个浅灰色（#ccc）的边框</li>
+<li>具有4px的圆角</li>
+<li>设置阴影效果，并且元素得到焦点之时，阴影和边框效果会有所变化</li>
+<li>设置了placeholder的颜色为#999</li>
+</ul>
+<h4 id="内联表单-form-inline"><a href="#内联表单-form-inline" class="headerlink" title="内联表单.form-inline"></a>内联表单<code>.form-inline</code></h4><ul>
+<li>使其内容左对齐并且表现为 inline-block 级别的控件</li>
+<li>添加<code>label</code>标签方便屏幕阅读器识别（用<code>.sr-only</code>类将其隐藏 ）</li>
+</ul>
+<h4 id="水平表单-form-horizontal"><a href="#水平表单-form-horizontal" class="headerlink" title="水平表单 form-horizontal"></a>水平表单 <code>form-horizontal</code></h4><ul>
+<li>在form元素上添加类</li>
+<li>配合Bootstrap框架的网格系统（使<code>form-group</code>类表现为栅格中的行“row”）</li>
+</ul>
+<h4 id="被支持的控件"><a href="#被支持的控件" class="headerlink" title="被支持的控件"></a>被支持的控件</h4><ul>
+<li>输入框input：正确设置type属性；添加<code>form-control</code>类</li>
+<li>文本域textarea：设置rows属性；添加<code>form-control</code>类（控制宽度）</li>
+<li>下拉列表select：设置multiple属性值为多行选择</li>
+<li>复选框checkbox和单选择按钮radio<br><code>.disabled</code> 类添加到父元素上，禁止选择并有禁止光标符号出现<br><code>.radio</code>, <code>.checkbox</code>类，让label里面的文字始终在选框后面对齐<br><code>.radio-inline</code>,<code>.checkbox-inline</code>类，使选框控件排列在一行</li>
+</ul>
+<h4 id="静态控件"><a href="#静态控件" class="headerlink" title="静态控件"></a>静态控件</h4><ul>
+<li><code>.form-control-static</code> 让静态文字代替表单控件</li>
+</ul>
+<h4 id="焦点状态"><a href="#焦点状态" class="headerlink" title="焦点状态"></a>焦点状态</h4><ul>
+<li>disabled属性，禁止用户交互；输入框颜色变浅；添加了not-allowed 鼠标状态</li>
+<li>通过a标签改造的不完全禁止</li>
+</ul>
+<h4 id="只读状态"><a href="#只读状态" class="headerlink" title="只读状态"></a>只读状态</h4><ul>
+<li>readonly属性，禁止用户修改输入框中的内容，输入框颜色变浅；但鼠标状态不<br>变</li>
+</ul>
+<h4 id="提示信息"><a href="#提示信息" class="headerlink" title="提示信息"></a>提示信息</h4><ul>
+<li><code>help-block</code>类<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.help-block &#123;</div><div class="line">display: block;</div><div class="line">margin-top: 5px;</div><div class="line">margin-bottom: 10px;</div><div class="line">color: #737373;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="验证状态（添加到其父元素上）"><a href="#验证状态（添加到其父元素上）" class="headerlink" title="验证状态（添加到其父元素上）"></a>验证状态（添加到其父元素上）</h4><ul>
+<li><code>.has-warning</code>:警告状态（黄色）</li>
+<li><code>.has-error</code>：错误状态（红色）</li>
+<li><code>.has-success</code>：成功状态（绿色）</li>
+</ul>
+<h4 id="控件尺寸"><a href="#控件尺寸" class="headerlink" title="控件尺寸"></a>控件尺寸</h4><ul>
+<li><code>.input-lg</code>控制高度，<code>.col-lg-*</code>控制宽度</li>
+<li>.form-horizontal 包裹的 label 元素和表单控件快速设置尺寸。<br><code>.form-group-lg</code>或 <code>.form-group-sm</code></li>
+<li>调整列尺寸<code>col-xs-*</code></li>
+</ul>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><h4 id="可作为按钮使用的标签或元素"><a href="#可作为按钮使用的标签或元素" class="headerlink" title="可作为按钮使用的标签或元素"></a>可作为按钮使用的标签或元素</h4><p><code>&lt;a&gt; &lt;input&gt; &lt;button&gt;</code> 最好用<code>&lt;button&gt;</code></p>
+<h4 id="预定义样式"><a href="#预定义样式" class="headerlink" title="预定义样式"></a>预定义样式</h4><ul>
+<li><code>btn-default</code> 默认样式</li>
+<li><code>btn-primary</code> 首选项</li>
+<li><code>btn-success</code> 成功</li>
+<li><code>btn-info</code> 一般信息</li>
+<li><code>btn-warning</code> 警告</li>
+<li><code>btn-danger</code> 危险</li>
+<li><code>btn-link</code> 链接</li>
+</ul>
+<h4 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h4><ul>
+<li><code>.btn-lg、.btn-sm 或 .btn-xs</code>分别对应大中小尺寸</li>
+<li><code>.btn-block</code>：将按钮拉伸到父元素100%宽度，并变成块级元素</li>
+</ul>
+<h4 id="激活状态"><a href="#激活状态" class="headerlink" title="激活状态"></a>激活状态</h4><ul>
+<li><code>active</code>类，底色更深、边框颜色更深、向内投射阴影</li>
+</ul>
+<h4 id="禁用状态"><a href="#禁用状态" class="headerlink" title="禁用状态"></a>禁用状态</h4><ul>
+<li>向button添加disable属性</li>
+<li>向a添加disable类</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/24/排版/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/26/图片/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表格"><span class="nav-number">1.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本实例-lt-table-gt-或者-table"><span class="nav-number">1.1.</span> <span class="nav-text">基本实例 <table>或者.table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条纹状表格-table-striped"><span class="nav-number">1.2.</span> <span class="nav-text">条纹状表格 .table-striped</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带边框的表格-table-bordered"><span class="nav-number">1.3.</span> <span class="nav-text">带边框的表格 .table-bordered</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#鼠标悬停-table-hover"><span class="nav-number">1.4.</span> <span class="nav-text">鼠标悬停 .table-hover</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#紧缩表格-table-condensed"><span class="nav-number">1.5.</span> <span class="nav-text">紧缩表格 .table-condensed</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#状态类"><span class="nav-number">1.6.</span> <span class="nav-text">状态类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应式表格"><span class="nav-number">1.7.</span> <span class="nav-text">响应式表格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-number">2.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本实例-form-control添加在表单控件上"><span class="nav-number">2.1.</span> <span class="nav-text">基本实例 .form-control添加在表单控件上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内联表单-form-inline"><span class="nav-number">2.2.</span> <span class="nav-text">内联表单.form-inline</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#水平表单-form-horizontal"><span class="nav-number">2.3.</span> <span class="nav-text">水平表单 form-horizontal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#被支持的控件"><span class="nav-number">2.4.</span> <span class="nav-text">被支持的控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态控件"><span class="nav-number">2.5.</span> <span class="nav-text">静态控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#焦点状态"><span class="nav-number">2.6.</span> <span class="nav-text">焦点状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只读状态"><span class="nav-number">2.7.</span> <span class="nav-text">只读状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提示信息"><span class="nav-number">2.8.</span> <span class="nav-text">提示信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证状态（添加到其父元素上）"><span class="nav-number">2.9.</span> <span class="nav-text">验证状态（添加到其父元素上）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#控件尺寸"><span class="nav-number">2.10.</span> <span class="nav-text">控件尺寸</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮"><span class="nav-number">3.</span> <span class="nav-text">按钮</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可作为按钮使用的标签或元素"><span class="nav-number">3.1.</span> <span class="nav-text">可作为按钮使用的标签或元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预定义样式"><span class="nav-number">3.2.</span> <span class="nav-text">预定义样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尺寸"><span class="nav-number">3.3.</span> <span class="nav-text">尺寸</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#激活状态"><span class="nav-number">3.4.</span> <span class="nav-text">激活状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁用状态"><span class="nav-number">3.5.</span> <span class="nav-text">禁用状态</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="各种常用选择器分类整理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-29T16:49:03.000Z">
+<meta property="og:updated_time" content="2017-10-11T10:16:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery选择器">
 <meta name="twitter:description" content="各种常用选择器分类整理">
@@ -348,7 +348,7 @@
       
 
       
-        <h3 id="1-基本选择器"><a href="#1-基本选择器" class="headerlink" title="1. 基本选择器"></a>1. 基本选择器</h3><ul>
+        <h3 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h3><ul>
 <li><p>id选择器：$(“#id”)</p>
 </li>
 <li><p>类选择器：$(“.class”)</p>
@@ -358,7 +358,7 @@
 <li><p>全选择器：$(“*”)</p>
 </li>
 </ul>
-<h3 id="2-层次选择器"><a href="#2-层次选择器" class="headerlink" title="2. 层次选择器"></a>2. 层次选择器</h3><ul>
+<h3 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h3><ul>
 <li><p>子元素：$(“parent&gt;child”)</p>
 </li>
 <li><p>后代元素：$(“ancestor descendant”)</p>
@@ -368,7 +368,7 @@
 <li><p>一般兄弟：$(“prev~siblings”)</p>
 </li>
 </ul>
-<h3 id="3-基本筛选选择器"><a href="#3-基本筛选选择器" class="headerlink" title="3. 基本筛选选择器"></a>3. 基本筛选选择器</h3><ul>
+<h3 id="基本筛选选择器"><a href="#基本筛选选择器" class="headerlink" title="基本筛选选择器"></a>基本筛选选择器</h3><ul>
 <li><p>$(“:first”) 第一个</p>
 </li>
 <li><p>$(“:last”) 最后一个元素</p>
@@ -394,7 +394,7 @@
 <li><p>$(“:animated”) 正在执行动画效果的元素 </p>
 </li>
 </ul>
-<h3 id="4-内容选择器"><a href="#4-内容选择器" class="headerlink" title="4. 内容选择器"></a>4. 内容选择器</h3><ul>
+<h3 id="内容选择器"><a href="#内容选择器" class="headerlink" title="内容选择器"></a>内容选择器</h3><ul>
 <li><p>$(“:contains(text)”) 包含指定文本<br>$(“div:contains(‘hello world’)”)</p>
 </li>
 <li><p>$(“:has(selector)”) 包含指定元素<br>$(“div:has(a)”)</p>
@@ -404,13 +404,13 @@
 <li><p>$(“:empty”) 所有没有子元素的,连文本都没有，但可以添加文本<br>$(“div:empty”)</p>
 </li>
 </ul>
-<h3 id="5-可见性筛选选择器"><a href="#5-可见性筛选选择器" class="headerlink" title="5. 可见性筛选选择器"></a>5. 可见性筛选选择器</h3><ul>
+<h3 id="可见性筛选选择器"><a href="#可见性筛选选择器" class="headerlink" title="可见性筛选选择器"></a>可见性筛选选择器</h3><ul>
 <li><p>$(“:visible”) 选择所有显示的元素</p>
 </li>
 <li><p>$(“:hidden”) 选择所有隐藏的元素</p>
 </li>
 </ul>
-<h3 id="6-属性选择器"><a href="#6-属性选择器" class="headerlink" title="6. 属性选择器"></a>6. 属性选择器</h3><ul>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><ul>
 <li><p>(“[att]”) 选择具有指定属性的元素，其值可以为任意值<br>$(“div[id]”)</p>
 </li>
 <li><p>(“[att=’value’]”) 属性值为指定字符串<br>$(“div[id=’target’]”)</p>
@@ -428,7 +428,9 @@
 <li><p>(“[att~=’value’]”) 属性值用空格分隔的某个值包含指定字符串<br>$(.head[class~=’h1’])</p>
 </li>
 <li><p>(“[att1][att2]”) 选择匹配所有的指定属性筛选器<br>$(“a[class~=’main’][href^=’www’]”)</p>
-<h3 id="7-子元素选择器"><a href="#7-子元素选择器" class="headerlink" title="7. 子元素选择器"></a>7. 子元素选择器</h3></li>
+</li>
+</ul>
+<h3 id="子元素选择器"><a href="#子元素选择器" class="headerlink" title="子元素选择器"></a>子元素选择器</h3><ul>
 <li><p>(“:first-child”)<br>$(“.first-div a:first-child”)</p>
 </li>
 <li><p>(“:last-child”)<br>$(“.first-div a:last-child”)</p>
@@ -438,7 +440,9 @@
 <li><p>(“:nth-child()”) 索引值从1开始<br>$(“.first-div a:nth-child(2)”)</p>
 </li>
 <li><p>(“:nth-last-child()”) 倒数 索引值从1开始<br>$(“.first-div a:nth-last-child(2)”)</p>
-<h3 id="8-表单选择器"><a href="#8-表单选择器" class="headerlink" title="8. 表单选择器"></a>8. 表单选择器</h3></li>
+</li>
+</ul>
+<h3 id="表单选择器"><a href="#表单选择器" class="headerlink" title="表单选择器"></a>表单选择器</h3><ul>
 <li><p>$(“:input”) </p>
 </li>
 <li><p>$(“:text”) 文本框</p>
@@ -463,7 +467,7 @@
 <blockquote>
 <p>大部分表单选择器可以使用属性筛选器替换：$(“[type=password]”)</p>
 </blockquote>
-<h3 id="9-表单对象属性筛选选择器"><a href="#9-表单对象属性筛选选择器" class="headerlink" title="9. 表单对象属性筛选选择器"></a>9. 表单对象属性筛选选择器</h3><ul>
+<h3 id="表单对象属性筛选选择器"><a href="#表单对象属性筛选选择器" class="headerlink" title="表单对象属性筛选选择器"></a>表单对象属性筛选选择器</h3><ul>
 <li><p>$(“:enabled”) 可用的表单元素</p>
 </li>
 <li><p>$(“:disabled”) 不可用的表单元素</p>
@@ -473,7 +477,7 @@
 <li><p>$(“:selected”) 选中的option元素 下拉框</p>
 </li>
 </ul>
-<h3 id="10-特殊选择器"><a href="#10-特殊选择器" class="headerlink" title="10. 特殊选择器"></a>10. 特殊选择器</h3><ul>
+<h3 id="特殊选择器"><a href="#特殊选择器" class="headerlink" title="特殊选择器"></a>特殊选择器</h3><ul>
 <li>$(this) 将this加工成jQuery对象，可以调用jQuery的方法和属性值</li>
 </ul>
 
@@ -518,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/01/jquery/" rel="next" title="认识jQuery">
-                <i class="fa fa-chevron-left"></i> 认识jQuery
+              <a href="/2017/05/02/jquery-html-css/" rel="next" title="jquery-css,html">
+                <i class="fa fa-chevron-left"></i> jquery-css,html
               </a>
             
           </div>
@@ -528,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/02/jquery-html-css/" rel="prev" title="jquery-css,html">
-                jquery-css,html <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/04/jquery-dom/" rel="prev" title="jquery-dom">
+                jquery-dom <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -603,7 +607,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -614,7 +618,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -625,7 +629,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -671,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本选择器"><span class="nav-number">1.</span> <span class="nav-text">1. 基本选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-层次选择器"><span class="nav-number">2.</span> <span class="nav-text">2. 层次选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-基本筛选选择器"><span class="nav-number">3.</span> <span class="nav-text">3. 基本筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-内容选择器"><span class="nav-number">4.</span> <span class="nav-text">4. 内容选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-可见性筛选选择器"><span class="nav-number">5.</span> <span class="nav-text">5. 可见性筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-属性选择器"><span class="nav-number">6.</span> <span class="nav-text">6. 属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-子元素选择器"><span class="nav-number">7.</span> <span class="nav-text">7. 子元素选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-表单选择器"><span class="nav-number">8.</span> <span class="nav-text">8. 表单选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-表单对象属性筛选选择器"><span class="nav-number">9.</span> <span class="nav-text">9. 表单对象属性筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-特殊选择器"><span class="nav-number">10.</span> <span class="nav-text">10. 特殊选择器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本选择器"><span class="nav-number">1.</span> <span class="nav-text">基本选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#层次选择器"><span class="nav-number">2.</span> <span class="nav-text">层次选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本筛选选择器"><span class="nav-number">3.</span> <span class="nav-text">基本筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容选择器"><span class="nav-number">4.</span> <span class="nav-text">内容选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性筛选选择器"><span class="nav-number">5.</span> <span class="nav-text">可见性筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性选择器"><span class="nav-number">6.</span> <span class="nav-text">属性选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子元素选择器"><span class="nav-number">7.</span> <span class="nav-text">子元素选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单选择器"><span class="nav-number">8.</span> <span class="nav-text">表单选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单对象属性筛选选择器"><span class="nav-number">9.</span> <span class="nav-text">表单对象属性筛选选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊选择器"><span class="nav-number">10.</span> <span class="nav-text">特殊选择器</span></a></li></ol></div>
             
 
           </div>
