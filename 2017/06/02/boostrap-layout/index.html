@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="bootstrap," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="bootstrap中网格布局的原理以及使用">
+<meta name="keywords" content="bootstrap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bootstrap栅格式布局">
+<meta property="og:url" content="http://www.gaogao.site/2017/06/02/boostrap-layout/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="bootstrap中网格布局的原理以及使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5150805-9713697ac2807fdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-10-11T11:12:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bootstrap栅格式布局">
+<meta name="twitter:description" content="bootstrap中网格布局的原理以及使用">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5150805-9713697ac2807fdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/06/02/boostrap-layout/"/>
+
+
+
+
+
+  <title>bootstrap栅格式布局 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/06/02/boostrap-layout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">bootstrap栅格式布局</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T00:00:00+08:00">
+                2017-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bootstrap/" itemprop="url" rel="index">
+                    <span itemprop="name">bootstrap</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  bootstrap中网格布局的原理以及使用
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>通过定义容器大小，平分12份，载调整内外边距，最后结合媒体查询，制作出了强大的响应式网格系统。  使用时可以根据实际情况重新编译LESS（或Sass）源码来修改12这个数值。</p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">	&lt;div class=&quot;row&quot;&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>栅格系统通过类<code>container</code>来盛装行，通过类<code>row</code>来盛装列（即每一个格子），通过类<code>col-lg-*,col-md-*,col-sm-*,col-xs-*</code>来设置每个格子所占的宽度,*号所代表的数字为占12分宽度中的数量，数字越大，占比越大</p>
+<ul>
+<li><code>container</code>类设置整个栅格的宽度，内补</li>
+<li><code>row</code>类设置整个行的样式</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/5150805-9713697ac2807fdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bootstrap.png"></p>
+<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>因为bootstrap是移动设备优先，默认为移动设备，所以不用对超小屏幕即768px以下的进行查询单独设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 小屏幕（平板&gt;=768px） */</div><div class="line">@media (min-width: @screen-sm-min) &#123; ... &#125;</div><div class="line">/* 中等屏幕（桌面显示器，&gt;= 992px） */</div><div class="line">@media (min-width: @screen-md-min) &#123; ... &#125;</div><div class="line"></div><div class="line">/* 大屏幕（大桌面显示器，&gt;=1200px） */</div><div class="line">@media (min-width: @screen-lg-min) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
+<p>媒体查询包含最大宽度，将css的影响限制在更小范围内<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="流式布局容器"><a href="#流式布局容器" class="headerlink" title="流式布局容器"></a>流式布局容器</h3><p>将<code>.container</code>改为<code>.container-fluid</code>，即将固定宽度的栅格布局转换成宽度为100%宽度的布局</p>
+<h3 id="响应式列重置"><a href="#响应式列重置" class="headerlink" title="响应式列重置"></a>响应式列重置</h3><h4 id="列在分界点清除响应"><a href="#列在分界点清除响应" class="headerlink" title="列在分界点清除响应"></a>列在分界点清除响应</h4><ul>
+<li>联合使用<code>clearfix</code>和响应式工具类</li>
+</ul>
+<h4 id="重置偏移，后推或者前拉这个类"><a href="#重置偏移，后推或者前拉这个类" class="headerlink" title="重置偏移，后推或者前拉这个类"></a>重置偏移，后推或者前拉这个类</h4><ul>
+<li><code>.col-md-offset-*</code>将列向右侧偏移<br>为当前元素增加了左侧的边距（margin）</li>
+</ul>
+<h4 id="嵌套列"><a href="#嵌套列" class="headerlink" title="嵌套列"></a>嵌套列</h4><ul>
+<li>通过一个新的row类嵌套在栅格里面</li>
+</ul>
+<h4 id="列排序"><a href="#列排序" class="headerlink" title="列排序"></a>列排序</h4><ul>
+<li><code>.col-md-push-*和.col-md-pull-*</code>改变列的顺序<br>push往后推，pull往前拉</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bootstrap/" rel="tag"># bootstrap</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/02/bootstrap/" rel="next" title="bootstrap环境搭建">
+                <i class="fa fa-chevron-left"></i> bootstrap环境搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/19/variable/" rel="prev" title="变量类型和计算">
+                变量类型和计算 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现原理"><span class="nav-number">1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">2.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#媒体查询"><span class="nav-number">3.</span> <span class="nav-text">媒体查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流式布局容器"><span class="nav-number">4.</span> <span class="nav-text">流式布局容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#响应式列重置"><span class="nav-number">5.</span> <span class="nav-text">响应式列重置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列在分界点清除响应"><span class="nav-number">5.1.</span> <span class="nav-text">列在分界点清除响应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重置偏移，后推或者前拉这个类"><span class="nav-number">5.2.</span> <span class="nav-text">重置偏移，后推或者前拉这个类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套列"><span class="nav-number">5.3.</span> <span class="nav-text">嵌套列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列排序"><span class="nav-number">5.4.</span> <span class="nav-text">列排序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

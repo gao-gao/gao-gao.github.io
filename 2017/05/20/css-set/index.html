@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html&css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="页面中的标签的一些默认CSS设置介绍">
+<meta name="keywords" content="html&amp;css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排版">
+<meta property="og:url" content="http://www.gaogao.site/2017/05/20/css-set/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="页面中的标签的一些默认CSS设置介绍">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-11T10:58:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排版">
+<meta name="twitter:description" content="页面中的标签的一些默认CSS设置介绍">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/05/20/css-set/"/>
+
+
+
+
+
+  <title>排版 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/05/20/css-set/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">排版</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T00:00:00+08:00">
+                2017-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html-css/" itemprop="url" rel="index">
+                    <span itemprop="name">html&css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  页面中的标签的一些默认CSS设置介绍
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="排版"><a href="#排版" class="headerlink" title="排版"></a>排版</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>和HTML中一样，使用标签h1~h6，但bootstrap中还添加了类“.h1~.h6”来为内联元素添加标题样式。同时标题中还可以添加<code>&lt;small&gt;</code>标签或者是<code>.small</code>类来在标题中添加副标题。  </p>
+<h4 id="标题尺寸"><a href="#标题尺寸" class="headerlink" title="标题尺寸"></a>标题尺寸</h4><p>h1(36px)  h2(30px) h3(24px)  h4(18px) h5(14px) h6(12px)</p>
+<h4 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h4><p>1.1：即为文字大小的1.1倍</p>
+<h4 id="margin值"><a href="#margin值" class="headerlink" title="margin值"></a>margin值</h4><p>h1~h3: margin-top:20px; margin-bottom:10px;<br>h3~h6: marhin-top,margin-bottom都为10px</p>
+<h4 id="文本颜色和字体"><a href="#文本颜色和字体" class="headerlink" title="文本颜色和字体"></a>文本颜色和字体</h4><p>继承自父元素</p>
+<h3 id="副标题"><a href="#副标题" class="headerlink" title="副标题"></a>副标题</h3><ul>
+<li>line-height:1</li>
+<li>font-weight:normal</li>
+<li>color:#999</li>
+<li><small>内的文本字体在h1~h3内，其大小都设置为当前字号的65%；而在h4~h6内的字号都设置为当前字号的75%</small></li>
+</ul>
+<h3 id="页面主体"><a href="#页面主体" class="headerlink" title="页面主体"></a>页面主体</h3><h4 id="针对页面中的body"><a href="#针对页面中的body" class="headerlink" title="针对页面中的body"></a>针对页面中的body</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;</div><div class="line">font-size: 14px;</div><div class="line">line-height: 1.42857143;</div><div class="line">color: #333;</div><div class="line">background-color: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即"><a href="#对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即" class="headerlink" title="对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即"></a>对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p &#123;margin: 0 0 10px;&#125;</div></pre></td></tr></table></figure>
+<h4 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h4><p>根据Bootstrap提供的预编译版本LESS(或者Sass)进行自定义排版设置,改变其中的两个变量的值即可</p>
+<ul>
+<li><p>LESS版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@font-size-base: 14px; </div><div class="line">@line-height-base: 1.428571429; // 20/14</div></pre></td></tr></table></figure>
+</li>
+<li><p>Sass版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$font-size-base: 14px !default; </div><div class="line">$line-height-base: 1.428571429 !default; // 20/14</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="文本样式：通过添加类或者用标签包围"><a href="#文本样式：通过添加类或者用标签包围" class="headerlink" title="文本样式：通过添加类或者用标签包围"></a>文本样式：通过添加类或者用标签包围</h3><h4 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h4><p>添加<code>.lead</code>类让段落突出显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.lead &#123;</div><div class="line">margin-bottom: 20px;</div><div class="line">font-size: 16px;</div><div class="line">font-weight: 200;</div><div class="line">line-height: 1.4;</div><div class="line">&#125;</div><div class="line">@media (min-width: 768px) &#123;/*大中型浏览器字体稍大*/</div><div class="line">.lead &#123;</div><div class="line">font-size: 21px;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="内联元素文本"><a href="#内联元素文本" class="headerlink" title="内联元素文本"></a>内联元素文本</h4><ul>
+<li><code>&lt;mark&gt;</code>高亮</li>
+<li><code>&lt;del&gt;</code>划线，被删除的文本</li>
+<li><code>&lt;s&gt;</code>划线，无用文本</li>
+<li><code>&lt;ins&gt;</code>下划线，额外插入的文本</li>
+<li><code>&lt;u&gt;</code>为文本添加下划线</li>
+<li><code>&lt;small&gt;</code>小号文本，父容器字体大小的 85%(标题元素设置值不一样)，或者是类<code>.small</code></li>
+<li><code>&lt;strong&gt;</code>通过增加font-weigt来强调一段文字</li>
+<li><code>&lt;em&gt;</code>用斜体强调一段文字</li>
+</ul>
+<h4 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h4><ul>
+<li>text-left</li>
+<li>text-right</li>
+<li>text-center</li>
+<li>text-justify</li>
+<li>text-nowrap</li>
+</ul>
+<h4 id="大小写"><a href="#大小写" class="headerlink" title="大小写"></a>大小写</h4><ul>
+<li>text-lowercase</li>
+<li>text-uppercase</li>
+<li>text-capitalize 首字母大写</li>
+</ul>
+<h4 id="缩略语"><a href="#缩略语" class="headerlink" title="缩略语"></a>缩略语</h4><p>缩略语带有title属性，外观表现为带有较浅的虚线框，鼠标hover上去会变成带问号的指针，悬停在缩略语上时会出现完整title内容</p>
+<ul>
+<li>基本缩略语 <code>&lt;abbr&gt;</code></li>
+<li>首字母缩略语 <code>.initialism</code>减小font-size</li>
+</ul>
+<h4 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h4><ul>
+<li><code>&lt;address&gt;</code></li>
+</ul>
+<h4 id="引用-lt-blockquote-gt"><a href="#引用-lt-blockquote-gt" class="headerlink" title="引用&lt;blockquote&gt;"></a>引用<code>&lt;blockquote&gt;</code></h4><ul>
+<li>直接引用，在其中放置p元素</li>
+<li><code>&lt;footer&gt;</code>标明引用来源</li>
+<li><code>&lt;cite&gt;</code>标明引用来源中的名称</li>
+<li><code>.blockquote-reverse</code>添加类，引用呈现内容右对齐效果</li>
+</ul>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ul>
+<li>无序列表 <code>&lt;ul&gt;&lt;li&gt;</code></li>
+<li>有序列表 <code>&lt;ol&gt;&lt;li&gt;</code></li>
+<li>无样式列表 <code>list-unstyled</code><br>对子元素移除了默认的list-style样式和左侧外边距</li>
+<li>内联列表 <code>list-inline</code><br>设置 display: inline-block; 并添加少量的内补（padding）将所有元素放置于同一行</li>
+<li>描述 <code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code></li>
+<li>水平排列的描述 <code>dl-horizontal</code><br>让dl内的短语排在一行，且标题会自动截断（text-overflow属性）变成省略形式；但在较窄的视口内，会恢复默认形式</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
+<li><code>&lt;code&gt;</code>内联代码</li>
+<li><code>&lt;kbd&gt;</code>用户通过键盘输入的内容</li>
+<li><code>&lt;pre&gt;</code>代码块</li>
+<li><code>.pre-scrollable</code>设置 max-height 为 350px ，并在垂直方向展示滚动条</li>
+<li><code>&lt;var&gt;</code>标记变量</li>
+<li><code>&lt;samp&gt;</code>标记程序输出的内容</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html-css/" rel="tag"># html&css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/18/table-form/" rel="next" title="表格和表单的一些样式设置">
+                <i class="fa fa-chevron-left"></i> 表格和表单的一些样式设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/21/image/" rel="prev" title="图片css设置">
+                图片css设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#排版"><span class="nav-number">1.</span> <span class="nav-text">排版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题"><span class="nav-number">1.1.</span> <span class="nav-text">标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标题尺寸"><span class="nav-number">1.1.1.</span> <span class="nav-text">标题尺寸</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行高"><span class="nav-number">1.1.2.</span> <span class="nav-text">行高</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#margin值"><span class="nav-number">1.1.3.</span> <span class="nav-text">margin值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本颜色和字体"><span class="nav-number">1.1.4.</span> <span class="nav-text">文本颜色和字体</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#副标题"><span class="nav-number">1.2.</span> <span class="nav-text">副标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面主体"><span class="nav-number">1.3.</span> <span class="nav-text">页面主体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#针对页面中的body"><span class="nav-number">1.3.1.</span> <span class="nav-text">针对页面中的body</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即"><span class="nav-number">1.3.2.</span> <span class="nav-text">对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义设置"><span class="nav-number">1.3.3.</span> <span class="nav-text">自定义设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本样式：通过添加类或者用标签包围"><span class="nav-number">1.4.</span> <span class="nav-text">文本样式：通过添加类或者用标签包围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中心内容"><span class="nav-number">1.4.1.</span> <span class="nav-text">中心内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内联元素文本"><span class="nav-number">1.4.2.</span> <span class="nav-text">内联元素文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对齐"><span class="nav-number">1.4.3.</span> <span class="nav-text">对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大小写"><span class="nav-number">1.4.4.</span> <span class="nav-text">大小写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缩略语"><span class="nav-number">1.4.5.</span> <span class="nav-text">缩略语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地址"><span class="nav-number">1.4.6.</span> <span class="nav-text">地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用-lt-blockquote-gt"><span class="nav-number">1.4.7.</span> <span class="nav-text">引用<blockquote></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">1.4.8.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.4.9.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

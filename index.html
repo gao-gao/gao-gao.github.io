@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/28/辅助类/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/10/02/nodejs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -274,7 +274,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/28/辅助类/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/10/02/nodejs/" itemprop="url">初识node.js</a></h1>
         
 
         <div class="post-meta">
@@ -286,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T16:06:56+08:00">
-                2017-08-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T00:00:00+08:00">
+                2017-10-02
               </time>
             
 
@@ -296,6 +296,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -322,9 +344,14 @@
 
       
         
-          
-            
-          
+          nodejs的一些知识结构
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/02/nodejs/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -366,7 +393,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/26/网格系统/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/09/02/order-bubble/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -385,7 +412,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/网格系统/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/09/02/order-bubble/" itemprop="url">冒泡排序</a></h1>
         
 
         <div class="post-meta">
@@ -397,8 +424,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T10:47:04+08:00">
-                2017-08-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-02T00:00:00+08:00">
+                2017-09-02
               </time>
             
 
@@ -407,6 +434,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/basic/" itemprop="url" rel="index">
+                    <span itemprop="name">basic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -433,32 +482,14 @@
 
       
         
-          
-            <h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>通过定义容器大小，平分12份，载调整内外边距，最后结合媒体查询，制作出了强大的响应式网格系统。  使用时可以根据实际情况重新编译LESS（或Sass）源码来修改12这个数值。</p>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">	&lt;div class=&quot;row&quot;&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<p>栅格系统通过类<code>container</code>来盛装行，通过类<code>row</code>来盛装列（即每一个格子），通过类<code>col-lg-*,col-md-*,col-sm-*,col-xs-*</code>来设置每个格子所占的宽度,*号所代表的数字为占12分宽度中的数量，数字越大，占比越大</p>
-<ul>
-<li><code>container</code>类设置整个栅格的宽度，内补</li>
-<li><code>row</code>类设置整个行的样式</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/5150805-9713697ac2807fdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bootstrap.png"></p>
-<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>因为bootstrap是移动设备优先，默认为移动设备，所以不用对超小屏幕即768px以下的进行查询单独设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 小屏幕（平板&gt;=768px） */</div><div class="line">@media (min-width: @screen-sm-min) &#123; ... &#125;</div><div class="line">/* 中等屏幕（桌面显示器，&gt;= 992px） */</div><div class="line">@media (min-width: @screen-md-min) &#123; ... &#125;</div><div class="line"></div><div class="line">/* 大屏幕（大桌面显示器，&gt;=1200px） */</div><div class="line">@media (min-width: @screen-lg-min) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
-<p>媒体查询包含最大宽度，将css的影响限制在更小范围内<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
-<h3 id="流式布局容器"><a href="#流式布局容器" class="headerlink" title="流式布局容器"></a>流式布局容器</h3><p>将<code>.container</code>改为<code>.container-fluid</code>，即将固定宽度的栅格布局转换成宽度为100%宽度的布局</p>
-<h3 id="响应式列重置"><a href="#响应式列重置" class="headerlink" title="响应式列重置"></a>响应式列重置</h3><h4 id="列在分界点清除响应"><a href="#列在分界点清除响应" class="headerlink" title="列在分界点清除响应"></a>列在分界点清除响应</h4><ul>
-<li>联合使用<code>clearfix</code>和响应式工具类</li>
-</ul>
-<h4 id="重置偏移，后推或者前拉这个类"><a href="#重置偏移，后推或者前拉这个类" class="headerlink" title="重置偏移，后推或者前拉这个类"></a>重置偏移，后推或者前拉这个类</h4><ul>
-<li><code>.col-md-offset-*</code>将列向右侧偏移<br>为当前元素增加了左侧的边距（margin）</li>
-</ul>
-<h4 id="嵌套列"><a href="#嵌套列" class="headerlink" title="嵌套列"></a>嵌套列</h4><ul>
-<li>通过一个新的row类嵌套在栅格里面</li>
-</ul>
-<h4 id="列排序"><a href="#列排序" class="headerlink" title="列排序"></a>列排序</h4><ul>
-<li><code>.col-md-push-*和.col-md-pull-*</code>改变列的顺序<br>push往后推，pull往前拉</li>
-</ul>
-
-          
+          冒泡排序的几种写法
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/02/order-bubble/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -500,7 +531,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/26/图片/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/09/01/structure-tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -519,7 +550,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/图片/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/09/01/structure-tree/" itemprop="url">树结构（二叉树）</a></h1>
         
 
         <div class="post-meta">
@@ -531,8 +562,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T10:16:21+08:00">
-                2017-08-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-01T00:00:00+08:00">
+                2017-09-01
               </time>
             
 
@@ -541,6 +572,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/basic/" itemprop="url" rel="index">
+                    <span itemprop="name">basic</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -567,23 +620,14 @@
 
       
         
-          
-            <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>通过修改图片容器大小来控制图片大小，而不是直接修改图片的CSS</p>
-<h4 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h4><ul>
-<li><code>img-responsive</code>类为图片设置<code>max-width: 100%; height: auto;display: block;</code></li>
-<li><code>center-block</code>类让上类图片居中</li>
-</ul>
-<h4 id="图片形状"><a href="#图片形状" class="headerlink" title="图片形状"></a>图片形状</h4><ul>
-<li><code>img-rounded</code> 圆角图片</li>
-<li><code>img-circle</code>  圆形图片</li>
-<li><code>img-thumbnail</code> 缩略图片</li>
-</ul>
-<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><p>通过@font-face属性加载了字体：在Bootstrap框架中是通过给元素添加“glyphicon”类名来实现，然后通过伪元素“:before”的“content”属性调取对应的icon编码。</p>
-<ul>
-<li>使用图标：在任何内联元素上添加类<code>glyphicon</code>和相应的图标的类名（以glyphicon加名称组合而成）</li>
-</ul>
-
-          
+          树结构和二叉树的一些基础知识
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/01/structure-tree/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -625,7 +669,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/24/表格和表单/">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/03/event-client/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gaogao">
@@ -644,7 +688,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/24/表格和表单/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/08/03/event-client/" itemprop="url">事件代理</a></h1>
         
 
         <div class="post-meta">
@@ -656,8 +700,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T15:23:34+08:00">
-                2017-08-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T00:00:00+08:00">
+                2017-08-03
               </time>
             
 
@@ -666,6 +710,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -692,406 +758,14 @@
 
       
         
-          
-            <h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><h4 id="基本实例-lt-table-gt-或者-table"><a href="#基本实例-lt-table-gt-或者-table" class="headerlink" title="基本实例 &lt;table&gt;或者.table"></a>基本实例 <code>&lt;table&gt;或者.table</code></h4><ul>
-<li>少量的内内补和水平方向的分隔线</li>
-</ul>
-<h4 id="条纹状表格-table-striped"><a href="#条纹状表格-table-striped" class="headerlink" title="条纹状表格 .table-striped"></a>条纹状表格 <code>.table-striped</code></h4><ul>
-<li>为tbody的每一行增加斑马条纹样式,依赖 :nth-child CSS 选择器实现</li>
-</ul>
-<h4 id="带边框的表格-table-bordered"><a href="#带边框的表格-table-bordered" class="headerlink" title="带边框的表格 .table-bordered"></a>带边框的表格 <code>.table-bordered</code></h4><ul>
-<li>为表格和其中的每个单元格增加边框</li>
-</ul>
-<h4 id="鼠标悬停-table-hover"><a href="#鼠标悬停-table-hover" class="headerlink" title="鼠标悬停 .table-hover"></a>鼠标悬停 <code>.table-hover</code></h4><ul>
-<li>让<code>&lt;tbody&gt;</code>中的每一行对鼠标悬停状态作出响应</li>
-</ul>
-<h4 id="紧缩表格-table-condensed"><a href="#紧缩表格-table-condensed" class="headerlink" title="紧缩表格 .table-condensed"></a>紧缩表格 <code>.table-condensed</code></h4><ul>
-<li>让表格更加紧凑，单元格中的内补均会减半</li>
-</ul>
-<h4 id="状态类"><a href="#状态类" class="headerlink" title="状态类"></a>状态类</h4><ul>
-<li><code>.active</code>:    鼠标悬停在行或单元格上时所设置的颜色</li>
-<li><code>.success</code>:    标识成功或积极的动作</li>
-<li><code>.info</code>:    标识普通的提示信息或动作</li>
-<li><code>.warning</code>:    标识警告或需要用户注意</li>
-<li><code>.danger</code>:    标识危险或潜在的带来负面影响的动作</li>
-</ul>
-<h4 id="响应式表格"><a href="#响应式表格" class="headerlink" title="响应式表格"></a>响应式表格</h4><p>将任何 <code>.table</code> 元素包裹在 <code>.table-responsive</code>元素内,其会在小屏幕设备上（小于768px）水平滚动。当屏幕大于 768px 宽度时，水平滚动条消失。</p>
-<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h4 id="基本实例-form-control添加在表单控件上"><a href="#基本实例-form-control添加在表单控件上" class="headerlink" title="基本实例 .form-control添加在表单控件上"></a>基本实例 <code>.form-control</code>添加在表单控件上</h4><ul>
-<li>宽度变成了100%</li>
-<li>设置了一个浅灰色（#ccc）的边框</li>
-<li>具有4px的圆角</li>
-<li>设置阴影效果，并且元素得到焦点之时，阴影和边框效果会有所变化</li>
-<li>设置了placeholder的颜色为#999</li>
-</ul>
-<h4 id="内联表单-form-inline"><a href="#内联表单-form-inline" class="headerlink" title="内联表单.form-inline"></a>内联表单<code>.form-inline</code></h4><ul>
-<li>使其内容左对齐并且表现为 inline-block 级别的控件</li>
-<li>添加<code>label</code>标签方便屏幕阅读器识别（用<code>.sr-only</code>类将其隐藏 ）</li>
-</ul>
-<h4 id="水平表单-form-horizontal"><a href="#水平表单-form-horizontal" class="headerlink" title="水平表单 form-horizontal"></a>水平表单 <code>form-horizontal</code></h4><ul>
-<li>在form元素上添加类</li>
-<li>配合Bootstrap框架的网格系统（使<code>form-group</code>类表现为栅格中的行“row”）</li>
-</ul>
-<h4 id="被支持的控件"><a href="#被支持的控件" class="headerlink" title="被支持的控件"></a>被支持的控件</h4><ul>
-<li>输入框input：正确设置type属性；添加<code>form-control</code>类</li>
-<li>文本域textarea：设置rows属性；添加<code>form-control</code>类（控制宽度）</li>
-<li>下拉列表select：设置multiple属性值为多行选择</li>
-<li>复选框checkbox和单选择按钮radio<br><code>.disabled</code> 类添加到父元素上，禁止选择并有禁止光标符号出现<br><code>.radio</code>, <code>.checkbox</code>类，让label里面的文字始终在选框后面对齐<br><code>.radio-inline</code>,<code>.checkbox-inline</code>类，使选框控件排列在一行</li>
-</ul>
-<h4 id="静态控件"><a href="#静态控件" class="headerlink" title="静态控件"></a>静态控件</h4><ul>
-<li><code>.form-control-static</code> 让静态文字代替表单控件</li>
-</ul>
-<h4 id="焦点状态"><a href="#焦点状态" class="headerlink" title="焦点状态"></a>焦点状态</h4><ul>
-<li>disabled属性，禁止用户交互；输入框颜色变浅；添加了not-allowed 鼠标状态</li>
-<li>通过a标签改造的不完全禁止</li>
-</ul>
-<h4 id="只读状态"><a href="#只读状态" class="headerlink" title="只读状态"></a>只读状态</h4><ul>
-<li>readonly属性，禁止用户修改输入框中的内容，输入框颜色变浅；但鼠标状态不<br>变</li>
-</ul>
-<h4 id="提示信息"><a href="#提示信息" class="headerlink" title="提示信息"></a>提示信息</h4><ul>
-<li><code>help-block</code>类<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.help-block &#123;</div><div class="line">display: block;</div><div class="line">margin-top: 5px;</div><div class="line">margin-bottom: 10px;</div><div class="line">color: #737373;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="验证状态（添加到其父元素上）"><a href="#验证状态（添加到其父元素上）" class="headerlink" title="验证状态（添加到其父元素上）"></a>验证状态（添加到其父元素上）</h4><ul>
-<li><code>.has-warning</code>:警告状态（黄色）</li>
-<li><code>.has-error</code>：错误状态（红色）</li>
-<li><code>.has-success</code>：成功状态（绿色）</li>
-</ul>
-<h4 id="控件尺寸"><a href="#控件尺寸" class="headerlink" title="控件尺寸"></a>控件尺寸</h4><ul>
-<li><code>.input-lg</code>控制高度，<code>.col-lg-*</code>控制宽度</li>
-<li>.form-horizontal 包裹的 label 元素和表单控件快速设置尺寸。<br><code>.form-group-lg</code>或 <code>.form-group-sm</code></li>
-<li>调整列尺寸<code>col-xs-*</code></li>
-</ul>
-<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><h4 id="可作为按钮使用的标签或元素"><a href="#可作为按钮使用的标签或元素" class="headerlink" title="可作为按钮使用的标签或元素"></a>可作为按钮使用的标签或元素</h4><p><code>&lt;a&gt; &lt;input&gt; &lt;button&gt;</code> 最好用<code>&lt;button&gt;</code></p>
-<h4 id="预定义样式"><a href="#预定义样式" class="headerlink" title="预定义样式"></a>预定义样式</h4><ul>
-<li><code>btn-default</code> 默认样式</li>
-<li><code>btn-primary</code> 首选项</li>
-<li><code>btn-success</code> 成功</li>
-<li><code>btn-info</code> 一般信息</li>
-<li><code>btn-warning</code> 警告</li>
-<li><code>btn-danger</code> 危险</li>
-<li><code>btn-link</code> 链接</li>
-</ul>
-<h4 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h4><ul>
-<li><code>.btn-lg、.btn-sm 或 .btn-xs</code>分别对应大中小尺寸</li>
-<li><code>.btn-block</code>：将按钮拉伸到父元素100%宽度，并变成块级元素</li>
-</ul>
-<h4 id="激活状态"><a href="#激活状态" class="headerlink" title="激活状态"></a>激活状态</h4><ul>
-<li><code>active</code>类，底色更深、边框颜色更深、向内投射阴影</li>
-</ul>
-<h4 id="禁用状态"><a href="#禁用状态" class="headerlink" title="禁用状态"></a>禁用状态</h4><ul>
-<li>向button添加disable属性</li>
-<li>向a添加disable类</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/24/排版/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gaogao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gaogao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/24/排版/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T13:49:33+08:00">
-                2017-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="排版"><a href="#排版" class="headerlink" title="排版"></a>排版</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>和HTML中一样，使用标签h1~h6，但bootstrap中还添加了类“.h1~.h6”来为内联元素添加标题样式。同时标题中还可以添加<code>&lt;small&gt;</code>标签或者是<code>.small</code>类来在标题中添加副标题。  </p>
-<h4 id="标题尺寸"><a href="#标题尺寸" class="headerlink" title="标题尺寸"></a>标题尺寸</h4><p>h1(36px)  h2(30px) h3(24px)  h4(18px) h5(14px) h6(12px)</p>
-<h4 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h4><p>1.1：即为文字大小的1.1倍</p>
-<h4 id="margin值"><a href="#margin值" class="headerlink" title="margin值"></a>margin值</h4><p>h1~h3: margin-top:20px; margin-bottom:10px;<br>h3~h6: marhin-top,margin-bottom都为10px</p>
-<h4 id="文本颜色和字体"><a href="#文本颜色和字体" class="headerlink" title="文本颜色和字体"></a>文本颜色和字体</h4><p>继承自父元素</p>
-<h3 id="副标题"><a href="#副标题" class="headerlink" title="副标题"></a>副标题</h3><ul>
-<li>line-height:1</li>
-<li>font-weight:normal</li>
-<li>color:#999</li>
-<li><small>内的文本字体在h1~h3内，其大小都设置为当前字号的65%；而在h4~h6内的字号都设置为当前字号的75%</small></li>
-</ul>
-<h3 id="页面主体"><a href="#页面主体" class="headerlink" title="页面主体"></a>页面主体</h3><h4 id="针对页面中的body"><a href="#针对页面中的body" class="headerlink" title="针对页面中的body"></a>针对页面中的body</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;</div><div class="line">font-size: 14px;</div><div class="line">line-height: 1.42857143;</div><div class="line">color: #333;</div><div class="line">background-color: #fff;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即"><a href="#对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即" class="headerlink" title="对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即"></a>对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p &#123;margin: 0 0 10px;&#125;</div></pre></td></tr></table></figure>
-<h4 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h4><p>根据Bootstrap提供的预编译版本LESS(或者Sass)进行自定义排版设置,改变其中的两个变量的值即可</p>
-<ul>
-<li><p>LESS版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@font-size-base: 14px; </div><div class="line">@line-height-base: 1.428571429; // 20/14</div></pre></td></tr></table></figure>
-</li>
-<li><p>Sass版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$font-size-base: 14px !default; </div><div class="line">$line-height-base: 1.428571429 !default; // 20/14</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="文本样式：通过添加类或者用标签包围"><a href="#文本样式：通过添加类或者用标签包围" class="headerlink" title="文本样式：通过添加类或者用标签包围"></a>文本样式：通过添加类或者用标签包围</h3><h4 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h4><p>添加<code>.lead</code>类让段落突出显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.lead &#123;</div><div class="line">margin-bottom: 20px;</div><div class="line">font-size: 16px;</div><div class="line">font-weight: 200;</div><div class="line">line-height: 1.4;</div><div class="line">&#125;</div><div class="line">@media (min-width: 768px) &#123;/*大中型浏览器字体稍大*/</div><div class="line">.lead &#123;</div><div class="line">font-size: 21px;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="内联元素文本"><a href="#内联元素文本" class="headerlink" title="内联元素文本"></a>内联元素文本</h4><ul>
-<li><code>&lt;mark&gt;</code>高亮</li>
-<li><code>&lt;del&gt;</code>划线，被删除的文本</li>
-<li><code>&lt;s&gt;</code>划线，无用文本</li>
-<li><code>&lt;ins&gt;</code>下划线，额外插入的文本</li>
-<li><code>&lt;u&gt;</code>为文本添加下划线</li>
-<li><code>&lt;small&gt;</code>小号文本，父容器字体大小的 85%(标题元素设置值不一样)，或者是类<code>.small</code></li>
-<li><code>&lt;strong&gt;</code>通过增加font-weigt来强调一段文字</li>
-<li><code>&lt;em&gt;</code>用斜体强调一段文字</li>
-</ul>
-<h4 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h4><ul>
-<li>text-left</li>
-<li>text-right</li>
-<li>text-center</li>
-<li>text-justify</li>
-<li>text-nowrap</li>
-</ul>
-<h4 id="大小写"><a href="#大小写" class="headerlink" title="大小写"></a>大小写</h4><ul>
-<li>text-lowercase</li>
-<li>text-uppercase</li>
-<li>text-capitalize 首字母大写</li>
-</ul>
-<h4 id="缩略语"><a href="#缩略语" class="headerlink" title="缩略语"></a>缩略语</h4><p>缩略语带有title属性，外观表现为带有较浅的虚线框，鼠标hover上去会变成带问号的指针，悬停在缩略语上时会出现完整title内容</p>
-<ul>
-<li>基本缩略语 <code>&lt;abbr&gt;</code></li>
-<li>首字母缩略语 <code>.initialism</code>减小font-size</li>
-</ul>
-<h4 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h4><ul>
-<li><code>&lt;address&gt;</code></li>
-</ul>
-<h4 id="引用-lt-blockquote-gt"><a href="#引用-lt-blockquote-gt" class="headerlink" title="引用&lt;blockquote&gt;"></a>引用<code>&lt;blockquote&gt;</code></h4><ul>
-<li>直接引用，在其中放置p元素</li>
-<li><code>&lt;footer&gt;</code>标明引用来源</li>
-<li><code>&lt;cite&gt;</code>标明引用来源中的名称</li>
-<li><code>.blockquote-reverse</code>添加类，引用呈现内容右对齐效果</li>
-</ul>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ul>
-<li>无序列表 <code>&lt;ul&gt;&lt;li&gt;</code></li>
-<li>有序列表 <code>&lt;ol&gt;&lt;li&gt;</code></li>
-<li>无样式列表 <code>list-unstyled</code><br>对子元素移除了默认的list-style样式和左侧外边距</li>
-<li>内联列表 <code>list-inline</code><br>设置 display: inline-block; 并添加少量的内补（padding）将所有元素放置于同一行</li>
-<li>描述 <code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code></li>
-<li>水平排列的描述 <code>dl-horizontal</code><br>让dl内的短语排在一行，且标题会自动截断（text-overflow属性）变成省略形式；但在较窄的视口内，会恢复默认形式</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
-<li><code>&lt;code&gt;</code>内联代码</li>
-<li><code>&lt;kbd&gt;</code>用户通过键盘输入的内容</li>
-<li><code>&lt;pre&gt;</code>代码块</li>
-<li><code>.pre-scrollable</code>设置 max-height 为 350px ，并在垂直方向展示滚动条</li>
-<li><code>&lt;var&gt;</code>标记变量</li>
-<li><code>&lt;samp&gt;</code>标记程序输出的内容</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/08/23/bootstrap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gaogao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gaogao">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/23/bootstrap/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T15:31:33+08:00">
-                2017-08-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><h4 id="html5文档类型"><a href="#html5文档类型" class="headerlink" title="html5文档类型"></a>html5文档类型</h4><h4 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line"></div><div class="line">	&lt;!-- 在IE中运行最新的渲染模式 --&gt;</div><div class="line">	&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</div><div class="line">	</div><div class="line">	&lt;!-- 初始化移动浏览显示 --&gt;</div><div class="line">	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</div><div class="line">	设备宽度，初始化不缩放</div><div class="line"></div><div class="line">	&lt;!-- bootstrap样式 --&gt;</div><div class="line">	&lt;link href=&quot;css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</div><div class="line"></div><div class="line">	&lt;!-- IE8支持HTML5标签 --&gt;</div><div class="line">	&lt;script src=&quot;https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">	&lt;!-- IE8对媒体查询支持 --&gt;</div><div class="line">     &lt;script src=&quot;https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">	&lt;title&gt;环境搭建&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h1&gt;hello world&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;!-- 在bootstrap前引用jquery，因为bootstrap中的js插件依赖于jQuery --&gt;</div><div class="line"> &lt;script src=&quot;https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js&quot;&gt;&lt;/script&gt;</div><div class="line"> </div><div class="line"> &lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>viewport 元数据标签<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code><br>width=device-width : 设置viewport的宽度为设备宽<br>intial-scale ：设置初始缩放比例<br>user-scalable=no ：在移动设备浏览器上设置可以禁用其缩放功能，此时用户只能通过滚动查看内容</li>
-</ul>
-<h3 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h3><p>保留部分浏览器的基础样式，解决部分潜在的问题，提升细节体验：</p>
-<ul>
-<li>移除body的margin声明</li>
-<li>设置body的背景色为白色</li>
-<li>为排版设置了基本的字体、字号和行高</li>
-<li>设置全局链接颜色，且当链接处于悬浮“:hover”状态时才会显示下划线样式</li>
-</ul>
-
-          
+          事件代理的原理，应用和例子
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/03/event-client/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1152,7 +826,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/02/seo/" itemprop="url">SEO优化</a></h1>
+                <a class="post-title-link" href="/2017/08/02/seo/" itemprop="url">SEO优化简介</a></h1>
         
 
         <div class="post-meta">
@@ -1428,7 +1102,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/29/runtime-enviroment/" itemprop="url">运行环境</a></h1>
+                <a class="post-title-link" href="/2017/07/29/runtime-enviroment/" itemprop="url">运行环境简介</a></h1>
         
 
         <div class="post-meta">
@@ -1566,7 +1240,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/28/development-enviroment-/" itemprop="url">开发环境</a></h1>
+                <a class="post-title-link" href="/2017/07/28/development-enviroment-/" itemprop="url">开发环境简介</a></h1>
         
 
         <div class="post-meta">
@@ -1676,11 +1350,287 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/27/ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/27/ajax/" itemprop="url">原生ajax</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T00:00:00+08:00">
+                2017-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          ajax,http,XMLHttpRequest,跨域
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/27/ajax/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/07/26/cookie-session/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/26/cookie-session/" itemprop="url">存储cookie session</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T00:00:00+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          cookie和session机制，sessionStorage、localStorage和cookie
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/26/cookie-session/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1726,7 +1676,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1737,7 +1687,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -1748,7 +1698,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

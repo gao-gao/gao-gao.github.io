@@ -97,14 +97,14 @@
 <meta name="description" content="cookie和session机制，sessionStorage、localStorage和cookie">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="存储">
+<meta property="og:title" content="存储cookie session">
 <meta property="og:url" content="http://www.gaogao.site/2017/07/26/cookie-session/index.html">
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="cookie和session机制，sessionStorage、localStorage和cookie">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-26T18:26:28.000Z">
+<meta property="og:updated_time" content="2017-10-11T10:39:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="存储">
+<meta name="twitter:title" content="存储cookie session">
 <meta name="twitter:description" content="cookie和session机制，sessionStorage、localStorage和cookie">
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title>存储 | gaogao</title>
+  <title>存储cookie session | gaogao</title>
   
 
 
@@ -275,7 +275,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">存储</h1>
+          <h1 class="post-title" itemprop="name headline">存储cookie session</h1>
         
 
         <div class="post-meta">
@@ -348,7 +348,7 @@
       
 
       
-        <h3 id="1-cookie和session"><a href="#1-cookie和session" class="headerlink" title="1. cookie和session"></a>1. cookie和session</h3><h4 id="cookie机制"><a href="#cookie机制" class="headerlink" title="cookie机制:"></a>cookie机制:</h4><p>在客户端保持状态的方案</p>
+        <h3 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h3><h4 id="cookie机制"><a href="#cookie机制" class="headerlink" title="cookie机制:"></a>cookie机制:</h4><p>在客户端保持状态的方案</p>
 <ul>
 <li><p>主要内容：名字，值，过期时间，路径和域。<br>若不设置过期时间，则cookie的生命期在关闭浏览器时结束称之为会话cookie，保存在内存里；若设置过期时间，关闭浏览器之后再打开cookie仍然存在，直到超过过期时间，保存在硬盘里。</p>
 </li>
@@ -387,13 +387,13 @@
 <li>距离上一次收到客户端发送的session id时间间隔超过了session的超时设置</li>
 <li>c.服务器进程被停止（非持久session）<br>而不是在关闭浏览器时</li>
 </ol>
-<h3 id="2-sessionStorage和localStorage"><a href="#2-sessionStorage和localStorage" class="headerlink" title="2. sessionStorage和localStorage"></a>2. sessionStorage和localStorage</h3><ul>
+<h3 id="sessionStorage和localStorage"><a href="#sessionStorage和localStorage" class="headerlink" title="sessionStorage和localStorage"></a>sessionStorage和localStorage</h3><ul>
 <li><p>由HTML5 Web Storage API 提供，方便在web请求之间保存数据在本地，避免数据在浏览器和服务器间不必要地来回传递。</p>
 </li>
 <li><p>sessionStorage：引入了“浏览器”概念，是在同源的同窗口（或tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁。同时“独立”打开的不同窗口，即使是同一页面，sessionStorage对象也是不同的。</p>
 </li>
 </ul>
-<h3 id="3-cookie、sessionStorage、localStorage异同点"><a href="#3-cookie、sessionStorage、localStorage异同点" class="headerlink" title="3. cookie、sessionStorage、localStorage异同点"></a>3. cookie、sessionStorage、localStorage异同点</h3><h4 id="共同点："><a href="#共同点：" class="headerlink" title="共同点："></a>共同点：</h4><p>都是在浏览器端存储的数据且同源</p>
+<h3 id="cookie、sessionStorage、localStorage异同点"><a href="#cookie、sessionStorage、localStorage异同点" class="headerlink" title="cookie、sessionStorage、localStorage异同点"></a>cookie、sessionStorage、localStorage异同点</h3><h4 id="共同点："><a href="#共同点：" class="headerlink" title="共同点："></a>共同点：</h4><p>都是在浏览器端存储的数据且同源</p>
 <h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4><ul>
 <li><p>cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器</p>
 </li>
@@ -408,7 +408,7 @@
 <li><p>API：cookie，简单但需要封装才能用(document.cookie)；sessionStorage、localStorage简单易用</p>
 </li>
 </ul>
-<h3 id="4-js中设置cookie"><a href="#4-js中设置cookie" class="headerlink" title="4.js中设置cookie"></a>4.js中设置cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">function setCookie(cname,cvalue,exdays)&#123;</div><div class="line">	var d = new Date();</div><div class="line">	d.setTime(d.getTime()+(exdays*24*60*60*1000));</div><div class="line">	var expires = &quot;expires=&quot;+d.toGMTString();</div><div class="line">	document.cookie = cname+&quot;=&quot;+cvalue+&quot;; &quot;+expires;</div><div class="line">&#125;</div><div class="line">function getCookie(cname)&#123;</div><div class="line">	var name = cname + &quot;=&quot;;</div><div class="line">	var ca = document.cookie.split(&apos;;&apos;);</div><div class="line">	for(var i=0; i&lt;ca.length; i++) &#123;</div><div class="line">		var c = ca[i].trim();</div><div class="line">		if (c.indexOf(name)==0) return c.substring(name.length,c.length);</div><div class="line">	&#125;</div><div class="line">	return &quot;&quot;;</div><div class="line">&#125;</div><div class="line">function checkCookie()&#123;</div><div class="line">	var user=getCookie(&quot;username&quot;);</div><div class="line">	if (user!=&quot;&quot;)&#123;</div><div class="line">		alert(&quot;Welcome again &quot; + user);</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		user = prompt(&quot;Please enter your name:&quot;,&quot;&quot;);</div><div class="line">  		if (user!=&quot;&quot; &amp;&amp; user!=null)&#123;</div><div class="line">    		setCookie(&quot;username&quot;,user,30);</div><div class="line">    	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="js中设置cookie"><a href="#js中设置cookie" class="headerlink" title="js中设置cookie"></a>js中设置cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">function setCookie(cname,cvalue,exdays)&#123;</div><div class="line">	var d = new Date();</div><div class="line">	d.setTime(d.getTime()+(exdays*24*60*60*1000));</div><div class="line">	var expires = &quot;expires=&quot;+d.toGMTString();</div><div class="line">	document.cookie = cname+&quot;=&quot;+cvalue+&quot;; &quot;+expires;</div><div class="line">&#125;</div><div class="line">function getCookie(cname)&#123;</div><div class="line">	var name = cname + &quot;=&quot;;</div><div class="line">	var ca = document.cookie.split(&apos;;&apos;);</div><div class="line">	for(var i=0; i&lt;ca.length; i++) &#123;</div><div class="line">		var c = ca[i].trim();</div><div class="line">		if (c.indexOf(name)==0) return c.substring(name.length,c.length);</div><div class="line">	&#125;</div><div class="line">	return &quot;&quot;;</div><div class="line">&#125;</div><div class="line">function checkCookie()&#123;</div><div class="line">	var user=getCookie(&quot;username&quot;);</div><div class="line">	if (user!=&quot;&quot;)&#123;</div><div class="line">		alert(&quot;Welcome again &quot; + user);</div><div class="line">	&#125;</div><div class="line">	else &#123;</div><div class="line">		user = prompt(&quot;Please enter your name:&quot;,&quot;&quot;);</div><div class="line">  		if (user!=&quot;&quot; &amp;&amp; user!=null)&#123;</div><div class="line">    		setCookie(&quot;username&quot;,user,30);</div><div class="line">    	&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>通过document.cookie获取当前cookie，然后封装相关函数，并调用</p>
 
       
@@ -462,8 +462,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/27/ajax/" rel="prev" title="ajax">
-                ajax <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/27/ajax/" rel="prev" title="原生ajax">
+                原生ajax <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -537,7 +537,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -548,7 +548,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -559,7 +559,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -605,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-cookie和session"><span class="nav-number">1.</span> <span class="nav-text">1. cookie和session</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie机制"><span class="nav-number">1.1.</span> <span class="nav-text">cookie机制:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session机制："><span class="nav-number">1.2.</span> <span class="nav-text">session机制：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-sessionStorage和localStorage"><span class="nav-number">2.</span> <span class="nav-text">2. sessionStorage和localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-cookie、sessionStorage、localStorage异同点"><span class="nav-number">3.</span> <span class="nav-text">3. cookie、sessionStorage、localStorage异同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共同点："><span class="nav-number">3.1.</span> <span class="nav-text">共同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点"><span class="nav-number">3.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-js中设置cookie"><span class="nav-number">4.</span> <span class="nav-text">4.js中设置cookie</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie和session"><span class="nav-number">1.</span> <span class="nav-text">cookie和session</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie机制"><span class="nav-number">1.1.</span> <span class="nav-text">cookie机制:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session机制："><span class="nav-number">1.2.</span> <span class="nav-text">session机制：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage和localStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage和localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie、sessionStorage、localStorage异同点"><span class="nav-number">3.</span> <span class="nav-text">cookie、sessionStorage、localStorage异同点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共同点："><span class="nav-number">3.1.</span> <span class="nav-text">共同点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同点"><span class="nav-number">3.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js中设置cookie"><span class="nav-number">4.</span> <span class="nav-text">js中设置cookie</span></a></li></ol></div>
             
 
           </div>

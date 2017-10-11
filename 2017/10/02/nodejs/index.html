@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="nodejs的一些知识结构">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识node.js">
+<meta property="og:url" content="http://www.gaogao.site/2017/10/02/nodejs/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="nodejs的一些知识结构">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-11T11:20:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识node.js">
+<meta name="twitter:description" content="nodejs的一些知识结构">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/10/02/nodejs/"/>
+
+
+
+
+
+  <title>初识node.js | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/10/02/nodejs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初识node.js</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T00:00:00+08:00">
+                2017-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  nodejs的一些知识结构
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="计算机基础知识"><a href="#计算机基础知识" class="headerlink" title="计算机基础知识"></a>计算机基础知识</h3><h4 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h4><ul>
+<li>阻塞：文件读取完后才执行完程序，按顺序执行</li>
+<li>非阻塞：不需要等待文件读取完，这样就可以在读取文件时同时执行接下来的代码，大大提高了程序的性能</li>
+</ul>
+<h4 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h4><p>线程是进程的一个实体，是CPU调度和分派的基本单位</p>
+<ul>
+<li>进程：一个应用程序在处理机上的一次执行过程</li>
+<li>线程：线程是进程中的一部分，进程包含多个线程在运行。  </li>
+</ul>
+<p>区别：<br>a.地址空间和其它资源：进程间相互独立，同一进程的各线程间共享。某进程内的线程在其它进程不可见。</p>
+<p>b.通信：进程间通信IPC，线程间可以直接读写进程数据段（如全局变量）来进行通信——需要进程同步和互斥手段的辅助，以保证数据的一致性。</p>
+<p>c.调度和切换：线程上下文切换比进程上下文<br>切换要快得多。  </p>
+<p>d.在多线程OS中，进程不是一个可执行的实体。</p>
+<h3 id="node-js知识"><a href="#node-js知识" class="headerlink" title="node.js知识"></a>node.js知识</h3><h4 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h4><p>在Node环境中，一个.js文件就称之为一个模块</p>
+<ul>
+<li><p>events模块：EventEmitter–事件触发与事件监听器功能的封装</p>
+</li>
+<li><p>Buffer模块：创建一个专门存放二进制数据的缓存区</p>
+</li>
+</ul>
+<h4 id="流（stream）"><a href="#流（stream）" class="headerlink" title="流（stream）"></a>流（stream）</h4><p>常用事件：</p>
+<ul>
+<li>data：有数据可读时触发</li>
+<li>end：没有更多的数据可读时触发</li>
+<li>error：接收和写入过程中发生错误时触发</li>
+<li>finish：所有数据已被写入底层系统时触发</li>
+</ul>
+<h4 id="链式流"><a href="#链式流" class="headerlink" title="链式流"></a>链式流</h4><p>通过连接输出流到另外一个流并创建多个对个流操作链的机制。链式流一般用于管道操作。</p>
+<h4 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h4><ul>
+<li>exports：对外输出变量</li>
+<li>require：引入其他模块输出的对象<br>加载优先级：文件模块中的缓存 &gt; 原生模块 &gt; 文件模块</li>
+</ul>
+<h4 id="函数传递"><a href="#函数传递" class="headerlink" title="函数传递"></a>函数传递</h4><p>一个函数可以作为另一个函数的参数，可以先定义一个函数，然后传递；也可以直接在传递参数的地方直接定义函数（使用匿名函数作为参数）</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>访问服务器的路径</p>
+<h4 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h4><ul>
+<li>永远使用var定义变量，避免污染全局变量</li>
+<li><code>__dirname</code>:当前脚本所在目录 <code>__filename</code>:文件所在绝对路径</li>
+<li>定时器</li>
+<li>console对象</li>
+<li>process</li>
+</ul>
+<h4 id="常用工具util"><a href="#常用工具util" class="headerlink" title="常用工具util"></a>常用工具util</h4><p>提供常用函数的集合，用于弥补核心JavaScript 的功能 过于精简的不足</p>
+<ul>
+<li>util.inherits：实现对象间原型继承（仅继承原型中定义的内容）</li>
+<li>util.inspect：将任意对象转换 为字符串的方法，通常用于调试和错误输出  </li>
+</ul>
+<p>判断类型</p>
+<ul>
+<li>util.isArray(object)</li>
+<li>util.isRegExp(object)</li>
+<li>util.isDate(object)</li>
+<li>util.isError(object)</li>
+</ul>
+<h4 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h4><p>文件</p>
+<ul>
+<li>异步和同步： fs.readFile() 和fs.readFileSync() 读取文件</li>
+<li>打开文件：fs.open(path,flags[,mode],callback)</li>
+<li>获取文件信息：fs.stat(path,callback)</li>
+<li>写入文件：fs.writeFile(file,data[,options],callback)</li>
+<li>关闭文件：fs.close(fd,callback)</li>
+<li>截取文件：fs.ftruncate(fd,len,callback)</li>
+<li>删除文件：fs.unlink(path,callback)</li>
+</ul>
+<p>目录</p>
+<ul>
+<li>创建目录：fs.mkdir(path[,mode],callback)</li>
+<li>读取目录：fs.readdir(oath,callback)</li>
+<li>删除目录：fs.rmdir(path,callback)</li>
+</ul>
+<h4 id="get和post请求"><a href="#get和post请求" class="headerlink" title="get和post请求"></a>get和post请求</h4><p>get请求直接嵌入在路径中，URL是完整的请求路径，包括了?后面的部分，因此可以手动解析后面的内容作为GET请求的参数。</p>
+<ul>
+<li>url.parse:解析URL中的参数</li>
+</ul>
+<p>post请求的内容都在请求体中，http.ServerRequest没有属性内容为请求体（等待请求体传输可能很耗时），故需要手动解析请求体</p>
+<ul>
+<li>表单提交，获取提交内容</li>
+</ul>
+<h4 id="工具模块"><a href="#工具模块" class="headerlink" title="工具模块"></a>工具模块</h4><ul>
+<li><p>http模块:通过操作http模块提供的request拿到所有http请求的信息，response对象把http响应返回给浏览器</p>
+</li>
+<li><p>os：提供了一些基本的系统操作函数，获取操作系统的一些信息</p>
+</li>
+<li><p>path:提供了一些用于处理文件路径的小工具</p>
+</li>
+<li><p>net：供了一些用于底层的网络通信的小工具，包含了创建服务器/客户端的方法</p>
+</li>
+<li><p>dns：用于解析域名</p>
+</li>
+<li><p>domain：简化异步代码的异常处理，可以捕捉处理try catch无法捕捉的异常</p>
+</li>
+</ul>
+<h4 id="web模块"><a href="#web模块" class="headerlink" title="web模块"></a>web模块</h4><p>应用架构：</p>
+<ul>
+<li>client客户端：浏览器，通过 HTTP 协议向服务器请求数据</li>
+<li>server服务端：Web服务器，接收客户端请求，并向客户端发送响应数据</li>
+<li>business业务层： 通过Web 服务器处理应用程序，如与数据库交互，逻辑运算，调用外部程序等</li>
+<li>Data数据层：一般由数据库组成。</li>
+</ul>
+<h4 id="Express-框架"><a href="#Express-框架" class="headerlink" title="Express 框架"></a>Express 框架</h4><ul>
+<li>请求和响应：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/&apos;, function (req, res) &#123;</div><div class="line">   // --</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Request 对象 - request 对象表示 HTTP 请求，包含了请求查询字符串，参数，内容，HTTP 头部等属性<br>Response 对象 - response 对象表示 HTTP 响应，即在接收到请求时向客户端发送的 HTTP 响应数据</p>
+<ul>
+<li><p>路由：通过路由提取出请求的URL以及GET/POST参数，决定由谁(指定脚本)去响应客户端请求</p>
+</li>
+<li><p>静态文件：设置静态文件如：图片， CSS, JavaScript 等<br><code>app.use(express.static(&#39;public&#39;));</code></p>
+</li>
+<li><p>get方法：会将表单数据加在URL里面返回</p>
+</li>
+<li><p>post方法</p>
+</li>
+<li><p>文件上传：表单 enctype 属性设置为 multipart/form-data</p>
+</li>
+<li><p>cookie管理：使用中间件向 Node.js 服务器发送 cookie 信息</p>
+</li>
+</ul>
+<h4 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h4><p>REST即表述性状态传递，一组架构约束条件和原则，这些约束条件和原则的应用程序或设计就是RESTful</p>
+<ul>
+<li>GET - 用于获取数据。</li>
+<li>PUT - 用于更新或添加数据。</li>
+<li>DELETE - 用于删除数据。</li>
+<li>POST - 用于添加数据。</li>
+</ul>
+<h4 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h4><ul>
+<li><p>exec - child_process.exec 使用子进程执行命令，缓存子进程的输出，并将子进程的输出以回调函数参数的形式返回。</p>
+</li>
+<li><p>spawn - child_process.spawn 使用指定的命令行参数创建新进程。</p>
+</li>
+<li><p>fork - child_process.fork 是 spawn()的特殊形式，用于在子进程中运行的模块，如 fork(‘./son.js’) 相当于 spawn(‘node’, [‘./son.js’]) 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。</p>
+</li>
+</ul>
+<h4 id="JXcore打包"><a href="#JXcore打包" class="headerlink" title="JXcore打包"></a>JXcore打包</h4><p>支持多线程的 Node.js 发行版本，基本不需要对你现有的代码做任何改动就可以直接线程安全地以多线程运行。</p>
+<h4 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h4><p>使用 Node.js 来连接 MySQL，并对数据库进行操作</p>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><p>一种文档导向数据库管理系统，由C++撰写而成</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/02/order-bubble/" rel="next" title="冒泡排序">
+                <i class="fa fa-chevron-left"></i> 冒泡排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机基础知识"><span class="nav-number">1.</span> <span class="nav-text">计算机基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞与非阻塞"><span class="nav-number">1.1.</span> <span class="nav-text">阻塞与非阻塞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程与线程"><span class="nav-number">1.2.</span> <span class="nav-text">进程与线程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-js知识"><span class="nav-number">2.</span> <span class="nav-text">node.js知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模块"><span class="nav-number">2.1.</span> <span class="nav-text">模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流（stream）"><span class="nav-number">2.2.</span> <span class="nav-text">流（stream）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链式流"><span class="nav-number">2.3.</span> <span class="nav-text">链式流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模块系统"><span class="nav-number">2.4.</span> <span class="nav-text">模块系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数传递"><span class="nav-number">2.5.</span> <span class="nav-text">函数传递</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由"><span class="nav-number">2.6.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局对象"><span class="nav-number">2.7.</span> <span class="nav-text">全局对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用工具util"><span class="nav-number">2.8.</span> <span class="nav-text">常用工具util</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统"><span class="nav-number">2.9.</span> <span class="nav-text">文件系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get和post请求"><span class="nav-number">2.10.</span> <span class="nav-text">get和post请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具模块"><span class="nav-number">2.11.</span> <span class="nav-text">工具模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web模块"><span class="nav-number">2.12.</span> <span class="nav-text">web模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Express-框架"><span class="nav-number">2.13.</span> <span class="nav-text">Express 框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RESTful-API"><span class="nav-number">2.14.</span> <span class="nav-text">RESTful API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多进程"><span class="nav-number">2.15.</span> <span class="nav-text">多进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JXcore打包"><span class="nav-number">2.16.</span> <span class="nav-text">JXcore打包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL"><span class="nav-number">2.17.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MongoDB"><span class="nav-number">2.18.</span> <span class="nav-text">MongoDB</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
