@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="值类型和引用类型，typeof，强制类型转换，js内置函数，json">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-23T07:22:44.000Z">
+<meta property="og:updated_time" content="2017-10-11T10:21:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量类型和计算">
 <meta name="twitter:description" content="值类型和引用类型，typeof，强制类型转换，js内置函数，json">
@@ -348,7 +348,7 @@
       
 
       
-        <h3 id="1-js变量按照存储方式区分为哪些类型，并描述其特点？"><a href="#1-js变量按照存储方式区分为哪些类型，并描述其特点？" class="headerlink" title="1.  js变量按照存储方式区分为哪些类型，并描述其特点？"></a>1.  js变量按照存储方式区分为哪些类型，并描述其特点？</h3><p>考查知识点：值类型和引用类型的区别</p>
+        <h3 id="js变量按照存储方式区分为哪些类型，并描述其特点？"><a href="#js变量按照存储方式区分为哪些类型，并描述其特点？" class="headerlink" title="js变量按照存储方式区分为哪些类型，并描述其特点？"></a>js变量按照存储方式区分为哪些类型，并描述其特点？</h3><p>考查知识点：值类型和引用类型的区别</p>
 <ul>
 <li>值类型： 直接存储数据本身,不会因为赋值而相互干预<blockquote>
 <p>number、string、Boolean、undefined</p>
@@ -370,11 +370,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var a, b;</div><div class="line">a=function(i) &#123;alert(i);&#125;;</div><div class="line">b=function(fun)&#123;fun(2);&#125;;</div><div class="line">a(1);//alert 1</div><div class="line">b(a);//alert 2</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="2-js使用typeof-能得到哪些类型？"><a href="#2-js使用typeof-能得到哪些类型？" class="headerlink" title="2. js使用typeof()能得到哪些类型？"></a>2. js使用typeof()能得到哪些类型？</h3><blockquote>
+<h3 id="js使用typeof-能得到哪些类型？"><a href="#js使用typeof-能得到哪些类型？" class="headerlink" title="js使用typeof()能得到哪些类型？"></a>js使用typeof()能得到哪些类型？</h3><blockquote>
 <p>string, number, boolean, undefined, object(数组、对象、null), function</p>
 </blockquote>
 <p>值类型都可以用typeof判断其细分类型，而引用类型中只有function是个特例，可以直接判断其类型。</p>
-<h3 id="3-何时使用-，何时使用-？"><a href="#3-何时使用-，何时使用-？" class="headerlink" title="3. 何时使用===，何时使用==？"></a>3. 何时使用===，何时使用==？</h3><p>考查知识点：变量计算，强制类型转换</p>
+<h3 id="何时使用-，何时使用-？"><a href="#何时使用-，何时使用-？" class="headerlink" title="何时使用===，何时使用==？"></a>何时使用===，何时使用==？</h3><p>考查知识点：变量计算，强制类型转换</p>
 <ul>
 <li><p>字符串拼接</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a=1+&quot;2&quot;;//a=&quot;12&quot;</div></pre></td></tr></table></figure>
@@ -390,10 +390,10 @@
 </li>
 </ul>
 <p>===：值相等并且类型也相等，用于严格比较，不会进行强制类型转换<br>==：值相等类型不一定相等，用于比较可先做类型转换</p>
-<h3 id="4-js有哪些内置函数？"><a href="#4-js有哪些内置函数？" class="headerlink" title="4. js有哪些内置函数？"></a>4. js有哪些内置函数？</h3><blockquote>
+<h3 id="js有哪些内置函数？"><a href="#js有哪些内置函数？" class="headerlink" title="js有哪些内置函数？"></a>js有哪些内置函数？</h3><blockquote>
 <p>object, Array, Boolean, Number, String, Function, Date, RegExp, Error</p>
 </blockquote>
-<h3 id="5-如何理解JSON"><a href="#5-如何理解JSON" class="headerlink" title="5. 如何理解JSON?"></a>5. 如何理解JSON?</h3><blockquote>
+<h3 id="如何理解JSON"><a href="#如何理解JSON" class="headerlink" title="如何理解JSON?"></a>如何理解JSON?</h3><blockquote>
 <p>一个JS对象，有两个API; 同时也是一个数据格式</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">JSON.stringify(&#123;a:10,b:20&#125;)//将js对象转换为字符串</div><div class="line">JSON.parse(&quot;&#123;&apos;a&apos;:10,&apos;b&apos;:20&#125;&quot;)//将字符串转换为js对象</div></pre></td></tr></table></figure>
@@ -591,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-js变量按照存储方式区分为哪些类型，并描述其特点？"><span class="nav-number">1.</span> <span class="nav-text">1.  js变量按照存储方式区分为哪些类型，并描述其特点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-js使用typeof-能得到哪些类型？"><span class="nav-number">2.</span> <span class="nav-text">2. js使用typeof()能得到哪些类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-何时使用-，何时使用-？"><span class="nav-number">3.</span> <span class="nav-text">3. 何时使用===，何时使用==？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-js有哪些内置函数？"><span class="nav-number">4.</span> <span class="nav-text">4. js有哪些内置函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-如何理解JSON"><span class="nav-number">5.</span> <span class="nav-text">5. 如何理解JSON?</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js变量按照存储方式区分为哪些类型，并描述其特点？"><span class="nav-number">1.</span> <span class="nav-text">js变量按照存储方式区分为哪些类型，并描述其特点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js使用typeof-能得到哪些类型？"><span class="nav-number">2.</span> <span class="nav-text">js使用typeof()能得到哪些类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何时使用-，何时使用-？"><span class="nav-number">3.</span> <span class="nav-text">何时使用===，何时使用==？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js有哪些内置函数？"><span class="nav-number">4.</span> <span class="nav-text">js有哪些内置函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何理解JSON"><span class="nav-number">5.</span> <span class="nav-text">如何理解JSON?</span></a></li></ol></div>
             
 
           </div>

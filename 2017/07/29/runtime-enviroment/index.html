@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="加载资源,浏览器渲染页面,性能优化,安全性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-29T14:53:00.000Z">
+<meta property="og:updated_time" content="2017-10-11T10:24:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运行环境">
 <meta name="twitter:description" content="加载资源,浏览器渲染页面,性能优化,安全性">
@@ -348,13 +348,13 @@
       
 
       
-        <h3 id="1-加载资源的形式"><a href="#1-加载资源的形式" class="headerlink" title="1. 加载资源的形式"></a>1. 加载资源的形式</h3><ul>
+        <h3 id="加载资源的形式"><a href="#加载资源的形式" class="headerlink" title="加载资源的形式"></a>加载资源的形式</h3><ul>
 <li><p>输入URL或者跳转页面加载html</p>
 </li>
 <li><p>加载html中的静态资源</p>
 </li>
 </ul>
-<h3 id="2-加载资源的过程"><a href="#2-加载资源的过程" class="headerlink" title="2. 加载资源的过程"></a>2. 加载资源的过程</h3><ol>
+<h3 id="加载资源的过程"><a href="#加载资源的过程" class="headerlink" title="加载资源的过程"></a>加载资源的过程</h3><ol>
 <li><p>浏览器根据DNS服务器得到域名的IP地址</p>
 </li>
 <li><p>向这个IP的及其发送http请求</p>
@@ -364,7 +364,7 @@
 <li><p>浏览器得到返回内容</p>
 </li>
 </ol>
-<h3 id="3-浏览器渲染页面的过程"><a href="#3-浏览器渲染页面的过程" class="headerlink" title="3. 浏览器渲染页面的过程"></a>3. 浏览器渲染页面的过程</h3><ol>
+<h3 id="浏览器渲染页面的过程"><a href="#浏览器渲染页面的过程" class="headerlink" title="浏览器渲染页面的过程"></a>浏览器渲染页面的过程</h3><ol>
 <li><p>根据html结构生成DOM树</p>
 </li>
 <li><p>根据CSS生成CSSOM（object model）</p>
@@ -376,9 +376,9 @@
 <li><p>遇到<code>&lt;script&gt;</code>时，会执行并阻塞渲染（因为js可以改变DOM结构）</p>
 </li>
 </ol>
-<h3 id="4-window-onload和DOMContentLoaded"><a href="#4-window-onload和DOMContentLoaded" class="headerlink" title="4. window.onload和DOMContentLoaded"></a>4. window.onload和DOMContentLoaded</h3><h4 id="window-onload："><a href="#window-onload：" class="headerlink" title="window.onload："></a>window.onload：</h4><p>页面的全部资源加载完才会执行，包括图片、视屏等</p>
+<h3 id="window-onload和DOMContentLoaded"><a href="#window-onload和DOMContentLoaded" class="headerlink" title="window.onload和DOMContentLoaded"></a>window.onload和DOMContentLoaded</h3><h4 id="window-onload："><a href="#window-onload：" class="headerlink" title="window.onload："></a>window.onload：</h4><p>页面的全部资源加载完才会执行，包括图片、视屏等</p>
 <h4 id="DOMContentLoaded"><a href="#DOMContentLoaded" class="headerlink" title="DOMContentLoaded"></a>DOMContentLoaded</h4><p>DOM渲染完即可执行，此时图片、视屏还没加载完</p>
-<h3 id="5-性能优化"><a href="#5-性能优化" class="headerlink" title="5. 性能优化"></a>5. 性能优化</h3><h4 id="加载资源优化"><a href="#加载资源优化" class="headerlink" title="加载资源优化"></a>加载资源优化</h4><ul>
+<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><h4 id="加载资源优化"><a href="#加载资源优化" class="headerlink" title="加载资源优化"></a>加载资源优化</h4><ul>
 <li>静态资源的压缩合并</li>
 <li>静态资源缓存</li>
 <li>使用CDN让资源加载更快</li>
@@ -392,7 +392,7 @@
 <li>事件节流</li>
 <li>尽早执行操作（如DOMContentLoaded）</li>
 </ul>
-<h3 id="6-安全性"><a href="#6-安全性" class="headerlink" title="6. 安全性"></a>6. 安全性</h3><h4 id="XSS跨站请求攻击"><a href="#XSS跨站请求攻击" class="headerlink" title="XSS跨站请求攻击"></a>XSS跨站请求攻击</h4><ul>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><h4 id="XSS跨站请求攻击"><a href="#XSS跨站请求攻击" class="headerlink" title="XSS跨站请求攻击"></a>XSS跨站请求攻击</h4><ul>
 <li>在提交内容中写入脚本，提交之后，执行脚本，获取信息<br>例如：在博客中写入脚本获取阅读者的cookie，就可能获取到阅读者的一些私密信息<h4 id="XSRF跨站请求伪造"><a href="#XSRF跨站请求伪造" class="headerlink" title="XSRF跨站请求伪造"></a>XSRF跨站请求伪造</h4></li>
 <li>在一个网站模拟另外一个网站的请求<br>例如：在购物网站浏览商品时，收到邮件（邮件中隐藏购买商品请求），如果没有任何验证，打开邮件即会购买付款</li>
 </ul>
@@ -591,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-加载资源的形式"><span class="nav-number">1.</span> <span class="nav-text">1. 加载资源的形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-加载资源的过程"><span class="nav-number">2.</span> <span class="nav-text">2. 加载资源的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浏览器渲染页面的过程"><span class="nav-number">3.</span> <span class="nav-text">3. 浏览器渲染页面的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-window-onload和DOMContentLoaded"><span class="nav-number">4.</span> <span class="nav-text">4. window.onload和DOMContentLoaded</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#window-onload："><span class="nav-number">4.1.</span> <span class="nav-text">window.onload：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOMContentLoaded"><span class="nav-number">4.2.</span> <span class="nav-text">DOMContentLoaded</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-性能优化"><span class="nav-number">5.</span> <span class="nav-text">5. 性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加载资源优化"><span class="nav-number">5.1.</span> <span class="nav-text">加载资源优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染优化"><span class="nav-number">5.2.</span> <span class="nav-text">渲染优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-安全性"><span class="nav-number">6.</span> <span class="nav-text">6. 安全性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS跨站请求攻击"><span class="nav-number">6.1.</span> <span class="nav-text">XSS跨站请求攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSRF跨站请求伪造"><span class="nav-number">6.2.</span> <span class="nav-text">XSRF跨站请求伪造</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载资源的形式"><span class="nav-number">1.</span> <span class="nav-text">加载资源的形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载资源的过程"><span class="nav-number">2.</span> <span class="nav-text">加载资源的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器渲染页面的过程"><span class="nav-number">3.</span> <span class="nav-text">浏览器渲染页面的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-onload和DOMContentLoaded"><span class="nav-number">4.</span> <span class="nav-text">window.onload和DOMContentLoaded</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#window-onload："><span class="nav-number">4.1.</span> <span class="nav-text">window.onload：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOMContentLoaded"><span class="nav-number">4.2.</span> <span class="nav-text">DOMContentLoaded</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能优化"><span class="nav-number">5.</span> <span class="nav-text">性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加载资源优化"><span class="nav-number">5.1.</span> <span class="nav-text">加载资源优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染优化"><span class="nav-number">5.2.</span> <span class="nav-text">渲染优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全性"><span class="nav-number">6.</span> <span class="nav-text">安全性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#XSS跨站请求攻击"><span class="nav-number">6.1.</span> <span class="nav-text">XSS跨站请求攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XSRF跨站请求伪造"><span class="nav-number">6.2.</span> <span class="nav-text">XSRF跨站请求伪造</span></a></li></ol></li></ol></div>
             
 
           </div>

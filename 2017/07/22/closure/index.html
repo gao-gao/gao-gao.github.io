@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="函数相关知识，变量作用域，作用域链，闭包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-26T18:26:21.000Z">
+<meta property="og:updated_time" content="2017-10-11T10:22:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域和闭包">
 <meta name="twitter:description" content="函数相关知识，变量作用域，作用域链，闭包">
@@ -348,13 +348,13 @@
       
 
       
-        <h3 id="1-函数"><a href="#1-函数" class="headerlink" title="1. 函数"></a>1. 函数</h3><ul>
+        <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
 <li>函数定义：<br>a. 关键字function加函数名定义<br>b. 将匿名函数赋值给变量</li>
 <li>调用传参：<br>a. 实参数目大于形参时，其值保存在rest中（ES6标准引入）<br>b. 实参数目小于形参时，rest会接收一个空数组，对应形参为undefined<br>c. arguments关键字，只在函数内部起作用，永远指向当前函数的调用者所传入的参数<br>d. rest参数，只能写在最后，用前面用…标识，传入的参数先对应所给的形参，多余的参数以数组形式保存在rest中（ES6标准中引入，不是所有的浏览器都可使用）</li>
 <li>return语句：<br>函数体内部的语句一旦执行到return语句，函数就执行完毕并将结果返回；<br>如果没有return语句，函数执行完毕后也会返回结果（结果为undefined）；<br>js引擎有一个自动向行末添加分号的机制，所以不建议将一条语句分行写</li>
 <li>this:<br>要在执行的时候才能确认值，定义的时候无法确定<br>使用的四种场景：<br>a. 作为普通函数执行<br>b. 作为对象属性执行<br>c. 作为构造函数执行<br>d. call apply bind</li>
 </ul>
-<h3 id="2-变量作用域"><a href="#2-变量作用域" class="headerlink" title="2. 变量作用域"></a>2. 变量作用域</h3><ul>
+<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><ul>
 <li>变量提升<br>解释器在解释代码时总会将声明的函数和变量提升到方法体的最前面（变量会被提升，其值不会提升），所以我们通常在每个作用域开始时声明变量，遵循正常的JavaScript解析步骤。</li>
 <li>全局作用域<br>声明在函数外部或者是不用var关键字在函数内部隐式声明的变量是全局变量，具有全局作用域</li>
 <li>局部作用域<br>用关键字var在函数体内部进行显示声明的变量是局部变量，具有局部作用域<blockquote>
@@ -368,9 +368,9 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="3-建立块级作用域"><a href="#3-建立块级作用域" class="headerlink" title="3. 建立块级作用域"></a>3. 建立块级作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function start()&#123;</div><div class="line">for(var i=0;i&lt;3;i++)&#123;console.log(i)&#125;</div><div class="line">console.log(i); </div><div class="line">&#125;</div><div class="line">//调用函数</div><div class="line">start()</div></pre></td></tr></table></figure>
+<h3 id="建立块级作用域"><a href="#建立块级作用域" class="headerlink" title="建立块级作用域"></a>建立块级作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function start()&#123;</div><div class="line">for(var i=0;i&lt;3;i++)&#123;console.log(i)&#125;</div><div class="line">console.log(i); </div><div class="line">&#125;</div><div class="line">//调用函数</div><div class="line">start()</div></pre></td></tr></table></figure>
 <p>打印出来的结果是“0、1、2、3”，如果{}中存在块级作用域，那么最后一个i不应该被打印出“3”，而是“undefined”报错，将var改为let可以实现块级作用域。<br>还可以使用function(){}将for循环包裹起来，并且在函数体中调用”(function(){})()”，为 i 建立一个独立的域。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function start()&#123;</div><div class="line">(function()&#123;</div><div class="line">for(var i=0;i&lt;3;i++)&#123;console.log(i)&#125;</div><div class="line">&#125;)();</div><div class="line">console.log(i); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4. 闭包"></a>4. 闭包</h3><p>定义：<em>定义在一个函数内部，并且能够读取其他函数内部变量的函数</em><br>目的：<em>创建私有变量，收敛权限</em></p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>定义：<em>定义在一个函数内部，并且能够读取其他函数内部变量的函数</em><br>目的：<em>创建私有变量，收敛权限</em></p>
 <ul>
 <li><p>函数外部访问局部变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function test()&#123;</div><div class="line">var i=10;</div><div class="line">return function()&#123;</div><div class="line">alert(i);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">var f=test();</div><div class="line">f();//alert出10</div></pre></td></tr></table></figure>
@@ -392,7 +392,7 @@
 </blockquote>
 <p>console.log(obj.getName),获取到function（）{this.name}此时函数作用域已经是在window中了，所以this指向的是window。<br>如果要将this指向obj，则要在函数中使用that保存this对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name=&quot;A&quot;;</div><div class="line">var obj=&#123;</div><div class="line">name:&quot;B&quot;,</div><div class="line">getName:function()&#123;</div><div class="line">var that=this;</div><div class="line">             return function()&#123;</div><div class="line">                      return that.name;</div><div class="line">                     &#125;</div><div class="line">           &#125;&#125;;</div><div class="line">console.log(obj.getName()());//返回B</div></pre></td></tr></table></figure></p>
 <p>将this指向的obj对象保存在that变量中，调用的name就始终是obj的name。</p>
-<h3 id="5-相关题目"><a href="#5-相关题目" class="headerlink" title="5. 相关题目"></a>5. 相关题目</h3><ul>
+<h3 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h3><ul>
 <li>谈一下对变量提升的理解？<br>解释器在解释代码时总会将声明的函数和变量提升到方法体的最前面（变量会被提升，其值不会提升），所以我们通常在每个作用域开始时声明变量，遵循正常的JavaScript解析步骤。</li>
 <li>说明一下this的几种不同的使用场景？<br>作为普通函数执行<br>作为对象属性执行<br>作为构造函数执行<br>call,aooly,bind中指向参数中的对象<br>【要在执行的时候才能确认值，定义的时候无法确定】</li>
 <li><p>创建10个a标签，点击的时候弹出对应的序号</p>
@@ -597,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-函数"><span class="nav-number">1.</span> <span class="nav-text">1. 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-变量作用域"><span class="nav-number">2.</span> <span class="nav-text">2. 变量作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-建立块级作用域"><span class="nav-number">3.</span> <span class="nav-text">3. 建立块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-闭包"><span class="nav-number">4.</span> <span class="nav-text">4. 闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-相关题目"><span class="nav-number">5.</span> <span class="nav-text">5. 相关题目</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量作用域"><span class="nav-number">2.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立块级作用域"><span class="nav-number">3.</span> <span class="nav-text">建立块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关题目"><span class="nav-number">5.</span> <span class="nav-text">相关题目</span></a></li></ol></div>
             
 
           </div>
