@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="结合实例分析cookie的使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-14T10:31:20.000Z">
+<meta property="og:updated_time" content="2017-10-14T10:33:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cookie本地存储">
 <meta name="twitter:description" content="结合实例分析cookie的使用">
@@ -352,6 +352,7 @@
 <h4 id="cookie简介："><a href="#cookie简介：" class="headerlink" title="cookie简介："></a>cookie简介：</h4><p>记录用户的一些信息记录在客户端，这样当用户再次访问这个页面时可以通过保存在客户端的一些信息做一些判断和设置</p>
 <ul>
 <li>主要内容：名字，值，过期时间，路径和域（都是以名值对的形式存储）</li>
+<li>显示：在控制台的application–cookies下可查看或者清除，或直接打印document.cookie</li>
 </ul>
 <h4 id="document-cookie"><a href="#document-cookie" class="headerlink" title="document.cookie"></a>document.cookie</h4><p>通过这个语句对cookie进行创建，读取或删除（其实就是将创建好的字符串赋给<code>document.cookie</code>），其返回格式类似于”cookie1=value; cookie2=value;”的字符串</p>
 <h4 id="封装设置cookie值的函数"><a href="#封装设置cookie值的函数" class="headerlink" title="封装设置cookie值的函数"></a>封装设置cookie值的函数</h4><p>首先设置过期时间，然后将名和值和过期时间按照cookie要求的格式加起来赋给<code>document.cookie</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function setCookie(cname,cvalue,exdays)&#123;</div><div class="line">    //获取过期时间日期,当前日期加上cookie可保存在客户端的时间</div><div class="line">    var d = new Date();</div><div class="line">    d.setTime(d.getTime()+(exdays*24*60*60*1000));</div><div class="line">    var expries = &quot;expires=&quot;+d.toGMTString()+&quot;;&quot;; </div><div class="line">    //以cookie=value;的格式将名值对赋给document.cookie</div><div class="line">    document.cookie = cname+&quot;=&quot;+cvalue+&quot;;&quot;+expires;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
