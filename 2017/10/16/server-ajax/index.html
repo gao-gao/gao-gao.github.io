@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="结合实例分析服务器的搭建，接受请求和响应；ajax发送请求并对响应结果进行处理">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax发送请求&amp;服务器处理请求">
+<meta property="og:url" content="http://www.gaogao.site/2017/10/16/server-ajax/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="结合实例分析服务器的搭建，接受请求和响应；ajax发送请求并对响应结果进行处理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-16T17:04:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax发送请求&amp;服务器处理请求">
+<meta name="twitter:description" content="结合实例分析服务器的搭建，接受请求和响应；ajax发送请求并对响应结果进行处理">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/10/16/server-ajax/"/>
+
+
+
+
+
+  <title>ajax发送请求&服务器处理请求 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/10/16/server-ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ajax发送请求&服务器处理请求</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T00:00:00+08:00">
+                2017-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  结合实例分析服务器的搭建，接受请求和响应；ajax发送请求并对响应结果进行处理
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="紧接着上面一篇文章讲述我遇到的问题"><a href="#紧接着上面一篇文章讲述我遇到的问题" class="headerlink" title="紧接着上面一篇文章讲述我遇到的问题"></a>紧接着上面一篇文章讲述我遇到的问题</h3><p>有一个需求是这样的，点击关注，弹出登录框出现弹框登录，填写账户名密码提交，发送请求到服务器，服务器接收请求并进行验证，服务器发回响应，浏览器根据响应做出相应反应。<br>依据这个需求需要做两件事：  </p>
+<ul>
+<li>封装一个ajax请求发送请求 </li>
+<li>创建一个服务器接收请求并响应</li>
+</ul>
+<h4 id="分析请求"><a href="#分析请求" class="headerlink" title="分析请求"></a>分析请求</h4><p>客户端向服务器发送的请求就是发送一个URL，根据URL中的一些信息定位资源在服务器上的位置以及向服务器传递一些参数</p>
+<h5 id="url格式"><a href="#url格式" class="headerlink" title="url格式"></a>url格式</h5><p><code>protocol://hostname[:port]/path/[;parameters][?query]#fragments</code></p>
+<ul>
+<li>protocol:协议，常见的有http,https,file,ftp(与获取文档相关)</li>
+<li>hostname:主机名，即域名，访问一个域名时，会先去电脑本地的<code>/etc/hosts</code>文件中查找该域名对应的IP地址，如果找不到就进行DNS解析找到相应的IP地址</li>
+<li>port:监听端口，可以不设置，但是一旦设置就必须从这个端口进行访问才能在服务器上访问到相应的资源</li>
+<li>path:资源在服务器上的位置，即文件在服务器上的哪个文件夹下（绝对路径）</li>
+<li>parameters:于指定特殊参数的可选项</li>
+<li>？query:查询字符串，可向服务器传递一些验证信息,多个参数用&amp;隔开</li>
+<li>#fragments:用于指定网络资源中的片断<br>根据任务需求，要向浏览器发送用户名和密码并进行验证，所以其请求应该是这样：<code>http://127.0.0.1:8081/get/?username=gaogao&amp;password=abc</code></li>
+</ul>
+<h4 id="express搭建一个服务器"><a href="#express搭建一个服务器" class="headerlink" title="express搭建一个服务器"></a>express搭建一个服务器</h4><p>先搭建一个服务器并设置其监听窗口，然后设置静态资源,再获取请求处理请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var express = require(&quot;express&quot;);</div><div class="line">var yunpage = express();</div><div class="line"></div><div class="line">var server = yunpage.listen(8081, function() &#123;</div><div class="line">    var host = server.address().host;</div><div class="line">    var port = server.address().port;</div><div class="line">    console.log(&quot;访问地址：http://%s:%s&quot;, &quot;127.0 .0 .1&quot;, port)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">yunpage.use(express.static(&quot;public&quot;));</div><div class="line"></div><div class="line">yunpage.get(&quot;/get&quot;,function(req,res)&#123;</div><div class="line">    var username = req.query.username;</div><div class="line">    var password = req.query.password;</div><div class="line">    if(username==&quot;gaogao&quot;&amp;&amp;password==&quot;abc&quot;)&#123;</div><div class="line">        res.send(&quot;1&quot;)</div><div class="line">    &#125;else&#123;</div><div class="line">        res.send(&quot;0&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>代码解释：</p>
+<ul>
+<li>require():引进express模块，nodejs中有很多很多的模块，由export输出，require引进</li>
+<li>listen():设置监听端口并传入回调函数</li>
+<li>express.static():设置静态文件</li>
+<li>req,res:前者用来获取request请求中的信息，后者用来设置对请求的响应</li>
+</ul>
+<h4 id="ajax请求"><a href="#ajax请求" class="headerlink" title="ajax请求"></a>ajax请求</h4><p>首先要创建一个ajax对象，然后发送请求等待服务器响应，最后根据服务器响应的结果进行相应的处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var xhr;</div><div class="line">if (window.XMLHttpRequest) &#123;</div><div class="line">    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码</div><div class="line">    xhr = new XMLHttpRequest();</div><div class="line">    &#125; else &#123;</div><div class="line">    // IE6, IE5 浏览器执行代码</div><div class="line">    xhr = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</div><div class="line">&#125;</div><div class="line">xhr.open(&quot;get&quot;, &quot;/get?username=&quot; + username + &quot;&amp;password=&quot; + password, true);</div><div class="line">xhr.send();</div><div class="line">xhr.onreadystatechange = function() &#123;</div><div class="line">    if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) &#123;</div><div class="line">        if (xhr.responseText == 1) &#123;</div><div class="line">            //对返回结果的响应</div><div class="line">        &#125; else &#123;</div><div class="line">           //对返回结果的响应</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码解释：</p>
+<ul>
+<li><p>创建xhr对象：对于非IE和IE浏览器所使用的API不同，所以要进行兼容处理</p>
+</li>
+<li><p>open(method,url,asnyc)：第一个参数为请求的类型post/get;第二个参数为文件在服务器的位置;第三个参数为是否异步</p>
+</li>
+<li><p>get和post的使用：与post相比，get请求更加简单也更加快并且在大部分情况下都可以使用，除了一下情况：无法使用缓存文件；向服务器发送大量数据；包含未知字符的用户输入</p>
+</li>
+<li><p>同步和异步：如果asnyc值为true则为异步，在onreadystatechange事件触发之后对请求状态进行判断并对相应结果进行处理；不推荐值为false，因为javaScript 会等到服务器响应就绪才继续执行。如果服务器繁忙或缓慢，应用程序会挂起或停止。</p>
+</li>
+<li><p>send(string)：将请求发送到服务器，当有参数时仅用于post请求</p>
+</li>
+</ul>
+<h4 id="readyState状态值"><a href="#readyState状态值" class="headerlink" title="readyState状态值"></a>readyState状态值</h4><ul>
+<li>0 未发送请求，send()方法没被调用</li>
+<li>1 正在发送请求，send()方法正在被调用</li>
+<li>2 载入完成，send()方法调用完成</li>
+<li>3 交互，正在解析响应内容</li>
+<li>4 相应内容解析完成，可以在客户端调用</li>
+</ul>
+<h4 id="status状态码"><a href="#status状态码" class="headerlink" title="status状态码"></a>status状态码</h4><ul>
+<li>1**：请求收到，进行处理</li>
+<li>2**：处理完成，成功返回响应</li>
+<li>3**：完成此请求必须进一步处理</li>
+<li>4**：请求包含一个错误语法或不能完成</li>
+<li>5**：服务器执行一个完全有效请求失败</li>
+<li>200：交易成功，客户端发送请求，服务端接收请求并处理响应，客户端接收响应都完成了</li>
+<li>500：服务器产生内部错误</li>
+<li>404：没有发现文件、查询或URl(服务器没有处理请求)</li>
+<li>302：服务器进行了重定向，在其他地址访问到资源</li>
+</ul>
+<h4 id="封装ajax请求"><a href="#封装ajax请求" class="headerlink" title="封装ajax请求"></a>封装ajax请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line">//创建一个xhr对象</div><div class="line">function setXHR() &#123;</div><div class="line">    if (window.XMLHttpRequest) &#123;</div><div class="line">        return new window.XMLHttpRequest();</div><div class="line">    &#125; else if (ActiveXObject) &#123;</div><div class="line">        return new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new error(&quot;浏览器不支持xhr对象&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 封装一个ajax请求</div><div class="line">function ajax(obj) &#123;</div><div class="line">    // 创建xhr对象</div><div class="line">    var xhr = setXHR();</div><div class="line">    // 将传入的data对象按照查询字符串的格式表示</div><div class="line">    obj.data = params(obj.data);</div><div class="line">    //为method和async设置默认参数（即传入值为空时设置为默认值）</div><div class="line">    obj.method = obj.method || &quot;post&quot;;</div><div class="line">    obj.async = obj.async || &quot;true&quot;;</div><div class="line">    //在请求后面设置随机字符串解决IE浏览器第二次默认获取缓存的问题</div><div class="line">    obj.url = obj.url + &quot;?rand=&quot; + Math.random() + &quot;&amp;&quot;;</div><div class="line">    //对两种请求方式分别初始化请求并发送</div><div class="line">    if (obj.method == &quot;post&quot;) &#123;</div><div class="line">        // post请求中不将查询数据显示在URL中，而是作为send的参数发送给服务器</div><div class="line">        xhr.open(obj.method, obj.url, obj.async);</div><div class="line">        xhr.setRequestHeader(&apos;Content-Type&apos;, &apos;application/x-www-form-urlencoded&apos;);</div><div class="line">        xhr.send(obj.data);</div><div class="line">    &#125; else &#123;</div><div class="line">        //get请求会将查询的内容显示在URL中，且send方法中无参数</div><div class="line">        obj.url += obj.data;</div><div class="line">        xhr.open(obj.method, obj.url, obj.async);</div><div class="line">        xhr.send();</div><div class="line">    &#125;</div><div class="line">    //判断是否异步，异步则用onreadystatechange事件监听当交易成功后调用回调函数，同步则等待交易成功后调用回调函数</div><div class="line">    //判断客户端的状态</div><div class="line">    if (obj.async) &#123;</div><div class="line">        xhr.onreadystatechange = function() &#123;</div><div class="line">            if (xhr.readyState == 4) &#123;</div><div class="line">                callback(xhr);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        callback(xhr);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //回调函数通过判断服务器端的状态，并将响应作为参数传给success函数</div><div class="line">    function callback(xhr) &#123;</div><div class="line">        //判断服务器状态为成功返回响应或者是客户端执行了请求但文件未变化</div><div class="line">        if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr == 304) &#123;</div><div class="line">            obj.success(xhr.responseText);</div><div class="line">        &#125; else &#123;</div><div class="line">            console.log(&quot;ERROR:&quot; + xhr.status)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function params(data) &#123;</div><div class="line">    var arr = [];</div><div class="line">    for (i in data) &#123;</div><div class="line">        arr.push(encodeURIComponent(i) + &apos;=&apos; + encodeURIComponent(data[i]));</div><div class="line">        // arr.push(i + &quot;=&quot; + data[i]);</div><div class="line">    &#125;</div><div class="line">    return arr.join(&quot;&amp;&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>调用方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">        // dataType:&apos;json</div><div class="line">        method: &apos;get&apos;,</div><div class="line">        url: &apos;/get&apos;,</div><div class="line">        data: &#123; username: username, password: password &#125;,</div><div class="line">        success: reactAction1,</div><div class="line">        async: true</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    ajax(obj);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/14/cookie/" rel="next" title="cookie本地存储">
+                <i class="fa fa-chevron-left"></i> cookie本地存储
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#紧接着上面一篇文章讲述我遇到的问题"><span class="nav-number">1.</span> <span class="nav-text">紧接着上面一篇文章讲述我遇到的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分析请求"><span class="nav-number">1.1.</span> <span class="nav-text">分析请求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#url格式"><span class="nav-number">1.1.1.</span> <span class="nav-text">url格式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#express搭建一个服务器"><span class="nav-number">1.2.</span> <span class="nav-text">express搭建一个服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ajax请求"><span class="nav-number">1.3.</span> <span class="nav-text">ajax请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#readyState状态值"><span class="nav-number">1.4.</span> <span class="nav-text">readyState状态值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#status状态码"><span class="nav-number">1.5.</span> <span class="nav-text">status状态码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装ajax请求"><span class="nav-number">1.6.</span> <span class="nav-text">封装ajax请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
