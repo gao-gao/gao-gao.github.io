@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html5&css3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="word-break和word-wrap的区别，tex-overflow文本溢出时的省略效果，字体规则@font-face，columns属性分列相关参数，用户界面中的一些属性">
+<meta name="keywords" content="html5&amp;css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css3新属性">
+<meta property="og:url" content="http://www.gaogao.site/2017/11/25/css3/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="word-break和word-wrap的区别，tex-overflow文本溢出时的省略效果，字体规则@font-face，columns属性分列相关参数，用户界面中的一些属性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-11T13:49:51.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css3新属性">
+<meta name="twitter:description" content="word-break和word-wrap的区别，tex-overflow文本溢出时的省略效果，字体规则@font-face，columns属性分列相关参数，用户界面中的一些属性">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/11/25/css3/"/>
+
+
+
+
+
+  <title>css3新属性 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/11/25/css3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css3新属性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-25T00:00:00+08:00">
+                2017-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5-css3/" itemprop="url" rel="index">
+                    <span itemprop="name">html5&css3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  word-break和word-wrap的区别，tex-overflow文本溢出时的省略效果，字体规则@font-face，columns属性分列相关参数，用户界面中的一些属性
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="css3文本效果"><a href="#css3文本效果" class="headerlink" title="css3文本效果"></a>css3文本效果</h3><h4 id="文本阴影-text-shadow"><a href="#文本阴影-text-shadow" class="headerlink" title="文本阴影 text-shadow"></a>文本阴影 text-shadow</h4><p>模糊半径设置成负数时没有任何模糊效果 </p>
+<ul>
+<li>text-shadow:x y blur color</li>
+</ul>
+<h4 id="换行-word-break"><a href="#换行-word-break" class="headerlink" title="换行 word-break"></a>换行 word-break</h4><p><code>normal,break-all,keep-all</code>断开单词进行换行</p>
+<ul>
+<li>normal 使用浏览器默认的换行规则</li>
+<li>break-all 允许在单词内换行，不会浪费空间</li>
+<li>keep-all 只能在半角空格或连字符处换行</li>
+</ul>
+<h4 id="单词换行-word-wrap"><a href="#单词换行-word-wrap" class="headerlink" title="单词换行 word-wrap"></a>单词换行 word-wrap</h4><p>允许长单词或 URL 地址换行到下一行（一行还是放不下时断开去下一行），会浪费空间</p>
+<ul>
+<li>word-wrap:normal | break-word</li>
+</ul>
+<h4 id="新文本属性"><a href="#新文本属性" class="headerlink" title="新文本属性"></a>新文本属性</h4><h5 id="text-align-last规定如何对齐文本的最后一行"><a href="#text-align-last规定如何对齐文本的最后一行" class="headerlink" title="text-align-last规定如何对齐文本的最后一行"></a>text-align-last规定如何对齐文本的最后一行</h5><p>只有IE支持</p>
+<ul>
+<li>text-align-last:auto|left|right|center|justify|start|end|initial|inherit<h5 id="text-emphasis向元素的文本应用重点标记以及重点标记的前景色"><a href="#text-emphasis向元素的文本应用重点标记以及重点标记的前景色" class="headerlink" title="text-emphasis向元素的文本应用重点标记以及重点标记的前景色"></a>text-emphasis向元素的文本应用重点标记以及重点标记的前景色</h5></li>
+<li>text-emphasis:style color</li>
+</ul>
+<h5 id="text-justify"><a href="#text-justify" class="headerlink" title="text-justify"></a>text-justify</h5><ul>
+<li>text-justify:auto|inter-word|inter-ideograph|inter-cluster|distribute|lashida|trim</li>
+</ul>
+<h5 id="text-overflow文本溢出包含元素时发生的事情"><a href="#text-overflow文本溢出包含元素时发生的事情" class="headerlink" title="text-overflow文本溢出包含元素时发生的事情"></a>text-overflow文本溢出包含元素时发生的事情</h5><ul>
+<li>text-overflow:clip|ellipsis|string</li>
+</ul>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>能用常规字体最好用常规字体，使用特殊字体渲染时用户需要从服务器下载字体，耗费时间，影响网站性能。</p>
+<h4 id="font-face规则"><a href="#font-face规则" class="headerlink" title="@font-face规则"></a>@font-face规则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*声明 WebFont*/</span><br><span class="line">@font-face &#123;</span><br><span class="line">  font-family: &apos;pinghei&apos;;</span><br><span class="line">  src: url(&apos;pinghei.eot&apos;);/IE9/</span><br><span class="line">  src:</span><br><span class="line">    url(&apos;pinghei.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),/IE6-IE8/</span><br><span class="line">    url(&apos;pinghei.woff&apos;) format(&apos;woff&apos;),/safari,android,ios/</span><br><span class="line">    url(&apos;pinghei.ttf&apos;) format(&apos;truetype&apos;),/modern browsers/</span><br><span class="line">    url(&apos;pinghei.svg&apos;) format(&apos;svg&apos;);/legacy ios/</span><br><span class="line">  font-weight: normal;</span><br><span class="line">  font-style: normal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*使用指定字体*/</span><br><span class="line">.test &#123;</span><br><span class="line">    font-family: &apos;pinghei&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="name"><a href="#name" class="headerlink" title="name"></a>name</h5><p>自定义字体名称</p>
+<h5 id="source"><a href="#source" class="headerlink" title="source"></a>source</h5><p>字体路径，绝对路径或者相对路径</p>
+<h5 id="format"><a href="#format" class="headerlink" title="format"></a>format</h5><p>定义字体格式，推荐通用模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@font-face&#123;</span><br><span class="line">    font-family:myFont;</span><br><span class="line">    src:url(&quot;myFont.eot&quot;);/IE9/</span><br><span class="line">    src:url(&quot;myFont.&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>.ttf Windows和mac最常见的字体，RAW（写入式）格式，不为网站做优化，通常用于手机端。</li>
+<li>.otf 原始的字体格式，其内置在ttf的基础下，不兼容IE</li>
+<li>.woff web字体中的最佳格式，开放的ttf和otf的压缩版本，同时支持元数据包的分离，不兼容手机端iPhone</li>
+<li>.eot IE专用字体</li>
+<li>.svg 基于SVG字体渲染的一种格式，IE火狐不兼容</li>
+</ul>
+<h5 id="weight"><a href="#weight" class="headerlink" title="weight"></a>weight</h5><p>定义字体粗细，如粗体</p>
+<h5 id="style"><a href="#style" class="headerlink" title="style"></a>style</h5><p>定义字体样式，如斜体</p>
+<h3 id="多列"><a href="#多列" class="headerlink" title="多列"></a>多列</h3><h4 id="columns-列数和宽度"><a href="#columns-列数和宽度" class="headerlink" title="columns 列数和宽度"></a>columns 列数和宽度</h4><p><code>columns:&lt;width&gt;||&lt;count&gt;</code>总宽度不够时优先考虑宽度，宽度足够时优先考虑列数</p>
+<ul>
+<li>width:length|auto(根据列数自定分配宽度)不可以使用负值</li>
+<li>count:不设置列数时根据列宽自动控制列数</li>
+</ul>
+<h4 id="column-gap-列与列之间的间隙"><a href="#column-gap-列与列之间的间隙" class="headerlink" title="column-gap 列与列之间的间隙"></a>column-gap 列与列之间的间隙</h4><p><code>column-gap：length|normal</code>默认是normal</p>
+<ul>
+<li>normal:和字体大小相同</li>
+</ul>
+<h4 id="column-rule-列与列之间的边框"><a href="#column-rule-列与列之间的边框" class="headerlink" title="column-rule 列与列之间的边框"></a>column-rule 列与列之间的边框</h4><p><code>column-rule:width|style|color</code></p>
+<ul>
+<li>width:边框厚度length|thin|medium|thick</li>
+<li>style:边框样式none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset</li>
+<li>color:边框颜色</li>
+</ul>
+<h4 id="column-span-元素是否横跨所有列"><a href="#column-span-元素是否横跨所有列" class="headerlink" title="column-span 元素是否横跨所有列"></a>column-span 元素是否横跨所有列</h4><p><code>column-span:none|all</code></p>
+<ul>
+<li>none:不跨列</li>
+<li>all:横跨所有列</li>
+</ul>
+<h4 id="column-fill-所有列的高度是否统一"><a href="#column-fill-所有列的高度是否统一" class="headerlink" title="column-fill 所有列的高度是否统一"></a>column-fill 所有列的高度是否统一</h4><p><code>column-fill:auto|balance</code>主流浏览器都不兼容</p>
+<ul>
+<li>auto:列高度自适应内容</li>
+<li>balance:所有列的高度都以最高的一列统一</li>
+</ul>
+<h4 id="column-break-判断对象是否断行"><a href="#column-break-判断对象是否断行" class="headerlink" title="column-break 判断对象是否断行"></a>column-break 判断对象是否断行</h4><h5 id="column-break-before-在对象之前是否断行"><a href="#column-break-before-在对象之前是否断行" class="headerlink" title="column-break-before 在对象之前是否断行"></a>column-break-before 在对象之前是否断行</h5><p><code>column-break-before:auto|always|avoid</code></p>
+<ul>
+<li>auto:既不强迫也不禁止在元素之前断行并产生新列</li>
+<li>always:总是在元素之前断行并产生新列</li>
+<li>avoid:避免在元素之前断行并产生新列<h5 id="column-break-after-在对象之后是否断行"><a href="#column-break-after-在对象之后是否断行" class="headerlink" title="column-break-after 在对象之后是否断行"></a>column-break-after 在对象之后是否断行</h5>同上<h5 id="column-break-inside-在对象内部是否断行"><a href="#column-break-inside-在对象内部是否断行" class="headerlink" title="column-break-inside 在对象内部是否断行"></a>column-break-inside 在对象内部是否断行</h5><code>column-break-inside:auto|avoid</code></li>
+</ul>
+<h3 id="用户界面-appearance"><a href="#用户界面-appearance" class="headerlink" title="用户界面 appearance"></a>用户界面 appearance</h3><p><code>appearance:none|button|button-bevel...</code>属性值有110个，所有主流浏览器都不支持appearance属性</p>
+<h4 id="text-overflow"><a href="#text-overflow" class="headerlink" title="text-overflow"></a>text-overflow</h4><p>在块容器&lt;’overflow’&gt;为非 visible 时，定义内联内容溢出其块容器是否截断。要结合 white-space:nowrap;和 overflow:hidden;才起作用。</p>
+<ul>
+<li>clip:当内联内容溢出块容器时，将溢出部分裁切掉</li>
+<li>ellipsis:当内联内容溢出块容器时，将溢出部分替换为…</li>
+</ul>
+<h4 id="outline-线条轮廓"><a href="#outline-线条轮廓" class="headerlink" title="outline 线条轮廓"></a>outline 线条轮廓</h4><p><code>outline:width|style|color</code>画在border外面，不占据布局空间，不影响元素尺寸</p>
+<h5 id="outline-width-线条轮廓的宽度"><a href="#outline-width-线条轮廓的宽度" class="headerlink" title="outline-width 线条轮廓的宽度"></a>outline-width 线条轮廓的宽度</h5><p><code>length|thin|medium|thick</code></p>
+<h5 id="outline-color-线条轮廓的颜色"><a href="#outline-color-线条轮廓的颜色" class="headerlink" title="outline-color 线条轮廓的颜色"></a>outline-color 线条轮廓的颜色</h5><p><code>color|invert</code></p>
+<ul>
+<li>invert:使用背景色的反色(仅IE和Opera有效)<h5 id="outline-style-线条轮廓的样式"><a href="#outline-style-线条轮廓的样式" class="headerlink" title="outline-style 线条轮廓的样式"></a>outline-style 线条轮廓的样式</h5><code>none|dotted|dashed|solid|double|groove|ridge|inset|outset</code><h4 id="outline-offset-线条轮廓偏移容器的值"><a href="#outline-offset-线条轮廓偏移容器的值" class="headerlink" title="outline-offset 线条轮廓偏移容器的值"></a>outline-offset 线条轮廓偏移容器的值</h4></li>
+<li>length:长度值定义轮廓偏移，允许负值</li>
+</ul>
+<h4 id="nav-index-导航顺序"><a href="#nav-index-导航顺序" class="headerlink" title="nav-index 导航顺序"></a>nav-index 导航顺序</h4><p><code>auto|number</code>即将被w3c废除</p>
+<ul>
+<li>auto:元素的导航焦点顺序由客户端自动分配</li>
+<li>number:用浮点数来定义元素的导航焦点顺序，若某元素的值等于1则意味着最先被导航，值相同时按照文档的先后熟顺序进行导航<h4 id="nav-up-对象的导航方向"><a href="#nav-up-对象的导航方向" class="headerlink" title="nav-up 对象的导航方向"></a>nav-up 对象的导航方向</h4><code>auto|id|[current|root|target-name]</code></li>
+<li>auto:默认顺序</li>
+<li>id:被导航元素的id</li>
+<li>target-name:框架目标页面间的元素焦点导航<br>于此相同用法的还有nav-down,nav-left,nav-right</li>
+</ul>
+<h4 id="cursor-光标形状"><a href="#cursor-光标形状" class="headerlink" title="cursor 光标形状"></a>cursor 光标形状</h4><h4 id="zoom-对象的缩放比例"><a href="#zoom-对象的缩放比例" class="headerlink" title="zoom 对象的缩放比例"></a>zoom 对象的缩放比例</h4><h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><p><code>normal|number|percentage</code></p>
+<ul>
+<li>normal 适用对象的实际尺寸</li>
+<li>number 用浮点数来定义缩放比例，不允许负值</li>
+<li>percentage 用百分比来定义缩放比例，不允许负值<h5 id="和scale的区别"><a href="#和scale的区别" class="headerlink" title="和scale的区别"></a>和scale的区别</h5></li>
+<li>scale: 以设置点为中心缩放，变换不会对布局产生影响</li>
+<li>zoom: 以左上角为几点做缩放，先缩放后布局，可能影响到盒子的计算<h4 id="box-sizing-对象的盒模型组成模式"><a href="#box-sizing-对象的盒模型组成模式" class="headerlink" title="box-sizing 对象的盒模型组成模式"></a>box-sizing 对象的盒模型组成模式</h4><code>content-box|border-box</code></li>
+<li>content-box 宽高不包括padding和border</li>
+<li>border-box 宽高包括padding和border<h4 id="resize-对象的区域是否允许用户缩放，调节元素尺寸大小"><a href="#resize-对象的区域是否允许用户缩放，调节元素尺寸大小" class="headerlink" title="resize 对象的区域是否允许用户缩放，调节元素尺寸大小"></a>resize 对象的区域是否允许用户缩放，调节元素尺寸大小</h4>需要设置overflow(auto hidden 或 scroll)，属性才会生效<code>none|both|horizontal|vertical</code></li>
+<li>none 不允许用户调整原宿大小</li>
+<li>both 用户可以调节元素的宽度和高度</li>
+<li>horizontal 用户可以调节元素的宽度</li>
+<li>vertical 用户可以调节元素的高度<h4 id="ime-mode-是否允许用户激活输入中文、韩文、日文等的输入法（IME-input-method-editor）状态"><a href="#ime-mode-是否允许用户激活输入中文、韩文、日文等的输入法（IME-input-method-editor）状态" class="headerlink" title="ime-mode 是否允许用户激活输入中文、韩文、日文等的输入法（IME:input method editor）状态"></a>ime-mode 是否允许用户激活输入中文、韩文、日文等的输入法（IME:input method editor）状态</h4><code>auto|normal|active|inactive|disable</code>对于有焦点的控件（如输入框），用户不可以激活IME【待弃用】</li>
+<li>auto 不影响IME的状态</li>
+<li>normal 正常的IME状态</li>
+<li>active 指定所有使用IME输入的字符</li>
+<li>inactive 指定所有不使用IME输入的字符</li>
+<li>disable 完全禁用IME，<h4 id="user-select-是否允许用户选中文本"><a href="#user-select-是否允许用户选中文本" class="headerlink" title="user-select 是否允许用户选中文本"></a>user-select 是否允许用户选中文本</h4><code>none|text|all|element</code></li>
+<li>none 文本不能被选择</li>
+<li>text 可以选择文本</li>
+<li>all 当所有内容作为一个整体时可以被选择</li>
+<li>element 可以选择文本 但选择范围受元素边界的约束<h4 id="pointer-events-在何时成为属性事件的target"><a href="#pointer-events-在何时成为属性事件的target" class="headerlink" title="pointer-events 在何时成为属性事件的target"></a>pointer-events 在何时成为属性事件的target</h4><code>auto|none|visiblepainted|visiblefill|visiblestroke|visible|painted|fill|stroke|all</code></li>
+<li>auto 与pointer-events属性未指定时的表现效果相同，在svg内容上与visiblepainted值相同（默认响应）</li>
+<li>none 元素永远不会成为鼠标事件的target（不会响应）</li>
+<li>其他值只能应用在svg上</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5-css3/" rel="tag"># html5&css3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/17/html5-canvaslock/" rel="next" title="手势解锁案例">
+                <i class="fa fa-chevron-left"></i> 手势解锁案例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/29/css-dog/" rel="prev" title="用css画汉克狗">
+                用css画汉克狗 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#css3文本效果"><span class="nav-number">1.</span> <span class="nav-text">css3文本效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文本阴影-text-shadow"><span class="nav-number">1.1.</span> <span class="nav-text">文本阴影 text-shadow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#换行-word-break"><span class="nav-number">1.2.</span> <span class="nav-text">换行 word-break</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单词换行-word-wrap"><span class="nav-number">1.3.</span> <span class="nav-text">单词换行 word-wrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新文本属性"><span class="nav-number">1.4.</span> <span class="nav-text">新文本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#text-align-last规定如何对齐文本的最后一行"><span class="nav-number">1.4.1.</span> <span class="nav-text">text-align-last规定如何对齐文本的最后一行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text-emphasis向元素的文本应用重点标记以及重点标记的前景色"><span class="nav-number">1.4.2.</span> <span class="nav-text">text-emphasis向元素的文本应用重点标记以及重点标记的前景色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text-justify"><span class="nav-number">1.4.3.</span> <span class="nav-text">text-justify</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text-overflow文本溢出包含元素时发生的事情"><span class="nav-number">1.4.4.</span> <span class="nav-text">text-overflow文本溢出包含元素时发生的事情</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体"><span class="nav-number">2.</span> <span class="nav-text">字体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#font-face规则"><span class="nav-number">2.1.</span> <span class="nav-text">@font-face规则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#name"><span class="nav-number">2.1.1.</span> <span class="nav-text">name</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#source"><span class="nav-number">2.1.2.</span> <span class="nav-text">source</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#format"><span class="nav-number">2.1.3.</span> <span class="nav-text">format</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#weight"><span class="nav-number">2.1.4.</span> <span class="nav-text">weight</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#style"><span class="nav-number">2.1.5.</span> <span class="nav-text">style</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多列"><span class="nav-number">3.</span> <span class="nav-text">多列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#columns-列数和宽度"><span class="nav-number">3.1.</span> <span class="nav-text">columns 列数和宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-gap-列与列之间的间隙"><span class="nav-number">3.2.</span> <span class="nav-text">column-gap 列与列之间的间隙</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-rule-列与列之间的边框"><span class="nav-number">3.3.</span> <span class="nav-text">column-rule 列与列之间的边框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-span-元素是否横跨所有列"><span class="nav-number">3.4.</span> <span class="nav-text">column-span 元素是否横跨所有列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-fill-所有列的高度是否统一"><span class="nav-number">3.5.</span> <span class="nav-text">column-fill 所有列的高度是否统一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#column-break-判断对象是否断行"><span class="nav-number">3.6.</span> <span class="nav-text">column-break 判断对象是否断行</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#column-break-before-在对象之前是否断行"><span class="nav-number">3.6.1.</span> <span class="nav-text">column-break-before 在对象之前是否断行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#column-break-after-在对象之后是否断行"><span class="nav-number">3.6.2.</span> <span class="nav-text">column-break-after 在对象之后是否断行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#column-break-inside-在对象内部是否断行"><span class="nav-number">3.6.3.</span> <span class="nav-text">column-break-inside 在对象内部是否断行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户界面-appearance"><span class="nav-number">4.</span> <span class="nav-text">用户界面 appearance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#text-overflow"><span class="nav-number">4.1.</span> <span class="nav-text">text-overflow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#outline-线条轮廓"><span class="nav-number">4.2.</span> <span class="nav-text">outline 线条轮廓</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#outline-width-线条轮廓的宽度"><span class="nav-number">4.2.1.</span> <span class="nav-text">outline-width 线条轮廓的宽度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#outline-color-线条轮廓的颜色"><span class="nav-number">4.2.2.</span> <span class="nav-text">outline-color 线条轮廓的颜色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#outline-style-线条轮廓的样式"><span class="nav-number">4.2.3.</span> <span class="nav-text">outline-style 线条轮廓的样式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#outline-offset-线条轮廓偏移容器的值"><span class="nav-number">4.3.</span> <span class="nav-text">outline-offset 线条轮廓偏移容器的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nav-index-导航顺序"><span class="nav-number">4.4.</span> <span class="nav-text">nav-index 导航顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nav-up-对象的导航方向"><span class="nav-number">4.5.</span> <span class="nav-text">nav-up 对象的导航方向</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cursor-光标形状"><span class="nav-number">4.6.</span> <span class="nav-text">cursor 光标形状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zoom-对象的缩放比例"><span class="nav-number">4.7.</span> <span class="nav-text">zoom 对象的缩放比例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参数"><span class="nav-number">4.7.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#和scale的区别"><span class="nav-number">4.7.2.</span> <span class="nav-text">和scale的区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#box-sizing-对象的盒模型组成模式"><span class="nav-number">4.8.</span> <span class="nav-text">box-sizing 对象的盒模型组成模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resize-对象的区域是否允许用户缩放，调节元素尺寸大小"><span class="nav-number">4.9.</span> <span class="nav-text">resize 对象的区域是否允许用户缩放，调节元素尺寸大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ime-mode-是否允许用户激活输入中文、韩文、日文等的输入法（IME-input-method-editor）状态"><span class="nav-number">4.10.</span> <span class="nav-text">ime-mode 是否允许用户激活输入中文、韩文、日文等的输入法（IME:input method editor）状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#user-select-是否允许用户选中文本"><span class="nav-number">4.11.</span> <span class="nav-text">user-select 是否允许用户选中文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pointer-events-在何时成为属性事件的target"><span class="nav-number">4.12.</span> <span class="nav-text">pointer-events 在何时成为属性事件的target</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html5&css3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等">
+<meta name="keywords" content="html5&amp;css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas基础知识">
+<meta property="og:url" content="http://www.gaogao.site/2017/11/14/html5-canvas/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596414937.png">
+<meta property="og:updated_time" content="2017-11-25T07:58:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas基础知识">
+<meta name="twitter:description" content="svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等">
+<meta name="twitter:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596414937.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/11/14/html5-canvas/"/>
+
+
+
+
+
+  <title>canvas基础知识 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/11/14/html5-canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">canvas基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T00:00:00+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5-css3/" itemprop="url" rel="index">
+                    <span itemprop="name">html5&css3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h3><p><img src="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596414937.png" alt="image"><br>canvas元素用于在网页上绘制2D图形和图像</p>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>动画</li>
+<li>h5游戏</li>
+<li>图表</li>
+</ul>
+<h3 id="坐标体系"><a href="#坐标体系" class="headerlink" title="坐标体系"></a>坐标体系</h3><h4 id="默认大小"><a href="#默认大小" class="headerlink" title="默认大小"></a>默认大小</h4><p>300*150(在没有设置宽高的情况下)</p>
+<h4 id="设置大小"><a href="#设置大小" class="headerlink" title="设置大小"></a>设置大小</h4><ul>
+<li>HTML和js设置的是画布的大小</li>
+<li>css设置的是画布缩放后的大小，如果仅在css上设置，canvas画布的大小还是默认值<h4 id="坐标系原点及方向"><a href="#坐标系原点及方向" class="headerlink" title="坐标系原点及方向"></a>坐标系原点及方向</h4></li>
+<li>原点在左上角</li>
+<li>向右为x方向，向下为y方向</li>
+</ul>
+<h3 id="画直线、矩形、圆"><a href="#画直线、矩形、圆" class="headerlink" title="画直线、矩形、圆"></a>画直线、矩形、圆</h3><p><code>ctx=canvas.getContext(&quot;2d&quot;)</code> 获取上下文环境。<br>画图步骤：获取canvas元素–获取绘图上下文环境–使用画图api–调用ctx.  stroke()</p>
+<h4 id="画直线"><a href="#画直线" class="headerlink" title="画直线"></a>画直线</h4><p>先在内存中画出路径，然后用stroke渲染出来，可以使用debugger语句调试</p>
+<ul>
+<li><code>ctx.moveTo(x1,y1)</code></li>
+<li><code>ctx.lineTo(x2,y2)</code><h4 id="画圆形"><a href="#画圆形" class="headerlink" title="画圆形"></a>画圆形</h4>xy圆心，radius半径,0 Math.PI*2起始弧度0和终止弧度2π，true逆时针</li>
+<li><code>ctx.arc(x,y,radius,0,Math.PI*2,true)</code><h4 id="画矩形"><a href="#画矩形" class="headerlink" title="画矩形"></a>画矩形</h4>x,y矩形左上角  w,h宽高，将stroke函数封装进去了 </li>
+<li>可以通过直线来画,也可以直接用<code>ctx.strokeRect(x,y,w,h)</code><h4 id="beginPath-和closePath"><a href="#beginPath-和closePath" class="headerlink" title="beginPath()和closePath()"></a>beginPath()和closePath()</h4></li>
+<li>beginPath和closePath并不是成对出现的，两者意义不一样</li>
+<li>beginPath的作用是重新开始一条新路径，会将之前的路径清空</li>
+<li>closePath的作用是使当前路径闭合<h4 id="描边与填充样式"><a href="#描边与填充样式" class="headerlink" title="描边与填充样式"></a>描边与填充样式</h4><code>ctx.fill(),ctx.fillRect()</code></li>
+<li>strokeStyle：设置画笔样式(直线、曲线、边框的样式)</li>
+<li>fillStyle：设置画刷的样式，即填充样式</li>
+<li>lineWidth：设置线条粗细</li>
+</ul>
+<h3 id="图形变换"><a href="#图形变换" class="headerlink" title="图形变换"></a>图形变换</h3><p>图形变换都是针对坐标系而言，变换的是坐标系的原点。且多种变换会叠加，即使使用了beginPath你b</p>
+<ul>
+<li><p>平移：ctx.translate(x,y)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(0,0);</span><br><span class="line">ctx.lineTo(100,100);</span><br><span class="line">ctx.translate(100,100);</span><br><span class="line">ctx.stroke();</span><br><span class="line"></span><br><span class="line">对于此段代码，前面两句已经将路径画出来了，后面去平移坐标系并不会对前面的路径产生影响</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>旋转：ctx.rotate(rad)</p>
+</li>
+<li>缩放：ctx.scale(x,y)<h4 id="save和restore"><a href="#save和restore" class="headerlink" title="save和restore"></a>save和restore</h4>用来保存和恢复上下文的环境ctx,一般成对出现</li>
+<li>ctx.save()：保存当前上下文环境</li>
+<li>ctx.restor()：恢复到上一次的上下文环境，save语句之前的环境</li>
+</ul>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><p>即定义一个颜色</p>
+<h4 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h4><p>ctx.createLinearGradient(x1,y1,x2,y2)，可以将渐变理解为一种颜色</p>
+<ul>
+<li>(x1,y1)线段起点，(x2,y2)线段终点</li>
+<li>起点到终点之间的颜色呈渐变</li>
+<li>gradient.addColorStop(%,rgb)控制渐变的颜色<h4 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h4>ctx.createRadialGradient(x1,y1,r1,x2,y2,r2)</li>
+<li>(x1,y1)第一个圆的圆心(x2,y2)第二个圆的圆心，r1,r2前后两个圆的半径</li>
+<li>第一个圆到第二个元之间的颜色呈渐变</li>
+</ul>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><ul>
+<li>描边文字：ctx.strokeText(text,x,y)</li>
+<li>填充文字：ctx.fillText(text,x,y)</li>
+<li>字体样式：ctx.font</li>
+<li>水平对齐方式：ctx.textAlign</li>
+<li>垂直对齐方式：ctx.textBaseline</li>
+<li>计算文本宽度：ctx.measureText(text).width,在设置字体样式之后计算</li>
+</ul>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="绘制图片的方法"><a href="#绘制图片的方法" class="headerlink" title="绘制图片的方法"></a>绘制图片的方法</h4><ul>
+<li>ctx.drawImage(image,x,y),将图片绘制在(x,y)处</li>
+<li>ctx.drawImage(image,x,y,w,h),把图片绘制在(x,y)处，并缩放为宽w高h</li>
+<li>ctx.drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)，把图片中的(sx,sy)处的宽sw高sh的区域，绘制到(dx,dy)处，并缩放为dw高dh<h4 id="在image加载完成之后绘制"><a href="#在image加载完成之后绘制" class="headerlink" title="在image加载完成之后绘制"></a>在image加载完成之后绘制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var img=new Image();</span><br><span class="line">img.src=&quot;&quot;;</span><br><span class="line">img.onload=function()&#123;</span><br><span class="line">    ctx.drawImage(img,0,0,40,40,0,0,80,80)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="图形画刷"><a href="#图形画刷" class="headerlink" title="图形画刷"></a>图形画刷</h3><p>ctx.createPattern可以创建一个画刷模式，进而可以设置到fillStyle里，进行画刷的填充</p>
+<h4 id="ctx-createPattern-image-type"><a href="#ctx-createPattern-image-type" class="headerlink" title="ctx.createPattern(image,type)"></a>ctx.createPattern(image,type)</h4><p>type取值</p>
+<ul>
+<li>no-repeat,repeat-x,repeat-y,repeat<h3 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h3><h4 id="获取像素"><a href="#获取像素" class="headerlink" title="获取像素"></a>获取像素</h4><code>var imageData=ctx.getImageData(x,y,w,h)</code></li>
+<li>返回一维数组[r1,g1,b1,a1,r2,g2,b2,a2…]<h4 id="设置像素一"><a href="#设置像素一" class="headerlink" title="设置像素一"></a>设置像素一</h4><code>ctx.putImageData(imageData,x,y)</code></li>
+<li>把imageData放在(x,y)处<h4 id="设置像素二"><a href="#设置像素二" class="headerlink" title="设置像素二"></a>设置像素二</h4><code>ctx.putImageData(imageDara,x,y,x1,y1,w,h)</code></li>
+<li>只显示(x1,y1)处的宽w,高h的区域<h4 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h4></li>
+<li>ctx.shadowOffsetX：阴影x方向的偏移距离</li>
+<li>ctx.shadowOffsetY：阴影y方向的偏移距离</li>
+<li>ctx.shadowColor：阴影的颜色</li>
+<li>ctx.shadowBlur：阴影的模糊半径<h3 id="剪辑，阴影以及曲线的控制"><a href="#剪辑，阴影以及曲线的控制" class="headerlink" title="剪辑，阴影以及曲线的控制"></a>剪辑，阴影以及曲线的控制</h3><h4 id="剪辑区域"><a href="#剪辑区域" class="headerlink" title="剪辑区域"></a>剪辑区域</h4>使用clip之后就只能在之前设置的而区域内绘制图形，结合save和restore对剪辑区域进行屏蔽  </li>
+<li>设置一个路径</li>
+<li>调用ctx.clip()</li>
+<li>绘制图形</li>
+</ul>
+<p>###绘制曲线</p>
+<h4 id="弧线"><a href="#弧线" class="headerlink" title="弧线"></a>弧线</h4><p>context.arc(x,y,radius,sangle,eangle,anticlockwise)</p>
+<ul>
+<li>圆心(x,y)，半径radius</li>
+<li>从sangle到eangle</li>
+<li>anticlockwise代表是否逆时针方向<h4 id="二次样条曲线"><a href="#二次样条曲线" class="headerlink" title="二次样条曲线"></a>二次样条曲线</h4>context.quadraticCurveTo(qcpx,qcpy,qx,qy)<h4 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h4>context.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y)<h4 id="绘制图线生成工具"><a href="#绘制图线生成工具" class="headerlink" title="绘制图线生成工具"></a>绘制图线生成工具</h4></li>
+<li>二次贝塞尔曲线</li>
+<li>三次贝塞尔曲线</li>
+</ul>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="ctx-clearRect-x-y-width-height"><a href="#ctx-clearRect-x-y-width-height" class="headerlink" title="ctx.clearRect(x,y,width,height)"></a>ctx.clearRect(x,y,width,height)</h4><p>清除(x,y)点起，宽width,高heigh的区域，用于重新绘制</p>
+<h3 id="离屏技术"><a href="#离屏技术" class="headerlink" title="离屏技术"></a>离屏技术</h3><p>通过在离屏canvas元素中绘制元素，再复制到显示canvas中，从而大幅提高性能的一种技术。使用drawImage()将新建canvas中绘制的内容进行复制;</p>
+<h4 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>静态场景绘制特别耗资源，动态场景绘制简单。为了不每次更新动态场景的时候，都去绘制静态场景</li>
+<li>一般把静态场景绘制在离屏canvas上，更新动态场景的时候，把静态场景copy过来，而不是重新绘制<h4 id="一个canvas中的图像绘制到另一个canvas的三种方法"><a href="#一个canvas中的图像绘制到另一个canvas的三种方法" class="headerlink" title="一个canvas中的图像绘制到另一个canvas的三种方法"></a>一个canvas中的图像绘制到另一个canvas的三种方法</h4></li>
+<li>ctx.drawImage(canvas,x,y),将canva绘制在(x,y)处</li>
+<li>ctx.drawImage(canvas,x,y,w,h),将canvas绘制在(x,y)处，并缩放为宽w,高h</li>
+<li>ctx.drawImage(canvas,sx,sy,sw,sh,dx,dy,dw,dh)将canvas中的(sx,xy)处的宽sw高sh的区域，绘制到(dx,dy)处，并缩放为宽dw,dh</li>
+</ul>
+<h3 id="canvas插件"><a href="#canvas插件" class="headerlink" title="canvas插件"></a>canvas插件</h3><h4 id="Chart-js"><a href="#Chart-js" class="headerlink" title="Chart.js"></a>Chart.js</h4><ul>
+<li>简单灵活<h4 id="Chartist-js"><a href="#Chartist-js" class="headerlink" title="Chartist.js"></a>Chartist.js</h4></li>
+<li>配制简单，方便转换更重图表数据格式</li>
+<li>css与js分离，代码简洁使用相对方便</li>
+<li>响应式图表支持不同浏览器尺寸和分辨率<h4 id="HighChart-js"><a href="#HighChart-js" class="headerlink" title="HighChart.js"></a>HighChart.js</h4></li>
+<li>兼容性：兼容当今所有的浏览器，包括iPhone、IE和火狐等等</li>
+<li>支持大部分的图表类型</li>
+<li>具有提示功能：鼠标移动到图表的某一点上有提示信息</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5-css3/" rel="tag"># html5&css3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/08/html5-svg/" rel="next" title="svg基础知识">
+                <i class="fa fa-chevron-left"></i> svg基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/17/html5-canvaslock/" rel="prev" title="手势解锁案例">
+                手势解锁案例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas"><span class="nav-number">1.</span> <span class="nav-text">canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景"><span class="nav-number">1.1.</span> <span class="nav-text">使用场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坐标体系"><span class="nav-number">2.</span> <span class="nav-text">坐标体系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#默认大小"><span class="nav-number">2.1.</span> <span class="nav-text">默认大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置大小"><span class="nav-number">2.2.</span> <span class="nav-text">设置大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#坐标系原点及方向"><span class="nav-number">2.3.</span> <span class="nav-text">坐标系原点及方向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画直线、矩形、圆"><span class="nav-number">3.</span> <span class="nav-text">画直线、矩形、圆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#画直线"><span class="nav-number">3.1.</span> <span class="nav-text">画直线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画圆形"><span class="nav-number">3.2.</span> <span class="nav-text">画圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画矩形"><span class="nav-number">3.3.</span> <span class="nav-text">画矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beginPath-和closePath"><span class="nav-number">3.4.</span> <span class="nav-text">beginPath()和closePath()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#描边与填充样式"><span class="nav-number">3.5.</span> <span class="nav-text">描边与填充样式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形变换"><span class="nav-number">4.</span> <span class="nav-text">图形变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#save和restore"><span class="nav-number">4.1.</span> <span class="nav-text">save和restore</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐变"><span class="nav-number">5.</span> <span class="nav-text">渐变</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性渐变"><span class="nav-number">5.1.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#径向渐变"><span class="nav-number">5.2.</span> <span class="nav-text">径向渐变</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文字"><span class="nav-number">6.</span> <span class="nav-text">文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">7.</span> <span class="nav-text">图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制图片的方法"><span class="nav-number">7.1.</span> <span class="nav-text">绘制图片的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在image加载完成之后绘制"><span class="nav-number">7.2.</span> <span class="nav-text">在image加载完成之后绘制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图形画刷"><span class="nav-number">8.</span> <span class="nav-text">图形画刷</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ctx-createPattern-image-type"><span class="nav-number">8.1.</span> <span class="nav-text">ctx.createPattern(image,type)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#像素操作"><span class="nav-number">9.</span> <span class="nav-text">像素操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取像素"><span class="nav-number">9.1.</span> <span class="nav-text">获取像素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置像素一"><span class="nav-number">9.2.</span> <span class="nav-text">设置像素一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置像素二"><span class="nav-number">9.3.</span> <span class="nav-text">设置像素二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阴影"><span class="nav-number">9.4.</span> <span class="nav-text">阴影</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪辑，阴影以及曲线的控制"><span class="nav-number">10.</span> <span class="nav-text">剪辑，阴影以及曲线的控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#剪辑区域"><span class="nav-number">10.1.</span> <span class="nav-text">剪辑区域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#弧线"><span class="nav-number">10.2.</span> <span class="nav-text">弧线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二次样条曲线"><span class="nav-number">10.3.</span> <span class="nav-text">二次样条曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#贝塞尔曲线"><span class="nav-number">10.4.</span> <span class="nav-text">贝塞尔曲线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制图线生成工具"><span class="nav-number">10.5.</span> <span class="nav-text">绘制图线生成工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">11.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ctx-clearRect-x-y-width-height"><span class="nav-number">11.1.</span> <span class="nav-text">ctx.clearRect(x,y,width,height)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离屏技术"><span class="nav-number">12.</span> <span class="nav-text">离屏技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用场景-1"><span class="nav-number">12.1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一个canvas中的图像绘制到另一个canvas的三种方法"><span class="nav-number">12.2.</span> <span class="nav-text">一个canvas中的图像绘制到另一个canvas的三种方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas插件"><span class="nav-number">13.</span> <span class="nav-text">canvas插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Chart-js"><span class="nav-number">13.1.</span> <span class="nav-text">Chart.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chartist-js"><span class="nav-number">13.2.</span> <span class="nav-text">Chartist.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HighChart-js"><span class="nav-number">13.3.</span> <span class="nav-text">HighChart.js</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

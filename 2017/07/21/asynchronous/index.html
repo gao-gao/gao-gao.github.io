@@ -354,12 +354,12 @@
 <li>坏处：只要有一个任务耗时长，后面的任务都得等待，拖延代码的执行，常见的浏览器无响应（比如死循环），就是一段代码长时间运行的后果<br>为解决此问题，js提出了同步和异步两种执行模式（所以js还是单线程的）</li>
 </ul>
 <h3 id="同步和异步的区别"><a href="#同步和异步的区别" class="headerlink" title="同步和异步的区别"></a>同步和异步的区别</h3><ul>
-<li>同步<br>后一个任务等待前一个任务完成之后才会执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">alert(3)</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
+<li>同步<br>后一个任务等待前一个任务完成之后才会执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(2);</span><br><span class="line">alert(3)</span><br><span class="line">console.log(4)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>依次执行，先打印2，然后弹出3，点击弹框确定后弹框消失，打印4。在这个过程中有一个等待时间，即<code>console.log(4)</code>要等待弹框结束之后才会执行</p>
 <ul>
-<li>异步<br>每一个任务有一个或者多个回调函数，前一个任务结束后，不是执行后一个任务而是执行后一个任务的回调函数，后一个任务不用等待前一个任务完成就可以执行（程序的执行顺序和任务的排列顺序是不一致的）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(2);</div><div class="line">setTimeout(function()&#123;alert(3)&#125;);</div><div class="line">console.log(4)</div></pre></td></tr></table></figure>
+<li>异步<br>每一个任务有一个或者多个回调函数，前一个任务结束后，不是执行后一个任务而是执行后一个任务的回调函数，后一个任务不用等待前一个任务完成就可以执行（程序的执行顺序和任务的排列顺序是不一致的）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(2);</span><br><span class="line">setTimeout(function()&#123;alert(3)&#125;);</span><br><span class="line">console.log(4)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>先打印2，执行定时器setTimeout后（传入的函数会被暂存起来，不会立即执行），然后打印4后。待所有程序执行完，出于空闲状态时，看有没有暂存起来的要执行，发现暂存在setTimeout中的函数无需等待时间就立即执行alert（3）。在这个过程中alert不会阻塞程序运行。</p>
@@ -368,17 +368,17 @@
 <li>前端使用异步的场景<br>定时器：setTimeout, setInterval<br>网络请求：ajax请求，动态img加载<br>事件绑定</li>
 </ul>
 <h3 id="异步实例"><a href="#异步实例" class="headerlink" title="异步实例"></a>异步实例</h3><ul>
-<li>setInterval<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(100);</div><div class="line">setInterval(function()&#123;console.log(3)&#125;,1000)</div><div class="line">console.log(200);</div></pre></td></tr></table></figure>
+<li>setInterval<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(100);</span><br><span class="line">setInterval(function()&#123;console.log(3)&#125;,1000)</span><br><span class="line">console.log(200);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>打印结果：100，200，3（每格1秒打印一个3）</p>
 <ul>
-<li>ajax请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;);</div><div class="line">$get(&quot;./data1.json&quot;,function(data1)&#123;console.log(data1)&#125;)</div><div class="line">console. log(&quot;end&quot;)</div></pre></td></tr></table></figure>
+<li>ajax请求<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;start&quot;);</span><br><span class="line">$get(&quot;./data1.json&quot;,function(data1)&#123;console.log(data1)&#125;)</span><br><span class="line">console. log(&quot;end&quot;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>打印结果：start, end, 通过请求获取的data1</p>
 <ul>
-<li>img加载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">console.log(&quot;start&quot;)</div><div class="line">var img=document.createElement(&quot;img&quot;)</div><div class="line">img.onload=function()&#123;console.log(&quot;loaded&quot;)&#125;</div><div class="line">img.src=&quot;xxx.jpg&quot;</div><div class="line">console.log(&quot;end&quot;)</div><div class="line">``` </div><div class="line">- 事件绑定</div></pre></td></tr></table></figure>
+<li>img加载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;start&quot;)</span><br><span class="line">var img=document.createElement(&quot;img&quot;)</span><br><span class="line">img.onload=function()&#123;console.log(&quot;loaded&quot;)&#125;</span><br><span class="line">img.src=&quot;xxx.jpg&quot;</span><br><span class="line">console.log(&quot;end&quot;)</span><br><span class="line">``` </span><br><span class="line">- 事件绑定</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>console.log(“start”)<br>document.getElementById(“div”).addEventListener(“click”,function(){alert(“clicked”)})<br>console.log(“end”)<br>```<br>打印结果：start, end, clicked(点击了绑定事件的div之后打印)</p>
@@ -514,7 +514,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -525,7 +525,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -536,7 +536,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html5&css3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="localStorage和sessionStorage的异同点和用法，indexedDB的创建与对数据的增删查改，application cache的简单介绍以及未来一些存储方式的展望">
+<meta name="keywords" content="html5&amp;css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5中主要的两种存储方式">
+<meta property="og:url" content="http://www.gaogao.site/2017/10/28/html5-storage/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="localStorage和sessionStorage的异同点和用法，indexedDB的创建与对数据的增删查改，application cache的简单介绍以及未来一些存储方式的展望">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511592575747.png">
+<meta property="og:updated_time" content="2017-11-25T07:58:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5中主要的两种存储方式">
+<meta name="twitter:description" content="localStorage和sessionStorage的异同点和用法，indexedDB的创建与对数据的增删查改，application cache的简单介绍以及未来一些存储方式的展望">
+<meta name="twitter:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511592575747.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/10/28/html5-storage/"/>
+
+
+
+
+
+  <title>html5中主要的两种存储方式 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/10/28/html5-storage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">html5中主要的两种存储方式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T00:00:00+08:00">
+                2017-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5-css3/" itemprop="url" rel="index">
+                    <span itemprop="name">html5&css3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  localStorage和sessionStorage的异同点和用法，indexedDB的创建与对数据的增删查改，application cache的简单介绍以及未来一些存储方式的展望
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="localStorage和sessionStorage"><a href="#localStorage和sessionStorage" class="headerlink" title="localStorage和sessionStorage"></a>localStorage和sessionStorage</h3><h4 id="两者与cookie对比"><a href="#两者与cookie对比" class="headerlink" title="两者与cookie对比"></a>两者与cookie对比</h4><p>cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在，将其用于存储存在以下缺点</p>
+<ul>
+<li>cookie大小受限（仅有4kb左右）</li>
+<li>单个域名下数量限制（50个左右）</li>
+<li>污染请求头浪费流量（每次发送新的请求时都会被发送到服务器）<br>而Web Storage仅仅是为了在本地“存储”数据而生，相对cookie更加适合用于本地存储<h4 id="相同的使用方法和属性"><a href="#相同的使用方法和属性" class="headerlink" title="相同的使用方法和属性"></a>相同的使用方法和属性</h4></li>
+<li>setItem(key,value)方法设置存储内容</li>
+<li>getItem(key)方法获取存储内容</li>
+<li>removeItem(key)方法删除存储内容</li>
+<li>clear()方法清除所有内容</li>
+<li>key()方法获取存储的key,传入索引值,不存在时返回null</li>
+<li>length属性获取存储内容个数</li>
+</ul>
+<h4 id="不同的存储时效"><a href="#不同的存储时效" class="headerlink" title="不同的存储时效"></a>不同的存储时效</h4><ul>
+<li>localStorage 持久的本地存储，除非主动删除数据，否则永远不过期</li>
+<li>sessionStorage 会在网页会话结束后失效（标签页关闭）</li>
+</ul>
+<h4 id="不同的存储容量"><a href="#不同的存储容量" class="headerlink" title="不同的存储容量"></a>不同的存储容量</h4><ul>
+<li>localStorage 一般在2-5Mb</li>
+<li>sessionStorage 存储容量不定，部分浏览器不设限制</li>
+</ul>
+<h3 id="使用storage时的注意点"><a href="#使用storage时的注意点" class="headerlink" title="使用storage时的注意点"></a>使用storage时的注意点</h3><h4 id="存储容量超出限制"><a href="#存储容量超出限制" class="headerlink" title="存储容量超出限制"></a>存储容量超出限制</h4><ul>
+<li><p>sessionStorage和localStorage的存储空间虽然较大，但是存储容量仍有限制，叫做配额。<br>存储时应使用try catch捕获异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    localStorage.setItem(key,data);</span><br><span class="line">    //重复调用这个函数</span><br><span class="line">    //save();</span><br><span class="line">&#125;catch(e)&#123;</span><br><span class="line">    console.log(e.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>抛出QoutaExceededError异常<br></p>
+<h4 id="存储类型的限制"><a href="#存储类型的限制" class="headerlink" title="存储类型的限制"></a>存储类型的限制</h4></li>
+<li>仅能存储字符串</li>
+<li>注意类型转换,将存储内容转化为string<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&quot;gaogao&quot;,&#123;age:20&#125;)</span><br><span class="line">//存储为gaogao [object object]</span><br><span class="line">所以要将对象转换为字符串之后再存储</span><br><span class="line">localStorage.setItem(&quot;gaogao&quot;,JSON.stringify(&#123;age:20&#125;))</span><br><span class="line">//存储为 gaogao &#123;&quot;age&quot;:20&#125;</span><br><span class="line">然后再将JSON字符串转换为对象进行使用</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="sessionStorage失效机制"><a href="#sessionStorage失效机制" class="headerlink" title="sessionStorage失效机制"></a>sessionStorage失效机制</h4><ul>
+<li><p>刷新页面并不会失效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(&quot;name&quot;,&quot;gaogao&quot;);</span><br><span class="line">location.reload();</span><br><span class="line">sessionSrorage.getItem(&quot;name&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相同URL不同标签页不能共享sessionStorage</p>
+</li>
+</ul>
+<h4 id="性能与存储容量大小无关，与读取次数有关"><a href="#性能与存储容量大小无关，与读取次数有关" class="headerlink" title="性能与存储容量大小无关，与读取次数有关"></a>性能与存储容量大小无关，与读取次数有关</h4><ul>
+<li>减少读取item次数</li>
+<li>单个item中尽可能多的存储数据</li>
+</ul>
+<h3 id="实现一个带有过期机制的localStorage"><a href="#实现一个带有过期机制的localStorage" class="headerlink" title="实现一个带有过期机制的localStorage"></a>实现一个带有过期机制的localStorage</h3><h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>实质上就是封装一个新的对象，在这个对象的方法中可以传入一个时间参数作为存储内容的”生命”，然后结合这个时间，在其他方法中进行判断和响应，例如获取存储时可以判断是否过期，过期则删去，不过期则返回。大致实现框架如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var ls = window.localStorage;</span><br><span class="line">window.cacheStorage = &#123;</span><br><span class="line">    setItem: ls ? setItem : oops,</span><br><span class="line">    getItem: ls ? getItem : oops,</span><br><span class="line">    removeItem: ls ? removeItem : oops,</span><br><span class="line">    clear: ls ? clear : clear</span><br><span class="line">&#125;</span><br><span class="line">function setItem(key,value,time)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">function getItem(key)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">function removeItem(key)&#123;</span><br><span class="line">    ls.removeItem(key);</span><br><span class="line">&#125;</span><br><span class="line">function clear()&#123;</span><br><span class="line">    ls.clear();</span><br><span class="line">&#125;</span><br><span class="line">function opps()&#123;</span><br><span class="line">    return console.warn(&apos;your browser is not supported localStorage API&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="设置数据的存储时间"><a href="#设置数据的存储时间" class="headerlink" title="设置数据的存储时间"></a>设置数据的存储时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//将value和time保存在新对象data中，将data对象作为原有方法setItem的参数传入（即将两个参数整合成一个参数）</span><br><span class="line">function setItem (key, value, time) &#123;</span><br><span class="line">    if (typeof key === &apos;undefined&apos;) &#123;return&#125;</span><br><span class="line">    var data = &#123;</span><br><span class="line">        time: time ? Date.now() + time : 0,</span><br><span class="line">        value: value</span><br><span class="line">    &#125;</span><br><span class="line">    //上一章强调过localStorage.setItem()方法中只能接受字符串形式的参数，对象形式会直接转换为[object],所以此处要将data转换成字符串</span><br><span class="line">    data = JSON.stringify(data)</span><br><span class="line">    try &#123;</span><br><span class="line">        ls.setItem(key, data)</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">        //以防超出存储容量，将已有存储清空以存储新内容</span><br><span class="line">        ls.clear()</span><br><span class="line">        ls.setItem(key, data)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="对过期数据进行清理"><a href="#对过期数据进行清理" class="headerlink" title="对过期数据进行清理"></a>对过期数据进行清理</h4><p>实际上对过期数据的清理不是我们所想象的：设置了一组key,value之后，超过了其传入的时间，浏览器就自动将过期的key删除掉。而是，当需要使用到存储的值时，通过getItem()方法去访问，在返回值之前，此方法会对是否过期做一个判断，然后根据判断结果决定返回什么值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function getItem (key) &#123;</span><br><span class="line">    var data = ls.getItem(key);</span><br><span class="line">    //将setItem中字符串序列化的对象转换成对象，通过对象获取需要的属性和值</span><br><span class="line">    data = JSON.parse(data) || &#123;&#125;;</span><br><span class="line">//此处的判断的意思就是：如果存储生命为0，直接返回value；如果存储过期，返回空字符串；如果未过期，存在符合要求的value就返回，不存在就返回空字符串。当然这个返回的值可以自定义，比如 return &quot;数据已过期&quot; 也行</span><br><span class="line">    if (data.time === 0) &#123;</span><br><span class="line">        return data.value</span><br><span class="line">    &#125; else if (Date.now() &gt; data.time) &#123;</span><br><span class="line">        ls.removeItem(key)</span><br><span class="line">        return &apos;&apos;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return typeof data.value !== &apos;undefined&apos; ? data.value : &apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="自行维护存储空间"><a href="#自行维护存储空间" class="headerlink" title="自行维护存储空间"></a>自行维护存储空间</h4><ul>
+<li>使用try…catch…语句对超出存储的情况进行处理</li>
+</ul>
+<h4 id="对封装的对象及其方法进行检测"><a href="#对封装的对象及其方法进行检测" class="headerlink" title="对封装的对象及其方法进行检测"></a>对封装的对象及其方法进行检测</h4><p>直接在控制台中测试，测试结果如下（只将重要的列出来，其他方法皆要尝试）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cacheStorage.setItem(&quot;name&quot;,&quot;gaogao&quot;,1000);</span><br><span class="line">//localStorage中显示这对值,一秒过后仍然显示</span><br><span class="line">cacheStorage.getItem(&quot;name&quot;);</span><br><span class="line">//打印出&quot;&quot;，localStorage中不显示这对值</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何创建数据库和表"><a href="#如何创建数据库和表" class="headerlink" title="如何创建数据库和表"></a>如何创建数据库和表</h3><p>Web Storage使用简单字符串键值对在本地存储数据，方便灵活，但是对于大量结构化数据存储力不从心，IndexedDB是为了能够在客户端存储大量的结构化数据，并且使用索引高效检索的API。</p>
+<h4 id="indexedDB数据库特点"><a href="#indexedDB数据库特点" class="headerlink" title="indexedDB数据库特点"></a>indexedDB数据库特点</h4><p>indexedDB的思想是创建一套API，方便保存和读取js对象，其最大特色是使用对象保存数据，支持查询和搜索。</p>
+<ul>
+<li>indexedDB数据库是一种事物型数据库</li>
+<li>是NoSQL数据库，不能使用SQL语句进行数据的增删查改</li>
+<li>使用js对象存储数据，保证了数据的结构完整性</li>
+</ul>
+<p>indexedDB的操作为异步操作，所以大多数的操作为请求操作，向数据库发送请求，数据库返回结果，返回的对象上可以添加一系列的处理程序，如onerror事件和onsuccess事件</p>
+<h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p>version:默认情况下没有版本号，每次增加对象存储空间时都要修改版本号</p>
+<ul>
+<li>indexedDB.open(name[,version])创建或者打开一个数据库,返回一个IDBOpenDBRequest对象</li>
+<li>indexedDB.deleteDatabase(name)删除数据库,返回一个IDBOpenDBRequest对象，但其中已经没有了result</li>
+</ul>
+<h4 id="IDBOpenDBRequest对象"><a href="#IDBOpenDBRequest对象" class="headerlink" title="IDBOpenDBRequest对象"></a>IDBOpenDBRequest对象</h4><p>当创建数据库或者打开数据库之后，我们会得到一个IDBOpenDBRequest对象，而我们希望得到的DB对象在其result属性中，即IDBDatabase对象。而在IDBOpenDBRequest中还定义了几个接口，即</p>
+<ul>
+<li>onerror: 请求失败的回调函数句柄</li>
+<li>onsuccess:请求成功的回调函数句柄</li>
+<li>onupgradeneeded:请求数据库版本变化句柄</li>
+<li>result属性：保存IDBDatabase对象<br>我们通过使用这些句柄来定义不同状态下的事件处理语句<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 简化indexedDB</span><br><span class="line">var db = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;</span><br><span class="line">var version = 1;</span><br><span class="line">var request = db.open(&quot;test&quot;,version);</span><br><span class="line">//后执行</span><br><span class="line">request.onsuccess = function (e) &#123;</span><br><span class="line">    console.log(&quot;版本打开成功&quot;)</span><br><span class="line">&#125;</span><br><span class="line">request.onerror = function (e) &#123;</span><br><span class="line">    console.log(&quot;版本发生错误&quot;)</span><br><span class="line">&#125;</span><br><span class="line">//先执行</span><br><span class="line">request.onupgradeneeded = function (e) &#123;</span><br><span class="line">    console.log(&quot;版本发生变化&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当按照如下方式进行测试，打印结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">刷新页面：版本发生变化,版本打开成功</span><br><span class="line">再次刷新：版本打开成功</span><br><span class="line">设置version = 2刷新:版本发生变化,版本打开成功</span><br><span class="line">再次刷新：版本打开成功</span><br><span class="line">设置version = 1刷新:版本发生错误</span><br></pre></td></tr></table></figure>
+<p>由此可见，当我们传入的版本号和数据库当前版本号不一致的时候onupgradeneeded就会被调用，而且当试图打开比当前数据库版本低的version，调用的就是onerror了。所以我们需要利用这些事件句柄的回调函数来获取result。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//打开成功时，将result中的IDBDatabase对象赋给db</span><br><span class="line">request.onsuccess = function (e) &#123;</span><br><span class="line">    db = e.target.result;</span><br><span class="line">&#125;</span><br><span class="line">//出错时打印出错信息</span><br><span class="line">request.onerror = function (e) &#123;</span><br><span class="line">    console.log(e.currentTarget.errormessage)</span><br><span class="line">  &#125;</span><br><span class="line">//版本发生变化时</span><br></pre></td></tr></table></figure>
+<h4 id="创建表（ObjectStore）"><a href="#创建表（ObjectStore）" class="headerlink" title="创建表（ObjectStore）"></a>创建表（ObjectStore）</h4><p>name为存储对象空间的名字，即”表”的名字；keypath为存储空间的键类型（可以设置为自增类型，或者字段名），通过对keypath的设置，对表中的key的名字进行定义（比如对象id之乐类的）。</p>
+<ul>
+<li>使用indexedDB.createObjectStore(name,keypath)创建ObjectStore  </li>
+</ul>
+<h4 id="设置主键的两种方法"><a href="#设置主键的两种方法" class="headerlink" title="设置主键的两种方法"></a>设置主键的两种方法</h4><ul>
+<li>设置自增主键{autoIncrement:true}</li>
+<li>取数据中字段做为主键{keyPath:字段名}</li>
+</ul>
+<h3 id="关于“表”的增删查改"><a href="#关于“表”的增删查改" class="headerlink" title="关于“表”的增删查改"></a>关于“表”的增删查改</h3><h4 id="事物（transaction）"><a href="#事物（transaction）" class="headerlink" title="事物（transaction）"></a>事物（transaction）</h4><p>创建对象存储空间后，数据库的增删查改都是通过事物transaction来完成，在数据库对象上调用transaction()方法可以创建事务，然后获取表，继而对表中的数据进行增删查改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">//打开或者创建数据库</span><br><span class="line">function openDB (name,version) &#123;</span><br><span class="line">    var version=version || 1;</span><br><span class="line">    var request=window.indexedDB.open(name,version);</span><br><span class="line">    request.onerror=function(e)&#123;</span><br><span class="line">        console.log(e.currentTarget.error.message);</span><br><span class="line">    &#125;;</span><br><span class="line">    request.onsuccess=function(e)&#123;</span><br><span class="line">        //打开成功则将result中的IDBDatabase对象保存在myDB.db中</span><br><span class="line">        myDB.db=e.target.result;</span><br><span class="line">    &#125;;</span><br><span class="line">    request.onupgradeneeded=function(e)&#123;</span><br><span class="line">        myDB.db=e.target.result;</span><br><span class="line">        //创建一个表</span><br><span class="line">            if(!myDB.db.objectStoreNames.contains(&apos;students&apos;))&#123;</span><br><span class="line">            myDB.db.createObjectStore(&apos;students&apos;,&#123;keyPath:&quot;id&quot;&#125;);</span><br><span class="line">            console.log(&apos;DB version changed to &apos;+version);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">// 关闭数据库</span><br><span class="line">function closeDB(db)&#123;</span><br><span class="line">    db.close()</span><br><span class="line">&#125;</span><br><span class="line">// 删除数据库</span><br><span class="line">function deleteDB(name)&#123;</span><br><span class="line">    indexedDB.deleteDatabase(name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var myDB=&#123;</span><br><span class="line">    name:&apos;test&apos;,</span><br><span class="line">    version:3,</span><br><span class="line">    db:null</span><br><span class="line">&#125;;</span><br><span class="line">openDB(myDB.name,myDB.version);</span><br><span class="line">// 创建传入的数据</span><br><span class="line">var data = [&#123;</span><br><span class="line">    name: &apos;史莱姆&apos;,</span><br><span class="line">    id: &apos;001&apos;,</span><br><span class="line">    hp: 3</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    name: &apos;小蝙蝠&apos;,</span><br><span class="line">    id: &apos;002&apos;,</span><br><span class="line">    hp: 5</span><br><span class="line">&#125;, &#123;</span><br><span class="line">    name: &apos;小恶魔&apos;,</span><br><span class="line">    id: &apos;003&apos;,</span><br><span class="line">    hp: 9</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure></p>
+<h4 id="事物的模式"><a href="#事物的模式" class="headerlink" title="事物的模式"></a>事物的模式</h4><ul>
+<li>读写模式readwrite</li>
+<li>只读模式readonly</li>
+<li><p>版本变更模式versionchange</p>
+<h4 id="增删查改方法"><a href="#增删查改方法" class="headerlink" title="增删查改方法"></a>增删查改方法</h4></li>
+<li><p>增加数据IDBObjectStore.add</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//封装一个函数用来添加数据</span><br><span class="line">function addData(osName,data)&#123;</span><br><span class="line">    var transaction = myDB.db.transaction(osName, &apos;readwrite&apos;);</span><br><span class="line">    var store = transaction.objectStore(osName);</span><br><span class="line">    data.map(function(index)&#123;</span><br><span class="line">    store.add(index);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取数据IDBObjectStore.get</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//获取数据</span><br><span class="line">function getData(osName,key)&#123;</span><br><span class="line">    var transaction = myDB.db.transaction(osName, &apos;readwrite&apos;);</span><br><span class="line">    var store = transaction.objectStore(osName);</span><br><span class="line">    var request = store.get(key);</span><br><span class="line">    request.onsuccess = function(e)&#123;</span><br><span class="line">        var d = e.target.result;</span><br><span class="line">        console.log(d.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有数据IDBObjectStore.getAll</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//获取所有数据</span><br><span class="line">function getAllData(osName)&#123;</span><br><span class="line">    var transaction = myDB.db.transaction(osName, &apos;readwrite&apos;);</span><br><span class="line">    var store = transaction.objectStore(osName);</span><br><span class="line">    var request = store.getAll();</span><br><span class="line">    request.onsuccess = function(e)&#123;</span><br><span class="line">        var d = e.target.result;</span><br><span class="line">        console.log(d)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据IDBObjectStoreput</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//修改数据</span><br><span class="line">当传入的数据id为key时，修改数据；不为key时,增加数据</span><br><span class="line">function updateData(osName,key)&#123;</span><br><span class="line">    var transaction = myDB.db.transaction(osName, &apos;readwrite&apos;);</span><br><span class="line">    var store = transaction.objectStore(osName);</span><br><span class="line">    var request = store.get(key);</span><br><span class="line">    request.onsuccess = function(e)&#123;</span><br><span class="line">        request = store.put(&#123;name: &apos;小猎犬&apos;,</span><br><span class="line">    id: key,</span><br><span class="line">    hp: 9</span><br><span class="line">&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据IDBObjectStore.delete</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//删除数据</span><br><span class="line">function deleteData(osName,key)&#123;</span><br><span class="line">    var transaction = myDB.db.transaction(osName, &apos;readwrite&apos;);</span><br><span class="line">    var store = transaction.objectStore(osName);</span><br><span class="line">    var request = store.delete(key);</span><br><span class="line">    request.onsuccess = function(e)&#123;</span><br><span class="line">        console.log(&quot;成功删除&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除所有数据IDBObjectStore.clear</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//删除所有数据</span><br><span class="line">function clearData(osName)&#123;</span><br><span class="line">    var transaction = myDB.db.transaction(osName, &apos;readwrite&apos;);</span><br><span class="line">    var store = transaction.objectStore(osName);</span><br><span class="line">    var request = store.clear();</span><br><span class="line">    request.onsuccess = function(e)&#123;</span><br><span class="line">        console.log(&quot;成功删除所有数据&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="IDBRequest对象"><a href="#IDBRequest对象" class="headerlink" title="IDBRequest对象"></a>IDBRequest对象</h4><ul>
+<li>IDBRequest.onsuccess执行查询完成回调</li>
+<li>IDBRequest.result获取查询结果</li>
+<li>IDBRequest.onerror执行查询失败回调</li>
+</ul>
+<h3 id="关于索引的使用"><a href="#关于索引的使用" class="headerlink" title="关于索引的使用"></a>关于索引的使用</h3><h4 id="如何创建索引-IDBObjectStore-createIndex"><a href="#如何创建索引-IDBObjectStore-createIndex" class="headerlink" title="如何创建索引 : IDBObjectStore.createIndex()"></a>如何创建索引 : IDBObjectStore.createIndex()</h4><ul>
+<li>indexName:索引名称</li>
+<li>keyPath:索引字段，可以为空或者数组<h5 id="optionParameters-索引配制参数"><a href="#optionParameters-索引配制参数" class="headerlink" title="optionParameters:索引配制参数"></a>optionParameters:索引配制参数</h5></li>
+<li>unique:表示keypath字段的数据是否唯一</li>
+<li>multiEntry表示是否为keyPath字段的每一项建立一条索引数据</li>
+</ul>
+<h4 id="使用索引的好处"><a href="#使用索引的好处" class="headerlink" title="使用索引的好处"></a>使用索引的好处</h4><ul>
+<li>可以使用存储记录中的值进行检索</li>
+<li>索引自动更新</li>
+<li>索引数据自动排序</li>
+</ul>
+<h4 id="索引的相关方法"><a href="#索引的相关方法" class="headerlink" title="索引的相关方法"></a>索引的相关方法</h4><ul>
+<li>查询数据 IDBIndex.get()</li>
+<li>查询所有数据 IDBIndex.getAll()</li>
+<li>打开游标 IDBIndex.openCursor()</li>
+</ul>
+<h3 id="关于游标的使用"><a href="#关于游标的使用" class="headerlink" title="关于游标的使用"></a>关于游标的使用</h3><h4 id="如何创建游标"><a href="#如何创建游标" class="headerlink" title="如何创建游标"></a>如何创建游标</h4><p>IDBObject/IDBIndex.openCursor</p>
+<ul>
+<li>接收可选参数range和direction</li>
+<li>返回一个IDBRequest对象</li>
+<li>该IDBRequest对象是一个IDBCursor对象<h4 id="IDBKeyRange对象"><a href="#IDBKeyRange对象" class="headerlink" title="IDBKeyRange对象"></a>IDBKeyRange对象</h4></li>
+<li><p>upperBound:指定游标范围的上限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">upperBound(x) &lt;=x</span><br><span class="line">upperBound(x,true) &lt;x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lowerBound:指定游标范围的下限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lowerBound(x) &gt;=x</span><br><span class="line">lowerBound(x,true) &gt;x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bound:指定游标范围的区间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bound(x,y) [x,y]</span><br><span class="line">bound(x,y,true,true) (x,y)</span><br><span class="line">bound(x,y,true,false) (x,y]</span><br><span class="line">bound(x,y,false,true) [x,y)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>only:指定游标的值</p>
+<h4 id="direction参数"><a href="#direction参数" class="headerlink" title="direction参数"></a>direction参数</h4></li>
+<li>next 顺序查询</li>
+<li>nextunique 顺序唯一查询</li>
+<li>prev 逆序查询</li>
+<li>prevunique 逆序唯一查询</li>
+</ul>
+<h3 id="索引和游标的结合使用"><a href="#索引和游标的结合使用" class="headerlink" title="索引和游标的结合使用"></a>索引和游标的结合使用</h3><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
+<li>索引 可以按值搜索</li>
+<li>游标 可以选择遍历顺序及操作数据</li>
+</ul>
+<h3 id="indexed和web-storage比较"><a href="#indexed和web-storage比较" class="headerlink" title="indexed和web storage比较"></a>indexed和web storage比较</h3><h4 id="indexedDB"><a href="#indexedDB" class="headerlink" title="indexedDB"></a>indexedDB</h4><h5 id="优势-1"><a href="#优势-1" class="headerlink" title="优势"></a>优势</h5><ul>
+<li>存储类型更加丰富</li>
+<li>可实现高级查询，对数据结构相对复杂的进行查询</li>
+<li>可在 web workers中使用，提供了一些同步API</li>
+<li>存储容量更大  <h5 id="劣势，兼容性问题"><a href="#劣势，兼容性问题" class="headerlink" title="劣势，兼容性问题"></a>劣势，兼容性问题</h5></li>
+<li>iOS8&amp;9中web view不支持indexedDB</li>
+<li>Firefox单次存储Blob数据超50Mb会抛出异常</li>
+<li>Safari的indexedDB不能用于web workers<h4 id="web-storage"><a href="#web-storage" class="headerlink" title="web storage"></a>web storage</h4><h5 id="优势-2"><a href="#优势-2" class="headerlink" title="优势"></a>优势</h5></li>
+<li>API较少，更容易掌握</li>
+<li>兼容性更好</li>
+</ul>
+<h3 id="其他存储方式介绍"><a href="#其他存储方式介绍" class="headerlink" title="其他存储方式介绍"></a>其他存储方式介绍</h3><h4 id="WebSQL"><a href="#WebSQL" class="headerlink" title="WebSQL"></a>WebSQL</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openDatabase：打开数据库</span><br><span class="line">transaction：获取事物，进行数据库操作</span><br><span class="line">executeSql：执行SQL进行查询</span><br></pre></td></tr></table></figure>
+<ul>
+<li>兼容性问题严重，移动端支持还是可以的</li>
+<li>W3C已经不再积极处理其相关规范，避免使用webSQL<h4 id="Filesystem-amp-FileWriter-API"><a href="#Filesystem-amp-FileWriter-API" class="headerlink" title="Filesystem &amp; FileWriter API"></a>Filesystem &amp; FileWriter API</h4></li>
+<li>严重的兼容性问题</li>
+<li>规范被废弃</li>
+</ul>
+<h4 id="UserData-IE独有的存储方式"><a href="#UserData-IE独有的存储方式" class="headerlink" title="UserData IE独有的存储方式"></a>UserData IE独有的存储方式</h4><ul>
+<li>只在windows系统的IE中存在</li>
+<li>容量不大</li>
+</ul>
+<h3 id="跨域存储限制"><a href="#跨域存储限制" class="headerlink" title="跨域存储限制"></a>跨域存储限制</h3><h4 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h4><ul>
+<li>域名相同</li>
+<li>端口相同</li>
+<li>协议相同<h4 id="本地存储受同源策略影响"><a href="#本地存储受同源策略影响" class="headerlink" title="本地存储受同源策略影响"></a>本地存储受同源策略影响</h4>如何实现跨站点共享本地存储数据</li>
+</ul>
+<h3 id="离线存储Application-cache"><a href="#离线存储Application-cache" class="headerlink" title="离线存储Application cache"></a>离线存储Application cache</h3><h4 id="Application-cache的功能"><a href="#Application-cache的功能" class="headerlink" title="Application cache的功能"></a>Application cache的功能</h4><ul>
+<li>可永久存储资源，当资源发生改变要通过配置文件修改资源</li>
+<li>被存储资源可供离线使用</li>
+<li>可通过配制文件修改存储策略</li>
+</ul>
+<h4 id="manifest-文件配置"><a href="#manifest-文件配置" class="headerlink" title="manifest 文件配置"></a>manifest 文件配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"></span><br><span class="line">#VERSION 1.0</span><br><span class="line"></span><br><span class="line">CACHE:</span><br><span class="line">test.js</span><br><span class="line">test.jpg</span><br><span class="line"></span><br><span class="line">FALLBACK:</span><br><span class="line"></span><br><span class="line">NETWORK:</span><br><span class="line">*//星号表示所有的资源都可以</span><br></pre></td></tr></table></figure>
+<ul>
+<li>文件起始标记CACHE MANIFEST</li>
+<li>缓存标记CACHE</li>
+<li>网络请求标记 NETWORK</li>
+<li>资源失效回退标记FALLBACK</li>
+<li>使用#进行注释</li>
+</ul>
+<h4 id="appcache-示例"><a href="#appcache-示例" class="headerlink" title="appcache 示例"></a>appcache 示例</h4><ul>
+<li>运行一个web服务</li>
+<li>manifest文件的MINE Type为text/cache-manifest<h4 id="糟糕之处"><a href="#糟糕之处" class="headerlink" title="糟糕之处"></a>糟糕之处</h4></li>
+<li>文件总是来自缓存，即使在线环境（更新时必须要修改manifest）</li>
+<li>更新只在manifest文件自身更新之后</li>
+<li>别忘记给所有缓存文件加上HTTP缓存控制</li>
+<li>未被缓存的资源必须在network中指明</li>
+<li>无法分辨响应式资源，造成流量浪费</li>
+<li>无法重定向至其他域名</li>
+</ul>
+<h3 id="service-worker"><a href="#service-worker" class="headerlink" title="service worker"></a>service worker</h3><h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul>
+<li>离线缓存</li>
+<li>消息推送</li>
+<li>后台消息传递</li>
+<li>网络代理，转发请求，伪造响应</li>
+</ul>
+<h4 id="如何实现离线存储"><a href="#如何实现离线存储" class="headerlink" title="如何实现离线存储"></a>如何实现离线存储</h4><ul>
+<li>安装service worker</li>
+<li>监听install事件，并存储文件</li>
+<li>监听fetch事件，返回被存储的文件</li>
+</ul>
+<h4 id="service-worker离线存储功能的优势"><a href="#service-worker离线存储功能的优势" class="headerlink" title="service worker离线存储功能的优势"></a>service worker离线存储功能的优势</h4><ul>
+<li>可以更细致的控制存储资源</li>
+<li>拥有强大的更新机制</li>
+</ul>
+<h4 id="service-worker-现状"><a href="#service-worker-现状" class="headerlink" title="service worker 现状"></a>service worker 现状</h4><ul>
+<li>规范处于草案状态</li>
+<li>使用需要成本：https协议</li>
+<li>兼容性不佳</li>
+</ul>
+<h3 id="本章回顾"><a href="#本章回顾" class="headerlink" title="本章回顾"></a>本章回顾</h3><h4 id="localStorage和sessionStorage-1"><a href="#localStorage和sessionStorage-1" class="headerlink" title="localStorage和sessionStorage"></a>localStorage和sessionStorage</h4><ul>
+<li>注意存储至上限时的异常处理，try catch语句</li>
+<li>只能存储字符串类型数据</li>
+<li>如何实现过期机制的localStorage<h4 id="indexedDB-1"><a href="#indexedDB-1" class="headerlink" title="indexedDB"></a>indexedDB</h4><img src="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511592575747.png" alt="image"></li>
+<li>transaction / objectStore /index /cursor</li>
+<li>存储容量大，存储类型无限制</li>
+<li>适合处理复杂数据查询<h4 id="application-cache"><a href="#application-cache" class="headerlink" title="application cache"></a>application cache</h4></li>
+<li>manifest文件如何配置</li>
+<li>几个使用application cache需要注意的地方</li>
+<li>替代方案service worker</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5-css3/" rel="tag"># html5&css3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/23/layout/" rel="next" title="深入了解布局知识">
+                <i class="fa fa-chevron-left"></i> 深入了解布局知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/2017-11-02-html5-drag/" rel="prev" title="html5中的拖拽">
+                html5中的拖拽 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage和sessionStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage和sessionStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两者与cookie对比"><span class="nav-number">1.1.</span> <span class="nav-text">两者与cookie对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相同的使用方法和属性"><span class="nav-number">1.2.</span> <span class="nav-text">相同的使用方法和属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同的存储时效"><span class="nav-number">1.3.</span> <span class="nav-text">不同的存储时效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不同的存储容量"><span class="nav-number">1.4.</span> <span class="nav-text">不同的存储容量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用storage时的注意点"><span class="nav-number">2.</span> <span class="nav-text">使用storage时的注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储容量超出限制"><span class="nav-number">2.1.</span> <span class="nav-text">存储容量超出限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储类型的限制"><span class="nav-number">2.2.</span> <span class="nav-text">存储类型的限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sessionStorage失效机制"><span class="nav-number">2.3.</span> <span class="nav-text">sessionStorage失效机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能与存储容量大小无关，与读取次数有关"><span class="nav-number">2.4.</span> <span class="nav-text">性能与存储容量大小无关，与读取次数有关</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现一个带有过期机制的localStorage"><span class="nav-number">3.</span> <span class="nav-text">实现一个带有过期机制的localStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现原理"><span class="nav-number">3.1.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置数据的存储时间"><span class="nav-number">3.2.</span> <span class="nav-text">设置数据的存储时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对过期数据进行清理"><span class="nav-number">3.3.</span> <span class="nav-text">对过期数据进行清理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自行维护存储空间"><span class="nav-number">3.4.</span> <span class="nav-text">自行维护存储空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对封装的对象及其方法进行检测"><span class="nav-number">3.5.</span> <span class="nav-text">对封装的对象及其方法进行检测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何创建数据库和表"><span class="nav-number">4.</span> <span class="nav-text">如何创建数据库和表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#indexedDB数据库特点"><span class="nav-number">4.1.</span> <span class="nav-text">indexedDB数据库特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">4.2.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDBOpenDBRequest对象"><span class="nav-number">4.3.</span> <span class="nav-text">IDBOpenDBRequest对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建表（ObjectStore）"><span class="nav-number">4.4.</span> <span class="nav-text">创建表（ObjectStore）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置主键的两种方法"><span class="nav-number">4.5.</span> <span class="nav-text">设置主键的两种方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于“表”的增删查改"><span class="nav-number">5.</span> <span class="nav-text">关于“表”的增删查改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事物（transaction）"><span class="nav-number">5.1.</span> <span class="nav-text">事物（transaction）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事物的模式"><span class="nav-number">5.2.</span> <span class="nav-text">事物的模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增删查改方法"><span class="nav-number">5.3.</span> <span class="nav-text">增删查改方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDBRequest对象"><span class="nav-number">5.4.</span> <span class="nav-text">IDBRequest对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于索引的使用"><span class="nav-number">6.</span> <span class="nav-text">关于索引的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何创建索引-IDBObjectStore-createIndex"><span class="nav-number">6.1.</span> <span class="nav-text">如何创建索引 : IDBObjectStore.createIndex()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#optionParameters-索引配制参数"><span class="nav-number">6.1.1.</span> <span class="nav-text">optionParameters:索引配制参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用索引的好处"><span class="nav-number">6.2.</span> <span class="nav-text">使用索引的好处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#索引的相关方法"><span class="nav-number">6.3.</span> <span class="nav-text">索引的相关方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于游标的使用"><span class="nav-number">7.</span> <span class="nav-text">关于游标的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何创建游标"><span class="nav-number">7.1.</span> <span class="nav-text">如何创建游标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDBKeyRange对象"><span class="nav-number">7.2.</span> <span class="nav-text">IDBKeyRange对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#direction参数"><span class="nav-number">7.3.</span> <span class="nav-text">direction参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引和游标的结合使用"><span class="nav-number">8.</span> <span class="nav-text">索引和游标的结合使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优势"><span class="nav-number">8.1.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexed和web-storage比较"><span class="nav-number">9.</span> <span class="nav-text">indexed和web storage比较</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#indexedDB"><span class="nav-number">9.1.</span> <span class="nav-text">indexedDB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优势-1"><span class="nav-number">9.1.1.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#劣势，兼容性问题"><span class="nav-number">9.1.2.</span> <span class="nav-text">劣势，兼容性问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-storage"><span class="nav-number">9.2.</span> <span class="nav-text">web storage</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优势-2"><span class="nav-number">9.2.1.</span> <span class="nav-text">优势</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他存储方式介绍"><span class="nav-number">10.</span> <span class="nav-text">其他存储方式介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WebSQL"><span class="nav-number">10.1.</span> <span class="nav-text">WebSQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Filesystem-amp-FileWriter-API"><span class="nav-number">10.2.</span> <span class="nav-text">Filesystem & FileWriter API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UserData-IE独有的存储方式"><span class="nav-number">10.3.</span> <span class="nav-text">UserData IE独有的存储方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域存储限制"><span class="nav-number">11.</span> <span class="nav-text">跨域存储限制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同源"><span class="nav-number">11.1.</span> <span class="nav-text">同源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地存储受同源策略影响"><span class="nav-number">11.2.</span> <span class="nav-text">本地存储受同源策略影响</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离线存储Application-cache"><span class="nav-number">12.</span> <span class="nav-text">离线存储Application cache</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Application-cache的功能"><span class="nav-number">12.1.</span> <span class="nav-text">Application cache的功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#manifest-文件配置"><span class="nav-number">12.2.</span> <span class="nav-text">manifest 文件配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#appcache-示例"><span class="nav-number">12.3.</span> <span class="nav-text">appcache 示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#糟糕之处"><span class="nav-number">12.4.</span> <span class="nav-text">糟糕之处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service-worker"><span class="nav-number">13.</span> <span class="nav-text">service worker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#功能"><span class="nav-number">13.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何实现离线存储"><span class="nav-number">13.2.</span> <span class="nav-text">如何实现离线存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#service-worker离线存储功能的优势"><span class="nav-number">13.3.</span> <span class="nav-text">service worker离线存储功能的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#service-worker-现状"><span class="nav-number">13.4.</span> <span class="nav-text">service worker 现状</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本章回顾"><span class="nav-number">14.</span> <span class="nav-text">本章回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#localStorage和sessionStorage-1"><span class="nav-number">14.1.</span> <span class="nav-text">localStorage和sessionStorage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#indexedDB-1"><span class="nav-number">14.2.</span> <span class="nav-text">indexedDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#application-cache"><span class="nav-number">14.3.</span> <span class="nav-text">application cache</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

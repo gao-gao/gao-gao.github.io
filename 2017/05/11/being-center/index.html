@@ -350,7 +350,7 @@
       
         <h2 id="元素居中"><a href="#元素居中" class="headerlink" title="元素居中"></a>元素居中</h2><h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><h4 id="inline-inline-block-inline-table-inline-flex（父元素为块级元素）"><a href="#inline-inline-block-inline-table-inline-flex（父元素为块级元素）" class="headerlink" title="inline, inline-block, inline-table, inline-flex（父元素为块级元素）"></a>inline, inline-block, inline-table, inline-flex（父元素为块级元素）</h4><p><code>text-align: center</code></p>
 <h4 id="定宽块级元素（宽度确定）"><a href="#定宽块级元素（宽度确定）" class="headerlink" title="定宽块级元素（宽度确定）"></a>定宽块级元素（宽度确定）</h4><p><code>margin: 0 auto</code></p>
-<h4 id="两个及以上的块级元素需要在一行中居中显示"><a href="#两个及以上的块级元素需要在一行中居中显示" class="headerlink" title="两个及以上的块级元素需要在一行中居中显示"></a>两个及以上的块级元素需要在一行中居中显示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">parent element &#123; </div><div class="line">    text-align: center; </div><div class="line">&#125;</div><div class="line">element &#123; </div><div class="line">    display: inline-block; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="两个及以上的块级元素需要在一行中居中显示"><a href="#两个及以上的块级元素需要在一行中居中显示" class="headerlink" title="两个及以上的块级元素需要在一行中居中显示"></a>两个及以上的块级元素需要在一行中居中显示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; </span><br><span class="line">    text-align: center; </span><br><span class="line">&#125;</span><br><span class="line">element &#123; </span><br><span class="line">    display: inline-block; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><h4 id="inline-inline-block-inline-table-inline-flex"><a href="#inline-inline-block-inline-table-inline-flex" class="headerlink" title="inline, inline-block, inline-table, inline-flex"></a>inline, inline-block, inline-table, inline-flex</h4><ul>
 <li>单行：  </li>
 </ul>
@@ -363,38 +363,38 @@
 </ul>
 <ol>
 <li>padding-top值=padding-bottom  </li>
-<li>利用table-cell（元素高度确定），将table和table-cell属性加如其中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">parent element &#123; display: table; &#125;</div><div class="line">element &#123; display: table-cell; vertical-align: middle; &#125;</div></pre></td></tr></table></figure>
+<li>利用table-cell（元素高度确定），将table和table-cell属性加如其中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; display: table; &#125;</span><br><span class="line">element &#123; display: table-cell; vertical-align: middle; &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <ul>
-<li>使用flex-box,父元素设置flex<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parent element &#123;  </div><div class="line">  display: flex; </div><div class="line">  flex-direction: column; </div><div class="line">  justify-content: center;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li>使用flex-box,父元素设置flex<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123;  </span><br><span class="line">  display: flex; </span><br><span class="line">  flex-direction: column; </span><br><span class="line">  justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h4><ul>
 <li><p>高度确定<br>父元素设置相对定位，子元素设置绝对定位：top:50%;margin-top:负的子元素的高度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">parent element &#123; position: relative; &#125;</div><div class="line">element &#123; </div><div class="line">    position: absolute; </div><div class="line">    top: 50%; </div><div class="line">    height: 100px; </div><div class="line">    margin-top: -50px; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; position: relative; &#125;</span><br><span class="line">element &#123; </span><br><span class="line">    position: absolute; </span><br><span class="line">    top: 50%; </span><br><span class="line">    height: 100px; </span><br><span class="line">    margin-top: -50px; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>高度不确定<br>利用translateY(-50%)向上移动子元素高度的一半的距离</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">parent element &#123; </div><div class="line">  position: relative; </div><div class="line">&#125;</div><div class="line">element &#123; </div><div class="line">  position: absolute;</div><div class="line">  top: 50%; </div><div class="line">  transform: translateY(-50%); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; </span><br><span class="line">  position: relative; </span><br><span class="line">&#125;</span><br><span class="line">element &#123; </span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 50%; </span><br><span class="line">  transform: translateY(-50%); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用flexbox</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parent element &#123;  </div><div class="line">  display: flex; </div><div class="line">  flex-direction: column; </div><div class="line">  justify-content: center; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123;  </span><br><span class="line">  display: flex; </span><br><span class="line">  flex-direction: column; </span><br><span class="line">  justify-content: center; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="水平垂直同时居中"><a href="#水平垂直同时居中" class="headerlink" title="水平垂直同时居中"></a>水平垂直同时居中</h3><h4 id="宽高确定"><a href="#宽高确定" class="headerlink" title="宽高确定"></a>宽高确定</h4><ul>
 <li><p>利用父元素相对定位，子元素绝对定位（top,left为50%），计算出其margin或者padding值进行设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">parent element &#123; </div><div class="line">  position: relative; </div><div class="line">&#125;</div><div class="line">element &#123;</div><div class="line">  width: 300px; </div><div class="line">  height: 100px; </div><div class="line">  position: absolute; </div><div class="line">  top: 50%; </div><div class="line">  left: 50%; </div><div class="line">  margin: -50px 0 0 -150px;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; </span><br><span class="line">  position: relative; </span><br><span class="line">&#125;</span><br><span class="line">element &#123;</span><br><span class="line">  width: 300px; </span><br><span class="line">  height: 100px; </span><br><span class="line">  position: absolute; </span><br><span class="line">  top: 50%; </span><br><span class="line">  left: 50%; </span><br><span class="line">  margin: -50px 0 0 -150px;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>绝对定位四个方向值为0，设置margin: auto(不需计算)<br>原理：通过absolute化子元素，设置上下左右为0；让其具有自动填充性，然后通过设置宽度，然后就有了剩余空间，然后再使用 margin:auto, 分配剩余空间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">parent element &#123; </div><div class="line">  position: relative; </div><div class="line">&#125;</div><div class="line">element &#123;</div><div class="line">  position: absolute; </div><div class="line">  top: 0; right: 0; bottom: 0; left: 0; </div><div class="line">  margin: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; </span><br><span class="line">  position: relative; </span><br><span class="line">&#125;</span><br><span class="line">element &#123;</span><br><span class="line">  position: absolute; </span><br><span class="line">  top: 0; right: 0; bottom: 0; left: 0; </span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="宽高不确定"><a href="#宽高不确定" class="headerlink" title="宽高不确定"></a>宽高不确定</h4><ul>
 <li><p>使用translate并结合定位</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">parent element &#123; </div><div class="line">    position: relative; </div><div class="line">&#125;</div><div class="line">element &#123; </div><div class="line">    position: absolute; </div><div class="line">    top: 50%; </div><div class="line">    left: 50%;</div><div class="line">    transform: translate(-50%, -50%); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123; </span><br><span class="line">    position: relative; </span><br><span class="line">&#125;</span><br><span class="line">element &#123; </span><br><span class="line">    position: absolute; </span><br><span class="line">    top: 50%; </span><br><span class="line">    left: 50%;</span><br><span class="line">    transform: translate(-50%, -50%); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用flex-box</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">parent element &#123;  </div><div class="line">    display: flex; </div><div class="line">    justify-content: center; </div><div class="line">    align-items: center; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parent element &#123;  </span><br><span class="line">    display: flex; </span><br><span class="line">    justify-content: center; </span><br><span class="line">    align-items: center; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>根据元素是块级元素还是内联元素，根据元素已知宽高，结合以下方法进行居中设置</p>
@@ -531,7 +531,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -542,7 +542,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -553,7 +553,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

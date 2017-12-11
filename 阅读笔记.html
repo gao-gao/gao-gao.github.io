@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="数值对数字的大小处理 Math.abs(x):获取x的绝对值 Math.round(x):获取x的四舍五入的结果 Math.floor(x):对x向下取整 Math.ceil(x):对x向上取整 Math.max(a,b,c,d…):取一组值中最大的一个数 Math.min(a,b,c,d…):取一组值中最小的一个数 ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="gaogao">
+<meta property="og:url" content="http://www.gaogao.site/阅读笔记.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="数值对数字的大小处理 Math.abs(x):获取x的绝对值 Math.round(x):获取x的四舍五入的结果 Math.floor(x):对x向下取整 Math.ceil(x):对x向上取整 Math.max(a,b,c,d…):取一组值中最大的一个数 Math.min(a,b,c,d…):取一组值中最小的一个数 Math.random():随机获取0（包括0）到1（不包括1）之间的数字将字符">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-25T08:27:27.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gaogao">
+<meta name="twitter:description" content="数值对数字的大小处理 Math.abs(x):获取x的绝对值 Math.round(x):获取x的四舍五入的结果 Math.floor(x):对x向下取整 Math.ceil(x):对x向上取整 Math.max(a,b,c,d…):取一组值中最大的一个数 Math.min(a,b,c,d…):取一组值中最小的一个数 Math.random():随机获取0（包括0）到1（不包括1）之间的数字将字符">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/阅读笔记.html"/>
+
+
+
+
+
+  <title> | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+    
+    
+      <h3 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h3><h4 id="对数字的大小处理"><a href="#对数字的大小处理" class="headerlink" title="对数字的大小处理"></a>对数字的大小处理</h4><ul>
+<li>Math.abs(x):获取x的绝对值</li>
+<li>Math.round(x):获取x的四舍五入的结果</li>
+<li>Math.floor(x):对x向下取整</li>
+<li>Math.ceil(x):对x向上取整</li>
+<li>Math.max(a,b,c,d…):取一组值中最大的一个数</li>
+<li>Math.min(a,b,c,d…):取一组值中最小的一个数</li>
+<li>Math.random():随机获取0（包括0）到1（不包括1）之间的数字<h4 id="将字符串转化为数值：parseInt-string-radix"><a href="#将字符串转化为数值：parseInt-string-radix" class="headerlink" title="将字符串转化为数值：parseInt(string,radix)"></a>将字符串转化为数值：parseInt(string,radix)</h4></li>
+<li>string：传入的字符串</li>
+<li>radix：定义输出的值的进制，通常用十进制<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&quot;1.1&quot;) //1</span><br><span class="line">parseInt(&quot;1.9&quot;) //1</span><br><span class="line">parseInt(12b.9) //12,无法识别b</span><br><span class="line">parseInt(&quot;www&quot;) //NaN，无法转换为数字</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="将字符串转化为浮点型数值：parseInt-string"><a href="#将字符串转化为浮点型数值：parseInt-string" class="headerlink" title="将字符串转化为浮点型数值：parseInt(string)"></a>将字符串转化为浮点型数值：parseInt(string)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">parseFloat(&quot;100.1&quot;) //100.1</span><br><span class="line">parseFloat(&quot;12.4b5&quot;) //12.4</span><br><span class="line">parseFloat(&quot;www&quot;) //NaN</span><br></pre></td></tr></table></figure>
+<h4 id="只识别数字Number-value-，存在非数字直接判断为NaN"><a href="#只识别数字Number-value-，存在非数字直接判断为NaN" class="headerlink" title="只识别数字Number(value)，存在非数字直接判断为NaN"></a>只识别数字Number(value)，存在非数字直接判断为NaN</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Number(&quot;12.4b5&quot;) //NaN</span><br><span class="line">Number(&quot;www&quot;) //NaN</span><br></pre></td></tr></table></figure>
+<h4 id="保留小数，num-toFixed-digits"><a href="#保留小数，num-toFixed-digits" class="headerlink" title="保留小数，num.toFixed(digits)"></a>保留小数，num.toFixed(digits)</h4><p>参数为保留的小数位数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(100.123).toFixed(2) //100.12</span><br><span class="line">(100.123).toFixed(0) //100</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何获取一个大于0且小于等于9的随机整数？"><a href="#如何获取一个大于0且小于等于9的随机整数？" class="headerlink" title="如何获取一个大于0且小于等于9的随机整数？"></a>如何获取一个大于0且小于等于9的随机整数？</h4><ul>
+<li>Math.floor(Math.random()*10)</li>
+<li>Math.ceil(Math.random()*10)-1</li>
+<li>parseInt(Math.random()*10)</li>
+</ul>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><ul>
+<li>str.length：获取字符串的长度</li>
+<li>str.charAt(index)：获取索引处的值</li>
+<li><p>str.indexOf(searchValue[,fromIndex]):返回查找的值的索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常用于判断索引值是否为-1来判断是否搜索值是否存在</span><br><span class="line">if(str.indexOf(&quot;www&quot;)==-1)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.search(regexp),根据正则判断，返回索引值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao111&quot;.search(/[0-9]/) //6</span><br><span class="line">&quot;gaogao111&quot;.search(/[A-Z]/) //-1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.match(regexp)，根据正则判断，返回符合要求的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao123&quot;.match(/[0-9]/) //1</span><br><span class="line">&quot;gaogao123&quot;.match(/[0-9]/g) //1,2,3</span><br><span class="line">&quot;gaogao123&quot;.match(/A-Z/) //null</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.replace(regexp|substr,newSubstr|function)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao123&quot;.replace(&quot;321&quot;,&quot;###&quot;) //gaogao###</span><br><span class="line">&quot;gaogao123&quot;.replace(/[0-9]/,&quot;#&quot;) //gaogao#23</span><br><span class="line">&quot;gaogao123&quot;.replace(/[0-9]/g,&quot;###&quot;) //gapgao### 全局替换</span><br><span class="line">&quot;gaogao123&quot;.replace(/[0-9]/g.&quot;&quot;) //gaogao</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.substring(indexA[,indexB]),返回两个索引之间的字符串，包括A不包括B</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao123&quot;.substring(3,5) //ga</span><br><span class="line">&quot;gaogao123&quot;.sunstring(3) //gao123</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.slice(begin[end]),可以传负值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao123&quot;.slice(3,5) //ga</span><br><span class="line">&quot;gaogao123&quot;.slice(3) //gao123</span><br><span class="line">&quot;gaogao123&quot;.slice(3,-1) //gao12</span><br><span class="line">&quot;gaogao123&quot;.slice(-3) //123</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.substr(start[,length])，从索引处开始取一个要求长度的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao123&quot;.substr(3,3) //gao</span><br><span class="line">&quot;gaogao123&quot;.sunstr(3) //gao123</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.split([separator][,limit]),根据给定的字符将字符串分割，limit限定返回的数组长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;gaogao 123&quot;.split(&quot; &quot;) //[&quot;gaogao&quot;,&quot;123&quot;]</span><br><span class="line">&quot;gaogao123&quot;.split(&quot; &quot;,1) //[&quot;gaogao&quot;]</span><br><span class="line">&quot;gao1gao&quot;.split(/[0-9]/)) //[&quot;gao&quot;,&quot;gao&quot;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.toLowerCase()：转换为小写</p>
+</li>
+<li><p>str.toUpperCase()：转换为大写</p>
+</li>
+<li><p>String()：转字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String(null) //&quot;null&quot;</span><br><span class="line">String(false) //&quot;false&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h4><p>通过反斜杠转义特殊符号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;gao\&quot;gao&quot; //转义引号</span><br><span class="line">&quot;gao\\gao&quot; //转义反斜杠</span><br><span class="line">&quot;gao\tgao&quot; //转义tab符号</span><br></pre></td></tr></table></figure></p>
+<h4 id="要去除一个字符串的第一个字符，有哪些方法可以实现？"><a href="#要去除一个字符串的第一个字符，有哪些方法可以实现？" class="headerlink" title="要去除一个字符串的第一个字符，有哪些方法可以实现？"></a>要去除一个字符串的第一个字符，有哪些方法可以实现？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;gaogao&quot;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>str.replace(str.charAt(0),””)</li>
+<li>str.substr(1,str.length-1)或str.substr(1)</li>
+<li>str.substring(1,str.length)或str.substring(1)</li>
+<li>str.slice(1)或str.slice(-(str.length-1))</li>
+</ul>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象拥有属性和方法，可以通过”.”和”[]”访问和增加，修改，通过delete关键词进行删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var  car  = &#123;</span><br><span class="line">    color:red,</span><br><span class="line">    name:bmw</span><br><span class="line">&#125;</span><br><span class="line">delete car.name</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>obj.constructor:获取对象由什么函数构建而来</li>
+<li>obj.toString():将对象转换为字符串</li>
+<li>obj.valueOf():获取对象的额原始值</li>
+<li>obj.hasOwnproperty():对象自己拥有的属性，不包括继承得到的</li>
+</ul>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="直接在原数组上变化"><a href="#直接在原数组上变化" class="headerlink" title="直接在原数组上变化"></a>直接在原数组上变化</h4><ul>
+<li>arr.length:数组元素个数</li>
+<li>arr.indexOf:(searchElement[,fromIndex]),返回查询元素的索引值</li>
+<li><p>arr.forEach(callback):对数组中的每一个元素遍历，并将元素传入回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 对每个学生的分数添加5分</span><br><span class="line">var students = [</span><br><span class="line">    &#123;id:1,score:80&#125;,</span><br><span class="line">    &#123;id:2,score:85&#125;,</span><br><span class="line">    &#123;id:3,score:83&#125;</span><br><span class="line">];</span><br><span class="line">var editScore = function(item,index,array)&#123;//后面两个参数没有用到</span><br><span class="line">    item.score+=5;</span><br><span class="line">&#125;</span><br><span class="line">students.forEach(editScore);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>arr.reverse():将数组顺序倒过来</p>
+</li>
+<li><p>arr.sort([compareFunction]):排序方法<br>sort方法直接改变原来的数组<br>不传入方法则按照编码顺序来排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var students = [</span><br><span class="line">    &#123;id:1,score:80&#125;,</span><br><span class="line">    &#123;id:2,score:85&#125;,</span><br><span class="line">    &#123;id:3,score:83&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var bySore = function(a,b)&#123;</span><br><span class="line">    return b.score-a.score;</span><br><span class="line">   // 返回小于0，a放在b的前面；</span><br><span class="line">   // 返回大于0，b放在a的前面；</span><br><span class="line">   // 返回等于0，ab保持原有的顺序</span><br><span class="line">&#125;;</span><br><span class="line">student.sort(bySore)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>arr.push(element…):往后添加元素</p>
+</li>
+<li>arr.unshift(element…):往前添加元素</li>
+<li>arr.shift():获取第一个元素并删除这个元素</li>
+<li>arr.pop():获取最后一个元素并删除这个元素</li>
+<li>arr.splice(index,num[,element]):从特定index删除，并插入新元素<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">students.splice(1,1,&#123;id:4,score:90&#125;)</span><br><span class="line">//结果</span><br><span class="line">students = [</span><br><span class="line">    &#123;id:1,score:80&#125;,</span><br><span class="line">    &#123;id:4,score:90&#125;,</span><br><span class="line">    &#123;id:3,score:83&#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当num为0时，可以实现只增；当element不设置时，可以实现只删；当三个参数都有时，可以实现替换功能</p>
+<h4 id="不改变原数组，通过拷贝而来的数组进行改变"><a href="#不改变原数组，通过拷贝而来的数组进行改变" class="headerlink" title="不改变原数组，通过拷贝而来的数组进行改变"></a>不改变原数组，通过拷贝而来的数组进行改变</h4><ul>
+<li>arr.slice(begin[,end])：截取处索引间的数，包含begin不包含end</li>
+<li>arr.concat(value1…)：将数组连接起来，拼成一个新数组</li>
+<li>arr.join([separator])：默认用逗号连接，用分隔符连接数组中的每一个元素</li>
+<li><p>arr.map(callback):将callback返回的加入到一个新的数组中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var scores = [20,30,40];</span><br><span class="line">var addScore = function(item,index,array)&#123;</span><br><span class="line">    return item+5;</span><br><span class="line">&#125;;</span><br><span class="line">scores.map(addScore);</span><br><span class="line">//[25,35,45]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>arr.reduce(callback,[initialValue]):累加类的效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">students = [</span><br><span class="line">    &#123;id:1,score:80&#125;,</span><br><span class="line">    &#123;id:4,score:90&#125;,</span><br><span class="line">    &#123;id:3,score:83&#125;</span><br><span class="line">];</span><br><span class="line">var sum = function(pre,item,index,array)&#123;</span><br><span class="line">    return pre+item.score;</span><br><span class="line">&#125;</span><br><span class="line">students.reduce(sum,0)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="对一个数组-每项都是数值-求和，有哪些方法？"><a href="#对一个数组-每项都是数值-求和，有哪些方法？" class="headerlink" title="对一个数组(每项都是数值)求和，有哪些方法？"></a>对一个数组(每项都是数值)求和，有哪些方法？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = [20,30,40,50];</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>使用arr.reduce(callback)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function add(pre,item)&#123;</span><br><span class="line">    return pre+item</span><br><span class="line">&#125;</span><br><span class="line">var result = arr.reduce(add,0);</span><br><span class="line">//result = 140</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用arr.map(callback)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var res = 0;</span><br><span class="line">function add(item)&#123;</span><br><span class="line">    res+=item;</span><br><span class="line">&#125;</span><br><span class="line">var result = arr.map();</span><br><span class="line">//result = 140,res =140</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用arr.forEach(callback)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var res = 0;</span><br><span class="line">function add(item)&#123;</span><br><span class="line">    res+=item;</span><br><span class="line">&#125;</span><br><span class="line">arr.forEach(add);</span><br><span class="line">//res = 140</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用for循环，以arr.length作判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var res = 0;</span><br><span class="line">for(var i=0; i&lt;arr.lengh; i++)&#123;</span><br><span class="line">    res+=arr[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h4><ul>
+<li>函数参数为原始类型，值传递</li>
+<li>函数参数为对象类型，引用传递</li>
+</ul>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><ul>
+<li>函数会创建一个作用域</li>
+</ul>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><ul>
+<li>原型prototype，通过原型放置构造对象用的公共的方法和属性</li>
+</ul>
+<h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><h4 id="常见的方法"><a href="#常见的方法" class="headerlink" title="常见的方法"></a>常见的方法</h4><ul>
+<li><p>创建日期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new Date(2017,10) //2017-10-01 00:00:00</span><br><span class="line">new Date(2017,10,1,11,8,44) //2017-10-01 11:08:44</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>date.getXXX() 获取信息</p>
+</li>
+<li><p>格式化：一般将日期直接转换为字符串是GMT格式，不符合需求，要结合获取日期各个部分的信息来实现不同形式的日期字符串</p>
+</li>
+<li><p>date.setXXX() 设置信息</p>
+</li>
+</ul>
+<h4 id="求天数-利用浏览器的智能计算"><a href="#求天数-利用浏览器的智能计算" class="headerlink" title="求天数:利用浏览器的智能计算"></a>求天数:利用浏览器的智能计算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new Date(2017,3,0) </span><br><span class="line">//即2月最后一天，即可得出2月的天数</span><br></pre></td></tr></table></figure>
+<h4 id="date–number"><a href="#date–number" class="headerlink" title="date–number"></a>date–number</h4><ul>
+<li>date.getTime() 获取距离1970-1-1 00:00:00的毫秒数</li>
+<li>new Date(num) 通过计算得到一个日期</li>
+</ul>
+<h3 id="regExp"><a href="#regExp" class="headerlink" title="regExp"></a>regExp</h3><p>描述字符串规则的表达式</p>
+<ul>
+<li>regexpObj.test(str)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/123/.test(&quot;123&quot;)  //true</span><br><span class="line">/123/.test(&quot;x123&quot;) //true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h4><p>匹配一个位置</p>
+<ul>
+<li><p>^：起始位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/^www/.test(&quot;www.kkkk&quot;) //true</span><br><span class="line">/^www/.test(&quot;bwww.kkkk&quot; //false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$:结尾位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\.jpg$/.test(&quot;demo.jpg&quot;) //true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>\b:单词边界</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/\bis\b/.test(&quot;th is&quot;) //true</span><br><span class="line">/\bis\b/.test(&quot;this&quot;) //false</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h4><p>匹配一类字符中的一个</p>
+<ul>
+<li>[abc],三者中的一个</li>
+<li>[0-9],一个数字</li>
+<li>[a-z],一个小写字母</li>
+<li>. 任意字符（换行除外）</li>
+<li>[^0-9],非数字的一个字符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[^0-9]/.test(&quot;abca&quot;) //true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p>具有特殊意义的字符</p>
+<ul>
+<li>^,$,\b</li>
+<li>\d：[0-9]</li>
+<li>\D：[^\d]</li>
+<li>\s：空白符</li>
+<li>\S：[^\s]</li>
+<li>\w：[A-Za-z0-9]</li>
+<li>\W：[^\w]</li>
+</ul>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><p>出现的次数</p>
+<ul>
+<li>{m,n}：m-n次</li>
+<li>*：0到无穷次{0,}</li>
+<li>？：0次或1次{0,1}</li>
+<li>+：{1,}</li>
+</ul>
+<h4 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h4><p>需要匹配的字符是元字符，在符号前添加  反斜杠进行转义</p>
+<h4 id="多选分支"><a href="#多选分支" class="headerlink" title="多选分支"></a>多选分支</h4><ul>
+<li>或 | <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/thi(c|n)k/ === /th[cn]k/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="捕获"><a href="#捕获" class="headerlink" title="捕获"></a>捕获</h4><p>保存匹配到的字符串，日后再用，保存在$1,$2……中</p>
+<ul>
+<li>()：捕获</li>
+<li><p>(?:)：不捕获</p>
+</li>
+<li><p>str.match(regexp) 获取匹配的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var url = &quot;http://www.gaogao.site/blog?name=gaogao#page1ur&quot;</span><br><span class="line">var reg = /(https?:)\/\/([^\/]+)(\/[^\?]*)?(\?[^#]*)?(#.*)?/</span><br><span class="line">var arr = url.match(reg);</span><br><span class="line">var protocol = arr[1];</span><br><span class="line">var host = arr[2];</span><br><span class="line">var pathname = arr[3];</span><br><span class="line">var search = arr[4];</span><br><span class="line">var hash = arr[5];</span><br><span class="line">//arr[0] &quot;http://www.gaogao.site/blog?name=gaogao#page1ur&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>str.replace(regexp/substr,replacement) 替换一个子串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &quot;it is 5&quot;;</span><br><span class="line">str.replace(/(\d+)/,&quot;$1.00&quot;)</span><br><span class="line">//$1表示捕获到的子串</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>g:全局匹配,不加的时候只匹配一次，添加在//后</p>
+</li>
+</ul>
+<h4 id="更强大的检索"><a href="#更强大的检索" class="headerlink" title="更强大的检索"></a>更强大的检索</h4><p>regexpObj,exec(str) </p>
+<ul>
+<li>更详尽的结果</li>
+<li>过程的状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var scores = &quot;tom $88,anny ￥100&quot;</span><br><span class="line">var results = reg.exec(scores)</span><br><span class="line">//results &quot;$88&quot;, &quot;$&quot;, &quot;88&quot;, index: 4, input: &quot;tom $88,anny ￥100&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="正则表达式中，量词的贪婪模式与惰性模式有什么区别？"><a href="#正则表达式中，量词的贪婪模式与惰性模式有什么区别？" class="headerlink" title="正则表达式中，量词的贪婪模式与惰性模式有什么区别？"></a>正则表达式中，量词的贪婪模式与惰性模式有什么区别？</h4><ul>
+<li>贪婪模式：在匹配成功的前提下，尽可能多的去匹配</li>
+<li>惰性模式：在匹配成功的情况下，尽可能少的去匹配，只匹配第一个能匹配的（除开启全局）</li>
+</ul>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>js的对象表示,属性名要用引号包起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;:&quot;jerry&quot;,</span><br><span class="line">    &quot;age&quot;:1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>轻量级的数据交换格式，优于XML</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li><p>JSON.parse(text):将json数据转换为js数据，IE6，7不支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(!window.JSON)&#123;</span><br><span class="line">    window.JSON = &#123;</span><br><span class="line">        parse:function(sJSON)&#123;</span><br><span class="line">            return eval(&quot;(&quot;+sJSON+&quot;)&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSON.stringify(value[,replacer]):将json数据转换为字符串,replacer传入想要序列化的属性名称<br>IE6,7不兼容</p>
+</li>
+</ul>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
+<li>原始值类型：undefined, null,boolean,string,number</li>
+<li>对象（引用类型）：object<h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4></li>
+<li>浏览器扩展对象：浏览器厂商扩展的对象，现在逐渐被启用</li>
+<li>宿主对象： 浏览器运行环境所提供的一系列对象，如Window，navigator，document，提供了一系列如DOM，BOM操作的API</li>
+<li>原生对象:分为构造函数和对象（math，JSON，全局对象，arguments）</li>
+</ul>
+<h4 id="原始类型和对象类型的区别"><a href="#原始类型和对象类型的区别" class="headerlink" title="原始类型和对象类型的区别"></a>原始类型和对象类型的区别</h4><p>所有原始类型的值都存储在栈内存中，可以直接使用其标识符在栈内存中获取值；而对象类型的值都存储在堆内存中，存在于栈内存中的只是一个地址，通过这个地址在堆内存中找到值，所以对象类型赋值时，只赋了一个地址。</p>
+<h4 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h4><ul>
+<li>运算符，if语句，==</li>
+</ul>
+<h4 id="显示类型转换"><a href="#显示类型转换" class="headerlink" title="显示类型转换"></a>显示类型转换</h4><ul>
+<li>Number(),String(),Boolean()</li>
+<li>parderInt(),parseFloat()</li>
+<li>! , !! 获取操作对象对应的boolean值</li>
+</ul>
+<h4 id="类型识别"><a href="#类型识别" class="headerlink" title="类型识别"></a>类型识别</h4><p>更多类型识别知识见<a href="http://www.gaogao.site/2017/07/19/variable/">变量类型和计算</a></p>
+<ul>
+<li>typeof 可以识别标准类型（null除外）,不能识别具体的对象类型(function除外)</li>
+<li>instanceof 能判别内置对象类型，不能识别原始类型</li>
+<li><p>Object.prototype.toString.call()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function type(obj)&#123;</span><br><span class="line">    return Object.prototype.toString.call(obj).slice(8,-1)</span><br><span class="line">&#125;</span><br><span class="line">//识别标准类型（前8个字符）以及内置对象类型</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>constructor 生成对象的构造函数本身，可以判别标准类型，内置对象类型，自定义对象类型</p>
+</li>
+</ul>
+
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值"><span class="nav-number">1.</span> <span class="nav-text">数值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对数字的大小处理"><span class="nav-number">1.1.</span> <span class="nav-text">对数字的大小处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将字符串转化为数值：parseInt-string-radix"><span class="nav-number">1.2.</span> <span class="nav-text">将字符串转化为数值：parseInt(string,radix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将字符串转化为浮点型数值：parseInt-string"><span class="nav-number">1.3.</span> <span class="nav-text">将字符串转化为浮点型数值：parseInt(string)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只识别数字Number-value-，存在非数字直接判断为NaN"><span class="nav-number">1.4.</span> <span class="nav-text">只识别数字Number(value)，存在非数字直接判断为NaN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保留小数，num-toFixed-digits"><span class="nav-number">1.5.</span> <span class="nav-text">保留小数，num.toFixed(digits)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何获取一个大于0且小于等于9的随机整数？"><span class="nav-number">1.6.</span> <span class="nav-text">如何获取一个大于0且小于等于9的随机整数？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转义"><span class="nav-number">2.1.</span> <span class="nav-text">转义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要去除一个字符串的第一个字符，有哪些方法可以实现？"><span class="nav-number">2.2.</span> <span class="nav-text">要去除一个字符串的第一个字符，有哪些方法可以实现？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">3.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">4.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接在原数组上变化"><span class="nav-number">4.1.</span> <span class="nav-text">直接在原数组上变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不改变原数组，通过拷贝而来的数组进行改变"><span class="nav-number">4.2.</span> <span class="nav-text">不改变原数组，通过拷贝而来的数组进行改变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对一个数组-每项都是数值-求和，有哪些方法？"><span class="nav-number">4.3.</span> <span class="nav-text">对一个数组(每项都是数值)求和，有哪些方法？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数参数"><span class="nav-number">5.1.</span> <span class="nav-text">函数参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用域"><span class="nav-number">5.2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">5.3.</span> <span class="nav-text">构造函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date"><span class="nav-number">6.</span> <span class="nav-text">date</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的方法"><span class="nav-number">6.1.</span> <span class="nav-text">常见的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求天数-利用浏览器的智能计算"><span class="nav-number">6.2.</span> <span class="nav-text">求天数:利用浏览器的智能计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#date–number"><span class="nav-number">6.3.</span> <span class="nav-text">date–number</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#regExp"><span class="nav-number">7.</span> <span class="nav-text">regExp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#锚点"><span class="nav-number">7.1.</span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符类"><span class="nav-number">7.2.</span> <span class="nav-text">字符类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符"><span class="nav-number">7.3.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#量词"><span class="nav-number">7.4.</span> <span class="nav-text">量词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转义符"><span class="nav-number">7.5.</span> <span class="nav-text">转义符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多选分支"><span class="nav-number">7.6.</span> <span class="nav-text">多选分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#捕获"><span class="nav-number">7.7.</span> <span class="nav-text">捕获</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更强大的检索"><span class="nav-number">7.8.</span> <span class="nav-text">更强大的检索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式中，量词的贪婪模式与惰性模式有什么区别？"><span class="nav-number">7.9.</span> <span class="nav-text">正则表达式中，量词的贪婪模式与惰性模式有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">8.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">8.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型"><span class="nav-number">9.</span> <span class="nav-text">类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象类型"><span class="nav-number">9.1.</span> <span class="nav-text">对象类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原始类型和对象类型的区别"><span class="nav-number">9.2.</span> <span class="nav-text">原始类型和对象类型的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐式类型转换"><span class="nav-number">9.3.</span> <span class="nav-text">隐式类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示类型转换"><span class="nav-number">9.4.</span> <span class="nav-text">显示类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型识别"><span class="nav-number">9.5.</span> <span class="nav-text">类型识别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -351,15 +351,15 @@
 
       
         <h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>通过定义容器大小，平分12份，载调整内外边距，最后结合媒体查询，制作出了强大的响应式网格系统。  使用时可以根据实际情况重新编译LESS（或Sass）源码来修改12这个数值。</p>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;container&quot;&gt;</div><div class="line">	&lt;div class=&quot;row&quot;&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">	&lt;div class=&quot;row&quot;&gt;</span><br><span class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot; col-lg-2 col-md-3 col-xs-6 col-sm-4&quot;&gt;1&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>栅格系统通过类<code>container</code>来盛装行，通过类<code>row</code>来盛装列（即每一个格子），通过类<code>col-lg-*,col-md-*,col-sm-*,col-xs-*</code>来设置每个格子所占的宽度,*号所代表的数字为占12分宽度中的数量，数字越大，占比越大</p>
 <ul>
 <li><code>container</code>类设置整个栅格的宽度，内补</li>
 <li><code>row</code>类设置整个行的样式</li>
 </ul>
 <p><img src="http://upload-images.jianshu.io/upload_images/5150805-9713697ac2807fdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bootstrap.png"></p>
-<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>因为bootstrap是移动设备优先，默认为移动设备，所以不用对超小屏幕即768px以下的进行查询单独设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/* 小屏幕（平板&gt;=768px） */</div><div class="line">@media (min-width: @screen-sm-min) &#123; ... &#125;</div><div class="line">/* 中等屏幕（桌面显示器，&gt;= 992px） */</div><div class="line">@media (min-width: @screen-md-min) &#123; ... &#125;</div><div class="line"></div><div class="line">/* 大屏幕（大桌面显示器，&gt;=1200px） */</div><div class="line">@media (min-width: @screen-lg-min) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
-<p>媒体查询包含最大宽度，将css的影响限制在更小范围内<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) &#123; ... &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>因为bootstrap是移动设备优先，默认为移动设备，所以不用对超小屏幕即768px以下的进行查询单独设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 小屏幕（平板&gt;=768px） */</span><br><span class="line">@media (min-width: @screen-sm-min) &#123; ... &#125;</span><br><span class="line">/* 中等屏幕（桌面显示器，&gt;= 992px） */</span><br><span class="line">@media (min-width: @screen-md-min) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">/* 大屏幕（大桌面显示器，&gt;=1200px） */</span><br><span class="line">@media (min-width: @screen-lg-min) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
+<p>媒体查询包含最大宽度，将css的影响限制在更小范围内<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="流式布局容器"><a href="#流式布局容器" class="headerlink" title="流式布局容器"></a>流式布局容器</h3><p>将<code>.container</code>改为<code>.container-fluid</code>，即将固定宽度的栅格布局转换成宽度为100%宽度的布局</p>
 <h3 id="响应式列重置"><a href="#响应式列重置" class="headerlink" title="响应式列重置"></a>响应式列重置</h3><h4 id="列在分界点清除响应"><a href="#列在分界点清除响应" class="headerlink" title="列在分界点清除响应"></a>列在分界点清除响应</h4><ul>
 <li>联合使用<code>clearfix</code>和响应式工具类</li>
@@ -415,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/25/flexbox/" rel="next" title="flexbox布局">
-                <i class="fa fa-chevron-left"></i> flexbox布局
+              <a href="/2017/06/02/bootstrap/" rel="next" title="bootstrap环境搭建">
+                <i class="fa fa-chevron-left"></i> bootstrap环境搭建
               </a>
             
           </div>
@@ -425,8 +425,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/02/bootstrap/" rel="prev" title="bootstrap环境搭建">
-                bootstrap环境搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/19/variable/" rel="prev" title="变量类型和计算">
+                变量类型和计算 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,7 +500,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -511,7 +511,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -522,7 +522,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

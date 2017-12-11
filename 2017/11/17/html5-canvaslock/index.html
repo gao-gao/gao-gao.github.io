@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html5&css3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="手势解锁案例分析与实现">
+<meta name="keywords" content="html5&amp;css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手势解锁案例">
+<meta property="og:url" content="http://www.gaogao.site/2017/11/17/html5-canvaslock/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="手势解锁案例分析与实现">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596421992.png">
+<meta property="og:updated_time" content="2017-12-11T13:49:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手势解锁案例">
+<meta name="twitter:description" content="手势解锁案例分析与实现">
+<meta name="twitter:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596421992.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/11/17/html5-canvaslock/"/>
+
+
+
+
+
+  <title>手势解锁案例 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/11/17/html5-canvaslock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">手势解锁案例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-17T00:00:00+08:00">
+                2017-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5-css3/" itemprop="url" rel="index">
+                    <span itemprop="name">html5&css3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  手势解锁案例分析与实现
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="手势解锁案例"><a href="#手势解锁案例" class="headerlink" title="手势解锁案例"></a>手势解锁案例</h3><h4 id="js初始化DOM结构"><a href="#js初始化DOM结构" class="headerlink" title="js初始化DOM结构"></a>js初始化DOM结构</h4><ul>
+<li>生成title和canvas标签</li>
+<li>定义CSS样式<h4 id="完成画圆函数"><a href="#完成画圆函数" class="headerlink" title="完成画圆函数"></a>完成画圆函数</h4></li>
+<li>生成圆心坐标数组</li>
+<li>根据数组中的坐标尽心圆圈的绘制<h4 id="添加事件操作，实现动态画实心圆和画路径线-touchstart事件中"><a href="#添加事件操作，实现动态画实心圆和画路径线-touchstart事件中" class="headerlink" title="添加事件操作，实现动态画实心圆和画路径线 touchstart事件中"></a>添加事件操作，实现动态画实心圆和画路径线 touchstart事件中</h4></li>
+<li>添加事件touchstart,touchmove,touchend,</li>
+<li>touchstart判断是否点击的位置处于圆内getPosition处于则初始化lastpoint,restpoint<h4 id="实现手势链式操作画实心圆和路径线-touchmove事件中"><a href="#实现手势链式操作画实心圆和路径线-touchmove事件中" class="headerlink" title="实现手势链式操作画实心圆和路径线 touchmove事件中"></a>实现手势链式操作画实心圆和路径线 touchmove事件中</h4></li>
+<li>检测手势移动的位置是否处于圆内</li>
+<li>检测，处于圆内就画实心圆（但是已经画过实心圆的圆不重复画圆restPoint鉴别）<h4 id="解锁成功和解锁失败-touchend事件中"><a href="#解锁成功和解锁失败-touchend事件中" class="headerlink" title="解锁成功和解锁失败 touchend事件中"></a>解锁成功和解锁失败 touchend事件中</h4></li>
+<li>判断路径是否是对的</li>
+<li>是对的就重置，圆圈变绿提示</li>
+<li>不对也重置，圆圈变红提示</li>
+<li>重置<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><img src="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596421992.png" alt="image"><h5 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0,user-scalable-no&quot;&gt;</span><br><span class="line">	&lt;title&gt;手势解锁demo&lt;/title&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">		body&#123;</span><br><span class="line">			background-color:#305066;</span><br><span class="line">			text-align:center;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">&lt;script src=&quot;index.js&quot;&gt;&lt;/script&gt;	</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	new canvasLock(&#123;chooseType:3&#125;).init();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">	// 定义一个全局的对象（可以在外面调用）</span><br><span class="line">	window.canvasLock = function(obj)&#123;</span><br><span class="line">		this.height = obj.height;</span><br><span class="line">		this.width = obj.width;</span><br><span class="line">		this.chooseType = obj.chooseType;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	// js方式动态生成dom结构并定义CSS样式</span><br><span class="line">	canvasLock.prototype.initDom = function()&#123;</span><br><span class="line">		// 生成外层div和标题</span><br><span class="line">		var wrap = document.createElement(&quot;div&quot;);</span><br><span class="line">		var str = &apos;&lt;h3 id=&quot;title&quot; class=&quot;title&quot;&gt;请绘制解锁图案&lt;/h3&gt;&apos;;</span><br><span class="line">		wrap.setAttribute(&quot;style&quot;,&quot;position:absolute;top:0;left:0;right:0;bottom:0;&quot;);</span><br><span class="line">		// 生成canvas标签</span><br><span class="line">		var canvas = document.createElement(&quot;canvas&quot;);</span><br><span class="line">		canvas.setAttribute(&quot;id&quot;,&quot;canvas&quot;);</span><br><span class="line">		canvas.style.cssText=&quot;background-color:#305066;display:inline-block;maigin-top:15px;width:300px;height300px;&quot;;</span><br><span class="line">		// 将标题插入div中，将canvas插入div中</span><br><span class="line">		wrap.innerHTML = str;</span><br><span class="line">		wrap.appendChild(canvas);</span><br><span class="line"></span><br><span class="line">		var width = this.width||300;</span><br><span class="line">		var height = this.height||300;</span><br><span class="line">		//定义canvas的原始宽高</span><br><span class="line">		canvas.width = width;</span><br><span class="line">		canvas.height = height;</span><br><span class="line">		//控制缩放之后的宽高</span><br><span class="line">		canvas.style.width = width+&quot;px&quot;;</span><br><span class="line">		canvas.style.height = height+&quot;px&quot;;</span><br><span class="line">		document.body.appendChild(wrap);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 程序初始化</span><br><span class="line">	canvasLock.prototype.init = function()&#123;</span><br><span class="line">		this.initDom();</span><br><span class="line">		this.canvas = document.getElementById(&quot;canvas&quot;);</span><br><span class="line">		this.ctx = this.canvas.getContext(&quot;2d&quot;);</span><br><span class="line">		// 绘制解锁面板</span><br><span class="line">		this.createCircle();</span><br><span class="line">		// 调用事件绑定</span><br><span class="line">		this.bindEvent();</span><br><span class="line">		// 初始化</span><br><span class="line">		this.touchFlag = false;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 生成每个圆心点的坐标并保存在数组中</span><br><span class="line">	canvasLock.prototype.createCircle = function()&#123;</span><br><span class="line">		this.ctx.clearRect(0,0,this.ctx.canvas.width,this.ctx.canvas.height);</span><br><span class="line">		// 1 确定半径</span><br><span class="line">		// 2 确定每一个圆的中心点</span><br><span class="line">		// 3 半径和整个宽度之间的关系，n个圆 4n+2个半径</span><br><span class="line">		var n = this.chooseType;</span><br><span class="line">		var count = 0;</span><br><span class="line">		// 根据公式计算半径</span><br><span class="line">		this.r = this.ctx.canvas.width/(4*n+2);</span><br><span class="line">		this.lastPoint=[];</span><br><span class="line">		this.arr = [];</span><br><span class="line">		this.restPoint=[];</span><br><span class="line">		var r = this.r;</span><br><span class="line">		// 将每个圆的中心点的坐标保存在数组arr中</span><br><span class="line">		for(var i = 0; i &lt; n; i++)&#123;</span><br><span class="line">			for(var j = 0; j &lt; n; j++)&#123;</span><br><span class="line">				count++;</span><br><span class="line">				var obj = &#123;</span><br><span class="line">					x:4*j*r + 3*r,</span><br><span class="line">					y:4*i*r + 3*r,</span><br><span class="line">					index:count</span><br><span class="line">				&#125;;</span><br><span class="line">				this.arr.push(obj);</span><br><span class="line">				// restPoint：记录未被touch到的圆的圆心，避免画实心圆时重复绘制，通过删去符合判断条件的方式记录</span><br><span class="line">				this.restPoint.push(obj);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		//分别将每个圆的圆心传入画圆函数中</span><br><span class="line">		for(var i = 0; i &lt; this.arr.length;i++)&#123;</span><br><span class="line">			this.drawCle(this.arr[i].x,this.arr[i].y);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 画圆圈，利用与圆心点坐标数组绘制圆</span><br><span class="line">	canvasLock.prototype.drawCle = function(x,y)&#123;</span><br><span class="line">		this.ctx.strokeStyle=&quot;#cfe6ff&quot;;</span><br><span class="line">		this.ctx.lineWidth = 2;</span><br><span class="line">		this.ctx.beginPath();</span><br><span class="line">		this.ctx.arc(x,y,this.r,0,2*Math.PI,true);</span><br><span class="line">		this.ctx.closePath();</span><br><span class="line">		this.ctx.stroke();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 添加三个touch事件</span><br><span class="line">	canvasLock.prototype.bindEvent = function()&#123;</span><br><span class="line">		var self = this;</span><br><span class="line">		// touchstart事件</span><br><span class="line">		this.canvas.addEventListener(&quot;touchstart&quot;,function(e)&#123;</span><br><span class="line">			// 判断点击的位置是否处于圆内（调用getPosition获取其相对于canvas元素的坐标位置）</span><br><span class="line">			var po = self.getPosition(e);</span><br><span class="line">			for(var i = 0; i &lt;  self.arr.length;i++)&#123;</span><br><span class="line">				//Math.abs()转换为绝对值</span><br><span class="line">				// 判断点击处是否在圆内</span><br><span class="line">				if(Math.abs(po.x - self.arr[i].x) &lt; self.r&amp;&amp;Math.abs(po.y-self.arr[i].y) &lt; self.r)&#123;</span><br><span class="line">					//记录touchstart是否在圆内，即是否有初始进入圆的那个点</span><br><span class="line">					self.touchFlag = true;</span><br><span class="line">					// 将选中的圆圈的坐标存放在lastpoint中</span><br><span class="line">					self.lastPoint.push(self.arr[i]);</span><br><span class="line">					// 删去touchstart事件发生时满足判断要求的圆心的坐标</span><br><span class="line">					self.restPoint.splice(i,1);</span><br><span class="line">					console.log(self.restPoint);</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,false);</span><br><span class="line">		// touchmove事件</span><br><span class="line">		this.canvas.addEventListener(&quot;touchmove&quot;,function(e)&#123;</span><br><span class="line">			if(self.touchFlag)&#123;</span><br><span class="line">				// 传入touchmove的event获取相应的坐标来绘制路径线</span><br><span class="line">				self.update(self.getPosition(e))</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,false);</span><br><span class="line">		// touchend事件</span><br><span class="line">		this.canvas.addEventListener(&quot;touchend&quot;,function(e)&#123;</span><br><span class="line">			if(self.touchFlag)&#123;</span><br><span class="line">				self.storePass(self.lastPoint);</span><br><span class="line">				setTimeout(function()&#123;</span><br><span class="line">					self.reset();</span><br><span class="line">				&#125;,500)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,false);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 获取点击的位置</span><br><span class="line">	canvasLock.prototype.getPosition = function(e)&#123;</span><br><span class="line">		// 获得canvas相对于视窗的位置集合（top,left,bottom,right）</span><br><span class="line">		// console.log(e);</span><br><span class="line">		var rect = e.currentTarget.getBoundingClientRect();</span><br><span class="line">		var po = &#123;</span><br><span class="line">			// e.touches[0]，一根手指的操作，client相对于视口的宽高</span><br><span class="line">			x:(e.touches[0].clientX - rect.left),</span><br><span class="line">			y:(e.touches[0].clientY - rect.top)</span><br><span class="line">		&#125;;</span><br><span class="line">		// 将位置参数转换为相对于canvas的位置</span><br><span class="line">		return po;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 对画布进行清空，并根据此时移动的坐标结果对画布进行重绘</span><br><span class="line">	canvasLock.prototype.update = function(po)&#123;</span><br><span class="line">		// 清除面板内容,canvas进行动画必须清空画布</span><br><span class="line">		this.ctx.clearRect(0,0,this.ctx.canvas.width,this.ctx.canvas.height);</span><br><span class="line">		// 重绘锁屏面板</span><br><span class="line">		for(var i = 0 ; i &lt; this.arr.length ; i++)&#123;</span><br><span class="line">			this.drawCle(this.arr[i].x,this.arr[i].y);</span><br><span class="line">		&#125;</span><br><span class="line">		// 画点</span><br><span class="line">		this.drawPoint();</span><br><span class="line">		// 画线</span><br><span class="line">		this.drawLine(po);</span><br><span class="line">		// 判断touchmove时是否在圆内，在圆内则画圆</span><br><span class="line">		for(var i = 0 ; i &lt; this.restPoint.length ; i++)&#123;</span><br><span class="line">			if(Math.abs(po.x-this.restPoint[i].x) &lt; this.r &amp;&amp; Math.abs(po.y-this.restPoint[i].y) &lt; this.r)&#123;</span><br><span class="line">				this.drawPoint();</span><br><span class="line">				this.lastPoint.push(this.restPoint[i])</span><br><span class="line">				// 删去touchmove事件发生时满足判断要求的圆心的坐标</span><br><span class="line">				// 记录未点击到的圆,排除已经绘制过的实心圆再次绘制</span><br><span class="line">				this.restPoint.splice(i,1);</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 画实心圆</span><br><span class="line">	canvasLock.prototype.drawPoint = function()&#123;</span><br><span class="line">		// 遍历lastPoint中的圆心绘制实心选中圆</span><br><span class="line">		for(var i = 0; i &lt; this.lastPoint.length; i++)&#123;</span><br><span class="line">			this.ctx.fillStyle = &quot;#cfe6ff&quot;;</span><br><span class="line">			this.ctx.beginPath();</span><br><span class="line">			this.ctx.arc(this.lastPoint[i].x,this.lastPoint[i].y,this.r/2,0,2*Math.PI,true);</span><br><span class="line">			this.ctx.closePath();</span><br><span class="line">			this.ctx.fill();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	// 画线轨迹</span><br><span class="line">	canvasLock.prototype.drawLine = function(po)&#123;</span><br><span class="line">		this.ctx.beginPath();</span><br><span class="line">		this.ctx.lineWidth = 3;</span><br><span class="line">		this.ctx.moveTo(this.lastPoint[0].x,this.lastPoint[0].y);</span><br><span class="line">		for(var i = 0; i &lt; this.lastPoint.length; i++)&#123;</span><br><span class="line">			this.ctx.lineTo(this.lastPoint[i].x,this.lastPoint[i].y);</span><br><span class="line">		&#125;</span><br><span class="line">		this.ctx.lineTo(po.x,po.y);</span><br><span class="line">		this.ctx.stroke();</span><br><span class="line">		this.ctx.closePath();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 为解锁成功和失败分别做出反应</span><br><span class="line">	canvasLock.prototype.storePass = function()&#123;</span><br><span class="line">		if(this.checkPass())&#123;</span><br><span class="line">			document.getElementById(&quot;title&quot;).innerHTML=&quot;欧耶！成功了&quot;;</span><br><span class="line">			this.drawStatusPoint(&quot;#2cff26&quot;);</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			document.getElementById(&quot;title&quot;).innerHTML=&quot;糟糕！失败了！&quot;;</span><br><span class="line">			this.drawStatusPoint(&quot;red&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 判断解锁路径是否正确</span><br><span class="line">	canvasLock.prototype.checkPass = function()&#123;</span><br><span class="line">		var p1 = &quot;1235789&quot;,p2=&quot;&quot;;</span><br><span class="line">		for(var i = 0; i &lt; this.lastPoint.length;i++)&#123;</span><br><span class="line">			p2+=this.lastPoint[i].index;</span><br><span class="line">		&#125;</span><br><span class="line">		return p1 ===p2;</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	// 根据结果改变圆圈颜色</span><br><span class="line">	canvasLock.prototype.drawStatusPoint = function(type)&#123;</span><br><span class="line">		for(var i = 0; i &lt; this.lastPoint.length ; i ++)&#123;</span><br><span class="line">			this.ctx.strokeStyle = type;</span><br><span class="line">			this.ctx.lineWidth=2;</span><br><span class="line">			this.ctx.beginPath();</span><br><span class="line">			this.ctx.arc(this.lastPoint[i].x,this.lastPoint[i].y,this.r,0,2*Math.PI,true);</span><br><span class="line">			this.ctx.closePath();</span><br><span class="line">			this.ctx.stroke();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 对结果进行重绘</span><br><span class="line">	canvasLock.prototype.reset = function()&#123;</span><br><span class="line">		// 重新绘制时要清空之前画布上的图形</span><br><span class="line">		this.createCircle();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5-css3/" rel="tag"># html5&css3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/14/html5-canvas/" rel="next" title="canvas基础知识">
+                <i class="fa fa-chevron-left"></i> canvas基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/25/css3/" rel="prev" title="css3新属性">
+                css3新属性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#手势解锁案例"><span class="nav-number">1.</span> <span class="nav-text">手势解锁案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#js初始化DOM结构"><span class="nav-number">1.1.</span> <span class="nav-text">js初始化DOM结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完成画圆函数"><span class="nav-number">1.2.</span> <span class="nav-text">完成画圆函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加事件操作，实现动态画实心圆和画路径线-touchstart事件中"><span class="nav-number">1.3.</span> <span class="nav-text">添加事件操作，实现动态画实心圆和画路径线 touchstart事件中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现手势链式操作画实心圆和路径线-touchmove事件中"><span class="nav-number">1.4.</span> <span class="nav-text">实现手势链式操作画实心圆和路径线 touchmove事件中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解锁成功和解锁失败-touchend事件中"><span class="nav-number">1.5.</span> <span class="nav-text">解锁成功和解锁失败 touchend事件中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.6.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTML部分"><span class="nav-number">1.6.1.</span> <span class="nav-text">HTML部分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#js部分"><span class="nav-number">1.6.2.</span> <span class="nav-text">js部分</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

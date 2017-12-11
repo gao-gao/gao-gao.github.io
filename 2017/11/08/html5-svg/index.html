@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="html5&css3," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等">
+<meta name="keywords" content="html5&amp;css3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svg基础知识">
+<meta property="og:url" content="http://www.gaogao.site/2017/11/08/html5-svg/index.html">
+<meta property="og:site_name" content="gaogao">
+<meta property="og:description" content="svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596407317.png">
+<meta property="og:updated_time" content="2017-11-25T07:58:23.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="svg基础知识">
+<meta name="twitter:description" content="svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等">
+<meta name="twitter:image" content="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596407317.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.gaogao.site/2017/11/08/html5-svg/"/>
+
+
+
+
+
+  <title>svg基础知识 | gaogao</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gaogao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.gaogao.site/2017/11/08/html5-svg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gaogao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gaogao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">svg基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T00:00:00+08:00">
+                2017-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5-css3/" itemprop="url" rel="index">
+                    <span itemprop="name">html5&css3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  svg的优势以及通过svg绘制形状、路径、文本，添加滤镜，绘制动画等
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="SVG可缩放矢量图形"><a href="#SVG可缩放矢量图形" class="headerlink" title="SVG可缩放矢量图形"></a>SVG可缩放矢量图形</h3><p><img src="http://7xtdl4.com1.z0.glb.clouddn.com/script_1511596407317.png" alt="image"></p>
+<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
+<li>便于读取和修改：可被多种工具读取和修改，图像中文本是可选、可搜索（制作地图）的</li>
+<li>小：相对于jpeg和gif图像，尺寸更小且可压缩性更强</li>
+<li>可伸缩：在任何分辨率下被高质量地打印，在图像质量不下降的情况下被放大</li>
+<li>开放标准：是纯粹的xml,可与java技术一起运行，兼容其他标准如DOM</li>
+<li>主流浏览器均可直接打开并查看SVG文件</li>
+</ul>
+<h3 id="SVG视口-viewport"><a href="#SVG视口-viewport" class="headerlink" title="SVG视口 viewport"></a>SVG视口 viewport</h3><p>SVG可见区域的大小，或者理解为画布大小<code>&lt;svg width=&quot;&quot; height=&quot;&quot;&gt;&lt;/svg&gt;</code></p>
+<h4 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h4><p>svg默认单位是px，不注明单位时就为px </p>
+<ul>
+<li>em：相对父元素的字体大小</li>
+<li>ex：相对小写字母x的高度</li>
+<li>px：相对于屏幕分辨率，一个点或者72分之一英寸</li>
+<li>in：英寸</li>
+<li>cm：厘米</li>
+<li>mm：毫米</li>
+<li>pt：72分之一英寸</li>
+<li>pc：12分之一点</li>
+<li>%：相对于父元素的百分比</li>
+</ul>
+<h3 id="视区盒子-viewBox"><a href="#视区盒子-viewBox" class="headerlink" title="视区盒子 viewBox"></a>视区盒子 viewBox</h3><p>被选中的要在视口viewport中全屏显示的区域<code>viewBox=&quot;x,y,width,height&quot;</code></p>
+<h3 id="preserveAspectRatio"><a href="#preserveAspectRatio" class="headerlink" title="preserveAspectRatio"></a>preserveAspectRatio</h3><p>让viewBox保持宽高比<code>[defer]&lt;align-x&gt;&lt;meetOrSlice&gt;</code>，由两个值构成，一个值确定对齐方式，一个值确定缩放方式</p>
+<h4 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h4><p>可选值，仅在image元素上应用此属性时才会使用</p>
+<h4 id="align由x-y两个方向上的值确定-驼峰命名法拼接"><a href="#align由x-y两个方向上的值确定-驼峰命名法拼接" class="headerlink" title="align由x,y两个方向上的值确定(驼峰命名法拼接 )"></a>align由x,y两个方向上的值确定(驼峰命名法拼接 )</h4><p>控制viewBox的在viewport中占的位置(b:viewBox p:viewport)</p>
+<ul>
+<li>xMin：b的最小X值对齐p的左边部</li>
+<li>xMid：b的X轴中点对齐p的X轴中点</li>
+<li>xMax：b的最大X值对齐p的右边部</li>
+<li>yMin,yMid,yMax<h4 id="meetOrSlice参数"><a href="#meetOrSlice参数" class="headerlink" title="meetOrSlice参数"></a>meetOrSlice参数</h4>控制viewBox缩放的方式</li>
+<li>meet：保持宽高比并将viewBox缩放为适合viewport的大小，以最小的宽高为基准缩放</li>
+<li>slice：保持宽高比并将所有不在viewport中的viewBox剪裁掉，尽量填满viewport，以最大的宽高为基准缩放</li>
+<li>none：不保存宽高比，缩放图像适合整个viewbox，可能会发生图像变形</li>
+</ul>
+<h3 id="坐标系统"><a href="#坐标系统" class="headerlink" title="坐标系统"></a>坐标系统</h3><h4 id="世界坐标系统"><a href="#世界坐标系统" class="headerlink" title="世界坐标系统"></a>世界坐标系统</h4><p>以左上角为(0,0)的计算机图形学中的世界坐标系</p>
+<h4 id="最初坐标系统"><a href="#最初坐标系统" class="headerlink" title="最初坐标系统"></a>最初坐标系统</h4><p><code>&lt;svg&gt;&lt;/svg&gt;</code>即画布，viewport部分</p>
+<h4 id="用户坐标系统"><a href="#用户坐标系统" class="headerlink" title="用户坐标系统"></a>用户坐标系统</h4><p><code>&lt;svg&gt;&lt;rect&gt;&lt;/svg&gt;</code> 即rect部分内定义的坐标系统</p>
+<h4 id="转换坐标系统"><a href="#转换坐标系统" class="headerlink" title="转换坐标系统"></a>转换坐标系统</h4><p>通过transform进行变换，如缩放、移动、倾斜、旋转，相对于画布左上角，自带偏移且不支持3D，属性值不能加单位默认px <code>&lt;rect transform=&quot;translate(100)&quot;&gt;</code></p>
+<ul>
+<li>translate(<tx>|<ty>),ty值为可选值，省略默认为0，相对于svg的左上角</ty></tx></li>
+<li>rotate(<angle>[<cx><cy>]),angle为旋转角度，cx和cy设置旋转中心点</cy></cx></angle></li>
+<li>scale(<sx>[<sy>]),沿x/y轴的缩放值，用来延长或者拉伸元素</sy></sx></li>
+<li>skewX(angle) skewY(angle)<br>渲染机制是，先将坐标系统偏移(缩放)，再渲染元素</li>
+</ul>
+<h4 id="svg2"><a href="#svg2" class="headerlink" title="svg2"></a>svg2</h4><p>把类似transform-origin和3Dtransform引入，持观望态度</p>
+<h3 id="svg形状"><a href="#svg形状" class="headerlink" title="svg形状"></a>svg形状</h3><h4 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h4><p><code>&lt;rect x=&quot;&quot; y=&quot;&quot; rx=&quot;&quot; ry=&quot;&quot; width=&quot;&quot; height=&quot;&quot;/&gt;</code></p>
+<ul>
+<li>x,y定位rect左上角位置，默认为0</li>
+<li>rx,ry定义圆角半径，默认为0</li>
+</ul>
+<h4 id="圆形"><a href="#圆形" class="headerlink" title="圆形"></a>圆形</h4><p><code>&lt;circle cx=&quot;&quot; cy=&quot;&quot; r=&quot;&quot;/&gt;</code></p>
+<ul>
+<li>cx,xy 圆心的位置</li>
+<li>r 圆的半径</li>
+</ul>
+<h4 id="椭圆"><a href="#椭圆" class="headerlink" title="椭圆"></a>椭圆</h4><p><code>&lt;ellipse cx=&quot;&quot; cy=&quot;&quot; rx=&quot;&quot; ry=&quot;&quot;/&gt;</code></p>
+<ul>
+<li>cx,cy 椭圆的中心点位置</li>
+<li>rx,ry 椭圆的x,y半径</li>
+</ul>
+<h4 id="线"><a href="#线" class="headerlink" title="线"></a>线</h4><p><code>&lt;line x1=&quot;&quot; y1=&quot;&quot; x2=&quot;&quot; y2=&quot;&quot;&gt;</code></p>
+<ul>
+<li>x1,y1 起点坐标</li>
+<li>x2,y2 终点坐标</li>
+</ul>
+<h4 id="折线"><a href="#折线" class="headerlink" title="折线"></a>折线</h4><p><code>&lt;polyline points=&quot;x1 y1,x2 y2,x3 y3...,xn yn&quot;&gt;</code></p>
+<ul>
+<li>xn yn 点集数列，分别表示折线各点的坐标。每个数字用空白符、逗号、终止命令或换行符分隔开</li>
+<li>第一个点和最后一个点相同时，闭合点没有完美融合</li>
+</ul>
+<h4 id="多边形"><a href="#多边形" class="headerlink" title="多边形"></a>多边形</h4><p><code>&lt;polygon points=&quot;x1 y1,x2 y2,x3 y3...,xn yn&quot;/&gt;</code></p>
+<ul>
+<li>同上折线 不过路径绘制完后自动闭合图形，形成一个闭合的多边形</li>
+</ul>
+<h4 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h4><p>通过d定义，d是一个点集数列和路径信息，值是一个命令+参数的序列。不仅可以创建以上基本形状，还可以创建更多形状<code>&lt;path d=&quot;&quot;&gt;</code></p>
+<h5 id="画笔命令"><a href="#画笔命令" class="headerlink" title="画笔命令"></a>画笔命令</h5><p>大写字母为绝对命令，小写字母为相对命令</p>
+<ul>
+<li>M x y,将画笔移动到(x,y)处</li>
+<li>m dx dy, 将画笔向右移动x,向下移动y<h5 id="直线命令"><a href="#直线命令" class="headerlink" title="直线命令"></a>直线命令</h5></li>
+<li>L x y,在之前位置和新位置之间画一条线段</li>
+<li>l dx dy,在l命令之前的点到移(dx,dy)那个点之间画一条线段</li>
+<li>H x（h dx),绘制水平线到定义位置</li>
+<li>V y（v dy）,绘制垂直线到定义位置</li>
+<li>Z（z）,闭合路径命令，连接当前点和起点(直线)</li>
+</ul>
+<h5 id="曲线命令"><a href="#曲线命令" class="headerlink" title="曲线命令"></a>曲线命令</h5><ul>
+<li><p>三次贝塞尔曲线<br><code>C x1 y1,x2 y2,x y</code>或者<code>c dx1 dy1,dx2 dy2,dx dy</code>,(x,y)表示曲线的终点,起点由M命令确定,(x1,y1)起点控制点,(x2,y2)终点控制点。描述曲线上各个点的斜率<br><code>S x2 y2,x y</code>或者<code>s dx2 dy2,dx dy</code>将若干个贝塞尔曲线连起来，创建出一条长而平滑的曲线，起始点默认为前面的命令的对称点。</p>
+</li>
+<li><p>二次赛贝尔曲线<br><code>Q x1 y1, x y</code>或者<code>q dx1 dy1,x y</code>,(x,y)表示曲线的终点，(x1,y1)控制点既控制起点又控制终点<br><code>T x y</code>或者<code>t x y</code>类似于S命令，连接赛贝尔曲线</p>
+</li>
+<li><p>弧形<br><code>A rx ry x-axis-rotation laege-arc-flag sweep-flag x y</code>,xy椭圆两轴半径，椭圆的旋转角度，弧线是大角度弧1还是小角度弧0,弧线方向0逆时针1顺时针,xy指定弧形的终点</p>
+</li>
+</ul>
+<h3 id="svg文本"><a href="#svg文本" class="headerlink" title="svg文本"></a>svg文本</h3><p>可直接复制粘贴  </p>
+<h4 id="字符，字形和字体"><a href="#字符，字形和字体" class="headerlink" title="字符，字形和字体"></a>字符，字形和字体</h4><p>字形和字体被称为字体数据</p>
+<ul>
+<li>字符：要展示的字母的数字表示形式，由Unicode定义</li>
+<li>字形：字符的可视化表示形式,衬线非衬线体等</li>
+<li>字体：字形的集合<h4 id="EM框"><a href="#EM框" class="headerlink" title="EM框"></a>EM框</h4>(0,0)点是在左下端</li>
+<li>Ascent:从字体的(0,0)点到EM box顶部的距离</li>
+<li>Desent:从字体的(0,0)点到EM box底部的距离</li>
+<li>baseline table:基线，设计空间坐标系统中的基线的位置</li>
+</ul>
+<h3 id="text元素"><a href="#text元素" class="headerlink" title="text元素"></a>text元素</h3><p><code>&lt;text&gt;&lt;/text&gt;</code>,可以放任何文字</p>
+<ul>
+<li>设置字体属性：font-family,font-style,font-weight,font-variant,font-stretch,font-size,font-size-adjust,kerning,letter-spacing,word-spacing,text-decoration</li>
+</ul>
+<h4 id="文本的位置"><a href="#文本的位置" class="headerlink" title="文本的位置"></a>文本的位置</h4><p><code>&lt;text x=&quot;&quot; y=&quot;&quot;&gt;&lt;/text&gt;</code>设置在视图中展示文本的位置</p>
+<ul>
+<li>x=0 y=0 时文本并不在svg框中，因为文本em框的(0,0)点在文本左下方<h5 id="偏移"><a href="#偏移" class="headerlink" title="偏移"></a>偏移</h5></li>
+<li>x=”x1 x2 x3 …xn” y=”y1 y2 y3…yn”根据坐标指定位置，后续没有指定数值的默认为最后一个值</li>
+<li>dx=”x1 x2 x3 …xn” dy=”y1 y2 y3…yn”根据坐标对文本进行偏移，后续没有指定的为最后一个值<h5 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h5></li>
+<li><code>rotate=&quot;deg1 deg2 deg3...degn&quot;</code>，根据给定角度对字符进行匹配旋转，如果只给一个值，则匹配所有</li>
+<li><code>transform=&quot;rotate(deg)&quot;</code>,转换坐标系统对整个文本行进行旋转<h4 id="文本的长度"><a href="#文本的长度" class="headerlink" title="文本的长度"></a>文本的长度</h4></li>
+<li><code>textLength=&quot;widthValue&quot;</code>平均计算文本键的间距  </li>
+<li><code>lengthAdjust=&quot;spacing&quot;</code>spacing为默认值,spacingAndGlyphs将文本拉宽</li>
+</ul>
+<h4 id="tspan元素"><a href="#tspan元素" class="headerlink" title="tspan元素"></a>tspan元素</h4><p><code>&lt;text&gt;&lt;tspan&gt;&lt;/tspan&gt;&lt;/text&gt;</code>标记大块文本的子部分,可以给其一个特殊样式</p>
+<h4 id="textPath元素"><a href="#textPath元素" class="headerlink" title="textPath元素"></a>textPath元素</h4><ul>
+<li><code>&lt;path id=&quot;path&quot; d=&quot;&quot; stroke=&quot;&quot; fill=&quot;&quot;&gt;</code>设置路径     </li>
+<li><code>&lt;text&gt;&lt;textPath xlink=&quot;&quot;&gt;&lt;/textPath&gt;&lt;/text&gt;</code>利用xlink:href属性把字符对齐到路径，让字体环绕路径，顺着路径走</li>
+</ul>
+<h3 id="填充和边框"><a href="#填充和边框" class="headerlink" title="填充和边框"></a>填充和边框</h3><h4 id="上色"><a href="#上色" class="headerlink" title="上色"></a>上色</h4><ul>
+<li>fill 设置对象内部的颜色</li>
+<li>fill-opacity 控制填充色的不透明度</li>
+<li>stroke 设置绘制对象的线条的颜色</li>
+<li>stroke 控制描边的不透明度<h4 id="描边"><a href="#描边" class="headerlink" title="描边"></a>描边</h4></li>
+<li>stroke-width 描边的宽度（以路径为中心线绘制）</li>
+<li>stroke-linecap 边框终点的形状，butt(直线结束),square(稍超实际路径),round(圆的)</li>
+<li>stroke-linejoin 两条描边线段之间的连接方式，miter尖角,bevel斜接切边,round圆角平滑</li>
+<li>stroke-dasharray 将虚线类型应用在描边上，添加长度定义复杂的虚线模式(逗号分隔)</li>
+</ul>
+<h3 id="使用CSS"><a href="#使用CSS" class="headerlink" title="使用CSS"></a>使用CSS</h3><ul>
+<li>使用style标签</li>
+<li>外链css<code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;style.css&quot;?&gt;</code></li>
+</ul>
+<h3 id="svg滤镜"><a href="#svg滤镜" class="headerlink" title="svg滤镜"></a>svg滤镜</h3><h4 id="创建剪切"><a href="#创建剪切" class="headerlink" title="创建剪切"></a>创建剪切</h4><p>擦除已经创建的元素的部分内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg viewBox=&quot;0 0 400 200&quot; xmlns=&quot;&quot;&gt;</span><br><span class="line">	&lt;!-- 在引用的地方渲染 --&gt;</span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;clipPath id=&quot;clipname&quot;&gt;</span><br><span class="line">            &lt;rect x=&quot;&quot; y=&quot;&quot; width=&quot;&quot; height=&quot;&quot; /&gt;</span><br><span class="line">        &lt;/clipPath&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line">    &lt;!-- clipname部分遮住下面的部分 --&gt;</span><br><span class="line">    &lt;circle cx=&quot;&quot; cy=&quot;&quot; r=&quot;&quot; clip-path=&quot;url(#clipname)&quot; /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="渐变效果"><a href="#渐变效果" class="headerlink" title="渐变效果"></a>渐变效果</h4><p>线性渐变和径向渐变</p>
+<h5 id="定义渐变"><a href="#定义渐变" class="headerlink" title="定义渐变"></a>定义渐变</h5><ul>
+<li>指定一个id属性供元素调用</li>
+<li>渐变内容需要定义在<code>&lt;defs&gt;</code>标签内部而不是形状上<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x1,y1渐变起点，x2,y2渐变终点，两点组成一个矢量线</span><br><span class="line">&lt;defs&gt;</span><br><span class="line">        &lt;linearGradient id=&quot;gradient&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;</span><br><span class="line">        定义开始颜色和结束颜色</span><br><span class="line">            &lt;stop offset=&quot;0%&quot; stop-color=&quot;yellow&quot; /&gt;</span><br><span class="line">            &lt;stop offset=&quot;100%&quot; stop-color=&quot;red&quot; /&gt;</span><br><span class="line">        &lt;/linearGradient&gt;</span><br><span class="line">&lt;/defs&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="调用渐变"><a href="#调用渐变" class="headerlink" title="调用渐变"></a>调用渐变</h5><ul>
+<li><code>&lt;element fill=&quot;&quot; stroke=&quot;&quot;&gt;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ellipse cx=&quot;200&quot; cy=&quot;100&quot; rx=&quot;100&quot; ry=&quot;50&quot; fill=&quot;url(#gradient)&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h5><p>lineerGradient:沿着直线改变颜色</p>
+<h5 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h5><ul>
+<li>radiaGradient:从一个点开始发散绘制渐变</li>
+<li>cx,xy渐变圆心，r渐变半径，fx,fy渐变起点<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;radialGradient id=&quot;gradient&quot; cx=&quot;50%&quot; cy=&quot;50%&quot; r=&quot;50%&quot; fx=&quot;50%&quot; fy=&quot;50%&quot;&gt;</span><br><span class="line">    &lt;stop offset=&quot;0%&quot; stop-color=&quot;yellow&quot; /&gt;</span><br><span class="line">    &lt;stop offset=&quot;100%&quot; stop-color=&quot;red&quot; /&gt;</span><br><span class="line">&lt;/radialGradient&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="遮罩效果masking"><a href="#遮罩效果masking" class="headerlink" title="遮罩效果masking"></a>遮罩效果masking</h4><p>使用透明度和灰度值遮罩计算得的软边缘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;defs&gt;</span><br><span class="line">    &lt;mask id=&quot;mask&quot;&gt;</span><br><span class="line">    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;&quot;&quot; height=&quot;&quot; fill=&quot;&quot;&gt;</span><br><span class="line">    &lt;/mask&gt;</span><br><span class="line">&lt;/defs&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="嵌入光栅图像"><a href="#嵌入光栅图像" class="headerlink" title="嵌入光栅图像"></a>嵌入光栅图像</h4><ul>
+<li><code>&lt;image&gt;</code>允许在一个svg对象内部呈现光栅图像 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;image xlink:href=&quot;URL&quot; x=&quot;&quot; y=&quot;&quot; width=&quot;&quot; height=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>必须设置宽高，不设置的话默认为0</p>
+<h3 id="svg动画"><a href="#svg动画" class="headerlink" title="svg动画"></a>svg动画</h3><h4 id="SMIL-同步多媒体集成语言-animation概览"><a href="#SMIL-同步多媒体集成语言-animation概览" class="headerlink" title="SMIL(同步多媒体集成语言) animation概览"></a>SMIL(同步多媒体集成语言) animation概览</h4><ul>
+<li>动画元素的数值属性(x,y…)</li>
+<li>动画属性变换(平移或旋转)</li>
+<li>动画颜色属性</li>
+<li>沿着运动路径运动<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4></li>
+<li><code>&lt;set&gt;</code>设置，在特定时间之后修改某个属性值</li>
+<li><code>&lt;animate&gt;</code>基础动画元素，实现单属性动画过渡效果</li>
+<li><code>&lt;animateTransform&gt;</code>实现transform变换动画效果</li>
+<li><code>&lt;animateMotion&gt;</code>让SVG各种图形沿着特定的path路径运动</li>
+<li>组合动画，多个动画组合于一个元素，构成复杂动画<h4 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h4></li>
+<li>attributeName=””，要变化的元素属性名称</li>
+<li>attributeType=”css/xml/auto”，表明attributeName属性值的列表</li>
+<li>from,动画的起始值</li>
+<li>to,动画的结束值(绝对值)</li>
+<li>by,动画的相对变化值</li>
+<li>values,用分号分隔的一个或多个值，可以看成是动画的多个关键值点</li>
+</ul>
+<h5 id="begin，end"><a href="#begin，end" class="headerlink" title="begin，end"></a>begin，end</h5><p>begin,动画开始的时间;end,动画结束的时间</p>
+<ul>
+<li>begin=”value1;value2” 1时动画走一下，2时动画再走一下</li>
+<li>offset-value:偏移值</li>
+<li>syncbase-value:基于同步确定值</li>
+<li>event-value:与事件相关联的值</li>
+<li>repeat-value:重复多少次之后执行</li>
+<li>accessKey-value:定义快捷键，按下某个按键动画开始</li>
+<li>wallclock-sync-value:真实世界的时钟事件定义</li>
+<li>indefinite:无限等待<h5 id="dur"><a href="#dur" class="headerlink" title="dur"></a>dur</h5>动画持续时间’indefinite’为动画时间无限<h5 id="calcMode-keyTimes-keySplines"><a href="#calcMode-keyTimes-keySplines" class="headerlink" title="calcMode,keyTimes,keySplines"></a>calcMode,keyTimes,keySplines</h5>控制动画快慢曲线</li>
+<li>discrete:from值直接跳到to值</li>
+<li>linear:速率一致</li>
+<li>paced:通过插值让动画变化步调平稳均匀</li>
+<li>spline:插值定义贝塞尔曲线<br>#####repeatCount,repeatDur<br>前者表示动画执行次数，后者定义重复动画的总时间<h5 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h5>表示动画间隙的填充方式</li>
+<li>remove 默认值 动画结束直接回到开始的地方</li>
+<li>freeze 动画结束后保持动画结束之后的状态<h5 id="accumulate-”sum”"><a href="#accumulate-”sum”" class="headerlink" title="accumulate=”sum”"></a>accumulate=”sum”</h5>动画结束时候的位置作为下次动画的起始位置</li>
+</ul>
+<h4 id="动画的暂停与播放"><a href="#动画的暂停与播放" class="headerlink" title="动画的暂停与播放"></a>动画的暂停与播放</h4><p>在js中控制，直接在svg上运行，停止时都停止</p>
+<ul>
+<li>暂停 svg.pauseAnimations()</li>
+<li>播放 svg.unpauseAnimations()</li>
+</ul>
+<h3 id="svg嵌入html"><a href="#svg嵌入html" class="headerlink" title="svg嵌入html"></a>svg嵌入html</h3><h4 id="使用svg文件"><a href="#使用svg文件" class="headerlink" title="使用svg文件"></a>使用svg文件</h4><ul>
+<li><p><code>&lt;embed&gt;</code> 将svg文件以媒体形式插入html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">审查元素时可以看到svg的源代码，但是直接看源代码看不到</span><br><span class="line">&lt;embed src=&quot;imooc.svg&quot; width=&quot;1024&quot; height=&quot;768&quot; type=&quot;image/svg+xml&quot; pluginspage=&quot;http://www.adobe.com/svg/viewer/install/&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;object&gt;</code> 将svg文件以媒体对象形式插入html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">审查元素是可以看到SVG的结构代码</span><br><span class="line">&lt;object data=&quot;imooc.svg&quot; width=&quot;1024&quot; height=&quot;768&quot; type=&quot;image/svg+xml&quot; codebase=&quot;http://www.adobe.com/svg/viewer/install/&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;iframe&gt;</code> 将svg文件以网页文件形式插入html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src=&quot;imooc.svg&quot; width=&quot;1024&quot; height=&quot;768&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;image&gt;</code> 将svg文件以图形图像文件形式插入html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">不会将文件嵌套到代码中，单纯作为一张图片插入</span><br><span class="line">&lt;img src=&quot;imooc.svg&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="嵌入svg结构"><a href="#嵌入svg结构" class="headerlink" title="嵌入svg结构"></a>嵌入svg结构</h4><p>使用svg标签直接将svg代码插入到html中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xmlns：svg编码解析方式</span><br><span class="line">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; &gt;&lt;/svg&gt;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5-css3/" rel="tag"># html5&css3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/02/2017-11-02-html5-drag/" rel="next" title="html5中的拖拽">
+                <i class="fa fa-chevron-left"></i> html5中的拖拽
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/14/html5-canvas/" rel="prev" title="canvas基础知识">
+                canvas基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="gaogao" />
+          <p class="site-author-name" itemprop="name">gaogao</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gao-gao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SVG可缩放矢量图形"><span class="nav-number">1.</span> <span class="nav-text">SVG可缩放矢量图形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优势"><span class="nav-number">1.1.</span> <span class="nav-text">优势</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVG视口-viewport"><span class="nav-number">2.</span> <span class="nav-text">SVG视口 viewport</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单位"><span class="nav-number">2.1.</span> <span class="nav-text">单位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视区盒子-viewBox"><span class="nav-number">3.</span> <span class="nav-text">视区盒子 viewBox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#preserveAspectRatio"><span class="nav-number">4.</span> <span class="nav-text">preserveAspectRatio</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#defer"><span class="nav-number">4.1.</span> <span class="nav-text">defer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#align由x-y两个方向上的值确定-驼峰命名法拼接"><span class="nav-number">4.2.</span> <span class="nav-text">align由x,y两个方向上的值确定(驼峰命名法拼接 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meetOrSlice参数"><span class="nav-number">4.3.</span> <span class="nav-text">meetOrSlice参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坐标系统"><span class="nav-number">5.</span> <span class="nav-text">坐标系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#世界坐标系统"><span class="nav-number">5.1.</span> <span class="nav-text">世界坐标系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最初坐标系统"><span class="nav-number">5.2.</span> <span class="nav-text">最初坐标系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户坐标系统"><span class="nav-number">5.3.</span> <span class="nav-text">用户坐标系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转换坐标系统"><span class="nav-number">5.4.</span> <span class="nav-text">转换坐标系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#svg2"><span class="nav-number">5.5.</span> <span class="nav-text">svg2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svg形状"><span class="nav-number">6.</span> <span class="nav-text">svg形状</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#矩形"><span class="nav-number">6.1.</span> <span class="nav-text">矩形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#圆形"><span class="nav-number">6.2.</span> <span class="nav-text">圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#椭圆"><span class="nav-number">6.3.</span> <span class="nav-text">椭圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线"><span class="nav-number">6.4.</span> <span class="nav-text">线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#折线"><span class="nav-number">6.5.</span> <span class="nav-text">折线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多边形"><span class="nav-number">6.6.</span> <span class="nav-text">多边形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路径"><span class="nav-number">6.7.</span> <span class="nav-text">路径</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#画笔命令"><span class="nav-number">6.7.1.</span> <span class="nav-text">画笔命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直线命令"><span class="nav-number">6.7.2.</span> <span class="nav-text">直线命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#曲线命令"><span class="nav-number">6.7.3.</span> <span class="nav-text">曲线命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svg文本"><span class="nav-number">7.</span> <span class="nav-text">svg文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符，字形和字体"><span class="nav-number">7.1.</span> <span class="nav-text">字符，字形和字体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EM框"><span class="nav-number">7.2.</span> <span class="nav-text">EM框</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text元素"><span class="nav-number">8.</span> <span class="nav-text">text元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文本的位置"><span class="nav-number">8.1.</span> <span class="nav-text">文本的位置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#偏移"><span class="nav-number">8.1.1.</span> <span class="nav-text">偏移</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#旋转"><span class="nav-number">8.1.2.</span> <span class="nav-text">旋转</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文本的长度"><span class="nav-number">8.2.</span> <span class="nav-text">文本的长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tspan元素"><span class="nav-number">8.3.</span> <span class="nav-text">tspan元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#textPath元素"><span class="nav-number">8.4.</span> <span class="nav-text">textPath元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填充和边框"><span class="nav-number">9.</span> <span class="nav-text">填充和边框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上色"><span class="nav-number">9.1.</span> <span class="nav-text">上色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#描边"><span class="nav-number">9.2.</span> <span class="nav-text">描边</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CSS"><span class="nav-number">10.</span> <span class="nav-text">使用CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svg滤镜"><span class="nav-number">11.</span> <span class="nav-text">svg滤镜</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建剪切"><span class="nav-number">11.1.</span> <span class="nav-text">创建剪切</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渐变效果"><span class="nav-number">11.2.</span> <span class="nav-text">渐变效果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义渐变"><span class="nav-number">11.2.1.</span> <span class="nav-text">定义渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用渐变"><span class="nav-number">11.2.2.</span> <span class="nav-text">调用渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线性渐变"><span class="nav-number">11.2.3.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#径向渐变"><span class="nav-number">11.2.4.</span> <span class="nav-text">径向渐变</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遮罩效果masking"><span class="nav-number">11.3.</span> <span class="nav-text">遮罩效果masking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌入光栅图像"><span class="nav-number">11.4.</span> <span class="nav-text">嵌入光栅图像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svg动画"><span class="nav-number">12.</span> <span class="nav-text">svg动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SMIL-同步多媒体集成语言-animation概览"><span class="nav-number">12.1.</span> <span class="nav-text">SMIL(同步多媒体集成语言) animation概览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果"><span class="nav-number">12.2.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数详解"><span class="nav-number">12.3.</span> <span class="nav-text">参数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#begin，end"><span class="nav-number">12.3.1.</span> <span class="nav-text">begin，end</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dur"><span class="nav-number">12.3.2.</span> <span class="nav-text">dur</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#calcMode-keyTimes-keySplines"><span class="nav-number">12.3.3.</span> <span class="nav-text">calcMode,keyTimes,keySplines</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fill"><span class="nav-number">12.3.4.</span> <span class="nav-text">fill</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#accumulate-”sum”"><span class="nav-number">12.3.5.</span> <span class="nav-text">accumulate=”sum”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动画的暂停与播放"><span class="nav-number">12.4.</span> <span class="nav-text">动画的暂停与播放</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svg嵌入html"><span class="nav-number">13.</span> <span class="nav-text">svg嵌入html</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用svg文件"><span class="nav-number">13.1.</span> <span class="nav-text">使用svg文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌入svg结构"><span class="nav-number">13.2.</span> <span class="nav-text">嵌入svg结构</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gaogao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
