@@ -408,7 +408,7 @@
 <li><p>API：cookie，简单但需要封装才能用(document.cookie)；sessionStorage、localStorage简单易用</p>
 </li>
 </ul>
-<h3 id="js中设置cookie"><a href="#js中设置cookie" class="headerlink" title="js中设置cookie"></a>js中设置cookie</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function setCookie(cname,cvalue,exdays)&#123;</span><br><span class="line">	var d = new Date();</span><br><span class="line">	d.setTime(d.getTime()+(exdays*24*60*60*1000));</span><br><span class="line">	var expires = &quot;expires=&quot;+d.toGMTString();</span><br><span class="line">	document.cookie = cname+&quot;=&quot;+cvalue+&quot;; &quot;+expires;</span><br><span class="line">&#125;</span><br><span class="line">function getCookie(cname)&#123;</span><br><span class="line">	var name = cname + &quot;=&quot;;</span><br><span class="line">	var ca = document.cookie.split(&apos;;&apos;);</span><br><span class="line">	for(var i=0; i&lt;ca.length; i++) &#123;</span><br><span class="line">		var c = ca[i].trim();</span><br><span class="line">		if (c.indexOf(name)==0) return c.substring(name.length,c.length);</span><br><span class="line">	&#125;</span><br><span class="line">	return &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">function checkCookie()&#123;</span><br><span class="line">	var user=getCookie(&quot;username&quot;);</span><br><span class="line">	if (user!=&quot;&quot;)&#123;</span><br><span class="line">		alert(&quot;Welcome again &quot; + user);</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		user = prompt(&quot;Please enter your name:&quot;,&quot;&quot;);</span><br><span class="line">  		if (user!=&quot;&quot; &amp;&amp; user!=null)&#123;</span><br><span class="line">    		setCookie(&quot;username&quot;,user,30);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="js中设置cookie"><a href="#js中设置cookie" class="headerlink" title="js中设置cookie"></a>js中设置cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">cname,cvalue,exdays</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">	d.setTime(d.getTime()+(exdays*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>));</span><br><span class="line">	<span class="keyword">var</span> expires = <span class="string">"expires="</span>+d.toGMTString();</span><br><span class="line">	<span class="built_in">document</span>.cookie = cname+<span class="string">"="</span>+cvalue+<span class="string">"; "</span>+expires;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">cname</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> name = cname + <span class="string">"="</span>;</span><br><span class="line">	<span class="keyword">var</span> ca = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;ca.length; i++) &#123;</span><br><span class="line">		<span class="keyword">var</span> c = ca[i].trim();</span><br><span class="line">		<span class="keyword">if</span> (c.indexOf(name)==<span class="number">0</span>) <span class="keyword">return</span> c.substring(name.length,c.length);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkCookie</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> user=getCookie(<span class="string">"username"</span>);</span><br><span class="line">	<span class="keyword">if</span> (user!=<span class="string">""</span>)&#123;</span><br><span class="line">		alert(<span class="string">"Welcome again "</span> + user);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		user = prompt(<span class="string">"Please enter your name:"</span>,<span class="string">""</span>);</span><br><span class="line">  		<span class="keyword">if</span> (user!=<span class="string">""</span> &amp;&amp; user!=<span class="literal">null</span>)&#123;</span><br><span class="line">    		setCookie(<span class="string">"username"</span>,user,<span class="number">30</span>);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过document.cookie获取当前cookie，然后封装相关函数，并调用</p>
 
       
@@ -537,7 +537,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -548,7 +548,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -559,7 +559,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -628,7 +628,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

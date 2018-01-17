@@ -438,14 +438,14 @@
 <li><p>.css(propertyName)：获取选取元素的样式值<br>$(‘p:eq(1)’).text( $(‘.first’).css(“font-size”) )</p>
 </li>
 <li><p>.css(propertyNames)：传递一组数组，返回一个对象结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var value = $(&apos;.first&apos;).css([&quot;width&quot;,&quot;height&quot;]);</span><br><span class="line">		//因为获取的是一个对象，取到对应的值</span><br><span class="line">		$(&apos;p:eq(2)&apos;).text( &apos;width:&apos; + value.width +  &apos; height:&apos; +value.height )</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> value = $(<span class="string">'.first'</span>).css([<span class="string">"width"</span>,<span class="string">"height"</span>]);</span></span><br><span class="line"><span class="actionscript">		<span class="comment">//因为获取的是一个对象，取到对应的值</span></span></span><br><span class="line"><span class="javascript">		$(<span class="string">'p:eq(2)'</span>).text( <span class="string">'width:'</span> + value.width +  <span class="string">' height:'</span> +value.height )</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><ul>
 <li><p>.css(propertyName,value)：设置CSS<br><code>$(&#39;.fourth&#39;).css(&quot;background-color&quot;,&quot;red&quot;)</code></p>
 </li>
 <li><p>.css(propertyName,function)：传入一个回调函数，返回取到对应的值进行处理  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;.sixth&apos;).css(&quot;width&quot;,function(index,value)&#123;</span><br><span class="line">		    value = value.split(&quot;px&quot;);</span><br><span class="line">		    分割字符串取前者数字</span><br><span class="line">		    return (Number(value[0])+50)+value[1]</span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.sixth'</span>).css(<span class="string">"width"</span>,function(index,<span class="keyword">value</span>)&#123;</span><br><span class="line">		    <span class="keyword">value</span> = <span class="keyword">value</span>.split(<span class="string">"px"</span>);</span><br><span class="line">		    分割字符串取前者数字</span><br><span class="line">		    <span class="keyword">return</span> (Number(<span class="keyword">value</span>[<span class="number">0</span>])+<span class="number">50</span>)+<span class="keyword">value</span>[<span class="number">1</span>]</span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>.css(properties)：传入一个对象，同时设置多个样式，多个属性用,分开</p>
 <pre><code>`
@@ -608,7 +608,7 @@ $(&apos;.seventh&apos;).css({
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -619,7 +619,7 @@ $(&apos;.seventh&apos;).css({
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -630,7 +630,7 @@ $(&apos;.seventh&apos;).css({
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -699,7 +699,7 @@ $(&apos;.seventh&apos;).css({
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

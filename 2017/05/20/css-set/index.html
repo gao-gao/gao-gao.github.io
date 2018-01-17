@@ -359,18 +359,18 @@
 <li>color:#999</li>
 <li><small>内的文本字体在h1~h3内，其大小都设置为当前字号的65%；而在h4~h6内的字号都设置为当前字号的75%</small></li>
 </ul>
-<h3 id="页面主体"><a href="#页面主体" class="headerlink" title="页面主体"></a>页面主体</h3><h4 id="针对页面中的body"><a href="#针对页面中的body" class="headerlink" title="针对页面中的body"></a>针对页面中的body</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;</span><br><span class="line">font-size: 14px;</span><br><span class="line">line-height: 1.42857143;</span><br><span class="line">color: #333;</span><br><span class="line">background-color: #fff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即"><a href="#对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即" class="headerlink" title="对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即"></a>对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p &#123;margin: 0 0 10px;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="页面主体"><a href="#页面主体" class="headerlink" title="页面主体"></a>页面主体</h3><h4 id="针对页面中的body"><a href="#针对页面中的body" class="headerlink" title="针对页面中的body"></a>针对页面中的body</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"><span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1.42857143</span>;</span><br><span class="line"><span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即"><a href="#对于段落p，为区别段落和段落，为其设置了1-2行高的外边距，即" class="headerlink" title="对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即"></a>对于段落p，为区别段落和段落，为其设置了1/2行高的外边距，即</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">10px</span>;&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h4><p>根据Bootstrap提供的预编译版本LESS(或者Sass)进行自定义排版设置,改变其中的两个变量的值即可</p>
 <ul>
 <li><p>LESS版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@font-size-base: 14px; </span><br><span class="line">@line-height-base: 1.428571429; // 20/14</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@font-size-base:</span> <span class="number">14px</span>; </span><br><span class="line"><span class="variable">@line-height-base:</span> <span class="number">1.428571429</span>; <span class="comment">// 20/14</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Sass版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$font-size-base: 14px !default; </span><br><span class="line">$line-height-base: 1.428571429 !default; // 20/14</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$font-<span class="built_in">size</span>-base: <span class="number">14</span>px !<span class="built_in">default</span>; </span><br><span class="line">$<span class="built_in">line</span>-<span class="built_in">height</span>-base: <span class="number">1.428571429</span> !<span class="built_in">default</span>; <span class="comment">// 20/14</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="文本样式：通过添加类或者用标签包围"><a href="#文本样式：通过添加类或者用标签包围" class="headerlink" title="文本样式：通过添加类或者用标签包围"></a>文本样式：通过添加类或者用标签包围</h3><h4 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h4><p>添加<code>.lead</code>类让段落突出显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.lead &#123;</span><br><span class="line">margin-bottom: 20px;</span><br><span class="line">font-size: 16px;</span><br><span class="line">font-weight: 200;</span><br><span class="line">line-height: 1.4;</span><br><span class="line">&#125;</span><br><span class="line">@media (min-width: 768px) &#123;/*大中型浏览器字体稍大*/</span><br><span class="line">.lead &#123;</span><br><span class="line">font-size: 21px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="文本样式：通过添加类或者用标签包围"><a href="#文本样式：通过添加类或者用标签包围" class="headerlink" title="文本样式：通过添加类或者用标签包围"></a>文本样式：通过添加类或者用标签包围</h3><h4 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h4><p>添加<code>.lead</code>类让段落突出显示<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lead</span> &#123;</span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line"><span class="attribute">font-weight</span>: <span class="number">200</span>;</span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">1.4</span>;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> (min-width: <span class="number">768px</span>) &#123;<span class="comment">/*大中型浏览器字体稍大*/</span></span><br><span class="line"><span class="selector-class">.lead</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">21px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="内联元素文本"><a href="#内联元素文本" class="headerlink" title="内联元素文本"></a>内联元素文本</h4><ul>
 <li><code>&lt;mark&gt;</code>高亮</li>
 <li><code>&lt;del&gt;</code>划线，被删除的文本</li>
@@ -550,7 +550,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -561,7 +561,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -572,7 +572,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -641,7 +641,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

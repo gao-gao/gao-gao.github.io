@@ -380,7 +380,7 @@
 <h3 id="图形变换"><a href="#图形变换" class="headerlink" title="图形变换"></a>图形变换</h3><p>图形变换都是针对坐标系而言，变换的是坐标系的原点。且多种变换会叠加，即使使用了beginPath你b</p>
 <ul>
 <li><p>平移：ctx.translate(x,y)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(0,0);</span><br><span class="line">ctx.lineTo(100,100);</span><br><span class="line">ctx.translate(100,100);</span><br><span class="line">ctx.stroke();</span><br><span class="line"></span><br><span class="line">对于此段代码，前面两句已经将路径画出来了，后面去平移坐标系并不会对前面的路径产生影响</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">ctx.translate(<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">ctx.stroke();</span><br><span class="line"></span><br><span class="line">对于此段代码，前面两句已经将路径画出来了，后面去平移坐标系并不会对前面的路径产生影响</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>旋转：ctx.rotate(rad)</p>
 </li>
@@ -408,7 +408,7 @@
 <h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><h4 id="绘制图片的方法"><a href="#绘制图片的方法" class="headerlink" title="绘制图片的方法"></a>绘制图片的方法</h4><ul>
 <li>ctx.drawImage(image,x,y),将图片绘制在(x,y)处</li>
 <li>ctx.drawImage(image,x,y,w,h),把图片绘制在(x,y)处，并缩放为宽w高h</li>
-<li>ctx.drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)，把图片中的(sx,sy)处的宽sw高sh的区域，绘制到(dx,dy)处，并缩放为dw高dh<h4 id="在image加载完成之后绘制"><a href="#在image加载完成之后绘制" class="headerlink" title="在image加载完成之后绘制"></a>在image加载完成之后绘制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var img=new Image();</span><br><span class="line">img.src=&quot;&quot;;</span><br><span class="line">img.onload=function()&#123;</span><br><span class="line">    ctx.drawImage(img,0,0,40,40,0,0,80,80)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>ctx.drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)，把图片中的(sx,sy)处的宽sw高sh的区域，绘制到(dx,dy)处，并缩放为dw高dh<h4 id="在image加载完成之后绘制"><a href="#在image加载完成之后绘制" class="headerlink" title="在image加载完成之后绘制"></a>在image加载完成之后绘制</h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var img=new Image();</span><br><span class="line">img.src=<span class="string">""</span>;</span><br><span class="line">img.onload=function()&#123;</span><br><span class="line">    ctx.drawImage(img,<span class="number">0</span>,<span class="number">0</span>,<span class="number">40</span>,<span class="number">40</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">80</span>,<span class="number">80</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="图形画刷"><a href="#图形画刷" class="headerlink" title="图形画刷"></a>图形画刷</h3><p>ctx.createPattern可以创建一个画刷模式，进而可以设置到fillStyle里，进行画刷的填充</p>
@@ -580,7 +580,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -591,7 +591,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -602,7 +602,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -671,7 +671,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

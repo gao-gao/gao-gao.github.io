@@ -348,7 +348,7 @@
       
 
       
-        <h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><h4 id="html5文档类型"><a href="#html5文档类型" class="headerlink" title="html5文档类型"></a>html5文档类型</h4><h4 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 在IE中运行最新的渲染模式 --&gt;</span><br><span class="line">	&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 初始化移动浏览显示 --&gt;</span><br><span class="line">	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">	设备宽度，初始化不缩放</span><br><span class="line"></span><br><span class="line">	&lt;!-- bootstrap样式 --&gt;</span><br><span class="line">	&lt;link href=&quot;css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- IE8支持HTML5标签 --&gt;</span><br><span class="line">	&lt;script src=&quot;https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- IE8对媒体查询支持 --&gt;</span><br><span class="line">     &lt;script src=&quot;https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">	&lt;title&gt;环境搭建&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;hello world&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 在bootstrap前引用jquery，因为bootstrap中的js插件依赖于jQuery --&gt;</span><br><span class="line"> &lt;script src=&quot;https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line"> &lt;script src=&quot;js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+        <h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><h4 id="html5文档类型"><a href="#html5文档类型" class="headerlink" title="html5文档类型"></a>html5文档类型</h4><h4 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 在IE中运行最新的渲染模式 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 初始化移动浏览显示 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">	设备宽度，初始化不缩放</span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- bootstrap样式 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- IE8支持HTML5标签 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- IE8对媒体查询支持 --&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>环境搭建<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 在bootstrap前引用jquery，因为bootstrap中的js插件依赖于jQuery --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>viewport 元数据标签<br><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code><br>width=device-width : 设置viewport的宽度为设备宽<br>intial-scale ：设置初始缩放比例<br>user-scalable=no ：在移动设备浏览器上设置可以禁用其缩放功能，此时用户只能通过滚动查看内容</li>
 </ul>
@@ -401,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/02/boostrap-layout/" rel="next" title="bootstrap栅格式布局">
-                <i class="fa fa-chevron-left"></i> bootstrap栅格式布局
+              <a href="/2017/05/25/flexbox/" rel="next" title="flexbox布局">
+                <i class="fa fa-chevron-left"></i> flexbox布局
               </a>
             
           </div>
@@ -411,8 +411,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/19/variable/" rel="prev" title="变量类型和计算">
-                变量类型和计算 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/02/boostrap-layout/" rel="prev" title="bootstrap栅格式布局">
+                bootstrap栅格式布局 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -486,7 +486,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -497,7 +497,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -508,7 +508,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -577,7 +577,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

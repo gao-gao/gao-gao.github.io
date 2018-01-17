@@ -360,14 +360,14 @@
 </li>
 </ul>
 <p>值类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">a=1;</span><br><span class="line">b=a;</span><br><span class="line">a=2;</span><br><span class="line">b=?;//b=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">a=1;</span><br><span class="line">b=a;</span><br><span class="line">a=2;</span><br><span class="line">b=?;//b=1</span><br></pre></td></tr></table></figure>
 <p>引用类型</p>
 <ul>
 <li><p>数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">a=[1,2,3];</span><br><span class="line">b=a;</span><br><span class="line">a[0]=5;</span><br><span class="line">b[0]=?;//b[0]=5</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">b=a;</span><br><span class="line">a[<span class="number">0</span>]=<span class="number">5</span>;</span><br><span class="line">b[<span class="number">0</span>]=?;<span class="comment">//b[0]=5</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>函数<br>传参实际上传的是一个地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">a=function(i) &#123;alert(i);&#125;;</span><br><span class="line">b=function(fun)&#123;fun(2);&#125;;</span><br><span class="line">a(1);//alert 1</span><br><span class="line">b(a);//alert 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">a=<span class="function"><span class="keyword">function</span><span class="params">(i)</span> &#123;<span class="title">alert</span><span class="params">(i)</span>;&#125;;</span></span><br><span class="line">b=<span class="function"><span class="keyword">function</span><span class="params">(fun)</span>&#123;<span class="title">fun</span><span class="params">(2)</span>;&#125;;</span></span><br><span class="line">a(<span class="number">1</span>);<span class="comment">//alert 1</span></span><br><span class="line">b(a);<span class="comment">//alert 2</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="js使用typeof-能得到哪些类型？"><a href="#js使用typeof-能得到哪些类型？" class="headerlink" title="js使用typeof()能得到哪些类型？"></a>js使用typeof()能得到哪些类型？</h3><blockquote>
@@ -377,16 +377,16 @@
 <h3 id="何时使用-，何时使用-？"><a href="#何时使用-，何时使用-？" class="headerlink" title="何时使用===，何时使用==？"></a>何时使用===，何时使用==？</h3><p>考查知识点：变量计算，强制类型转换</p>
 <ul>
 <li><p>字符串拼接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a=1+&quot;2&quot;;//a=&quot;12&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>+<span class="string">"2"</span>;<span class="comment">//a="12"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>==运算符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">100==&quot;100&quot;//true</span><br><span class="line">0==&quot; &quot;//true</span><br><span class="line">null==undefined//true</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">100</span>==<span class="string">"100"</span>//<span class="literal">true</span></span><br><span class="line"><span class="attr">0</span>==<span class="string">" "</span>//<span class="literal">true</span></span><br><span class="line"><span class="attr">null</span>==undefined//<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>if语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(a==null)//相当于a===null或者a===undefined</span><br></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span><span class="comment">(a==null)</span><span class="comment">//相当于a===null或者a===undefined</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>逻辑运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=10&amp;&amp;0//a=0</span><br><span class="line">a=&quot; &quot;||&quot;abc&quot;//a=&quot;abc&quot;</span><br><span class="line">a=!window.abc//a=true</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span>=<span class="number">10</span>&amp;&amp;<span class="number">0</span>//a=<span class="number">0</span></span><br><span class="line"><span class="attr">a</span>=<span class="string">" "</span>||<span class="string">"abc"</span>//a=<span class="string">"abc"</span></span><br><span class="line"><span class="attr">a</span>=!window.abc//a=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>===：值相等并且类型也相等，用于严格比较，不会进行强制类型转换<br>==：值相等类型不一定相等，用于比较可先做类型转换</p>
@@ -396,7 +396,7 @@
 <h3 id="如何理解JSON"><a href="#如何理解JSON" class="headerlink" title="如何理解JSON?"></a>如何理解JSON?</h3><blockquote>
 <p>一个JS对象，有两个API; 同时也是一个数据格式</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSON.stringify(&#123;a:10,b:20&#125;)//将js对象转换为字符串</span><br><span class="line">JSON.parse(&quot;&#123;&apos;a&apos;:10,&apos;b&apos;:20&#125;&quot;)//将字符串转换为js对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JSON.stringify(&#123;<span class="selector-tag">a</span>:<span class="number">10</span>,<span class="selector-tag">b</span>:<span class="number">20</span>&#125;)<span class="comment">//将js对象转换为字符串</span></span><br><span class="line">JSON.parse(<span class="string">"&#123;'a':10,'b':20&#125;"</span>)<span class="comment">//将字符串转换为js对象</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -438,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/02/bootstrap/" rel="next" title="bootstrap环境搭建">
-                <i class="fa fa-chevron-left"></i> bootstrap环境搭建
+              <a href="/2017/06/02/boostrap-layout/" rel="next" title="bootstrap栅格式布局">
+                <i class="fa fa-chevron-left"></i> bootstrap栅格式布局
               </a>
             
           </div>
@@ -523,7 +523,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -534,7 +534,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -545,7 +545,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -614,7 +614,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="gaogao">
 <meta property="og:description" content="word-break和word-wrap的区别，tex-overflow文本溢出时的省略效果，字体规则@font-face，columns属性分列相关参数，用户界面中的一些属性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-11T13:49:51.284Z">
+<meta property="og:updated_time" content="2017-12-11T13:54:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3新属性">
 <meta name="twitter:description" content="word-break和word-wrap的区别，tex-overflow文本溢出时的省略效果，字体规则@font-face，columns属性分列相关参数，用户界面中的一些属性">
@@ -374,10 +374,10 @@
 <li>text-overflow:clip|ellipsis|string</li>
 </ul>
 <h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>能用常规字体最好用常规字体，使用特殊字体渲染时用户需要从服务器下载字体，耗费时间，影响网站性能。</p>
-<h4 id="font-face规则"><a href="#font-face规则" class="headerlink" title="@font-face规则"></a>@font-face规则</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*声明 WebFont*/</span><br><span class="line">@font-face &#123;</span><br><span class="line">  font-family: &apos;pinghei&apos;;</span><br><span class="line">  src: url(&apos;pinghei.eot&apos;);/IE9/</span><br><span class="line">  src:</span><br><span class="line">    url(&apos;pinghei.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),/IE6-IE8/</span><br><span class="line">    url(&apos;pinghei.woff&apos;) format(&apos;woff&apos;),/safari,android,ios/</span><br><span class="line">    url(&apos;pinghei.ttf&apos;) format(&apos;truetype&apos;),/modern browsers/</span><br><span class="line">    url(&apos;pinghei.svg&apos;) format(&apos;svg&apos;);/legacy ios/</span><br><span class="line">  font-weight: normal;</span><br><span class="line">  font-style: normal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*使用指定字体*/</span><br><span class="line">.test &#123;</span><br><span class="line">    font-family: &apos;pinghei&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="font-face规则"><a href="#font-face规则" class="headerlink" title="@font-face规则"></a>@font-face规则</h4><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*声明 WebFont*/</span></span><br><span class="line">@<span class="built_in">font</span>-<span class="title">face</span> &#123;</span><br><span class="line">  <span class="built_in">font</span>-<span class="attribute">family</span>: <span class="string">'pinghei'</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'pinghei.eot'</span>);<span class="regexp">/IE9/</span></span><br><span class="line">  <span class="attribute">src</span>:</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">'pinghei.eot?#iefix'</span>) format(<span class="string">'embedded-opentype'</span>),<span class="regexp">/IE6-IE8/</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">'pinghei.woff'</span>) format(<span class="string">'woff'</span>),<span class="regexp">/safari,android,ios/</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">'pinghei.ttf'</span>) format(<span class="string">'truetype'</span>),<span class="regexp">/modern browsers/</span></span><br><span class="line">    <span class="built_in">url</span>(<span class="string">'pinghei.svg'</span>) format(<span class="string">'svg'</span>);<span class="regexp">/legacy ios/</span></span><br><span class="line">  <span class="built_in">font</span>-<span class="attribute">weight</span>: normal;</span><br><span class="line">  <span class="built_in">font</span>-<span class="attribute">style</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*使用指定字体*/</span></span><br><span class="line">.test &#123;</span><br><span class="line">    <span class="built_in">font</span>-<span class="attribute">family</span>: <span class="string">'pinghei'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="name"><a href="#name" class="headerlink" title="name"></a>name</h5><p>自定义字体名称</p>
 <h5 id="source"><a href="#source" class="headerlink" title="source"></a>source</h5><p>字体路径，绝对路径或者相对路径</p>
-<h5 id="format"><a href="#format" class="headerlink" title="format"></a>format</h5><p>定义字体格式，推荐通用模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@font-face&#123;</span><br><span class="line">    font-family:myFont;</span><br><span class="line">    src:url(&quot;myFont.eot&quot;);/IE9/</span><br><span class="line">    src:url(&quot;myFont.&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="format"><a href="#format" class="headerlink" title="format"></a>format</h5><p>定义字体格式，推荐通用模板<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@font</span>-face&#123;</span><br><span class="line">    font-<span class="string">family:</span>myFont;</span><br><span class="line"><span class="symbol">    src:</span>url(<span class="string">"myFont.eot"</span>);<span class="regexp">/IE9/</span></span><br><span class="line"><span class="symbol">    src:</span>url(<span class="string">"myFont."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>.ttf Windows和mac最常见的字体，RAW（写入式）格式，不为网站做优化，通常用于手机端。</li>
 <li>.otf 原始的字体格式，其内置在ttf的基础下，不兼容IE</li>
@@ -592,7 +592,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -603,7 +603,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -614,7 +614,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -683,7 +683,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
